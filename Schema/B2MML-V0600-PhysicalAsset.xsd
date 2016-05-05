@@ -1,0 +1,903 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<xsd:schema     
+                xmlns:xsd               = "http://www.w3.org/2001/XMLSchema"
+                xmlns                   = "http://www.mesa.org/xml/B2MML-V0600"
+                xmlns:Extended          = "http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+                targetNamespace         = "http://www.mesa.org/xml/B2MML-V0600"
+                elementFormDefault      = "qualified"
+                attributeFormDefault    = "unqualified">
+  
+<!-- Import the Extension Schema         -->
+
+<xsd:import     namespace="http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+                schemaLocation="B2MML-V0600-AllExtensions.xsd"/>
+
+<!-- Include the Common schema   -->
+
+<xsd:include schemaLocation = "B2MML-V0600-Common.xsd"/>
+
+
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2012 MESA International 
+		All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (B2MML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided the World Batch 
+        Forum is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used 
+        courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+          
+        Based upon the ANSI/ISA-95.00.02-2010 Enterprise-Control System 
+        Integration Part 2: Object Model Attributes Standard and the
+        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        Part 5: Business to Manufacturing Transactions.  
+   </xsd:documentation>
+
+   <xsd:documentation> 
+
+      Revision History
+
+        Ver     Date            Person          Note
+        ---     ----            ------          ----
+        V0500    26 Mar 2011    D. Brandl       New version
+        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
+
+   </xsd:documentation>
+</xsd:annotation>
+
+<!-- Elements -->
+  
+  <xsd:element name = "PhysicalAssetInformation"                    type ="PhysicalAssetInformationType" />
+  <xsd:element name = "PhysicalAsset"                               type ="PhysicalAssetType" />
+  <xsd:element name = "PhysicalAssetClass"                          type ="PhysicalAssetClassType" />
+  <xsd:element name = "PhysicalAssetCapabilityTestSpecification"    type ="PhysicalAssetCapabilityTestSpecificationType" />
+
+
+<!-- Transaction Elements -->
+  <xsd:element name = "GetPhysicalAssetInformation"                 type = "GetPhysicalAssetInformationType"/>
+  <xsd:element name = "ShowPhysicalAssetInformation"                type = "ShowPhysicalAssetInformationType"/>
+  <xsd:element name = "ProcessPhysicalAssetInformation"             type = "ProcessPhysicalAssetInformationType"/>
+  <xsd:element name = "AcknowledgePhysicalAssetInformation"         type = "AcknowledgePhysicalAssetInformationType"/>
+  <xsd:element name = "ChangePhysicalAssetInformation"              type = "ChangePhysicalAssetInformationType"/>
+  <xsd:element name = "RespondPhysicalAssetInformation"             type = "RespondPhysicalAssetInformationType"/>
+  <xsd:element name = "CancelPhysicalAssetInformation"              type = "CancelPhysicalAssetInformationType"/>
+  <xsd:element name = "SyncPhysicalAssetInformation"                type = "SyncPhysicalAssetInformationType"/>
+
+
+  <xsd:element name = "GetPhysicalAssetClass"                       type = "GetPhysicalAssetClassType"/>
+  <xsd:element name = "ShowPhysicalAssetClass"                      type = "ShowPhysicalAssetClassType"/>
+  <xsd:element name = "ProcessPhysicalAssetClass"                   type = "ProcessPhysicalAssetClassType"/>
+  <xsd:element name = "AcknowledgePhysicalAssetClass"               type = "AcknowledgePhysicalAssetClassType"/>
+  <xsd:element name = "ChangePhysicalAssetClass"                    type = "ChangePhysicalAssetClassType"/>
+  <xsd:element name = "RespondPhysicalAssetClass"                   type = "RespondPhysicalAssetClassType"/>
+  <xsd:element name = "CancelPhysicalAssetClass"                    type = "CancelPhysicalAssetClassType"/>
+  <xsd:element name = "SyncPhysicalAssetClass"                      type = "SyncPhysicalAssetClassType"/>
+
+        
+  <xsd:element name = "GetPhysicalAsset"                            type = "GetPhysicalAssetType"/>
+  <xsd:element name = "ShowPhysicalAsset"                           type = "ShowPhysicalAssetType"/>
+  <xsd:element name = "ProcessPhysicalAsset"                        type = "ProcessPhysicalAssetType"/>
+  <xsd:element name = "AcknowledgePhysicalAsset"                    type = "AcknowledgePhysicalAssetType"/>
+  <xsd:element name = "ChangePhysicalAsset"                         type = "ChangePhysicalAssetType"/>
+  <xsd:element name = "RespondPhysicalAsset"                        type = "RespondPhysicalAssetType"/>
+  <xsd:element name = "CancelPhysicalAsset"                         type = "CancelPhysicalAssetType"/>
+  <xsd:element name = "SyncPhysicalAsset"                           type = "SyncPhysicalAssetType"/>
+
+ 
+  <xsd:element name = "GetPhysicalAssetCapabilityTestSpec"          type = "GetPhysicalAssetCapabilityTestSpecType"/>
+  <xsd:element name = "ShowPhysicalAssetCapabilityTestSpec"         type = "ShowPhysicalAssetCapabilityTestSpecType"/>
+  <xsd:element name = "ProcessPhysicalAssetCapabilityTestSpec"      type = "ProcessPhysicalAssetCapabilityTestSpecType"/>
+  <xsd:element name = "AcknowledgePhysicalAssetCapabilityTestSpec"  type = "AcknowledgePhysicalAssetCapabilityTestSpecType"/>
+  <xsd:element name = "ChangePhysicalAssetCapabilityTestSpec"       type = "ChangePhysicalAssetCapabilityTestSpecType"/>
+  <xsd:element name = "RespondPhysicalAssetCapabilityTestSpec"      type = "RespondPhysicalAssetCapabilityTestSpecType"/>
+  <xsd:element name = "CancelPhysicalAssetCapabilityTestSpec"       type = "CancelPhysicalAssetCapabilityTestSpecType"/>
+  <xsd:element name = "SyncPhysicalAssetCapabilityTestSpec"         type = "SyncPhysicalAssetCapabilityTestSpecType"/>
+
+ 
+<!-- Simple & Complex Types  -->
+
+  <xsd:complexType name = "PhysicalAssetInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                  type = "IdentifierType"
+                                                minOccurs = "0"/>
+      <xsd:element name = "Description"         type = "DescriptionType" 
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "HierarchyScope"      type = "HierarchyScopeType"
+                                                minOccurs = "0"/>
+      <xsd:element name = "PublishedDate"       type = "PublishedDateType"
+                                                minOccurs = "0"/>
+      <xsd:element name = "PhysicalAsset"       type = "PhysicalAssetType"  
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetClass"  type = "PhysicalAssetClassType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetCapabilityTestSpecification"
+                                                type = "PhysicalAssetCapabilityTestSpecificationType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:PhysicalAssetInformation"       
+                                                minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "PhysicalAssetType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                  type = "IdentifierType"/>
+      <xsd:element name = "Description"         type = "DescriptionType"        
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "HierarchyScope"      type = "HierarchyScopeType"   
+                                                minOccurs = "0" />
+      <xsd:element name = "PhysicalLocation"    type = "IdentifierType" minOccurs = "0" />
+      <xsd:element name = "FixedAssetID"        type = "IdentifierType" minOccurs = "0" />
+      <xsd:element name = "VendorID"            type = "IdentifierType" minOccurs = "0" />
+      <xsd:element name = "EquipmentLevel"      type = "HierarchyScopeType" minOccurs = "0" />
+      <xsd:element name = "EquipmentAssetMapping" type = "EquipmentAssetMappingType"   
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetProperty"   type = "PhysicalAssetPropertyType"  
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAsset"           type = "PhysicalAssetType"  
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetClassID"    type = "PhysicalAssetClassIDType"   
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetCapabilityTestSpecificationID"
+                                                type = "PhysicalAssetCapabilityTestSpecificationIDType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:PhysicalAsset"  minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "PhysicalAssetPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                  type = "IdentifierType" />
+      <xsd:element name = "Description"         type = "DescriptionType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"               type = "ValueType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetProperty"   type = "PhysicalAssetPropertyType"  
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetCapabilityTestSpecificationID"
+                                                type = "PhysicalAssetCapabilityTestSpecificationIDType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "TestResult"          type = "TestResultType"         
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:PhysicalAssetProperty"
+                                                minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "PhysicalAssetClassType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                  type = "IdentifierType"/>
+      <xsd:element name = "Description"         type = "DescriptionType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "HierarchyScope"      type = "HierarchyScopeType"
+                                                minOccurs = "0"/>
+      <xsd:element name = "Manufacturer"        type = "NameType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetClassProperty"
+                                                type = "PhysicalAssetClassPropertyType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetID"         type = "PhysicalAssetIDType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetCapabilityTestSpecificationID"
+                                                type = "PhysicalAssetCapabilityTestSpecificationIDType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:PhysicalAssetClass"
+                                                minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "PhysicalAssetClassPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                  type = "IdentifierType"/>
+      <xsd:element name = "Description"         type = "DescriptionType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"               type = "ValueType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetClassProperty"
+                                                type = "PhysicalAssetClassPropertyType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetCapabilityTestSpecificationID"
+                                                type = "PhysicalAssetCapabilityTestSpecificationIDType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:PhysicalAssetClassProperty"
+                                                minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "PhysicalAssetCapabilityTestSpecificationType">
+    <xsd:sequence>
+      <xsd:element name = "Name"                type = "NameType"/>
+      <xsd:element name = "Description"         type = "DescriptionType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Version"             type = "VersionType"
+                                                minOccurs = "0"/>
+      <xsd:element name = "HierarchyScope"      type = "HierarchyScopeType"
+                                                minOccurs = "0"/>
+      <xsd:element name = "TestedPhysicalAssetProperty"     
+                                                type = "TestedPhysicalAssetPropertyType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "TestedPhysicalAssetClassProperty" 
+                                                type = "TestedPhysicalAssetClassPropertyType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:PhysicalAssetCapabilityTestSpecification" 
+                                                minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "TestedPhysicalAssetPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "PhysicalAssetID"         type = "PhysicalAssetIDType"/>
+      <xsd:element name = "PropertyID"          type = "PropertyIDType"/>
+      <xsd:group   ref  = "Extended:TestedPhysicalAssetProperty" 
+                                                minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "TestedPhysicalAssetClassPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "PhysicalAssetClassID"    type = "PhysicalAssetClassIDType"/>
+      <xsd:element name = "PropertyID"          type = "PropertyIDType"/>
+      <xsd:group   ref  = "Extended:TestedPhysicalAssetClassProperty"               
+                                                minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- PhysicalAssetInformation Transaction Types   -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetPhysicalAssetInformationType">
+    <xsd:sequence>      
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get" type = "TransGetType"/>
+              <xsd:element name = "PhysicalAssetInformation"
+                                                type = "PhysicalAssetInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowPhysicalAssetInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "PhysicalAssetInformation"
+                                                type = "PhysicalAssetInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessPhysicalAssetInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "PhysicalAssetInformation"
+                                                type = "PhysicalAssetInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgePhysicalAssetInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "PhysicalAssetInformation"
+                                                type = "PhysicalAssetInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangePhysicalAssetInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "PhysicalAssetInformation"
+                                                type = "PhysicalAssetInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondPhysicalAssetInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "PhysicalAssetInformation"
+                                                type = "PhysicalAssetInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelPhysicalAssetInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "PhysicalAssetInformation"
+                                                type = "PhysicalAssetInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncPhysicalAssetInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "PhysicalAssetInformation"
+                                                type = "PhysicalAssetInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- PhysicalAssetClass Transaction Types        -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetPhysicalAssetClassType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"
+                                type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "PhysicalAssetClass"
+                                                type = "PhysicalAssetClassType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowPhysicalAssetClassType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "PhysicalAssetClass"
+                                                type = "PhysicalAssetClassType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessPhysicalAssetClassType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "PhysicalAssetClass"
+                                                type = "PhysicalAssetClassType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgePhysicalAssetClassType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "PhysicalAssetClass"
+                                                type = "PhysicalAssetClassType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangePhysicalAssetClassType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "PhysicalAssetClass"
+                                                type = "PhysicalAssetClassType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondPhysicalAssetClassType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "PhysicalAssetClass"
+                                                type = "PhysicalAssetClassType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelPhysicalAssetClassType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "PhysicalAssetClass"
+                                                type = "PhysicalAssetClassType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncPhysicalAssetClassType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "PhysicalAssetClass"
+                                                type = "PhysicalAssetClassType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - -  -->
+<!-- PhysicalAsset Transaction Types      -->
+<!-- - - - - - - - - - - - - - - - -  -->
+
+  <xsd:complexType name = "GetPhysicalAssetType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "PhysicalAsset"   type = "PhysicalAssetType"
+                                                minOccurs = "1" maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowPhysicalAssetType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "PhysicalAsset"   type = "PhysicalAssetType"
+                                                minOccurs = "1" maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessPhysicalAssetType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "PhysicalAsset"   type = "PhysicalAssetType"
+                                                minOccurs = "1" maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgePhysicalAssetType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "PhysicalAsset"   type = "PhysicalAssetType"
+                                                minOccurs = "1" maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangePhysicalAssetType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "PhysicalAsset"   type = "PhysicalAssetType"
+                                                minOccurs = "1" maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondPhysicalAssetType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "PhysicalAsset"   type = "PhysicalAssetType"
+                                                minOccurs = "1" maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelPhysicalAssetType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "PhysicalAsset"   type = "PhysicalAssetType"
+                                                minOccurs = "1" maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncPhysicalAssetType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "PhysicalAsset"   type = "PhysicalAssetType"
+                                                minOccurs = "1" maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- PhysicalAssetCapabilityTestSpec Transaction Types    -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetPhysicalAssetCapabilityTestSpecType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "PhysicalAssetCapabilityTestSpec"
+                                                type = "PhysicalAssetCapabilityTestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowPhysicalAssetCapabilityTestSpecType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "PhysicalAssetCapabilityTestSpec"
+                                                type = "PhysicalAssetCapabilityTestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessPhysicalAssetCapabilityTestSpecType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "PhysicalAssetCapabilityTestSpec"
+                                                type = "PhysicalAssetCapabilityTestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgePhysicalAssetCapabilityTestSpecType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "PhysicalAssetCapabilityTestSpec"
+                                                type = "PhysicalAssetCapabilityTestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangePhysicalAssetCapabilityTestSpecType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "PhysicalAssetCapabilityTestSpec"
+                                                type = "PhysicalAssetCapabilityTestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondPhysicalAssetCapabilityTestSpecType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "PhysicalAssetCapabilityTestSpec"
+                                                type = "PhysicalAssetCapabilityTestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelPhysicalAssetCapabilityTestSpecType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "PhysicalAssetCapabilityTestSpec"
+                                                type = "PhysicalAssetCapabilityTestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncPhysicalAssetCapabilityTestSpecType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "PhysicalAssetCapabilityTestSpec"
+                                                type = "PhysicalAssetCapabilityTestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+</xsd:schema>

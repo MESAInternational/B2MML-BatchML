@@ -1,0 +1,918 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<xsd:schema     xmlns:xsd               = "http://www.w3.org/2001/XMLSchema"
+                targetNamespace         = "http://www.mesa.org/xml/B2MML-V0600"
+                xmlns                   = "http://www.mesa.org/xml/B2MML-V0600"
+                xmlns:Extended          = "http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+                elementFormDefault      = "qualified"
+                attributeFormDefault    = "unqualified">
+  
+<!-- Import the B2MML Extension Schema and pickup the BatchML Information Extensions -->
+
+  <xsd:import   namespace="http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+                schemaLocation="B2MML-V0600-AllExtensions.xsd"/>
+
+<!-- Include the BatchML and B2MML schemas   -->
+
+  <xsd:include schemaLocation = "BatchML-V0600-BatchInformation.xsd"/>
+  <xsd:include schemaLocation = "B2MML-V0600-OperationsDefinition.xsd"/>
+  <xsd:include schemaLocation = "B2MML-V0600-OperationsPerformance.xsd"/>
+  <xsd:include schemaLocation = "B2MML-V0600-OperationsSchedule.xsd"/>
+  <xsd:include schemaLocation = "B2MML-V0600-ProductDefinition.xsd"/>
+  <xsd:include schemaLocation = "B2MML-V0600-ProductionPerformance.xsd"/>
+  <xsd:include schemaLocation = "B2MML-V0600-ProductionSchedule.xsd"/>
+  <xsd:include schemaLocation = "B2MML-V0600-WorkDefinition.xsd"/>
+  <xsd:include schemaLocation = "B2MML-V0600-WorkPerformance.xsd"/>
+  <xsd:include schemaLocation = "B2MML-V0600-WorkSchedule.xsd"/>
+
+<!-- Include the Common schema   -->
+
+  <xsd:include  schemaLocation = "B2MML-V0600-Common.xsd"/>
+
+
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2012 MESA International 
+		All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (B2MML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided the World Batch 
+        Forum is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used 
+        courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+          
+        Based upon the ANSI/ISA-95.00.04 Batch Production Records Standard and the
+        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        Part 5: Business to Manufacturing Transactions.  
+   </xsd:documentation>
+
+   <xsd:documentation> 
+
+      Revision History
+
+        Ver     Date            Person          Note
+        ===     ====            ======          ==========================
+        V0500   June 2010       D. Brandl       Initial version 
+        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
+
+   </xsd:documentation>
+</xsd:annotation>
+
+<!-- ========================================= -->
+<!-- Global Elements ========================= -->
+<!-- ========================================= -->
+  
+  <xsd:element name = "BatchProductionRecord"            type = "BatchProductionRecordType"/>
+
+  <xsd:element name = "GetBatchProductionRecord"         type = "GetBatchProductionRecordType"/>
+  <xsd:element name = "ShowBatchProductionRecord"        type = "ShowBatchProductionRecordType"/>
+  <xsd:element name = "ProcessBatchProductionRecord"     type = "ProcessBatchProductionRecordType"/>
+  <xsd:element name = "AcknowledgeBatchProductionRecord" type = "AcknowledgeBatchProductionRecordType"/>
+  <xsd:element name = "ChangeBatchProductionRecord"      type = "ChangeBatchProductionRecordType"/>
+  <xsd:element name = "RespondBatchProductionRecord"     type = "RespondBatchProductionRecordType"/>
+  <xsd:element name = "CancelBatchProductionRecord"      type = "CancelBatchProductionRecordType"/>
+  <xsd:element name = "SyncBatchProductionRecord"        type = "SyncBatchProductionRecordType"/>
+
+ 
+<!-- ========================================= -->
+<!-- Common group for all elements  ========== -->
+<!-- ========================================= -->
+
+  <xsd:group name = "BatchProductionRecordEntryType">
+    <xsd:sequence>
+      <xsd:element name = "EntryID"   	           type = "IdentifierType"/>     
+      <xsd:element name = "ObjectType"             type = "RecordObjectTypeType"/>  
+      <xsd:element name = "TimeStamp"              type = "DateTimeType"     minOccurs="0"/>
+      <xsd:element name = "ExternalReference"      type = "IdentifierType"   minOccurs="0"/>
+      <xsd:element name = "Description"            type = "DescriptionType"  minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:group>
+
+
+<!-- Simple & Complex Types  -->
+
+  <xsd:complexType name = "BatchProductionRecordType">
+      <xsd:sequence>
+         <xsd:element name = "ID"   	           type = "IdentifierType"/>     
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+
+         <xsd:element name = "EquipmentScope"      type = "IdentifierType"		minOccurs="0"/>
+         <xsd:element name = "PublishedDate"       type = "DateTimeType"		minOccurs="0"/>
+         <xsd:element name = "CreationDate"        type = "DateTimeType"		minOccurs="0"/>
+		 <!-- Simple types -->
+         <xsd:element name = "BatchID"             type = "IdentifierType"		minOccurs="0"/>
+         <xsd:element name = "BatchProductionRecordSpec"
+                                                   type = "IdentifierType"		minOccurs="0"/>
+         <xsd:element name = "CampaignID"          type = "IdentifierType"		minOccurs="0"/>
+         <xsd:element name = "ChangeIndication"    type = "xsd:string"			minOccurs="0"/>
+         <xsd:element name = "Delimiter"           type = "TextType"			minOccurs="0"/>
+         <xsd:element name = "EquipmentID"         type = "IdentifierType"		minOccurs="0"/>
+         <xsd:element name = "ExpirationDate"      type = "DateTimeType"		minOccurs="0"/>
+         <xsd:element name = "Language"            type = "CodeType"			minOccurs="0"/> 
+         <xsd:element name = "LastChangedDate"     type = "DateTimeType"		minOccurs="0"/>
+         <xsd:element name = "LotID"               type = "IdentifierType"		minOccurs="0"/>
+         <xsd:element name = "MaterialDefinitionID" type = "IdentifierType"		minOccurs="0"/>
+         <xsd:element name = "PhysicalAssetID"     type = "IdentifierType"		minOccurs="0"/> <!-- Not in ISA 88.04 -->
+         <xsd:element name = "RecordStatus"        type = "CodeType"			minOccurs="0"/>
+         <xsd:element name = "Version"             type = "IdentifierType"		minOccurs="0"/>
+		<!-- Complex types -->
+         <xsd:element name = "ChangeHistory"       type = "ChangeHistoryType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "Comments"            type = "CommentsType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "ControlRecipes"      type = "ControlRecipesType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "DataSets"            type = "DataSetsType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "Events"              type = "EventsType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "MasterRecipes"       type = "MasterRecipesType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "PersonnelIdentification" type = "PersonnelIdentificationType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "OperationsDefinitions" type = "OperationsDefinitionsType"
+                                                   minOccurs="0"/>  <!-- Not in ISA88.04 - Added for ISA 95.02 -->
+         <xsd:element name = "OperationsPerformances" type = "OperationsPerformancesType"
+                                                   minOccurs="0"/>  <!-- Not in ISA88.04 - Added for ISA 95.02 -->
+         <xsd:element name = "OperationsSchedules" type = "OperationsSchedulesType"
+                                                   minOccurs="0"/>  <!-- Not in ISA88.04 - Added for ISA 95.02 -->
+         <xsd:element name = "ProductDefinitions"  type = "ProductDefinitionsType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "ProductionPerformances" type = "ProductionPerformancesType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "ProductionSchedules" type = "ProductionSchedulesType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "RecipeElements"      type = "RecipeElementsType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "ResourceQualifications"  type = "ResourceQualificationsType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "Samples"             type = "SamplesType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "WorkDirectives"      type = "WorkDirectivesType"
+                                                   minOccurs="0"/>  <!-- Not in ISA88.04 - Added for ISA 95.04 -->
+         <xsd:element name = "WorkMasters"         type = "WorkMastersType"
+                                                   minOccurs="0"/>  <!-- Not in ISA88.04 - Added for ISA 95.04 -->
+         <xsd:element name = "WorkPerformances"    type = "WorkPerformancesType"
+                                                   minOccurs="0"/>  <!-- Not in ISA88.04 - Added for ISA 95.04 -->
+         <xsd:element name = "WorkSchedules"       type = "WorkSchedulesType"
+                                                   minOccurs="0"/>  <!-- Not in ISA88.04 - Added for ISA 95.04 -->
+		<!-- Recursive definition -->
+         <xsd:element name = "BatchProductionRecord" type = "BatchProductionRecordType"
+                                                   minOccurs="0"/>
+        <xsd:group   ref  = "Extended:BatchProductionRecord" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "RecordObjectType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+           <xsd:enumeration value="Batch Production Record"/>
+           <xsd:enumeration value="Change"/>
+           <xsd:enumeration value="Comment"/>
+           <xsd:enumeration value="Control Recipe"/>
+           <xsd:enumeration value="Data Set"/>
+           <xsd:enumeration value="Event"/>
+           <xsd:enumeration value="Master Recipe"/>
+           <xsd:enumeration value="Product Definition"/>
+           <xsd:enumeration value="Production Performance"/>
+           <xsd:enumeration value="Production Schedule"/>
+           <xsd:enumeration value="Personnel Identification Manifest"/>
+           <xsd:enumeration value="Resource Definition Manifest"/>
+           <xsd:enumeration value="Recipe Element"/>
+           <xsd:enumeration value="Sample"/>
+           <xsd:enumeration value="Sample Test"/>
+           <xsd:enumeration value="Sample Test Result"/>
+           <xsd:enumeration value="Work Directive"/>
+           <xsd:enumeration value="Work Master"/>
+           <xsd:enumeration value="Work Performance"/>
+           <xsd:enumeration value="Work Schedule"/>
+           <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+     </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name = "RecordObjectTypeType">
+     <xsd:simpleContent>
+         <xsd:extension base="RecordObjectType1Type">
+            <xsd:attribute name = "OtherValue"     type="xsd:string"/>
+        </xsd:extension>
+     </xsd:simpleContent>
+  </xsd:complexType>
+        
+
+<!-- ========================================= -->
+<!-- Change History ========================== -->
+<!-- ========================================= -->
+  <xsd:complexType name = "ChangeHistoryType">
+      <xsd:sequence>
+         <xsd:element name = "Change"              type = "ChangeType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "ChangeType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "RecordReference"     type = "IdentifierType"/> 
+         <xsd:element name = "PrechangeData"       type = "ValueType"      nillable="true" maxOccurs="unbounded"/> 
+         <xsd:element name = "Reason"              type = "TextType"       minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+<!-- ========================================= -->
+<!-- Comments ================================ -->
+<!-- ========================================= -->
+  <xsd:complexType name = "CommentsType">
+      <xsd:sequence>
+         <xsd:element name = "Comment"             type = "CommentType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "CommentType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "RecordReference"     type = "IdentifierType"/> 
+         <xsd:element name = "CommentText"         type = "TextType" 		maxOccurs="unbounded"/> 
+         <xsd:element name = "PersonID"            type = "NameType"		minOccurs="0"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+<!-- ========================================= -->
+<!-- Data Sets ==============================- -->
+<!-- ========================================= -->
+  <xsd:complexType name = "DataSetsType">
+      <xsd:sequence>
+         <xsd:element name = "DataSet"             type = "DataSetType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "DataSetType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "TrendSystemReference" type = "IdentifierType"       minOccurs="0"/> 
+         <xsd:element name = "StartTime"           type = "DateTimeType"          minOccurs="0"/> 
+         <xsd:element name = "EndTime"             type = "DateTimeType"          minOccurs="0"/> 
+         <xsd:element name = "TimeSpecification"   type = "TimeSpecificationType" minOccurs="0"/> 
+         <xsd:element name = "TagSpecification"    type = "TagSpecificationType"  maxOccurs="unbounded"/> 
+         <xsd:choice>
+            <xsd:element name="DelimitedDataBlock" type = "DelimitedDataBlockType"/>
+            <xsd:element name="OrderedData"        type = "OrderedDataType"       maxOccurs="unbounded"/>
+         </xsd:choice>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "TimeSpecificationType">
+      <xsd:sequence>
+         <xsd:element name = "Relative"            type = "IndicatorType"     minOccurs="0"/> 
+         <xsd:element name = "OffsetTime"          type = "DateTimeType"      minOccurs="0"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "TagSpecificationType">
+      <xsd:sequence>
+         <xsd:element name = "TagIndex"            type = "NumericType"/> 
+         <xsd:element name = "DataType"            type = "DataTypeType"      nillable="true"/>
+         <xsd:element name = "UnitOfMeasure"       type = "UnitOfMeasureType" nillable="true"/>
+         <xsd:element name = "DataSource"          type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Alias"               type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Description"         type = "DescriptionType"   minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "EquipmentID"         type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PhysicalAssetID"     type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> <!-- Not in ISA 88.04 -->
+         <xsd:element name = "ProceduralElementReference"
+                                                   type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Deadband"            type = "ValueType"         minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SignificantDigits"   type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "DataCompression"     type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SamplingType"        type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "DelimitedDataBlockType">
+      <xsd:sequence>
+         <xsd:element name = "TagDelimiter"        type = "xsd:string"/> 
+         <xsd:element name = "OrderDelimiter"      type = "xsd:string"/> 
+         <xsd:element name = "DelimitedData"       type = "xsd:string"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "OrderedDataType">
+      <xsd:sequence>
+         <xsd:element name = "OrderIndex"          type = "NumericType"   minOccurs="0"/> 
+         <xsd:element name = "TimeValue"           type = "DateTimeType"  minOccurs="0"/> 
+         <xsd:element name = "DataValue"           type = "DataValueType" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "DataValueType">
+      <xsd:sequence>
+         <xsd:element name = "TagIndex"            type = "NumericType"    minOccurs="0"/> 
+         <xsd:element name = "Value"               type = "xsd:string"     maxOccurs="unbounded"/> 
+         <xsd:element name = "Quality"             type = "IdentifierType" minOccurs="0"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+
+<!-- ========================================= -->
+<!-- Event =================================== -->
+<!-- ========================================= -->
+  <xsd:complexType name = "EventsType">
+      <xsd:sequence>
+         <xsd:element name = "Event"               type = "SingleEventType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "SingleEventType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "EventType"           type = "EventTypeType"/> 
+         <xsd:element name = "EventSubType"        type = "EventSubTypeType"  nillable="true"/> 
+         <xsd:element name = "EquipmentID"         type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Value"               type = "ValueType"         minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PreviousValue"       type = "ValueType"         minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "MessageText"         type = "TextType"          minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PersonID"            type = "NameType"          minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "ComputerID"          type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PhysicalAssetID"     type = "IdentifierType"	  minOccurs="0" maxOccurs="unbounded"/> <!-- Not in ISA 88.04 -->
+         <xsd:element name = "ProceduralElementReference"
+                                                   type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Category"            type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "AlarmData"           type = "AlarmDataType"     minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "AssociatedEventID"   type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "UserAttribute"       type = "UserAttributeType" minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "EventType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+           <xsd:enumeration value="Alarm"/>
+           <xsd:enumeration value="Control Recipe"/>
+           <xsd:enumeration value="Equipment"/>
+           <xsd:enumeration value="General"/>
+           <xsd:enumeration value="Material"/> 
+           <xsd:enumeration value="Message"/>
+           <xsd:enumeration value="Operator"/>
+           <xsd:enumeration value="Procedural Execution"/>
+           <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+     </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name = "EventTypeType">
+     <xsd:simpleContent>
+         <xsd:extension base="EventType1Type">
+            <xsd:attribute name = "OtherValue" type="xsd:string"/>
+        </xsd:extension>
+     </xsd:simpleContent>
+  </xsd:complexType>
+        
+  <xsd:complexType name = "EventSubType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+           <xsd:enumeration value="Allocation"/>
+           <xsd:enumeration value="Application"/>
+           <xsd:enumeration value="Consume"/>
+           <xsd:enumeration value="Deallocation"/>
+           <xsd:enumeration value="Equipment"/>
+           <xsd:enumeration value="Message"/>
+           <xsd:enumeration value="Mode Change"/>
+           <xsd:enumeration value="Mode Command"/>
+           <xsd:enumeration value="Modification"/>
+           <xsd:enumeration value="Movement"/>
+           <xsd:enumeration value="Parameter Data"/>
+           <xsd:enumeration value="Process"/>
+           <xsd:enumeration value="Process Data"/>
+           <xsd:enumeration value="Produce"/>
+           <xsd:enumeration value="Prompt"/>
+           <xsd:enumeration value="Prompt Response"/>
+           <xsd:enumeration value="Property Value Change"/>
+           <xsd:enumeration value="Reconciliation"/>
+           <xsd:enumeration value="Security"/>
+           <xsd:enumeration value="State Change"/>
+           <xsd:enumeration value="State Command"/>
+           <xsd:enumeration value="Status Change"/>
+           <xsd:enumeration value="System"/>
+           <xsd:enumeration value="Target End Time"/>
+           <xsd:enumeration value="Target Start Time"/>
+           <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+     </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name = "EventSubTypeType">
+     <xsd:simpleContent>
+         <xsd:extension base="EventSubType1Type">
+            <xsd:attribute name = "OtherValue"     type="xsd:string"/>
+        </xsd:extension>
+     </xsd:simpleContent>
+  </xsd:complexType>
+        
+
+  <xsd:complexType name = "AlarmDataType">
+      <xsd:sequence>
+         <xsd:element name = "AlarmEvent"          type = "CodeType" /> 
+         <xsd:element name = "AlarmType"           type = "CodeType" /> 
+         <xsd:element name = "AlarmLimit"          type = "ValueType"      minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Priority"            type = "IdentifierType" minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "UserAttributeType">
+      <xsd:sequence>
+         <xsd:element name = "AttributeID"         type = "CodeType"/> 
+         <xsd:element name = "Description"         type = "TextType"       minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Value"               type = "ValueType"      minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+
+
+<!-- ========================================= -->
+<!-- Personnel Identification Manifest ======- -->
+<!-- ========================================= -->
+  <xsd:complexType name = "PersonnelIdentificationType">
+      <xsd:sequence>
+         <xsd:element name = "PersonnelIdentificationManifest" 
+                                                   type = "PersonnelIdentificationManifestType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "PersonnelIdentificationManifestType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "RecordReference"     type = "IdentifierType"/> 
+         <xsd:element name = "Name"                type = "NameType"       maxOccurs="unbounded"/> 
+         <xsd:element name = "ChangeIndication"    type = "xsd:string"/> 
+         <xsd:element name = "Reason"              type = "TextType"       minOccurs="0"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+<!-- ========================================= -->
+<!-- Resource Qualification Manifest ========= -->
+<!-- ========================================= -->
+  <xsd:complexType name = "ResourceQualificationsType">
+      <xsd:sequence>
+         <xsd:element name = "ResourceQualificationsManifest" 
+                                                   type = "ResourceQualificationsManifestType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "ResourceQualificationsManifestType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "RecordReference"     type = "IdentifierType"/> 
+         <xsd:element name = "ResourceID"          type = "IdentifierType"/> 
+         <xsd:element name = "ResourceUse"         type = "IdentifierType"/>  <!-- Not in ISA88.04 - Added for ISA 95.02 -->
+         <xsd:element name = "ResourceType"        type = "IdentifierType"/>  <!-- Not in ISA88.04 - Added for ISA 95.02 --> 
+         <xsd:element name = "QualificationStatus" type = "CodeType"/> 
+         <xsd:element name = "EffectiveTimeStamp"  type = "DateTimeType"   minOccurs="0"/> 
+         <xsd:element name = "ExpirationTimeStamp" type = "DateTimeType"   minOccurs="0"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+<!-- ========================================= -->
+<!-- Sample ================================== -->
+<!-- ========================================= -->
+  <xsd:complexType name = "SamplesType">
+      <xsd:sequence>
+         <xsd:element name = "Sample"              type = "SampleType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "SampleType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "SampleSourceID"      type = "IdentifierType"    minOccurs="0"/> 
+         <xsd:element name = "SampleSize"          type = "QuantityValueType" minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SampleType"          type = "CodeType"          minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SamplePullReason"    type = "TextType"          minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SampleExpiration"    type = "DateTimeType"      minOccurs="0"/> 
+         <xsd:element name = "EquipmentID"         type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PhysicalAssetID"     type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> <!-- Not in ISA 88.04 -->
+         <xsd:element name = "ProceduralElementReference"
+                                                   type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SOPReference"        type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SampleTest"          type = "SampleTestType"    minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "SampleTestType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "TestCode"            type = "CodeType"             minOccurs="0"/> 
+         <xsd:element name = "TestName"            type = "IdentifierType"       minOccurs="0"/> 
+         <xsd:element name = "SampleTestResult"    type = "SampleTestResultType" minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "SampleTestResultType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "TestDisposition"     type = "IdentifierType"       minOccurs="0"/> 
+         <xsd:element name = "EquipmentID"         type = "IdentifierType"       minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PhysicalAssetID"     type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> <!-- Not in ISA 88.04 -->
+         <xsd:element name = "AnalysisUsed"        type = "CodeType"             minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Expiration"          type = "DateTimeType"         minOccurs="0"/> 
+         <xsd:element name = "Results"             type = "ValueType"            minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "ExpectedResults"     type = "ValueType"            minOccurs="0" maxOccurs="unbounded"/> 
+     </xsd:sequence>
+  </xsd:complexType>
+
+
+
+<!-- =================================================== -->
+<!-- CONTAINERS FOR ELEMENTS DEFINED ELSEWHERE ========= -->
+<!-- =================================================== -->
+  <xsd:complexType name = "ControlRecipesType">
+      <xsd:sequence>
+         <xsd:element name = "ControlRecipeRecord" type = "ControlRecipeRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ControlRecipeRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "ControlRecipe"       type = "ControlRecipeType"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "MasterRecipesType">
+      <xsd:sequence>
+         <xsd:element name = "MasterRecipeRecord"  type = "MasterRecipeRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "MasterRecipeRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "MasterRecipe"        type = "MasterRecipeType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RecipeElementsType">
+      <xsd:sequence>
+         <xsd:element name = "RecipeElementRecord" type = "RecipeElementRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RecipeElementRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "RecipeElementType"   type = "RecipeElementType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "OperationsPerformancesType">
+      <xsd:sequence>
+         <xsd:element name = "OperationsPerformanceRecord"  type = "OperationsPerformanceRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "OperationsPerformanceRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "OperationsPerformance"  type = "OperationsPerformanceType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "OperationsSchedulesType">
+      <xsd:sequence>
+         <xsd:element name = "OperationsScheduleRecord"  type = "OperationsScheduleRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "OperationsScheduleRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "OperationsSchedule"  type = "OperationsScheduleType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "OperationsDefinitionsType">
+      <xsd:sequence>
+         <xsd:element name = "OperationsDefinitionRecord"   type = "OperationsDefinitionRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "OperationsDefinitionRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "OperationsDefinition"   type = "OperationsDefinitionType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+    <xsd:complexType name = "ProductionPerformancesType">
+      <xsd:sequence>
+         <xsd:element name = "ProductionPerformanceRecord"  type = "ProductionPerformanceRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProductionPerformanceRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "ProductionPerformaance"  type = "ProductionPerformanceType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProductionSchedulesType">
+      <xsd:sequence>
+         <xsd:element name = "ProductionScheduleRecord"  type = "ProductionScheduleRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProductionScheduleRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "ProductionSchedule"  type = "ProductionScheduleType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProductDefinitionsType">
+      <xsd:sequence>
+         <xsd:element name = "ProductDefinitionRecord"   type = "ProductDefinitionRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "ProductDefinitionRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "ProductDefinition"   type = "ProductDefinitionType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkPerformancesType">
+      <xsd:sequence>
+         <xsd:element name = "WorkPerformanceRecord"  type = "WorkPerformanceRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WorkPerformanceRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "WorkPerformaance"  type = "WorkPerformanceType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WorkSchedulesType">
+      <xsd:sequence>
+         <xsd:element name = "WorkScheduleRecord"  type = "WorkScheduleRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WorkScheduleRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "WorkSchedule"  type = "WorkScheduleType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WorkMastersType">
+      <xsd:sequence>
+         <xsd:element name = "WorkMasterRecord"   type = "WorkMasterRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkMasterRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "WorkMaster"   type = "WorkMasterType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkDirectivesType">
+      <xsd:sequence>
+         <xsd:element name = "WorkDirectiverRecord"   type = "WorkDirectiveRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkDirectiveRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "BatchProductionRecordEntryType"/>
+         <xsd:element name = "WorkDirective"   type = "WorkDirectiveType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- BatchProductionRecord Transaction Types        -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetBatchProductionRecordType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "BatchProductionRecord"
+                                                type = "BatchProductionRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowBatchProductionRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"      type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "BatchProductionRecord"
+                                                type = "BatchProductionRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessBatchProductionRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "BatchProductionRecord"
+                                                type = "BatchProductionRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeBatchProductionRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "BatchProductionRecord"
+                                                type = "BatchProductionRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeBatchProductionRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "BatchProductionRecord"
+                                                type = "BatchProductionRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondBatchProductionRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "BatchProductionRecord"
+                                                type = "BatchProductionRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelBatchProductionRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "BatchProductionRecord"
+                                                type = "BatchProductionRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncBatchProductionRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "BatchProductionRecord"
+                                                type = "BatchProductionRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+
+
+</xsd:schema>
