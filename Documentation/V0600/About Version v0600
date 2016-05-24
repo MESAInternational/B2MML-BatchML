@@ -1,0 +1,7 @@
+This directory contains the MESA B2MML and BatchML V0600 documentation files.  
+The files follow the naming convention established in the initial releases of B2MML to include the version number in the file name.
+This was done in order to make it easier for users to focus on a specific version for their development, without having to actually 
+read or open the files to determine the version.  While every attempt has been made to maintain backwards compatability, this has not
+always been possible due to the changes in the underlying ANSI/ISA 95 and ANSI/ISA 88 standards. Therefore the version numbers of
+B2MML and BatchML can be tied to specific releases of the underlying standards.  
+V0600 is derived from ANSI/ISA 95 Part 2 ed2 (May 2010) and ANSI/ISA 945 Part 4 (May 2012) and ANSI/ISA 95 Part (July 2013)
