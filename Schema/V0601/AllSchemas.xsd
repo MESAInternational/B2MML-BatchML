@@ -48,7 +48,7 @@
         ---     ----            ------          ----
         V0500   26 Mar 2011     D. Brandl       Initial version
         V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
-        V0601   31 MAY 2016     D. Brandl       Updated Version
+        V0601   31 MAY 2016     D. Brandl       Updated Version to include WorkCalendar and WorkRecord
 
    </xsd:documentation>
 </xsd:annotation>
@@ -72,6 +72,7 @@
  <xsd:include schemaLocation ="B2MML-V0601-ResourceRelationshipNetwork.xsd"/>
  <xsd:include schemaLocation ="B2MML-V0601-TransactionProfile.xsd"/>
  <xsd:include schemaLocation ="B2MML-V0601-WorkAlert.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0601-WorkCalendar.xsd"/> 
  <xsd:include schemaLocation ="B2MML-V0601-WorkDefinition.xsd"/>
  <xsd:include schemaLocation ="B2MML-V0601-WorkCapability.xsd"/>
  <xsd:include schemaLocation ="B2MML-V0601-WorkPerformance.xsd"/>
