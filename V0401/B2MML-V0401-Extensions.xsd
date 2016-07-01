@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema 
+            xmlns:xsd              = "http://www.w3.org/2001/XMLSchema" 
+            xmlns                  = "http://www.wbf.org/xml/B2MML-V0401-AllExtensions" 
+            xmlns:b2mml            = "http://www.wbf.org/xml/B2MML-V0401"
+            targetNamespace        = "http://www.wbf.org/xml/B2MML-V0401-AllExtensions" 
+            elementFormDefault     = "qualified" 
+            attributeFormDefault   = "unqualified">
+
+<!-- Import the Common schema in the 'b2mml' name space --> 
+<!-- This also brings in the Core Components under the 'b2mml' name space  -->
+     <xsd:import namespace         = "http://www.wbf.org/xml/B2MML-V0401"
+                 schemaLocation    = "B2MML-V0401-Common.xsd"/> 
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2008 WBF. All Rights Reserved. http://www.wbf.org
+
+        This WBF Work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (B2MML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided the World Batch 
+        Forum is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used 
+        courtesy of the WBF."
+
+        In no event shall the WBF, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+      
+        Based upon the ANSI/ISA-95.00.02-2001 Enterprise-Control System 
+        Integration Part 2: Object Model Attributes Standard and the
+        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        Part 5: Business to Manufacturing Transactions
+   </xsd:documentation>
+
+   <xsd:documentation> 
+  
+      Revision History
+
+        Ver     Date            Person          Note
+        ---     ----            ------          ----
+        v0300   26 Aug 2005     D. Emerson      This schema is new to B2MML in v0300.
+                                                This schema contains placeholders for
+                                                substitution groups in the other schemas.
+        v0301   29 Dec 2005     D. Brandl       Changed version to v0301
+        v04     04 Jun 2007     D. Brandl       Added transaction elements for ISA 95 Part 5 support.
+        V0401   01 Oct 2008     D. Brandl       Revised version
+
+   </xsd:documentation>
+</xsd:annotation>
+
+<!-- 
+                        Purpose of Extensions Schema
+
+This Extensions schema is intended to be edited by users as required to extend B2MML 
+to meet project and product requirements. 
+
+A place holder has been added prior to each Any element in the core schemas.  The place holder 
+is a substitution group that points to a group in this schema.  Any elements placed in a group
+in this schema can be used in B2MML XML documents using "Extended" as the namespace prefix.  
+
+The elements added to the groups may reference types defined earlier in this schema or in
+other schemas.  Additional schemas may be used to permit element definitions from different 
+vendors to be used on one project with minimal changes to the B2MML extensions schema,  
+and increasing clarity by assigning a vendor specific namespace prefix to each group 
+of elements when used in an XML document.
+
+-->
+
+
+<!-- Define complexTypes and simpleTypes for use in extensions-->
+
+
+<!-- B2MML extension groups for Equipment schema-->
+
+        <xsd:group name = "EquipmentInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "Equipment">
+                <xsd:sequence>
+                         <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentClass">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentClassProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentCapabilityTestSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestedEquipmentProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestedEquipmentClassProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+
+
+<!-- B2MML extension groups for Maintenance schema  -->
+
+        <xsd:group name = "MaintenanceInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaintenanceRequest">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaintenanceWorkOrder">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaintenanceResponse">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+
+
+<!-- B2MML extension groups for Material schema-->
+
+        <xsd:group name = "MaterialInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialClass">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialClassProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialDefinition">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialDefinitionProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialLot">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialLotProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialSubLot">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "QAMaterialTestSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestedMaterialClassProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestedMaterialDefinitionProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestedMaterialLotProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+
+
+
+<!-- B2MML extension groups for Personnel schema-->
+
+        <xsd:group name = "PersonnelInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "Person">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelClass">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelClassProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "QualificationTestSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestedPersonProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestedPersonnelClassProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+
+
+<!-- B2MML extension groups for ProcessSegment schema-->
+
+        <xsd:group name = "ProcessSegmentInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ProcessSegment">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelSegmentSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelSegmentSpecificationProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentSegmentSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentSegmentSpecificationProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialSegmentSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialSegmentSpecificationProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+
+
+
+<!-- B2MML extension groups for ProductDefinition schema-->
+
+        <xsd:group name = "ProductInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ProductDefinition">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ManufacturingBill">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ProductSegment">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelSpecificationProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentSpecificationProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialSpecificationProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+
+
+
+
+<!-- B2MML extension groups for ProductionCapability schema-->
+
+        <xsd:group name = "ProductionCapability">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelCapability">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelCapabilityProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentCapability">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentCapabilityProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialCapability">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialCapabilityProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ProcessSegmentCapability">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+
+
+
+<!-- B2MML extension groups for ProductionPerformance schema  -->
+
+        <xsd:group name = "ProductionPerformance">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ProductionResponse">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "SegmentResponse">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ProductionData">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelActual">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelActualProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentActual">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentActualProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialActual">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialActualProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialProducedActual">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialProducedActualProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialConsumedActual">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialConsumedActualProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ConsumableActual">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ConsumableActualProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+
+
+
+<!-- B2MML extension groups for ProductionSchedule schema-->
+
+
+        <xsd:group name = "ProductionSchedule">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ProductionRequest">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "SegmentRequirement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ProductionParameter">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelRequirement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PersonnelRequirementProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentRequirement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EquipmentRequirementProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialRequirement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialRequirementProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialProducedRequirement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialProducedRequirementProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialConsumedRequirement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "MaterialConsumedRequirementProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ConsumableExpectedRequirement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "ConsumableExpectedRequirementProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+<!-- B2MML extension groups for TransactionProfile schema  -->
+
+        <xsd:group name = "TransactionProfile">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "SupportedAction">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+ 
+</xsd:schema>
