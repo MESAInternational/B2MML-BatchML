@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <xsd:schema 
+	xmlns:xsd 		= "http://www.w3.org/2001/XMLSchema"
+	targetNamespace = "http://www.mesa.org/xml/B2MML-V0600"
+	xmlns 			= "http://www.mesa.org/xml/B2MML-V0600"
+	xmlns:Extended 	= "http://www.mesa.org/xml/B2MML-V0600-AllExtensions"
+ 
+	elementFormDefault 		= "qualified"
+	attributeFormDefault 	= "unqualified">
+<xsd:annotation> 
+   <xsd:documentation>
+		This file may be used to assist in code generation using XSD.EXE
+		This file simply includes all of the B2MML schemas into a single 
+		definition. This reduces the length of the generated .cs file name. 
+   
+        Copyright 2012 MESA International 
+		All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (B2MML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided the World Batch 
+        Forum is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used 
+        courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+      
+        Based upon the ANSI/ISA-95.00.02-2010 Enterprise-Control System 
+        Integration Part 2: Object Model Attributes Standard and the
+        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        Part 5: Business to Manufacturing Transactions
+   </xsd:documentation>
+
+   <xsd:documentation> 
+  
+      Revision History
+
+        Ver     Date            Person          Note
+        ---     ----            ------          ----
+        V0500   26 Mar 2011     D. Brandl       Initial version
+        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
+
+   </xsd:documentation>
+</xsd:annotation>
+ 
+ <xsd:include schemaLocation ="B2MML-V0600-CoreComponents.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-Common.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-ConfirmBOD.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-Equipment.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-PhysicalAsset.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-Material.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-Personnel.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-ProcessSegment.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-OperationsDefinition.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-OperationsCapability.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-OperationsPerformance.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-OperationsSchedule.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-ProductDefinition.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-ProductionCapability.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-ProductionPerformance.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-ProductionSchedule.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-ResourceRelationshipNetwork.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-TransactionProfile.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-WorkAlert.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-WorkDefinition.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-WorkCapability.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-WorkPerformance.xsd"/>
+ <xsd:include schemaLocation ="B2MML-V0600-WorkSchedule.xsd"/>
+ <xsd:include schemaLocation ="BatchML-V0600-BatchInformation.xsd"/>
+ <xsd:include schemaLocation ="BatchML-V0600-GeneralRecipe.xsd"/>
+ <xsd:include schemaLocation ="BatchML-V0600-BatchProductionRecord.xsd"/>
+ 
+ <xsd:import 	namespace="http://www.mesa.org/xml/B2MML-V0600-AllExtensions"
+				schemaLocation="B2MML-V0600-AllExtensions.xsd"/>
+</xsd:schema>

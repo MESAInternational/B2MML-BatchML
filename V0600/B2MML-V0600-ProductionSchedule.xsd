@@ -1,0 +1,718 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<xsd:schema     xmlns:xsd            = "http://www.w3.org/2001/XMLSchema"
+                targetNamespace      = "http://www.mesa.org/xml/B2MML-V0600"
+                xmlns                = "http://www.mesa.org/xml/B2MML-V0600"
+                xmlns:Extended       = "http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+                elementFormDefault   = "qualified"
+                attributeFormDefault = "unqualified">
+        
+<!-- Import the Extension Schema into the 'Extended' namespace    -->
+
+<xsd:import     namespace="http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+                schemaLocation="B2MML-V0600-AllExtensions.xsd"/>
+
+<!-- Include the Common schema and SegmentResponse types  -->
+
+  <xsd:include  schemaLocation = "B2MML-V0600-Common.xsd"/>
+  <xsd:include  schemaLocation = "B2MML-V0600-ProductionPerformanceTypes.xsd"/> 
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2012 MESA International 
+		All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (B2MML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided the World Batch 
+        Forum is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used 
+        courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+          
+        Based upon the ANSI/ISA-95.00.02-2010 Enterprise-Control System 
+        Integration Part 2: Object Model Attributes Standard and the
+        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        Part 5: Business to Manufacturing Transactions. 
+     </xsd:documentation>
+
+   <xsd:documentation> 
+  
+      Revision History
+
+        Ver     Date            Person          Note
+        ---     ----            ------          ----
+        V01     7 Apr 2002      D. Emerson      Initial release  
+        V02     23 Sept 2003    D. Emerson      Updated filename for V02
+                                                Fixed the missing unbounded on the description
+                                                in MaterialConsumedRequirementType
+                                                Added RequiredByRequestedSegmentResponse to 
+                                                SegmentRequirementType and sub elements
+                                                Changed ##any to "Any" element of type "AnyType"
+                                                Removed include of Common schema since it is
+                                                included when ProductionPerformance schema is
+                                                included.  TurboXML was giving errors on doubly
+                                                defined types.
+                                                Added revision to namespace
+        V0201   17 Nov 2003     D. Emerson      Updated namespace after change to common schema
+        v03     26 Aug 2005     D. Emerson      Added substitution groups.  One group added just
+                                                before each Any element.
+        V0301   29 Dec 2005     D. Brandl       Added multivalues Values to match other schemas
+        v04     04 Jun 2007     D. Brandl       Added transaction elements for ISA 95 Part 5 support.
+                                                Added "cc:" namespace for UN/CEFACT core types.
+                                                Added the UN/CEFACT core components with optional attributes
+                                                and made them the base types for the B2MML types. 
+                                                Added "Location" element to ProductionRequest and 
+                                                SegmentRequirement based on ISA SP95's recommendation and
+                                                planned errata to the standard.
+                                                Added MaterialRequirement as replacement for MaterialProducedRequirement,
+                                                MaterialConsumedRequirement, and ConsumableRequirement
+                                                Removed choice in SegmentRequirementType for ProcessSegmentID or
+                                                ProductSegmentID to allow none, either, or both
+                                                Removed choices in PersonnalRequiement, EquipmentRequirement, and
+                                                ProductionParameter
+                                                Added ScheduleState, RequestState, and SegmentState elements of type
+                                                RequestStateType
+                                                Added warning before each use of the AnyType that the extension 
+                                                schema should be used instead of the Any element and that in a 
+                                                still to be determined future release of B2MML the AnyType and 
+                                                Any element will be removed.
+        V0500   26 Mar 2011     D. Brandl       Updated version for ANSI/ISA95.02 2010 Update
+												Changed include of ProductionPerformance to ProductionPerformanceTypes
+												to eliminate problems in code generation.
+												Removed AnyType
+        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
+
+   </xsd:documentation>
+</xsd:annotation>
+
+
+<!-- Global Elements -->
+  
+  <xsd:element  name = "ProductionSchedule"             type ="ProductionScheduleType" />
+  <xsd:element  name = "ProductionRequest"              type ="ProductionRequestType" />
+
+<!-- Transaction Elements -->
+
+  <xsd:element name = "GetProductionSchedule"           type = "GetProductionScheduleType"/>
+  <xsd:element name = "ShowProductionSchedule"          type = "ShowProductionScheduleType"/>
+  <xsd:element name = "ProcessProductionSchedule"       type = "ProcessProductionScheduleType"/>
+  <xsd:element name = "AcknowledgeProductionSchedule"   type = "AcknowledgeProductionScheduleType"/>
+  <xsd:element name = "ChangeProductionSchedule"        type = "ChangeProductionScheduleType"/>
+  <xsd:element name = "RespondProductionSchedule"       type = "RespondProductionScheduleType"/>
+  <xsd:element name = "CancelProductionSchedule"        type = "CancelProductionScheduleType"/>
+  <xsd:element name = "SyncProductionSchedule"          type = "SyncProductionScheduleType"/>
+
+<!-- Simple & Complex Types  -->
+  
+  <xsd:complexType name = "ProductionScheduleType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"                  
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Location"                    type = "LocationType"    
+                                                        minOccurs = "0"/>
+      <!-- HierarchyScope replaces Location, Location is retained for backward compatibility, but is depracated -->
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "StartTime"                   type = "StartTimeType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "EndTime"                     type = "EndTimeType"     
+                                                        minOccurs = "0"/>
+      <xsd:element name = "EquipmentElementLevel"       type = "EquipmentElementLevelType"      
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ProductionRequest"           type = "ProductionRequestType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "ScheduleState"               type = "RequestStateType"
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:ProductionSchedule" minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "ProductionRequestType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "ProductProductionRuleIDGroup"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Location"                    type = "LocationType"    
+                                                        minOccurs = "0"/>
+      <!-- HierarchyScope replaces Location, Location is retained for backward compatibility, but is depracated -->
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "StartTime"                   type = "StartTimeType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "EndTime"                     type = "EndTimeType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Priority"                    type = "PriorityType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "SegmentRequirement"          type = "SegmentRequirementType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "SegmentResponse"             type = "SegmentResponseType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "RequestState"                type = "RequestStateType"
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:ProductionRequest"  minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "SegmentRequirementType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ProductSegmentID"            type = "ProductSegmentIDType" minOccurs = "0"/>
+      <xsd:element name = "ProcessSegmentID"            type = "ProcessSegmentIDType" minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Location"                    type = "LocationType"    
+                                                        minOccurs = "0"/>
+      <!-- HierarchyScope replaces Location, Location is retained for backward compatibility, but is depracated -->
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "EarliestStartTime"           type = "EarliestStartTimeType"  
+                                                        minOccurs = "0"/>
+      <xsd:element name = "LatestEndTime"               type = "LatestEndTimeType"      
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Duration"                    type = "DurationType"           
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ProductionParameter"         type = "ProductionParameterType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PersonnelRequirement"        type = "PersonnelRequirementType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "EquipmentRequirement"        type = "EquipmentRequirementType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetRequirement"    type = "PhysicalAssetRequirementType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialRequirement"         type = "MaterialRequirementType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+<!-- V04 suggested replacement by MaterialActual -->
+      <xsd:element name = "MaterialProducedRequirement" type = "MaterialProducedRequirementType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+<!-- V04 suggested replacement by MaterialActual -->
+      <xsd:element name = "MaterialConsumedRequirement" type = "MaterialConsumedRequirementType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+<!-- V04 suggested replacement by MaterialActual -->
+      <xsd:element name = "ConsumableExpectedRequirement"
+                                                        type = "ConsumableExpectedRequirementType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+       <xsd:element name = "SegmentRequirement"
+                                                        type = "SegmentRequirementType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "RequiredByRequestedSegmentResponse"
+                                                        type = "RequiredByRequestedSegmentResponseType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "SegmentState"                type = "RequestStateType"
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:SegmentRequirement" minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "ProductionParameterType">
+    <xsd:sequence>
+      <xsd:element name = "ProductSegmentID"            type = "ProductSegmentIDType"  
+                                                        minOccurs = "0" />
+      <xsd:element name = "ProcessSegmentID"            type = "ProcessSegmentIDType"  
+                                                        minOccurs = "0" />
+      <xsd:element name = "Parameter"                   type = "ParameterType"          
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:ProductionParameter"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "PersonnelRequirementType">
+    <xsd:sequence>
+      <xsd:element name = "PersonnelClassID"            type = "PersonnelClassIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PersonID"                    type = "PersonIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Location"                    type = "LocationType"   
+                                                        minOccurs = "0" />
+      <!-- HierarchyScope replaces Location, Location is retained for backward compatibility, but is depracated -->
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PersonnelRequirementProperty"
+                                                        type = "PersonnelRequirementPropertyType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "RequiredByRequestedSegmentResponse"
+                                                        type = "RequiredByRequestedSegmentResponseType"
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:PersonnelRequirement"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "PersonnelRequirementPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType" />
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"                       type = "ValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:PersonnelRequirementProperty"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "EquipmentRequirementType">
+    <xsd:sequence>
+      <xsd:element name = "EquipmentClassID"            type = "EquipmentClassIDType"  
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "EquipmentID"                 type = "EquipmentIDType"  
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Location"                    type = "LocationType"   
+                                                        minOccurs = "0" />
+      <!-- HierarchyScope replaces Location, Location is retained for backward compatibility, but is depracated -->
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "EquipmentRequirementProperty"
+                                                        type = "EquipmentRequirementPropertyType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "RequiredByRequestedSegmentResponse"
+                                                        type = "RequiredByRequestedSegmentResponseType"
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:EquipmentRequirement"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "EquipmentRequirementPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType" />
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"                       type = "ValueType"       
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:EquipmentRequirementProperty"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "MaterialRequirementType">
+    <xsd:sequence>
+      <xsd:element name = "MaterialClassID"             type = "MaterialClassIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialDefinitionID"        type = "MaterialDefinitionIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialLotID"               type = "MaterialLotIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialSubLotID"            type = "MaterialSubLotIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Location"                    type = "LocationType"           
+                                                        minOccurs = "0"/>
+      <!-- HierarchyScope replaces Location, Location is retained for backward compatibility, but is depracated -->
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "MaterialUse"                 type = "MaterialUseType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "AssemblyRequirement"         type = "MaterialRequirementType"    
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "AssemblyType"                type = "AssemblyTypeType" 
+	                                                    minOccurs = "0"/>
+      <xsd:element name = "AssemblyRelationship"        type = "AssemblyRelationshipType" 
+	                                                    minOccurs = "0"/>
+      <xsd:element name = "MaterialRequirementProperty"
+                                                        type = "MaterialRequirementPropertyType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "RequiredByRequestedSegmentResponse"
+                                                        type = "RequiredByRequestedSegmentResponseType"
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:MaterialRequirement"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "MaterialRequirementPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"          
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"                       type = "ValueType"       
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:MaterialRequirementProperty"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "PhysicalAssetRequirementType">
+    <xsd:sequence>
+      <xsd:element name = "PhysicalAssetClassID"        type = "PhysicalAssetClassIDType"  
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetID"             type = "PhysicalAssetIDType"  
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Location"                    type = "LocationType"   
+                                                        minOccurs = "0" />
+      <!-- HierarchyScope replaces Location, Location is retained for backward compatibility, but is depracated -->
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetRequirementProperty"
+                                                        type = "PhysicalAssetRequirementPropertyType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "RequiredByRequestedSegmentResponse"
+                                                        type = "RequiredByRequestedSegmentResponseType"
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:PhysicalAssetRequirement"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "PhysicalAssetRequirementPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType" />
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"                       type = "ValueType"       
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:PhysicalAssetRequirementProperty"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "MaterialProducedRequirementType">
+    <xsd:sequence>
+      <xsd:element name = "MaterialClassID"             type = "MaterialClassIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialDefinitionID"        type = "MaterialDefinitionIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialLotID"               type = "MaterialLotIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialSubLotID"            type = "MaterialSubLotIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Location"                    type = "LocationType"           
+                                                        minOccurs = "0"/>
+      <!-- HierarchyScope replaces Location, Location is retained for backward compatibility, but is depracated -->
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialProducedRequirementProperty"
+                                                        type = "MaterialProducedRequirementPropertyType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "RequiredByRequestedSegmentResponse"
+                                                        type = "RequiredByRequestedSegmentResponseType"
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:MaterialProducedRequirement"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "MaterialProducedRequirementPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"          
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"                       type = "ValueType"       
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:MaterialProducedRequirementProperty"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "MaterialConsumedRequirementType">
+    <xsd:sequence>
+      <xsd:element name = "MaterialClassID"             type = "MaterialClassIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialDefinitionID"        type = "MaterialDefinitionIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialLotID"               type = "MaterialLotIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialSubLotID"            type = "MaterialSubLotIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"        
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Location"                    type = "LocationType"           
+                                                        minOccurs = "0"/>
+      <!-- HierarchyScope replaces Location, Location is retained for backward compatibility, but is depracated -->
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialConsumedRequirementProperty"
+                                                        type = "MaterialConsumedRequirementPropertyType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "RequiredByRequestedSegmentResponse"
+                                                        type = "RequiredByRequestedSegmentResponseType"
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:MaterialConsumedRequirement"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "MaterialConsumedRequirementPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"          
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"                       type = "ValueType"       
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:MaterialConsumedRequirementProperty"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "ConsumableExpectedRequirementType">
+    <xsd:sequence>
+      <xsd:element name = "MaterialClassID"             type = "MaterialClassIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialDefinitionID"        type = "MaterialDefinitionIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0"  maxOccurs = "unbounded"/>
+      <xsd:element name = "Location"                    type = "LocationType"           
+                                                        minOccurs = "0"/>
+      <!-- HierarchyScope replaces Location, Location is retained for backward compatibility, but is depracated -->
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "ConsumableExpectedRequirementProperty"       
+                                                        type = "ConsumableExpectedRequirementPropertyType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "RequiredByRequestedSegmentResponse"
+                                                        type = "RequiredByRequestedSegmentResponseType"
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:ConsumableExpectedRequirement"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "ConsumableExpectedRequirementPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"           
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"                       type = "ValueType"       
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:ConsumableExpectedRequirementProperty"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>     
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- ProductionSchedule Transaction Types   -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetProductionScheduleType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"
+                                type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element      name = "ProductionSchedule"
+                                                type = "ProductionScheduleType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowProductionScheduleType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element      name = "ProductionSchedule"
+                                                type = "ProductionScheduleType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessProductionScheduleType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "ProductionSchedule"
+                                                type = "ProductionScheduleType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeProductionScheduleType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "ProductionSchedule"
+                                                type = "ProductionScheduleType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeProductionScheduleType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"     type = "TransChangeType"/>
+              <xsd:element name = "ProductionSchedule"
+                                                type = "ProductionScheduleType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondProductionScheduleType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "ProductionSchedule"
+                                                type = "ProductionScheduleType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelProductionScheduleType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "ProductionSchedule"
+                                                type = "ProductionScheduleType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncProductionScheduleType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type =                  "TransSyncType"/>
+              <xsd:element name = "ProductionSchedule"
+                                                type = "ProductionScheduleType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+
+</xsd:schema>

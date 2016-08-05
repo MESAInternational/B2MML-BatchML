@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema 
+            xmlns:xsd              ="http://www.w3.org/2001/XMLSchema" 
+            xmlns                  ="http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+            xmlns:b2mml            ="http://www.mesa.org/xml/B2MML-V0600"
+            targetNamespace        ="http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+            elementFormDefault     ="qualified" 
+            attributeFormDefault   ="unqualified">
+
+<!-- 
+   Import the Common schema in the 'b2mml' name space.   
+   This also brings in the Core Components under the 'b2mml' name space.  
+-->
+   <xsd:import
+            namespace              = "http://www.mesa.org/xml/B2MML-V0600"
+            schemaLocation         = "B2MML-V0600-Common.xsd"/> 
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2012 MESA International 
+		All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (BatchML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided the World Batch 
+        Forum is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Batch Markup Language (BatchML) is used courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+      
+        Based upon the ISA-S88.01-1995 Batch Control Part 1: 
+        Models and Terminology Standard and the ANSI/ISA-88.00.02-2001 
+        Batch Control Part 2: Data Structures and Guidelines for 
+        Languages Standard
+   </xsd:documentation>
+
+   <xsd:documentation> 
+  
+      Revision History
+
+        Ver     Date            Person          Note
+        ---     ----            ------          ----
+        V0500   26 Mar 2011     D. Brandl       This schema is new to BatchML in v0401.
+                                                This schema contains placeholders for
+                                                substitution groups in the other schemas.
+        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
+
+   </xsd:documentation>
+</xsd:annotation>
+
+<!-- 
+                        Purpose of Extensions Schema
+
+This Extensions schema is intended to be edited by users as required to extend BatchML 
+to meet project and product requirements. 
+
+A place holder has been added in the core BatchML schema.  The place holder 
+is a substitution group that points to a group in this schema.  Any elements placed in a group
+in this schema can be used in BatchML XML documents using "Extended" as the namespace prefix.  
+
+The elements added to the groups may reference types defined earlier in this schema or in
+other schemas.  Additional schemas may be used to permit element definitions from different 
+vendors to be used on one project with minimal changes to the BatchML extensions schema,  
+and increasing clarity by assigning a vendor specific namespace prefix to each group 
+of elements when used in an XML document.
+
+-->
+
+<!-- Define complexTypes and simpleTypes for use in extensions-->
+
+
+<!-- BatchML-BatchInformation extension groups -->
+
+        <xsd:group name="ApprovalHistory">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="BatchEquipmentID">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="BatchEquipmentRequirement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="BatchInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="BatchListEntry">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>        
+
+        <xsd:group name="BatchList">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="BatchParameter">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="BatchSize">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="BatchValue">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="ClassInstanceAssociation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="Constraint">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="ControlRecipe">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="EnumerationSet">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="Enumeration">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="EquipmentConnection">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="EquipmentElement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="EquipmentProceduralElementClass">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="EquipmentProceduralElement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="Formula">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="FromEquipmentID">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="FromID">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="Header">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="IndividualApproval">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="Link">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="ListHeader">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="MasterRecipe">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="ModificationLog">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="OtherInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="ProcedureLogic">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="Property">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="RecipeBuildingBlock">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="RecipeElement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="Step">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="ToID">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name="Transition">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+</xsd:schema>

@@ -1,0 +1,1107 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<xsd:schema     xmlns:xsd               = "http://www.w3.org/2001/XMLSchema"
+                xmlns                   = "http://www.mesa.org/xml/B2MML-V0600"
+                targetNamespace         = "http://www.mesa.org/xml/B2MML-V0600"
+                xmlns:Extended          = "http://www.mesa.org/xml/B2MML-V0600-AllExtensions"
+                elementFormDefault      = "qualified"
+                attributeFormDefault    = "unqualified">
+
+<!-- Import the B2MML Extension Schema and pickup General Recipe Extensions -->
+
+<xsd:import     namespace="http://www.mesa.org/xml/B2MML-V0600-AllExtensions"
+                schemaLocation="B2MML-V0600-AllExtensions.xsd"/>
+
+<!-- Include the Common schema   -->
+
+<xsd:include    schemaLocation = "B2MML-V0600-Common.xsd"/>
+
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2012 MESA International 
+		All Rights Reserved. http://www.mesa.org
+
+        This World Batch Forum Work (including specifications, 
+        documents, software, and related items) referred to as the 
+        Batch Markup Language (BatchML) is provided by the copyright 
+        holders under the following license.
+
+        Permission to use, copy, modify, or redistribute this Work 
+        and its documentation, with or without modification, for any 
+        purpose and without fee or royalty is hereby granted provided 
+        the World Batch Forum is acknowledged as the originator of 
+        this Work using the following statement:
+
+        "The Batch Markup Language (BatchML) is used courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any third party be 
+        liable for any costs, expenses, losses, damages or injuries incurred 
+        by use of the Work or as a result of this agreement.
+        
+        Based upon the ISA-S88.03-2003 Batch Control Part 3: General and 
+        Site Recipe Models and Representation. 
+
+   </xsd:documentation>
+
+   <xsd:documentation> 
+
+      Revision History
+
+        Ver        Date         Person          Note
+        ---        ----         ------          ----
+        V0500   26 Mar 2011     D. Brandl       Initial version
+        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
+
+   </xsd:documentation>
+</xsd:annotation>
+
+<!-- Global Elements with Transactions -->
+  
+  <xsd:element name = "GRecipeInformation"              type ="GRecipeInformationType" />
+  <xsd:element name = "ResourceConstraintLibrary"       type ="ResourceConstraintLibraryType" />
+  <xsd:element name = "ProcessElementLibrary"           type ="ProcessElementLibraryType" />
+
+
+<!-- Global Elements without Transactions -->
+  
+  <xsd:element name = "GRecipe"                         type ="GRecipeType" />
+  <xsd:element name = "ResourceConstraint"              type ="ResourceConstraintType" />
+  <xsd:element name = "ProcessElement"                  type ="ProcessElementType" />
+
+
+<!-- Transaction Elements -->
+  <xsd:element name = "GetGRecipeInformation"           type = "GetGRecipeInformationType"/>
+  <xsd:element name = "ShowGRecipeInformation"          type = "ShowGRecipeInformationType"/>
+  <xsd:element name = "ProcessGRecipeInformation"       type = "ProcessGRecipeInformationType"/>
+  <xsd:element name = "AcknowledgeGRecipeInformation"   type = "AcknowledgeGRecipeInformationType"/>
+  <xsd:element name = "ChangeGRecipeInformation"        type = "ChangeGRecipeInformationType"/>
+  <xsd:element name = "RespondGRecipeInformation"       type = "RespondGRecipeInformationType"/>
+  <xsd:element name = "CancelGRecipeInformation"        type = "CancelGRecipeInformationType"/>
+  <xsd:element name = "SyncGRecipeInformation"          type = "SyncGRecipeInformationType"/>
+
+<!-- Transaction Elements -->
+  <xsd:element name = "GetResourceConstraintLibrary"    type = "GetResourceConstraintLibraryType"/>
+  <xsd:element name = "ShowResourceConstraintLibrary"   type = "ShowResourceConstraintLibraryType"/>
+  <xsd:element name = "ProcessResourceConstraintLibrary" type = "ProcessResourceConstraintLibraryType"/>
+  <xsd:element name = "AcknowledgeResourceConstraintLibrary" type = "AcknowledgeResourceConstraintLibraryType"/>
+  <xsd:element name = "ChangeResourceConstraintLibrary" type = "ChangeResourceConstraintLibraryType"/>
+  <xsd:element name = "RespondResourceConstraintLibrary" type = "RespondResourceConstraintLibraryType"/>
+  <xsd:element name = "CancelResourceConstraintLibrary" type = "CancelResourceConstraintLibraryType"/>
+  <xsd:element name = "SyncResourceConstraintLibrary"   type = "SyncResourceConstraintLibraryType"/>
+
+
+<!-- Transaction Elements -->
+  <xsd:element name = "GetProcessElementLibrary"        type = "GetProcessElementLibraryType"/>
+  <xsd:element name = "ShowProcessElementLibrary"       type = "ShowProcessElementLibraryType"/>
+  <xsd:element name = "ProcessProcessElementLibrary"    type = "ProcessProcessElementLibraryType"/>
+  <xsd:element name = "AcknowledgeProcessElementLibrary" type = "AcknowledgeProcessElementLibraryType"/>
+  <xsd:element name = "ChangeProcessElementLibrary"     type = "ChangeProcessElementLibraryType"/>
+  <xsd:element name = "RespondProcessElementLibrary"    type = "RespondProcessElementLibraryType"/>
+  <xsd:element name = "CancelProcessElementLibrary"     type = "CancelProcessElementLibraryType"/>
+  <xsd:element name = "SyncProcessElementLibrary"       type = "SyncProcessElementLibraryType"/>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- Resource Requirement Library Types      -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "ResourceConstraintLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
+                                                        minOccurs = "0"/>
+      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ResourceConstraintSpec"      type = "ResourceConstraintType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:group   ref  = "Extended:ResourceConstraintLibrary" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- Process Element Library Types           -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "ProcessElementLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
+                                                        minOccurs = "0"/>
+      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ProcessElementSpec"          type = "ProcessElementType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:group   ref  = "Extended:ProcessElementLibrary" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+
+ 
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- GRecipe Main Types                      -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GRecipeInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"                  
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
+                                                        minOccurs = "0"/>
+      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Recipe"                      type = "GRecipeType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:GRecipeInformation" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+  <xsd:complexType name = "GRecipeType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"                  
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "GRecipeType"                 type = "GRecipeTypeType"
+                                                        minOccurs = "0"/> 
+      <xsd:element name = "LifeCycleState"              type = "LifeCycleStateType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Header"                      type = "GRecipeHeaderType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Formula"                     type = "GRecipeFormulaType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ProcessProcedure"            type = "ProcessElementType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ResourceConstraint"          type = "ResourceConstraintType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "OtherInformation"            type = "GROtherInformationType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:GRecipe"            minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+  <xsd:complexType name = "ProcessElementType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "ProcessElementType"          type = "ProcessElementTypeType"
+                                                        minOccurs = "0"/> 
+      <xsd:element name = "LifeCycleState"              type = "LifeCycleStateType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "SequenceOrder"               type = "SequenceOrderType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "SequencePath"                type = "NumericType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Materials"                   type = "GRecipeMaterialsType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "DirectedLink"                type = "DirectedLinkType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "ProcedureChartElement"       type = "ProcedureChartElementType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/> 
+      <xsd:element name = "ProcessElement"              type = "ProcessElementType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/> 
+      <xsd:element name = "ProcessElementParameter"     type = "ProcessElementParameterType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "ResourceConstraint"          type = "ResourceConstraintType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "OtherInformation"            type = "GROtherInformationType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:ProcessElement"     minOccurs="0" maxOccurs="1"/>
+     </xsd:sequence> 
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcedureChartElementType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Label"                       type = "TextType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "ProcedureChartElementType"   type = "ProcedureChartElementTypeType"
+                                                        minOccurs = "0"/> 
+      <xsd:group   ref  = "Extended:ProcedureChartElement"  minOccurs="0" maxOccurs="1"/>
+     </xsd:sequence> 
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "DirectedLinkType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "FromID"                      type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ToID"                        type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:DirectedLink"       minOccurs="0" maxOccurs="1"/>
+   </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "GRecipeMaterialType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialID"                  type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Order"                       type = "NumericType"                  
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Amount"                      type = "QuantityValueType"                  
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:GRecipeMaterial"    minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "GRecipeMaterialsType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "MaterialsType"               type = "MaterialsTypeType"
+                                                        minOccurs = "0" />
+      <xsd:element name = "Material"                    type = "GRecipeMaterialType"                  
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:GRecipeMaterials"   minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessElementParameterType"> 
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name = "ProcessElementParameterType" type = "ProcessElementParameterTypeType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name = "Value"                       type = "ValueType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:group   ref  = "Extended:ProcessElementParameter"
+                                                        minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:group name = "ProductInformation"> 
+    <xsd:sequence>
+      <xsd:element name = "ProductID"                   type = "IdentifierType" />
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "ProductName"                 type = "NameType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "BatchSize"                   type = "ValueType" 
+                                                        minOccurs = "0"/>
+    </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:complexType name = "GRecipeHeaderType">
+    <xsd:sequence>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "DerivedFromID"               type = "IdentifierType"                  
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "ProductInformation"          minOccurs = "0" maxOccurs="unbounded"/> 
+      <xsd:element name = "EffectiveDate"      	        type = "DateTimeType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ExpirationDate"              type = "DateTimeType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "HeaderProperty"              type = "HeaderPropertyType" 
+                                                        minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:GRecipeHeader"      minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "HeaderPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType" />
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"                       type = "ValueType"       
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:HeaderProperty"     minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+
+  <xsd:complexType name = "GRecipeFormulaType">
+    <xsd:sequence>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "ProcessInputs"               type = "GRecipeMaterialsType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ProcessOutputs"              type = "GRecipeMaterialsType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ProcessIntermediates"        type = "GRecipeMaterialsType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "ProcessElementParameter"     type = "ProcessElementParameterType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:GRecipeFormula"     minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ResourceConstraintType">
+    <xsd:sequence>
+      <xsd:element name = "ConstraintID"                type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name = "ConstraintType"              type = "ConstraintTypeType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name = "LifeCycleState"              type = "LifeCycleStateType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Range"                       type = "ValueType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name = "ResourceConstraintProperty"  type = "ResourceConstraintPropertyType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:group   ref  = "Extended:ResourceConstraint" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ResourceConstraintPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType" />
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"                       type = "ValueType"       
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:ResourceConstraintProperty"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "GROtherInformationType">
+    <xsd:sequence>
+      <xsd:element name = "OtherInfoID"                 type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name = "OtherValue"                  type = "ValueType"
+                                                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:group   ref  = "Extended:GROtherInformation" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- GRecipe Enumerated Types                -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "ConstraintType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+              <xsd:enumeration value="Optional"/>     <!-- Optional parameter or report -->
+              <xsd:enumeration value="Required"/>     <!-- Required parameter or report --> 
+              <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+        
+  <xsd:complexType name = "ConstraintTypeType">
+    <xsd:simpleContent>
+         <xsd:extension base="ConstraintType1Type">
+                 <xsd:attribute name = "OtherValue" type="xsd:string"/>
+         </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+                  
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+  <xsd:complexType name = "MaterialsType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+              <xsd:enumeration value="Input"/>
+              <xsd:enumeration value="Output"/>
+              <xsd:enumeration value="Intermediate"/>
+              <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+        
+  <xsd:complexType name = "MaterialsTypeType">
+    <xsd:simpleContent>
+         <xsd:extension base="MaterialsType1Type">
+                 <xsd:attribute name = "OtherValue" type="xsd:string"/>
+         </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+                  
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+  <xsd:complexType name = "ProcessElementParameterType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+              <xsd:enumeration value="Input"/>        <!-- Process Parameter -->
+              <xsd:enumeration value="Output"/>       <!-- Process Report    --> 
+              <xsd:enumeration value="Optional"/>     <!-- Optional parameter or report -->
+              <xsd:enumeration value="Required"/>     <!-- Required parameter or report --> 
+              <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+        
+  <xsd:complexType name = "ProcessElementParameterTypeType">
+    <xsd:simpleContent>
+         <xsd:extension base="ProcessElementParameterType1Type">
+                 <xsd:attribute name = "OtherValue" type="xsd:string"/>
+         </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+                  
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+  <xsd:complexType name = "ProcessElementType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+              <xsd:enumeration value="Process"/>
+              <xsd:enumeration value="Process Stage"/>
+              <xsd:enumeration value="Process Operation"/>
+              <xsd:enumeration value="Process Action"/>
+              <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+        
+  <xsd:complexType name = "ProcessElementTypeType">
+    <xsd:simpleContent>
+         <xsd:extension base="ProcessElementType1Type">
+                 <xsd:attribute name = "OtherValue" type="xsd:string"/>
+         </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+                  
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+  <xsd:complexType name = "ProcedureChartElementType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+              <xsd:enumeration value="Previous Operation Indicator"/>      <!-- Not in ISA 88.03  -->
+              <xsd:enumeration value="Next Operation Indicator"/>          <!-- Not in ISA 88.03  -->
+              <xsd:enumeration value="Start Parallel Indicator"/>          <!-- ISA 88.03 7.2.3.2 -->
+              <xsd:enumeration value="End Parallel Indicator"/>            <!-- ISA 88.03 7.2.3.3 -->
+              <xsd:enumeration value="Start Optional Parallel Indicator"/> <!-- ISA 88.03 7.2.3.4 -->
+              <xsd:enumeration value="End Optional Parallel Indicator"/>   <!-- ISA 88.03 7.2.3.5 -->
+              <xsd:enumeration value="Annotation"/>                        <!-- ISA 88.03 7.2.3.6 -->
+              <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+        
+  <xsd:complexType name = "ProcedureChartElementTypeType">
+    <xsd:simpleContent>
+         <xsd:extension base="ProcedureChartElementType1Type">
+                 <xsd:attribute name = "OtherValue" type="xsd:string"/>
+         </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+                  
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+  <xsd:complexType name = "GRecipeType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+              <xsd:enumeration value="General"/>
+              <xsd:enumeration value="Site"/>
+              <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+        
+  <xsd:complexType name = "GRecipeTypeType">
+    <xsd:simpleContent>
+         <xsd:extension base="GRecipeType1Type">
+                 <xsd:attribute name = "OtherValue" type="xsd:string"/>
+         </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+                  
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+  <xsd:complexType name = "LifeCycleStateType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+              <xsd:enumeration value="Draft"/>                 <!-- ISA 88.03 Clause 5.8 --> 
+              <xsd:enumeration value="Approved"/>              <!-- ISA 88.03 Clause 5.8 --> 
+              <xsd:enumeration value="Released"/>              <!-- ISA 88.03 Clause 5.8 --> 
+              <xsd:enumeration value="Effective"/>             <!-- ISA 88.03 Clause 5.8 --> 
+              <xsd:enumeration value="Withdrawn"/>             <!-- ISA 88.03 Clause 5.8 --> 
+              <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+        
+  <xsd:complexType name = "LifeCycleStateType">
+    <xsd:simpleContent>
+         <xsd:extension base="LifeCycleStateType1Type">
+                 <xsd:attribute name = "OtherValue" type="xsd:string"/>
+         </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+                  
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+  <xsd:complexType name = "SequenceOrderType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+              <xsd:enumeration value="First Parallel"/>     
+              <xsd:enumeration value="Middle Parallel"/> 
+              <xsd:enumeration value="End Parallel"/> 
+              <xsd:enumeration value="First In Path"/> 
+              <xsd:enumeration value="Last In Path"/> 
+              <xsd:enumeration value="Not In Parallel"/> 
+              <xsd:enumeration value="Single First Parallel"/>
+              <xsd:enumeration value="Single Middle Parallel"/>
+              <xsd:enumeration value="Single End Parallel"/>
+              <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+        
+  <xsd:complexType name = "SequenceOrderType">
+    <xsd:simpleContent>
+         <xsd:extension base="SequenceOrderType1Type">
+                 <xsd:attribute name = "OtherValue" type="xsd:string"/>
+         </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+                  
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- GRecipe Information Transaction Types   -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetGRecipeInformationType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "GRecipeInformation"
+                                                type = "GRecipeInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowGRecipeInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "GRecipeInformation"
+                                                type = "GRecipeInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessGRecipeInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "GRecipeInformation"
+                                                type = "GRecipeInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeGRecipeInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "GRecipeInformation"
+                                                type = "GRecipeInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeGRecipeInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "GRecipeInformation"
+                                                type = "GRecipeInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondGRecipeInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "GRecipeInformation"
+                                                type = "GRecipeInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelGRecipeInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "GRecipeInformation"
+                                                type = "GRecipeInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncGRecipeInformationType">
+     <xsd:sequence>
+     <xsd:element name = "ApplicationArea"      type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "GRecipeInformation"
+                                                type = "GRecipeInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Resource Req Library Transaction Types    -->
+<!-- - - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetResourceConstraintLibraryType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "ResourceConstraintLibrary"
+                                                type = "ResourceConstraintLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowResourceConstraintLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "ResourceConstraintLibrary"
+                                                type = "ResourceConstraintLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessResourceConstraintLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "ResourceConstraintLibrary"
+                                                type = "ResourceConstraintLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeResourceConstraintLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "ResourceConstraintLibrary"
+                                                type = "ResourceConstraintLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeResourceConstraintLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "ResourceConstraintLibrary"
+                                                type = "ResourceConstraintLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondResourceConstraintLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "ResourceConstraintLibrary"
+                                                type = "ResourceConstraintLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelResourceConstraintLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "ResourceConstraintLibrary"
+                                                type = "ResourceConstraintLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncResourceConstraintLibraryType">
+     <xsd:sequence>
+     <xsd:element name = "ApplicationArea"      type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "ResourceConstraintLibrary"
+                                                type = "ResourceConstraintLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Process Element Library Transaction Types   -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetProcessElementLibraryType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "ProcessElementLibrary"
+                                                type = "ProcessElementLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowProcessElementLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "ProcessElementLibrary"
+                                                type = "ProcessElementLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessProcessElementLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "ProcessElementLibrary"
+                                                type = "ProcessElementLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeProcessElementLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "ProcessElementLibrary"
+                                                type = "ProcessElementLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeProcessElementLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "ProcessElementLibrary"
+                                                type = "ProcessElementLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondProcessElementLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "ProcessElementLibrary"
+                                                type = "ProcessElementLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelProcessElementLibraryType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "ProcessElementLibrary"
+                                                type = "ProcessElementLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncProcessElementLibraryType">
+     <xsd:sequence>
+     <xsd:element name = "ApplicationArea"      type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "ProcessElementLibrary"
+                                                type = "ProcessElementLibraryType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+
+
+
+</xsd:schema>

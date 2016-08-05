@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema 
+            xmlns:xsd            = "http://www.w3.org/2001/XMLSchema" 
+            xmlns                = "http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+            targetNamespace      = "http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+            xmlns:b2mml          = "http://www.mesa.org/xml/B2MML-V0600"
+            elementFormDefault   = "qualified" 
+            attributeFormDefault = "unqualified">
+
+<!-- 
+   Import the Common schema in the 'b2mml' name space.   
+   This also brings in the Core Components under the 'b2mml' name space.  
+-->
+   <xsd:import
+            namespace              = "http://www.mesa.org/xml/B2MML-V0600"
+            schemaLocation         = "B2MML-V0600-Common.xsd"/> 
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2012 MESA International 
+		All Rights Reserved. http://www.mesa.org
+
+        This World Batch Forum Work (including specifications, 
+        documents, software, and related items) referred to as the 
+        Batch Markup Language (BatchML) is provided by the copyright 
+        holders under the following license.
+
+        Permission to use, copy, modify, or redistribute this Work 
+        and its documentation, with or without modification, for any 
+        purpose and without fee or royalty is hereby granted provided 
+        the World Batch Forum is acknowledged as the originator of 
+        this Work using the following statement:
+
+        "The Batch Markup Language (BatchML) is used courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any third party be 
+        liable for any costs, expenses, losses, damages or injuries incurred 
+        by use of the Work or as a result of this agreement.
+        
+        Based upon the ISA-S88.03-2003 Batch Control Part 3: General and 
+        Site Recipe Models and Representation. 
+
+   </xsd:documentation>
+
+   <xsd:documentation> 
+  
+      Revision History
+
+        Ver        Date             Person          Note
+        ---        ----             ------          ----
+        V0500      26 Mar 2011      D. Brandl       Initial version
+        V0600      17 Mar 2013      D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4
+
+   </xsd:documentation>
+</xsd:annotation>
+
+<!-- 
+                        Purpose of Extensions Schema
+
+This Extensions schema is intended to be edited by users as required to extend GRecipeML 
+to meet project and product requirements. 
+
+A place holder has been added as the last element in the core schemas.  The place holder 
+is a substitution group that points to a group in this schema.  Any elements placed in a group
+in this schema can be used in BatchML-GRecipe XML documents using "GRExtended" as the namespace prefix.  
+
+The elements added to the groups may reference types defined earlier in this schema or in
+other schemas.  Additional schemas may be used to permit element definitions from different 
+vendors to be used on one project with minimal changes to the GRecipeML extensions schema,  
+and increasing clarity by assigning a vendor specific namespace prefix to each group 
+of elements when used in an XML document.
+
+-->
+
+
+<!-- Define complexTypes and simpleTypes for use in extensions-->
+
+
+  <xsd:group name = "DirectedLink">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "ResourceConstraint">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "ResourceConstraintLibrary">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "ResourceConstraintProperty">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "GRecipeFormula">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "GRecipeHeader">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "HeaderProperty">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "GRecipeMaterial">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "GRecipeMaterials">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "GROtherInformation">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "ProcessElementParameter">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "ProcessElement">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "ProcessElementLibrary">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "ProcedureChartElement">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "GRecipe">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:group name = "GRecipeInformation">
+      <xsd:sequence>
+          <!-- add extended elements here -->
+      </xsd:sequence>
+  </xsd:group>
+
+ 
+</xsd:schema>

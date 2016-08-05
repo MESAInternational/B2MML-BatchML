@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema 
+            xmlns:xsd              = "http://www.w3.org/2001/XMLSchema" 
+            xmlns                  = "http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+            xmlns:b2mml            = "http://www.mesa.org/xml/B2MML-V0600"
+            targetNamespace        = "http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+            elementFormDefault     = "qualified" 
+            attributeFormDefault   = "unqualified">
+
+<!-- Include all extension schema's to bring all extensions in the Extensions-namespace  -->
+     <xsd:include schemaLocation   = "B2MML-V0600-Extensions.xsd"/>
+     <xsd:include schemaLocation   = "BatchML-V0600-GeneralRecipeExtensions.xsd"/>
+     <xsd:include schemaLocation   = "BatchML-V0600-BatchInformationExtensions.xsd"/>
+     <xsd:include schemaLocation   = "BatchML-V0600-BatchProductionRecordExtensions.xsd"/>
+
+<!-- Import the Common Extension Schema                 -->
+     <xsd:include schemaLocation   = "B2MML-V0600-CommonExtensions.xsd"/>
+  
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2012 MESA International 
+		All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (B2MML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided the World Batch 
+        Forum is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used 
+        courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+      
+        Based upon the ANSI/ISA-95.00.02-2010 Enterprise-Control System 
+        Integration Part 2: Object Model Attributes Standard and the
+        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        Part 5: Business to Manufacturing Transactions
+   </xsd:documentation>
+
+   <xsd:documentation> 
+  
+      Revision History
+
+        Ver     Date            Person          Note
+        ---     ----            ------          ----
+        v0300   26 Aug 2005     D. Emerson      This schema is new to B2MML in v0300.
+                                                This schema contains placeholders for
+                                                substitution groups in the other schemas.
+        v0301   29 Dec 2005     D. Brandl       Changed version to v0301
+        v04     04 Jun 2007     D. Brandl       Added transaction elements for ISA 95 Part 5 support.
+        V0500   26 Mar 2011     D. Brandl       Revised version
+        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
+
+   </xsd:documentation>
+</xsd:annotation>
+
+<!-- 
+                        Purpose of Extensions Schema
+
+This Extensions schema is intended to be edited by users as required to extend B2MML 
+to meet project and product requirements. 
+
+A place holder has been added in the core schemas.  The place holder 
+is a substitution group that points to a group in this schema.  Any elements placed in a group
+in this schema can be used in B2MML XML documents using "Extended" as the namespace prefix.  
+
+The elements added to the groups may reference types defined earlier in this schema or in
+other schemas.  Additional schemas may be used to permit element definitions from different 
+vendors to be used on one project with minimal changes to the B2MML extensions schema,  
+and increasing clarity by assigning a vendor specific namespace prefix to each group 
+of elements when used in an XML document.
+
+-->
+
+ 
+</xsd:schema>

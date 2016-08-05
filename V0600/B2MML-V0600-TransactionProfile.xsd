@@ -1,0 +1,247 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<xsd:schema     xmlns:xsd               = "http://www.w3.org/2001/XMLSchema"
+                targetNamespace         = "http://www.mesa.org/xml/B2MML-V0600"
+                xmlns                   = "http://www.mesa.org/xml/B2MML-V0600"
+                xmlns:Extended          = "http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+                elementFormDefault      = "qualified"
+                attributeFormDefault    = "unqualified">
+  
+<!-- Import the Extension Schema         -->
+
+<xsd:import     namespace="http://www.mesa.org/xml/B2MML-V0600-AllExtensions" 
+                schemaLocation="B2MML-V0600-AllExtensions.xsd"/>
+
+<!-- Include the Common schema   -->
+
+  <xsd:include schemaLocation = "B2MML-V0600-Common.xsd"/>
+
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2012 MESA International 
+		All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (B2MML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided the World Batch 
+        Forum is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used 
+        courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+          
+        Based upon the ANSI/ISA-95.00.02-2010 Enterprise-Control System 
+        Integration Part 2: Object Model Attributes Standard and the
+        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        Part 5: Business to Manufacturing Transactions. 
+   </xsd:documentation>
+
+   <xsd:documentation> 
+
+      Revision History
+
+        Ver     Date            Person          Note
+        ---     ----            ------          ----
+        v04     04 Jun 2007     D. Brandl       Added transaction elements for ISA 95 Part 5 support.
+        V0500   26 Mar 2011     D. Brandl       Revised version
+												Changed QA TEST to MATERIAL TEST
+												Changed CAPABILITY TEST to EQUIPMENT CAPABILITY TEST
+												Added OPERATIONS elements 
+        V0600   18  Aug 2012    D. Brandl       Updated MESA Copyright
+                                                Added ISA 95 Part 4 objects to noun types
+
+   </xsd:documentation>
+</xsd:annotation>
+
+<!-- Global Elements -->
+  
+  <xsd:element  name = "TransactionProfile"             type = "TransactionProfileType" />
+
+<!-- Transaction Elements -->
+  <xsd:element name = "GetTransactionProfile"           type = "GetTransactionProfileType"/>
+  <xsd:element name = "ShowTransactionProfile"          type = "ShowTransactionProfileType"/>
+
+
+<!-- Simple & Complex Types  -->
+
+  <xsd:complexType name = "TransactionProfileType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <!-- Location ELEMENT IS DEPRECATED and may be removed in a future release, use HierarchyScope instead -->
+      <xsd:element name = "Location"                    type="LocationType" 
+	                                                    minOccurs="0"/> 
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "PublishedDate"               type = "PublishedDateType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "SupportedAction"             type = "SupportedActionType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:TransactionProfile" minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"                   type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"                   type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+  <xsd:complexType name = "SupportedActionType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0" />
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "TransactionVerb"             type = "TransactionVerbType"/>
+      <xsd:element name = "TransactionNoun"             type = "TransactionNounType"/>
+      <xsd:element name = "InformationUser"             type = "IndicatorType" minOccurs = "0"/>
+      <xsd:element name = "InformationProvider"         type = "IndicatorType" minOccurs = "0"/>
+      <xsd:element name = "InformationSender"           type = "IndicatorType" minOccurs = "0"/>
+      <xsd:element name = "InformationReceiver"         type = "IndicatorType" minOccurs = "0"/>
+      <xsd:element name = "ObjectWildcardSupported"     type = "IndicatorType" minOccurs = "0"/>
+      <xsd:element name = "PropertyWildcardSupported"   type = "IndicatorType" minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:SupportedAction"    minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"                   type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"                   type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+        <xsd:complexType name = "TransactionNoun1Type">
+          <xsd:simpleContent>
+                <xsd:restriction base="CodeType">
+                        <xsd:enumeration value="PERSONNEL CLASS"/>
+                        <xsd:enumeration value="PERSON"/>
+                        <xsd:enumeration value="QUALIFICATION TEST"/>
+                        <xsd:enumeration value="EQUIPMENT CLASS"/>
+                        <xsd:enumeration value="EQUIPMENT"/>
+                        <xsd:enumeration value="EQUIPMENT CAPABILITY TEST"/>
+                        <xsd:enumeration value="PHYSICAL ASSET CLASS"/>
+                        <xsd:enumeration value="PHYSICAL ASSET"/>
+                        <xsd:enumeration value="PHYSICAL ASSET CAPABILITY TEST"/>
+                        <xsd:enumeration value="MATERIAL CLASS"/>
+                        <xsd:enumeration value="MATERIAL DEFINITION"/>
+                        <xsd:enumeration value="MATERIAL LOT"/>
+                        <xsd:enumeration value="MATERIAL SUBLOT"/>
+                        <xsd:enumeration value="MATERIAL TEST"/>
+                        <xsd:enumeration value="PROCESS SEGMENT"/>
+                        <xsd:enumeration value="OPERATIONS DEFINITION"/>
+                        <xsd:enumeration value="OPERATIONS SCHEDULE"/>
+                        <xsd:enumeration value="OPERATIONS PERFORMANCE"/>
+                        <xsd:enumeration value="OPERATIONS CAPABILITY"/>
+                        <xsd:enumeration value="PRODUCT DEFINITION"/>
+                        <xsd:enumeration value="PRODUCTION SCHEDULE"/>
+                        <xsd:enumeration value="PRODUCTION PERFORMANCE"/>
+                        <xsd:enumeration value="PRODUCTION CAPABILITY"/>
+                        <xsd:enumeration value="RESOURCE RELATIONSHIP NETWORK"/>
+                        <xsd:enumeration value="RESOURCE NETWORK CONNECTION INFORMATION"/>
+                        <xsd:enumeration value="WORK ALERT"/>
+                        <xsd:enumeration value="WORK ALERT DEFINITION"/>
+                        <xsd:enumeration value="WORK ALERT INFORMATION"/>
+                        <xsd:enumeration value="WORK DEFINITION INFORMATION"/>
+                        <xsd:enumeration value="WORK DIRECTIVE"/>
+                        <xsd:enumeration value="WORK MASTER"/>
+                        <xsd:enumeration value="WORK FLOW INFORMATION"/>
+                        <xsd:enumeration value="WORK FLOW SPECIFICATION"/>
+                        <xsd:enumeration value="WORK FLOW SPECIFICATION TYPE"/>
+                        <xsd:enumeration value="WORK SCHEDULE"/>
+                        <xsd:enumeration value="JOB LIST"/>
+                        <xsd:enumeration value="WORK PERFORMANCE"/>
+                        <xsd:enumeration value="JOB RESPONSE"/>
+                        <xsd:enumeration value="WORK CAPABILITY"/>
+                        <xsd:enumeration value="WORK CAPABILITY INFORMATION"/>
+                        <xsd:enumeration value="TRANSACTION PROFILE"/>
+                        <xsd:enumeration value="CONFIRM BOD"/>
+                        <xsd:enumeration value="Other"/>
+                </xsd:restriction>
+          </xsd:simpleContent>
+        </xsd:complexType>
+
+        <xsd:complexType name = "TransactionNounType">
+                <xsd:simpleContent>
+                        <xsd:extension base="TransactionNoun1Type">
+                                <xsd:attribute name = "OtherValue" type="xsd:string"/>
+                        </xsd:extension>
+                </xsd:simpleContent>
+        </xsd:complexType>
+                  
+        <xsd:complexType name = "TransactionVerb1Type">
+          <xsd:simpleContent>
+                <xsd:restriction base="CodeType">
+                        <xsd:enumeration value="GET"/>
+                        <xsd:enumeration value="PROCESS"/>
+                        <xsd:enumeration value="CHANGE"/>
+                        <xsd:enumeration value="CANCEL"/>
+                        <xsd:enumeration value="CONFIRM"/>
+                        <xsd:enumeration value="SYNC ADD"/>
+                        <xsd:enumeration value="SYNC CHANGE"/>
+                        <xsd:enumeration value="SYNC DELETE"/>
+                        <xsd:enumeration value="Other"/>
+                </xsd:restriction>
+          </xsd:simpleContent>
+        </xsd:complexType>
+
+        <xsd:complexType name = "TransactionVerbType">
+                <xsd:simpleContent>
+                        <xsd:extension base="TransactionVerb1Type">
+                                <xsd:attribute name = "OtherValue" type="xsd:string"/>
+                        </xsd:extension>
+                </xsd:simpleContent>
+        </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- TransactionProfile Transaction Types    -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetTransactionProfileType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"
+                                type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type =  "TransGetType"/>
+              <xsd:element name =  "TransactionProfile"
+                                                type =  "TransactionProfileType"
+                                                minOccurs = "0" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+  <xsd:complexType name = "ShowTransactionProfileType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"
+                                type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type =  "TransShowType"/>
+              <xsd:element name =  "TransactionProfile"
+                                                type =  "TransactionProfileType"
+                                                minOccurs = "0" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+</xsd:schema>
