@@ -1,0 +1,736 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<xsd:schema     xmlns:xsd            = "http://www.w3.org/2001/XMLSchema"
+                targetNamespace      = "http://www.mesa.org/xml/B2MML"
+                xmlns                = "http://www.mesa.org/xml/B2MML"
+                xmlns:Extended       = "http://www.mesa.org/xml/B2MML-AllExtensions" 
+                elementFormDefault   = "qualified"
+                attributeFormDefault = "unqualified">
+  
+<!-- Import the Extension Schema         -->
+
+<xsd:import     namespace="http://www.mesa.org/xml/B2MML-AllExtensions" 
+                schemaLocation="B2MML-AllExtensions.xsd"/>
+
+<!-- Include the Common schema   -->
+
+  <xsd:include schemaLocation = "B2MML-Common.xsd"/>
+
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2016 MESA International, Version 0700
+		All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (B2MML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided MESA International 
+        is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used 
+        courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+          
+        Based upon the ANSI/ISA-95.00.02-2010 Enterprise-Control System 
+        Integration Part 2: Object Model Attributes Standard and the
+        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        Part 5: Business to Manufacturing Transactions. 
+   </xsd:documentation>
+
+   <xsd:documentation> 
+
+      Revision History
+
+        Ver     Date            Person          Note
+        ---     ----            ------          ----
+        V0600   17 Mar 2013     D. Brandl       Initial version                                 
+        V0700   08 Aug 2016     D. Brandl       Updated Version
+
+   </xsd:documentation>
+</xsd:annotation>
+
+<!-- Elements -->
+  
+  <xsd:element name = "WorkCalendarInformation" type ="WorkCalendarInformationType" />
+  <xsd:element name = "WorkCalendar"            type ="WorkCalendarType" />
+  <xsd:element name = "WorkCalendarDefinition"  type ="WorkCalendarDefinitionType" />
+
+
+<!-- Transaction Elements -->
+  <xsd:element name = "GetWorkCalendar"         type = "GetWorkCalendarType"/>
+  <xsd:element name = "ShowWorkCalendar"        type = "ShowWorkCalendarType"/>
+  <xsd:element name = "ProcessWorkCalendar"     type = "ProcessWorkCalendarType"/>
+  <xsd:element name = "AcknowledgeWorkCalendar" type = "AcknowledgeWorkCalendarType"/>
+  <xsd:element name = "ChangeWorkCalendar"      type = "ChangeWorkCalendarType"/>
+  <xsd:element name = "RespondWorkCalendar"     type = "RespondWorkCalendarType"/>
+  <xsd:element name = "CancelWorkCalendar"      type = "CancelWorkCalendarType"/>
+  <xsd:element name = "SyncWorkCalendar"        type = "SyncWorkCalendarType"/>
+
+  <xsd:element name = "GetWorkCalendarDefinition"          type = "GetWorkCalendarDefinitionType"/>
+  <xsd:element name = "ShowWorkCalendarDefinition"         type = "ShowWorkCalendarDefinitionType"/>
+  <xsd:element name = "ProcessWorkCalendarDefinition"      type = "ProcessWorkCalendarDefinitionType"/>
+  <xsd:element name = "AcknowledgeWorkCalendarDefinition"  type = "AcknowledgeWorkCalendarDefinitionType"/>
+  <xsd:element name = "ChangeWorkCalendarDefinition"       type = "ChangeWorkCalendarDefinitionType"/>
+  <xsd:element name = "RespondWorkCalendarDefinition"      type = "RespondWorkCalendarDefinitionType"/>
+  <xsd:element name = "CancelWorkCalendarDefinition"       type = "CancelWorkCalendarDefinitionType"/>
+  <xsd:element name = "SyncWorkCalendarDefinition"         type = "SyncWorkCalendarDefinitionType"/>
+
+  <xsd:element name = "GetWorkCalendarInformation"         type = "GetWorkCalendarInformationType"/>
+  <xsd:element name = "ShowWorkCalendarInformation"        type = "ShowWorkCalendarInformationType"/>
+  <xsd:element name = "ProcessWorkCalendarInformation"     type = "ProcessWorkCalendarInformationType"/>
+  <xsd:element name = "AcknowledgeWorkCalendarInformation" type = "AcknowledgeWorkCalendarInformationType"/>
+  <xsd:element name = "ChangeWorkCalendarInformation"      type = "ChangeWorkCalendarInformationType"/>
+  <xsd:element name = "RespondWorkCalendarInformation"     type = "RespondWorkCalendarInformationType"/>
+  <xsd:element name = "CancelWorkCalendarInformation"      type = "CancelWorkCalendarInformationType"/>
+  <xsd:element name = "SyncWorkCalendarInformation"        type = "SyncWorkCalendarInformationType"/>
+
+
+<!-- Simple & Complex Types  -->
+  <xsd:complexType name = "WorkCalendarInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"                  
+                                                        minOccurs = "0" nillable="true"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
+                                                        minOccurs = "0"  nillable="true"/>
+      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+                                                        minOccurs = "0"  nillable="true"/>
+      <xsd:element name = "WorkCalendar"                type = "WorkCalendarType"      
+                                                        minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
+      <xsd:element name = "WorkCalendarDefinition"      type = "WorkCalendarDefinitionType"      
+                                                        minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
+      <xsd:group   ref  = "Extended:WorkCalendarInformation" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  
+  <xsd:complexType name = "WorkCalendarDefinitionType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                      type = "IdentifierType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "Description"             type = "DescriptionType"
+                                                    minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "HierarchyScope"          type = "HierarchyScopeType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "Entry"                   type = "WorkCalendarDefinitionEntryType" 
+                                                    minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:WorkCalendarDefinition"
+                                                    minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  
+  <xsd:complexType name = "WorkCalendarDefinitionEntryType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                      type = "IdentifierType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "Description"             type = "DescriptionType"
+                                                    minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "HierarchyScope"          type = "HierarchyScopeType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "StartRule"               type = "CodeType" 
+                                                    minOccurs = "0" maxOccurs = "1"/>
+      <xsd:element name = "RecurrenceTime"          type = "CodeType" 
+                                                    minOccurs = "0" maxOccurs = "1"/>
+      <xsd:element name = "DurationRule"            type = "CodeType" 
+                                                    minOccurs = "0" maxOccurs = "1"/>
+      <xsd:element name = "EntryType"               type = "CodeType" 
+                                                    minOccurs = "0" maxOccurs = "1"/>
+      <xsd:element name = "Property"                type = "WorkCalendarDefinitionPropertyType" 
+                                                    minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:WorkCalendarDefinitionEntry"
+                                                    minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+   <xsd:complexType name = "WorkCalendarDefinitionPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                  type = "IdentifierType"/>
+      <xsd:element name = "Description"         type = "DescriptionType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"               type = "ValueType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:WorkCalendarDefinitionProperty"
+                                                minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+ 
+  
+  <xsd:complexType name = "WorkCalendarType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                      type = "IdentifierType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "Description"             type = "DescriptionType"
+                                                    minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "HierarchyScope"          type = "HierarchyScopeType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "Entry"                   type = "WorkCalendarEntryType" 
+                                                    minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:WorkCalendar"
+                                                    minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  
+  <xsd:complexType name = "WorkCalendarEntryType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                      type = "IdentifierType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "Description"             type = "DescriptionType"
+                                                    minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "HierarchyScope"          type = "HierarchyScopeType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "StartDateTime"           type = "DateTimeType" 
+                                                    minOccurs = "0" maxOccurs = "1"/>
+      <xsd:element name = "FinishDateTime"          type = "DateTimeType" 
+                                                    minOccurs = "0" maxOccurs = "1"/>
+      <xsd:element name = "EntryType"               type = "CodeType" 
+                                                    minOccurs = "0" maxOccurs = "1"/>
+      <xsd:element name = "Property"                type = "WorkCalendarPropertyType" 
+                                                    minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:WorkCalendarEntry"
+                                                    minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  
+   <xsd:complexType name = "WorkCalendarPropertyType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                  type = "IdentifierType"/>
+      <xsd:element name = "Description"         type = "DescriptionType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Value"               type = "ValueType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:WorkCalendarProperty"
+                                                minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- WorkCalendarInformation Transaction Types   -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetWorkCalendarInformationType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "WorkCalendarInformation"
+                                                type = "WorkCalendarInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowWorkCalendarInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "WorkCalendarInformation"
+                                                type = "WorkCalendarInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessWorkCalendarInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "WorkCalendarInformation"
+                                                type = "WorkCalendarInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeWorkCalendarInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "WorkCalendarInformation"
+                                                type = "WorkCalendarInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeWorkCalendarInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "WorkCalendarInformation"
+                                                type = "WorkCalendarInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondWorkCalendarInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "WorkCalendarInformation"
+                                                type = "WorkCalendarInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelWorkCalendarInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "WorkCalendarInformation"
+                                                type = "WorkCalendarInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncWorkCalendarInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "WorkCalendarInformation"
+                                                type = "WorkCalendarInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- WorkCalendar Transaction Types   -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetWorkCalendarType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "WorkCalendar"
+                                                type = "WorkCalendarType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowWorkCalendarType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "WorkCalendar"
+                                                type = "WorkCalendarType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessWorkCalendarType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "WorkCalendar"
+                                                type = "WorkCalendarType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeWorkCalendarType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "WorkCalendar"
+                                                type = "WorkCalendarType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeWorkCalendarType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "WorkCalendar"
+                                                type = "WorkCalendarType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondWorkCalendarType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "WorkCalendar"
+                                                type = "WorkCalendarType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelWorkCalendarType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "WorkCalendar"
+                                                type = "WorkCalendarType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncWorkCalendarType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "WorkCalendar"
+                                                type = "WorkCalendarType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- WorkCalendarDefinition Transaction Types -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetWorkCalendarDefinitionType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "WorkCalendarDefinition"
+                                                type = "WorkCalendarDefinitionType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowWorkCalendarDefinitionType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "WorkCalendarDefinition"
+                                                type = "WorkCalendarDefinitionType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessWorkCalendarDefinitionType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "WorkCalendarDefinition"
+                                                type = "WorkCalendarDefinitionType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeWorkCalendarDefinitionType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "WorkCalendarDefinition"
+                                                type = "WorkCalendarDefinitionType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeWorkCalendarDefinitionType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "WorkCalendarDefinition"
+                                                type = "WorkCalendarDefinitionType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondWorkCalendarDefinitionType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "WorkCalendarDefinition"
+                                                type = "WorkCalendarDefinitionType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelWorkCalendarDefinitionType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "WorkCalendarDefinition"
+                                                type = "WorkCalendarDefinitionType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncWorkCalendarDefinitionType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "WorkCalendarDefinition"
+                                                type = "WorkCalendarDefinitionType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+
+
+</xsd:schema>

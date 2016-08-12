@@ -1,0 +1,837 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<xsd:schema     xmlns:xsd               = "http://www.w3.org/2001/XMLSchema"
+                targetNamespace         = "http://www.mesa.org/xml/B2MML"
+                xmlns                   = "http://www.mesa.org/xml/B2MML"
+                xmlns:Extended          = "http://www.mesa.org/xml/B2MML-AllExtensions" 
+                elementFormDefault      = "qualified"
+                attributeFormDefault    = "unqualified">
+  
+<!-- Import the B2MML Extension Schema and pickup the BatchML Information Extensions -->
+
+  <xsd:import   namespace="http://www.mesa.org/xml/B2MML-AllExtensions" 
+                schemaLocation="B2MML-AllExtensions.xsd"/>
+
+<!-- Include the BatchML and B2MML schemas   -->
+
+  <xsd:include schemaLocation = "BatchML-BatchProductionRecord.xsd"/>
+  <xsd:include schemaLocation = "B2MML-OperationsDefinition.xsd"/>
+  <xsd:include schemaLocation = "B2MML-OperationsPerformance.xsd"/>
+  <xsd:include schemaLocation = "B2MML-OperationsSchedule.xsd"/>
+  <xsd:include schemaLocation = "B2MML-WorkAlert.xsd"/>
+  <xsd:include schemaLocation = "B2MML-WorkCalendar.xsd"/>
+  <xsd:include schemaLocation = "B2MML-WorkDefinition.xsd"/>
+  <xsd:include schemaLocation = "B2MML-WorkPerformance.xsd"/>
+  <xsd:include schemaLocation = "B2MML-WorkSchedule.xsd"/>
+
+<!-- Include the Common schema   -->
+
+  <xsd:include  schemaLocation = "B2MML-Common.xsd"/>
+
+
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2016 MESA International, Version 0700
+		All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (B2MML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided MESA International 
+        is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used 
+        courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+          
+        Based upon the ANSI/ISA-95.00.04 Batch Production Records Standard and the
+        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        Part 5: Business to Manufacturing Transactions.  
+   </xsd:documentation>
+
+   <xsd:documentation> 
+
+      Revision History
+        Ver     Date            Person          Note
+        ===     ====            ======          ==========================
+        V0700   08 Aug 2016     D. Brandl       Initial Version
+
+   </xsd:documentation>
+</xsd:annotation>
+
+<!-- ========================================= -->
+<!-- Global Elements ========================= -->
+<!-- ========================================= -->
+  
+  <xsd:element name = "WorkRecord"            type = "WorkRecordType"/>
+
+  <xsd:element name = "GetWorkRecord"         type = "GetWorkRecordType"/>
+  <xsd:element name = "ShowWorkRecord"        type = "ShowWorkRecordType"/>
+  <xsd:element name = "ProcessWorkRecord"     type = "ProcessWorkRecordType"/>
+  <xsd:element name = "AcknowledgeWorkRecord" type = "AcknowledgeWorkRecordType"/>
+  <xsd:element name = "ChangeWorkRecord"      type = "ChangeWorkRecordType"/>
+  <xsd:element name = "RespondWorkRecord"     type = "RespondWorkRecordType"/>
+  <xsd:element name = "CancelWorkRecord"      type = "CancelWorkRecordType"/>
+  <xsd:element name = "SyncWorkRecord"        type = "SyncWorkRecordType"/>
+
+ 
+<!-- ========================================= -->
+<!-- Common group for all elements  ========== -->
+<!-- ========================================= -->
+
+  <xsd:group name = "WorkRecordEntryType">
+    <xsd:sequence>
+      <xsd:element name = "EntryID"   	           type = "IdentifierType"/>     
+      <xsd:element name = "ObjectType"             type = "WorkRecordObjectTypeType"/>  
+      <xsd:element name = "TimeStamp"              type = "DateTimeType"     minOccurs="0"/>
+      <xsd:element name = "ExternalReference"      type = "IdentifierType"   minOccurs="0"/>
+      <xsd:element name = "Description"            type = "DescriptionType"  minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:group>
+
+
+<!-- Simple & Complex Types  -->
+
+  <xsd:complexType name = "WorkRecordType">
+      <xsd:sequence>
+         <xsd:element name = "ID"   	           type = "IdentifierType"/>     
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+
+         <xsd:element name = "HierarchyScope"      type = "HierarchyScopeType"	minOccurs="0"/>
+         <xsd:element name = "PublishedDate"       type = "DateTimeType"		minOccurs="0"/>
+         <xsd:element name = "CreationDate"        type = "DateTimeType"		minOccurs="0"/>
+		 <!-- Simple types -->
+         <xsd:element name = "WorkRecordSpec"      type = "IdentifierType"		minOccurs="0"/>
+         <xsd:element name = "ChangeIndication"    type = "xsd:string"			minOccurs="0"/>
+         <xsd:element name = "Delimiter"           type = "TextType"			minOccurs="0"/>
+         <xsd:element name = "Language"            type = "CodeType"			minOccurs="0"/> 
+         <xsd:element name = "LastChangedDate"     type = "DateTimeType"		minOccurs="0"/>
+         <xsd:element name = "RecordStatus"        type = "CodeType"			minOccurs="0"/>
+         <xsd:element name = "Version"             type = "IdentifierType"		minOccurs="0"/>
+		<!-- Complex types -->
+         <xsd:element name = "ChangeHistory"       type = "WorkChangeHistoryType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "Comments"            type = "WorkCommentsType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "DataSets"            type = "WorkDataSetsType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "Events"              type = "WorkEventsType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "PersonnelIdentification" type = "WorkPersonnelIdentificationType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "OperationsDefinitions" type = "WWorkOperationsDefinitionsType"
+                                                   minOccurs="0"/>  
+         <xsd:element name = "OperationsPerformances" type = "WWorkOperationsPerformancesType"
+                                                   minOccurs="0"/>  
+         <xsd:element name = "OperationsSchedules" type = "WWorkOperationsSchedulesType"
+                                                   minOccurs="0"/>  
+         <xsd:element name = "ResourceQualifications"  type = "WorkResourceQualificationsType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "Samples"             type = "WorkSamplesType"
+                                                   minOccurs="0"/>
+         <xsd:element name = "WorkAlerts"          type = "WWorkAlertsType"
+                                                   minOccurs="0"/>  
+         <xsd:element name = "WorkCalendars"       type = "WWorkCalendarsType"
+                                                   minOccurs="0"/>  
+         <xsd:element name = "WorkDirectives"      type = "WWorkDirectivesType"
+                                                   minOccurs="0"/>  
+         <xsd:element name = "WorkMasters"         type = "WWorkMastersType"
+                                                   minOccurs="0"/>  
+         <xsd:element name = "WorkPerformances"    type = "WWorkPerformancesType"
+                                                   minOccurs="0"/>  
+         <xsd:element name = "WorkSchedules"       type = "WWorkSchedulesType"
+                                                   minOccurs="0"/>  
+         <xsd:element name = "BatchProductionRecord"  type = "BatchProductionRecordType"
+                                                   minOccurs="0"/>
+		<!-- Recursive definition -->
+         <xsd:element name = "WorkRecord"          type = "WorkRecordType"
+                                                   minOccurs="0"/>
+        <xsd:group   ref  = "Extended:WorkRecord" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkRecordObjectType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+           <xsd:enumeration value="Work Record"/>
+           <xsd:enumeration value="Change"/>
+           <xsd:enumeration value="Comment"/>
+           <xsd:enumeration value="Data Set"/>
+           <xsd:enumeration value="Event"/>
+           <xsd:enumeration value="Operations Definition"/>
+           <xsd:enumeration value="Operations Performance"/>
+           <xsd:enumeration value="Operations Schedule"/>
+           <xsd:enumeration value="Personnel Identification Manifest"/>
+           <xsd:enumeration value="Resource Qualifications"/>
+           <xsd:enumeration value="Sample"/>
+           <xsd:enumeration value="Sample Test"/>
+           <xsd:enumeration value="Sample Test Result"/>
+           <xsd:enumeration value="Work Alert"/>
+           <xsd:enumeration value="Work Calendar"/>
+           <xsd:enumeration value="Work Directive"/>
+           <xsd:enumeration value="Work Master"/>
+           <xsd:enumeration value="Work Performance"/>
+           <xsd:enumeration value="Work Schedule"/>
+           <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+     </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkRecordObjectTypeType">
+     <xsd:simpleContent>
+         <xsd:extension base="WorkRecordObjectType1Type">
+            <xsd:attribute name = "OtherValue"     type="xsd:string"/>
+        </xsd:extension>
+     </xsd:simpleContent>
+  </xsd:complexType>
+        
+
+<!-- ========================================= -->
+<!-- Change History ========================== -->
+<!-- ========================================= -->
+  <xsd:complexType name = "WorkChangeHistoryType">
+      <xsd:sequence>
+         <xsd:element name = "Change"              type = "WorkChangeType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkChangeType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "RecordReference"     type = "IdentifierType"/> 
+         <xsd:element name = "PrechangeData"       type = "ValueType"      nillable="true" maxOccurs="unbounded"/> 
+         <xsd:element name = "Reason"              type = "TextType"       minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+<!-- ========================================= -->
+<!-- Comments ================================ -->
+<!-- ========================================= -->
+  <xsd:complexType name = "WorkCommentsType">
+      <xsd:sequence>
+         <xsd:element name = "Comment"             type = "WorkCommentType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkCommentType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "RecordReference"     type = "IdentifierType"/> 
+         <xsd:element name = "CommentText"         type = "TextType" 		maxOccurs="unbounded"/> 
+         <xsd:element name = "PersonID"            type = "NameType"		minOccurs="0"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- ========================================= -->
+<!-- Data Sets ==============================- -->
+<!-- ========================================= -->
+  <xsd:complexType name = "WorkDataSetsType">
+      <xsd:sequence>
+         <xsd:element name = "DataSet"             type = "WorkDataSetType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkDataSetType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "TrendSystemReference" type = "IdentifierType"       minOccurs="0"/> 
+         <xsd:element name = "StartTime"           type = "DateTimeType"          minOccurs="0"/> 
+         <xsd:element name = "EndTime"             type = "DateTimeType"          minOccurs="0"/> 
+         <xsd:element name = "TimeSpecification"   type = "WorkTimeSpecificationType" minOccurs="0"/> 
+         <xsd:element name = "TagSpecification"    type = "WorkTagSpecificationType"  maxOccurs="unbounded"/> 
+         <xsd:choice>
+            <xsd:element name="DelimitedDataBlock" type = "WorkDelimitedDataBlockType"/>
+            <xsd:element name="OrderedData"        type = "WorkOrderedDataType"       maxOccurs="unbounded"/>
+         </xsd:choice>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkTimeSpecificationType">
+      <xsd:sequence>
+         <xsd:element name = "Relative"            type = "IndicatorType"     minOccurs="0"/> 
+         <xsd:element name = "OffsetTime"          type = "DateTimeType"      minOccurs="0"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkTagSpecificationType">
+      <xsd:sequence>
+         <xsd:element name = "TagIndex"            type = "NumericType"/> 
+         <xsd:element name = "DataType"            type = "DataTypeType"      nillable="true"/>
+         <xsd:element name = "UnitOfMeasure"       type = "UnitOfMeasureType" nillable="true"/>
+         <xsd:element name = "DataSource"          type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Alias"               type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Description"         type = "DescriptionType"   minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "EquipmentID"         type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PhysicalAssetID"     type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> <!-- Not in ISA 88.04 -->
+         <xsd:element name = "ProceduralElementReference"
+                                                   type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Deadband"            type = "ValueType"         minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SignificantDigits"   type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "DataCompression"     type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SamplingType"        type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkDelimitedDataBlockType">
+      <xsd:sequence>
+         <xsd:element name = "TagDelimiter"        type = "xsd:string"/> 
+         <xsd:element name = "OrderDelimiter"      type = "xsd:string"/> 
+         <xsd:element name = "DelimitedData"       type = "xsd:string"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkOrderedDataType">
+      <xsd:sequence>
+         <xsd:element name = "OrderIndex"          type = "NumericType"   minOccurs="0"/> 
+         <xsd:element name = "TimeValue"           type = "DateTimeType"  minOccurs="0"/> 
+         <xsd:element name = "DataValue"           type = "DataValueType" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkDataValueType">
+      <xsd:sequence>
+         <xsd:element name = "TagIndex"            type = "NumericType"    minOccurs="0"/> 
+         <xsd:element name = "Value"               type = "xsd:string"     maxOccurs="unbounded"/> 
+         <xsd:element name = "Quality"             type = "IdentifierType" minOccurs="0"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- ========================================= -->
+<!-- Event =================================== -->
+<!-- ========================================= -->
+  <xsd:complexType name = "WorkEventsType">
+      <xsd:sequence>
+         <xsd:element name = "Event"               type = "SingleWorkEventType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "SingleWorkEventType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "EventType"           type = "WorkEventTypeType"/> 
+         <xsd:element name = "EventSubType"        type = "WorkEventSubTypeType"  nillable="true"/> 
+         <xsd:element name = "EquipmentID"         type = "IdentifierType"        minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Value"               type = "ValueType"             minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PreviousValue"       type = "ValueType"             minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "MessageText"         type = "TextType"              minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PersonID"            type = "NameType"              minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "ComputerID"          type = "IdentifierType"        minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PhysicalAssetID"     type = "IdentifierType"	      minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "JobStepReference"    type = "IdentifierType"        minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Category"            type = "IdentifierType"        minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "AlarmData"           type = "WorkAlarmDataType"     minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "AssociatedEventID"   type = "IdentifierType"        minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "UserAttribute"       type = "WorkUserAttributeType" minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WorkEventType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+           <xsd:enumeration value="Alarm"/>
+           <xsd:enumeration value="Equipment"/>
+           <xsd:enumeration value="General"/>
+           <xsd:enumeration value="Material"/> 
+           <xsd:enumeration value="Message"/>
+           <xsd:enumeration value="Operator"/>
+           <xsd:enumeration value="Procedural Execution"/>
+           <xsd:enumeration value="Work Directive"/>
+           <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+     </xsd:simpleContent>
+  </xsd:complexType>
+
+  
+  <xsd:complexType name = "WorkEventTypeType">
+     <xsd:simpleContent>
+         <xsd:extension base="WorkEventType1Type">
+            <xsd:attribute name = "OtherValue" type="xsd:string"/>
+        </xsd:extension>
+     </xsd:simpleContent>
+  </xsd:complexType>
+        
+  <xsd:complexType name = "WorkEventSubType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base="CodeType">
+           <xsd:enumeration value="Allocation"/>
+           <xsd:enumeration value="Application"/>
+           <xsd:enumeration value="Consume"/>
+           <xsd:enumeration value="Deallocation"/>
+           <xsd:enumeration value="Equipment"/>
+           <xsd:enumeration value="Message"/>
+           <xsd:enumeration value="Mode Change"/>
+           <xsd:enumeration value="Mode Command"/>
+           <xsd:enumeration value="Modification"/>
+           <xsd:enumeration value="Movement"/>
+           <xsd:enumeration value="Parameter Data"/>
+           <xsd:enumeration value="Process"/>
+           <xsd:enumeration value="Process Data"/>
+           <xsd:enumeration value="Produce"/>
+           <xsd:enumeration value="Prompt"/>
+           <xsd:enumeration value="Prompt Response"/>
+           <xsd:enumeration value="Property Value Change"/>
+           <xsd:enumeration value="Reconciliation"/>
+           <xsd:enumeration value="Security"/>
+           <xsd:enumeration value="State Change"/>
+           <xsd:enumeration value="State Command"/>
+           <xsd:enumeration value="Status Change"/>
+           <xsd:enumeration value="System"/>
+           <xsd:enumeration value="Target End Time"/>
+           <xsd:enumeration value="Target Start Time"/>
+           <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+     </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkEventSubTypeType">
+     <xsd:simpleContent>
+         <xsd:extension base="WorkEventSubType1Type">
+            <xsd:attribute name = "OtherValue"     type="xsd:string"/>
+        </xsd:extension>
+     </xsd:simpleContent>
+  </xsd:complexType>
+        
+
+  <xsd:complexType name = "WorkAlarmDataType">
+      <xsd:sequence>
+         <xsd:element name = "AlarmEvent"          type = "CodeType" /> 
+         <xsd:element name = "AlarmType"           type = "CodeType" /> 
+         <xsd:element name = "AlarmLimit"          type = "ValueType"      minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Priority"            type = "IdentifierType" minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkUserAttributeType">
+      <xsd:sequence>
+         <xsd:element name = "AttributeID"         type = "CodeType"/> 
+         <xsd:element name = "Description"         type = "TextType"       minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Value"               type = "ValueType"      minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- ========================================= -->
+<!-- Personnel Identification Manifest ======- -->
+<!-- ========================================= -->
+  <xsd:complexType name = "WorkPersonnelIdentificationType">
+      <xsd:sequence>
+         <xsd:element name = "PersonnelIdentificationManifest" 
+                                                   type = "WorkPersonnelIdentificationManifestType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkPersonnelIdentificationManifestType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "RecordReference"     type = "IdentifierType"/> 
+         <xsd:element name = "Name"                type = "NameType"       maxOccurs="unbounded"/> 
+         <xsd:element name = "ChangeIndication"    type = "xsd:string"/> 
+         <xsd:element name = "Reason"              type = "TextType"       minOccurs="0"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- ========================================= -->
+<!-- Resource Qualification Manifest ========= -->
+<!-- ========================================= -->
+  <xsd:complexType name = "WorkResourceQualificationsType">
+      <xsd:sequence>
+         <xsd:element name = "ResourceQualificationsManifest" 
+                                                   type = "WorkResourceQualificationsManifestType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkResourceQualificationsManifestType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "RecordReference"     type = "IdentifierType"/> 
+         <xsd:element name = "ResourceID"          type = "IdentifierType"/> 
+         <xsd:element name = "ResourceUse"         type = "IdentifierType"/>  <!-- Not in ISA88.04 - Added for ISA 95.02 -->
+         <xsd:element name = "ResourceType"        type = "IdentifierType"/>  <!-- Not in ISA88.04 - Added for ISA 95.02 --> 
+         <xsd:element name = "QualificationStatus" type = "CodeType"/> 
+         <xsd:element name = "EffectiveTimeStamp"  type = "DateTimeType"   minOccurs="0"/> 
+         <xsd:element name = "ExpirationTimeStamp" type = "DateTimeType"   minOccurs="0"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+
+<!-- ========================================= -->
+<!-- Sample ================================== -->
+<!-- ========================================= -->
+  <xsd:complexType name = "WorkSamplesType">
+      <xsd:sequence>
+         <xsd:element name = "Sample"              type = "WorkSampleType" 
+                                                   minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkSampleType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "SampleSourceID"      type = "IdentifierType"    minOccurs="0"/> 
+         <xsd:element name = "SampleSize"          type = "QuantityValueType" minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SampleType"          type = "CodeType"          minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SamplePullReason"    type = "TextType"          minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SampleExpiration"    type = "DateTimeType"      minOccurs="0"/> 
+         <xsd:element name = "EquipmentID"         type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PhysicalAssetID"     type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "JobStep"             type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SOPReference"        type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "SampleTest"          type = "SampleTestType"    minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkSampleTestType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "TestCode"            type = "CodeType"             minOccurs="0"/> 
+         <xsd:element name = "TestName"            type = "IdentifierType"       minOccurs="0"/> 
+         <xsd:element name = "SampleTestResult"    type = "WorkSampleTestResultType" minOccurs="0" maxOccurs="unbounded"/> 
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WorkSampleTestResultType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "TestDisposition"     type = "IdentifierType"       minOccurs="0"/> 
+         <xsd:element name = "EquipmentID"         type = "IdentifierType"       minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "PhysicalAssetID"     type = "IdentifierType"    minOccurs="0" maxOccurs="unbounded"/> <!-- Not in ISA 88.04 -->
+         <xsd:element name = "AnalysisUsed"        type = "CodeType"             minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "Expiration"          type = "DateTimeType"         minOccurs="0"/> 
+         <xsd:element name = "Results"             type = "ValueType"            minOccurs="0" maxOccurs="unbounded"/> 
+         <xsd:element name = "ExpectedResults"     type = "ValueType"            minOccurs="0" maxOccurs="unbounded"/> 
+     </xsd:sequence>
+  </xsd:complexType>
+
+
+<!-- =================================================== -->
+<!-- CONTAINERS FOR ELEMENTS DEFINED ELSEWHERE ========= -->
+<!-- =================================================== -->
+
+  <xsd:complexType name = "WWorkOperationsPerformancesType">
+      <xsd:sequence>
+         <xsd:element name = "OperationsPerformanceRecord"  type = "WWorkOperationsPerformanceRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WWorkOperationsPerformanceRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "OperationsPerformance"  type = "OperationsPerformanceType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WWorkOperationsSchedulesType">
+      <xsd:sequence>
+         <xsd:element name = "OperationsScheduleRecord"  type = "WWorkOperationsScheduleRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WWorkOperationsScheduleRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "OperationsSchedule"  type = "OperationsScheduleType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WWorkOperationsDefinitionsType">
+      <xsd:sequence>
+         <xsd:element name = "OperationsDefinitionRecord"   type = "WWorkOperationsDefinitionRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WWorkOperationsDefinitionRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "OperationsDefinition"   type = "OperationsDefinitionType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WWorkPerformancesType">
+      <xsd:sequence>
+         <xsd:element name = "WorkPerformanceRecord"  type = "WWorkPerformanceRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WWorkPerformanceRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "WorkPerformaance"  type = "WorkPerformanceType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WWorkSchedulesType">
+      <xsd:sequence>
+         <xsd:element name = "WorkScheduleRecord"  type = "WWorkScheduleRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WWorkScheduleRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "WorkSchedule"  type = "WorkScheduleType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "WWorkMastersType">
+      <xsd:sequence>
+         <xsd:element name = "WorkMasterRecord"   type = "WWorkMasterRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WWorkMasterRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "WorkMaster"   type = "WorkMasterType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WWorkDirectivesType">
+      <xsd:sequence>
+         <xsd:element name = "WorkDirectiverRecord"   type = "WWorkDirectiveRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WWorkDirectiveRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "WorkDirective"   type = "WorkDirectiveType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  
+  <xsd:complexType name = "WWorkAlertsType">
+      <xsd:sequence>
+         <xsd:element name = "WorkAlertRecord"   type = "WWorkAlertRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WWorkAlertRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "WorkAlert"   type = "WorkAlertType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  
+  <xsd:complexType name = "WWorkCalendarsType">
+      <xsd:sequence>
+         <xsd:element name = "WorkCalendarsRecord"   type = "WWorkCalendarsRecordType"
+                                                   minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name = "WWorkCalendarsRecordType">
+      <xsd:sequence>
+         <xsd:group   ref  = "WorkRecordEntryType"/>
+         <xsd:element name = "WorkCalendar"   type = "WorkCalendarType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- WorkRecord Transaction Types        -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetWorkRecordType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "WorkRecord"
+                                                type = "WorkRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowWorkRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"      type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "WorkRecord"
+                                                type = "WorkRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessWorkRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "WorkRecord"
+                                                type = "WorkRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeWorkRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "WorkRecord"
+                                                type = "WorkRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeWorkRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "WorkRecord"
+                                                type = "WorkRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondWorkRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "WorkRecord"
+                                                type = "WorkRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelWorkRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "WorkRecord"
+                                                type = "WorkRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncWorkRecordType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "WorkRecord"
+                                                type = "WorkRecordType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+
+
+</xsd:schema>
