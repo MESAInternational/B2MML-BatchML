@@ -3,3 +3,5 @@ B2MML is an XML implementation of the ANSI/ISA-95, Enterprise-Control System Int
 
 # BatchML
 BatchML is an XML implementation of the ANSI/ISA-88, Batch Control, family of standards (ISA-88), known internationally as IEC 61512. BatchML consists of a set of XML schemas written using the World Wide Web Consortium's XML Schema language (XSD) that implements the models and terminology in the ISA-88 standard.
+
+Read me
