@@ -244,7 +244,7 @@
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "MaterialTestSpecificationID" type = "MaterialTestSpecificationIDType"      
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "AssemblylDefinitionID"       type = "MaterialDefinitionIDType"
+      <xsd:element name = "AssemblyDefinitionID"        type = "MaterialDefinitionIDType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "AssemblyType"                type = "AssemblyTypeType" 
 	                                                    minOccurs = "0"/>
