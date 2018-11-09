@@ -15,7 +15,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2016 MESA International, Version 0700
+        Copyright 2018 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -37,9 +37,9 @@
         injuries incurred by use of the Work or as a result of this 
         agreement.
       
-        Based upon the ANSI/ISA-95.00.02-2010 Enterprise-Control System 
+        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System 
         Integration Part 2: Object Model Attributes Standard and the
-        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration 
         Part 5: Business to Manufacturing Transactions
    </xsd:documentation>
 
@@ -53,7 +53,7 @@
         V0500   26 Mar 2011     D. Brandl       Revised version
         V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4
                                                 Moved OpXXXXX elements from Extensions to Common Extensions
-        V0700   08 Aug 2016     D. Brandl       Updated Version
+        V0700   09 Nov 2018     D. Brandl       Updated Version for latest 2018 release of ISA 95
 
    </xsd:documentation>
 </xsd:annotation>
@@ -86,6 +86,12 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
+        <xsd:group name = "EvaluatedPropertyReference">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
         <xsd:group name = "HierarchyScope">
                 <xsd:sequence>
                         <!-- add extended elements here -->
@@ -112,6 +118,36 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
+        <xsd:group name = "OperationalLocationInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationalLocationClass">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationalLocation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationalLocationClassProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationalLocationProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
         <xsd:group name = "Result">
                 <xsd:sequence>
                         <!-- add extended elements here -->
@@ -124,13 +160,55 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
+         <xsd:group name = "SpatialDefinition">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
         <xsd:group name = "TestResult">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "Value">
+        <xsd:group name = "TestPropertyMeasurement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+         <xsd:group name = "TestSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestSpecificationProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+         <xsd:group name = "TestSpecificationInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+         <xsd:group name = "TestSpecificationCriteria">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+         <xsd:group name = "TestSpecificationEvaluatedProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+       <xsd:group name = "Value">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>

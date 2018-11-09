@@ -1,0 +1,532 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<xsd:schema     xmlns:xsd            = "http://www.w3.org/2001/XMLSchema"
+                targetNamespace      = "http://www.mesa.org/xml/B2MML"
+                xmlns                = "http://www.mesa.org/xml/B2MML"
+                xmlns:Extended       = "http://www.mesa.org/xml/B2MML-AllExtensions" 
+                elementFormDefault   = "qualified"
+                attributeFormDefault = "unqualified">
+  
+<!-- Import the Extension Schema         -->
+
+<xsd:import     namespace="http://www.mesa.org/xml/B2MML-AllExtensions" 
+                schemaLocation="B2MML-AllExtensions.xsd"/>
+
+<!-- Include the Common schema   -->
+
+  <xsd:include schemaLocation = "B2MML-Common.xsd"/>
+
+
+<xsd:annotation> 
+   <xsd:documentation>
+
+        Copyright 2018 MESA International, Version 0700
+		All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (B2MML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided MESA International 
+        is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used 
+        courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+          
+        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System 
+        Integration Part 2: Object Model Attributes Standard and the
+        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration 
+        Part 5: Business to Manufacturing Transactions. 
+   </xsd:documentation>
+
+   <xsd:documentation> 
+
+      Revision History
+
+        Ver     Date            Person          Note
+        ---     ----            ------          ----
+       V0700   09 Nov 2018     D. Brandl      Initial Version from 2018 ISA 95 Part 2 update
+
+   </xsd:documentation>
+</xsd:annotation>
+
+<!-- Elements -->
+  
+  <xsd:element name = "TestSpecificationInformation" type ="TestSpecificationInformationType" />
+  <xsd:element name = "TestSpecification"            type ="TestSpecificationType" />
+
+
+<!-- Transaction Elements -->
+  <xsd:element name = "GetTestSpecification"         			type = "GetTestSpecificationType"/>
+  <xsd:element name = "ShowTestSpecification"        			type = "ShowTestSpecificationType"/>
+  <xsd:element name = "ProcessTestSpecification"     			type = "ProcessTestSpecificationType"/>
+  <xsd:element name = "AcknowledgeTestSpecification" 			type = "AcknowledgeTestSpecificationType"/>
+  <xsd:element name = "ChangeTestSpecification"      			type = "ChangeTestSpecificationType"/>
+  <xsd:element name = "RespondTestSpecification"    			type = "RespondTestSpecificationType"/>
+  <xsd:element name = "CancelTestSpecification"      			type = "CancelTestSpecificationType"/>
+  <xsd:element name = "SyncTestSpecification"        			type = "SyncTestSpecificationType"/>
+
+  <xsd:element name = "GetTestSpecificationInformation"         type = "GetTestSpecificationInformationType"/>
+  <xsd:element name = "ShowTestSpecificationInformation"        type = "ShowTestSpecificationInformationType"/>
+  <xsd:element name = "ProcessTestSpecificationInformation"     type = "ProcessTestSpecificationInformationType"/>
+  <xsd:element name = "AcknowledgeTestSpecificationInformation" type = "AcknowledgeTestSpecificationInformationType"/>
+  <xsd:element name = "ChangeTestSpecificationInformation"      type = "ChangeTestSpecificationInformationType"/>
+  <xsd:element name = "RespondTestSpecificationInformation"     type = "RespondTestSpecificationInformationType"/>
+  <xsd:element name = "CancelTestSpecificationInformation"      type = "CancelTestSpecificationInformationType"/>
+  <xsd:element name = "SyncTestSpecificationInformation"        type = "SyncTestSpecificationInformationType"/>
+
+
+
+<!-- Simple & Complex Types  -->
+  <xsd:complexType name = "TestSpecificationInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"                  
+                                                        minOccurs = "0" nillable="true"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"         
+                                                        minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
+                                                        minOccurs = "0"  nillable="true"/>
+      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+                                                        minOccurs = "0"  nillable="true"/>
+      <xsd:element name = "TestSpecification"         	type = "TestSpecificationType"      
+                                                        minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
+      <xsd:group   ref  = "Extended:TestSpecificationInformation" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  
+  <xsd:complexType name = "TestSpecificationType">
+    <xsd:sequence>
+      <xsd:element name = "ID"                          type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Version"           			type = "VersionType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "EffectiveStartDate"			type = "DateTimeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "EffectiveEndDate"			type = "DateTimeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "PublishedEndDate"			type = "DateTimeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "TestSampleSize"				type = "ValueType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "RecurrenceQuantity"			type = "ValueType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "RecurrenceTimeInterval"		type = "DurationType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "PhysicalSampleRequired"		type = "IndicatorType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "TestSpecification"       	type = "TestSpecificationType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "TestSpecificationProperty"	type = "TestSpecificationPropertyType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "TestSpecificationCriteria"	type = "TestSpecificationCriteriaType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "EvaluatedProperty"			type = "TestSpecificationEvaluatedPropertyType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:group   ref  = "Extended:TestSpecification"
+                                                        minOccurs = "0" maxOccurs = "1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="TestSpecificationPropertyType">
+        <xsd:sequence>
+            <xsd:element name="ID" 						type="IdentifierType"/>
+            <xsd:element name="Description" 			type="DescriptionType" 
+														minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="Value" 					type="ValueType" 
+														minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:group ref="Extended:TestSpecificationProperty" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+  
+
+  <xsd:complexType name="TestSpecificationCriteriaType">
+        <xsd:sequence>
+            <xsd:element name="ID" 						type="IdentifierType"/>
+            <xsd:element name="Description" 			type="DescriptionType" 
+														minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="Sequence" 				type="NumericType" 
+														minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="Expression" 				type="TextType" 
+														minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="Result" 					type="TextType" 
+														minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="EvaluatedPropertyID" 	type="IdentifierType" 
+														minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:group ref="Extended:TestSpecificationCriteria" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+ 
+ 
+  <xsd:complexType name="TestSpecificationEvaluatedPropertyType">
+        <xsd:sequence>
+            <xsd:element name="ID" 						type="IdentifierType"/>
+            <xsd:element name="Description" 			type="DescriptionType" 
+														minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="TestSpecificationCriteriaID" type="IdentifierType" 
+														minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="WorkDefinitionID" 		type="IdentifierType" 
+														minOccurs="0" maxOccurs="unbounded"/>
+             <xsd:group ref="Extended:TestSpecificationEvaluatedProperty" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+  
+  
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- TestSpecificationInformation Transaction Types   -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetTestSpecificationInformationType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "TestSpecificationInformation"
+                                                type = "TestSpecificationInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowTestSpecificationInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "TestSpecificationInformation"
+                                                type = "TestSpecificationInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessTestSpecificationInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "TestSpecificationInformation"
+                                                type = "TestSpecificationInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeTestSpecificationInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "TestSpecificationInformation"
+                                                type = "TestSpecificationInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeTestSpecificationInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "TestSpecificationInformation"
+                                                type = "TestSpecificationInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondTestSpecificationInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "TestSpecificationInformation"
+                                                type = "TestSpecificationInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelTestSpecificationInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "TestSpecificationInformation"
+                                                type = "TestSpecificationInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncTestSpecificationInformationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "TestSpecificationInformation"
+                                                type = "TestSpecificationInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+  
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- TestSpecification Transaction Types   -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+  <xsd:complexType name = "GetTestSpecificationType">
+    <xsd:sequence>      
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "TestSpecification"
+                                                type = "TestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowTestSpecificationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "TestSpecification"
+                                                type = "TestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessTestSpecificationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "TestSpecification"
+                                                type = "TestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeTestSpecificationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "TestSpecification"
+                                                type = "TestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeTestSpecificationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "TestSpecification"
+                                                type = "TestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondTestSpecificationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "TestSpecification"
+                                                type = "TestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelTestSpecificationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "TestSpecification"
+                                                type = "TestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncTestSpecificationType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "TestSpecification"
+                                                type = "TestSpecificationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+
+</xsd:schema>
