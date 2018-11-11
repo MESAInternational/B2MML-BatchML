@@ -13,7 +13,7 @@
 <xsd:import     namespace="http://www.mesa.org/xml/B2MML-AllExtensions" 
                 schemaLocation="B2MML-AllExtensions.xsd"/>
 
-<!-- Import the Test Specification Schema         -->
+<!-- Include the Test Specification Schema         -->
 
 <xsd:include     schemaLocation="B2MML-TestSpecification.xsd"/>
 
@@ -178,12 +178,10 @@ zero or more equipment classes.
                                                 minOccurs = "0" />
       <xsd:element name = "SpatialDefinition"   type = "SpatialDefinitionType"     
                                                 minOccurs = "0" />
-      <xsd:element name = "OperationalLocation" type = "TextType"     
-                                                minOccurs = "0" />
-      <xsd:element name = "OperationalLocationIsID" type = "IndicatorType"     
-                                                minOccurs = "0" />
       <xsd:element name = "EquipmentAssetMapping" type = "EquipmentAssetMappingType"   
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "OperationalLocation" type = "ResourceLocationType"     
+                                                minOccurs = "0" />
       <xsd:element name = "EquipmentProperty"   type = "EquipmentPropertyType"  
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "Equipment"           type = "EquipmentType"  
@@ -206,8 +204,8 @@ zero or more equipment classes.
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "EquipmentProperty"   type = "EquipmentPropertyType"  
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EquipmentCapabilityTestSpecificationID"
-                                                type = "IdentifierType"
+      <xsd:element name = "EvaluatedPropertyReference"
+                                                type = "EvaluatedPropertyReferenceType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "TestResult"          type = "TestResultType"         
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
@@ -254,8 +252,8 @@ zero or more equipment classes.
       <xsd:element name = "EquipmentClassProperty"
                                                 type = "EquipmentClassPropertyType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EquipmentCapabilityTestSpecificationID"
-                                                type = "IdentifierType"
+      <xsd:element name = "EvaluatedPropertyReference"
+                                                type = "EvaluatedPropertyReferenceType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:EquipmentClassProperty"
                                                 minOccurs = "0" maxOccurs = "1"/>

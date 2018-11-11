@@ -202,8 +202,9 @@ of test specifications.
              <xsd:group ref="Extended:TestSpecificationEvaluatedProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-  
-  
+
+
+   
 <!-- - - - - - - - - - - - - - - - - - - - - -->
 <!-- TestSpecificationInformation Transaction Types   -->
 <!-- - - - - - - - - - - - - - - - - - - - - -->

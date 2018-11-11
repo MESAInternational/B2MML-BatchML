@@ -1486,6 +1486,13 @@ Defined values are
         </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
+    <xsd:complexType name="ResourceLocationType">
+        <xsd:sequence>
+		<xsd:element name = "Location" type = "TextType" />
+		<xsd:element name = "LocationIsID" type = "IndicatorType" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--     -->    
     <!--     -->    
     <xsd:complexType name="ResourceReferenceType1Type">
         <xsd:simpleContent>

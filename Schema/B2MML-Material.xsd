@@ -12,6 +12,10 @@
 <xsd:import     namespace="http://www.mesa.org/xml/B2MML-AllExtensions" 
                 schemaLocation="B2MML-AllExtensions.xsd"/>
 
+<!-- Include the Test Specification Schema         -->
+
+<xsd:include     schemaLocation="B2MML-TestSpecification.xsd"/>
+
 <!-- Include the Common schema   -->
 
   <xsd:include schemaLocation = "B2MML-Common.xsd"/>
@@ -20,7 +24,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2016 MESA International, Version 0700
+        Copyright 2018 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -42,9 +46,9 @@
         injuries incurred by use of the Work or as a result of this 
         agreement.
           
-        Based upon the ANSI/ISA-95.00.02-2010 Enterprise-Control System 
+        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System 
         Integration Part 2: Object Model Attributes Standard and the
-        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration 
         Part 5: Business to Manufacturing Transactions. 
    </xsd:documentation>
 
@@ -81,7 +85,7 @@
 											    Removed "Any" element type, replaced with extended types for user extensions
 											    Changed "Location" element name to "HierarchyScope"
         V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
-        V0700   08 Aug 2016     D. Brandl       Updated Version
+        V0700   09 Nov 2018     D. Brandl       Updated Version
  
    </xsd:documentation>
 </xsd:annotation>
@@ -92,7 +96,6 @@
   <xsd:element name = "MaterialClass"                           type ="MaterialClassType" />
   <xsd:element name = "MaterialDefinition"                      type ="MaterialDefinitionType" />
   <xsd:element name = "MaterialLot"                             type ="MaterialLotType" />
-  <xsd:element name = "MaterialTestSpecification"               type ="MaterialTestSpecificationType" />
   <xsd:element name = "MaterialSubLot"                          type ="MaterialSubLotType" />
 
 <!-- Transaction Elements -->
@@ -146,16 +149,6 @@
   <xsd:element name = "SyncMaterialSubLot"                      type = "SyncMaterialSubLotType"/>
 
  
-  <xsd:element name = "GetMaterialTestSpec"                     type = "GetMaterialTestSpecType"/>
-  <xsd:element name = "ShowMaterialTestSpec"                    type = "ShowMaterialTestSpecType"/>
-  <xsd:element name = "ProcessMaterialTestSpec"                 type = "ProcessMaterialTestSpecType"/>
-  <xsd:element name = "AcknowledgeMaterialTestSpec"             type = "AcknowledgeMaterialTestSpecType"/>
-  <xsd:element name = "ChangeMaterialTestSpec"                  type = "ChangeMaterialTestSpecType"/>
-  <xsd:element name = "RespondMaterialTestSpec"                 type = "RespondMaterialTestSpecType"/>
-  <xsd:element name = "CancelMaterialTestSpec"                  type = "CancelMaterialTestSpecType"/>
-  <xsd:element name = "SyncMaterialTestSpec"                    type = "SyncMaterialTestSpecType"/>
-
- 
 <!-- Simple & Complex Types  -->
 
   <xsd:complexType name = "MaterialInformationType">
@@ -164,9 +157,6 @@
                                                         minOccurs = "0" nillable="true"/>
       <xsd:element name = "Description"                 type = "DescriptionType"         
                                                         minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
-      <!-- Location ELEMENT IS DEPRECATED and may be removed in a future release, use HierarchyScope instead -->
-      <xsd:element name = "Location"            type="LocationType" 
-	                                            minOccurs="0"/> 
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
                                                         minOccurs = "0"  nillable="true"/>
       <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
@@ -179,7 +169,7 @@
                                                         minOccurs = "0" maxOccurs = "unbounded" nillable="true"/>
       <xsd:element name = "MaterialSubLot"              type = "MaterialSubLotType"     
                                                         minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
-      <xsd:element name = "MaterialTestSpecification"   type = "MaterialTestSpecificationType"
+      <xsd:element name = "MaterialTestSpecification"   type = "TestSpecificationType"
                                                         minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
       <xsd:group   ref  = "Extended:MaterialInformation" minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -190,16 +180,16 @@
       <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <!-- Location ELEMENT IS DEPRECATED and may be removed in a future release, use HierarchyScope instead -->
-      <xsd:element name = "Location"            type="LocationType" 
-	                                            minOccurs="0"/> 
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"   
                                                         minOccurs = "0" />
+      <xsd:element name = "UsesPropertiesOfMaterialClassID"
+                                                        type = "IdentifierType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "MaterialClassProperty"       type = "MaterialClassPropertyType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "MaterialDefinitionID"        type = "MaterialDefinitionIDType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "MaterialTestSpecificationID" type = "MaterialTestSpecificationIDType"      
+      <xsd:element name = "MaterialTestSpecificationID" type = "IdentifierType"      
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "AssemblyClassID"             type = "MaterialClassIDType"    
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
@@ -220,8 +210,8 @@
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "MaterialClassProperty"       type = "MaterialClassPropertyType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "MaterialTestSpecificationID" type = "MaterialTestSpecificationIDType"      
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "EvaluatedPropertyReference"  type = "EvaluatedPropertyReferenceType"
+														minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:MaterialClassProperty" minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -231,10 +221,9 @@
       <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType"                
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <!-- Location ELEMENT IS DEPRECATED and may be removed in a future release, use HierarchyScope instead -->
-      <xsd:element name = "Location"            type="LocationType" 
-	                                            minOccurs="0"/> 
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"   
+                                                        minOccurs = "0" />
+      <xsd:element name = "SpatialDefinition"     		type = "SpatialDefinitionType"     
                                                         minOccurs = "0" />
       <xsd:element name = "MaterialDefinitionProperty"  type = "MaterialDefinitionPropertyType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
@@ -263,8 +252,9 @@
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "MaterialDefinitionProperty"  type = "MaterialDefinitionPropertyType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "MaterialTestSpecificationID" type = "MaterialTestSpecificationIDType"      
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "EvaluatedPropertyReference"
+                                                type = "EvaluatedPropertyReferenceType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:MaterialDefinitionProperty"     minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -274,10 +264,9 @@
       <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <!-- Location ELEMENT IS DEPRECATED and may be removed in a future release, use HierarchyScope instead -->
-      <xsd:element name = "Location"            type="LocationType" 
-	                                            minOccurs="0"/> 
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"   
+                                                        minOccurs = "0" />
+      <xsd:element name = "SpatialDefinition"     		type = "SpatialDefinitionType"     
                                                         minOccurs = "0" />
       <xsd:element name = "MaterialDefinitionID"        type = "MaterialDefinitionIDType"       
                                                         minOccurs = "0"/>
@@ -314,8 +303,9 @@
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "MaterialLotProperty"         type = "MaterialLotPropertyType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "MaterialTestSpecificationID" type = "MaterialTestSpecificationIDType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "EvaluatedPropertyReference"
+                                                type = "EvaluatedPropertyReferenceType"
+                                                minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "TestResult"                  type = "TestResultType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:MaterialLotProperty" minOccurs="0" maxOccurs="1"/>
@@ -327,9 +317,6 @@
       <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <!-- Location ELEMENT IS DEPRECATED and may be removed in a future release, use HierarchyScope instead -->
-      <xsd:element name = "Location"            type="LocationType" 
-	                                            minOccurs="0"/> 
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"   
                                                         minOccurs = "0" />
       <xsd:element name = "Status"                      type = "StatusType"     
@@ -355,58 +342,6 @@
       <xsd:group   ref  = "Extended:MaterialSubLot"     minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
-
-  <xsd:complexType name = "MaterialTestSpecificationType">
-    <xsd:sequence>
-      <xsd:element name = "Name"                        type = "NameType"/>
-      <xsd:element name = "Description"                 type = "DescriptionType" 
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Version"                     type = "VersionType"    
-                                                        minOccurs = "0"/>
-      <!-- Location ELEMENT IS DEPRECATED and may be removed in a future release, use HierarchyScope instead -->
-      <xsd:element name = "Location"            type="LocationType" 
-	                                            minOccurs="0"/> 
-      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "TestedMaterialClassProperty" type = "TestedMaterialClassPropertyType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "TestedMaterialDefinitionProperty"    
-                                                        type = "TestedMaterialDefinitionPropertyType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "TestedMaterialLotProperty"   type = "TestedMaterialLotPropertyType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:group   ref  = "Extended:MaterialTestSpecification"
-                                                        minOccurs="0" maxOccurs="1"/>
-    </xsd:sequence>
-  </xsd:complexType>
-
-  <xsd:complexType name = "TestedMaterialClassPropertyType">
-    <xsd:sequence>
-      <xsd:element name = "MaterialClassID"             type = "MaterialClassIDType" />
-      <xsd:element name = "PropertyID"                  type = "PropertyIDType"/>
-      <xsd:group   ref  = "Extended:TestedMaterialClassProperty" 
-                                                        minOccurs="0" maxOccurs="1"/>
-    </xsd:sequence>
-  </xsd:complexType>
-
-  <xsd:complexType name = "TestedMaterialDefinitionPropertyType">
-    <xsd:sequence>
-      <xsd:element name = "MaterialDefinitionID"        type = "MaterialDefinitionIDType" />
-      <xsd:element name = "PropertyID"                  type = "PropertyIDType"/>
-      <xsd:group   ref  = "Extended:TestedMaterialDefinitionProperty"
-                                                        minOccurs="0" maxOccurs="1"/>
-    </xsd:sequence>
-  </xsd:complexType>
-
-  <xsd:complexType name = "TestedMaterialLotPropertyType">
-    <xsd:sequence>
-      <xsd:element name = "MaterialLotID"               type = "MaterialLotIDType" />
-      <xsd:element name = "PropertyID"                  type = "PropertyIDType"/>
-      <xsd:group   ref  = "Extended:TestedMaterialLotProperty"
-                                                        minOccurs="0" maxOccurs="1"/>
-    </xsd:sequence>
-  </xsd:complexType>
-
 
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
@@ -1215,171 +1150,6 @@
     <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
     <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
   </xsd:complexType>
-
-
-<!-- - - - - - - - - - - - - - - - - - - - - -->
-<!-- MaterialTestSpec Transaction Types    -->
-<!-- - - - - - - - - - - - - - - - - - - - - -->
-
-  <xsd:complexType name = "GetMaterialTestSpecType">
-    <xsd:sequence>      
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Get"         type = "TransGetType"/>
-              <xsd:element name = "MaterialTestSpec"
-                                                type = "MaterialTestSpecificationType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "ShowMaterialTestSpecType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Show"        type = "TransShowType"/>
-              <xsd:element name = "MaterialTestSpec"
-                                                type = "MaterialTestSpecificationType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "ProcessMaterialTestSpecType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Process"     type = "TransProcessType"/>
-              <xsd:element name = "MaterialTestSpec"
-                                                type = "MaterialTestSpecificationType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "AcknowledgeMaterialTestSpecType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
-              <xsd:element name = "MaterialTestSpec"
-                                                type = "MaterialTestSpecificationType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "ChangeMaterialTestSpecType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Change"      type = "TransChangeType"/>
-              <xsd:element name = "MaterialTestSpec"
-                                                type = "MaterialTestSpecificationType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "RespondMaterialTestSpecType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Respond"     type = "TransRespondType"/>
-              <xsd:element name = "MaterialTestSpec"
-                                                type = "MaterialTestSpecificationType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "CancelMaterialTestSpecType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Cancel"      type = "TransCancelType"/>
-              <xsd:element name = "MaterialTestSpec"
-                                                type = "MaterialTestSpecificationType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "SyncMaterialTestSpecType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Sync"        type = "TransSyncType"/>
-              <xsd:element name = "MaterialTestSpec"
-                                                type = "MaterialTestSpecificationType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
 
 
 

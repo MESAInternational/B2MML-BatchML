@@ -12,7 +12,7 @@
 <xsd:import     namespace="http://www.mesa.org/xml/B2MML-AllExtensions" 
                 schemaLocation="B2MML-AllExtensions.xsd"/>
 
-<!-- Import the Test Specification Schema         -->
+<!-- Include the Test Specification Schema         -->
 
 <xsd:include     schemaLocation="B2MML-TestSpecification.xsd"/>
 
@@ -176,6 +176,10 @@ A person may be a member of zero or more personnel classes.
                                                         minOccurs = "0" />
             <xsd:element name = "PersonName"            type = "PersonNameType" 
                                                         minOccurs = "0"/>
+            <xsd:element name = "SpatialDefinition"     type = "SpatialDefinitionType"     
+                                                        minOccurs = "0" />
+            <xsd:element name = "OperationalLocation"  type = "ResourceLocationType"     
+                                                        minOccurs = "0" />
             <xsd:element name = "PersonProperty"        type = "PersonPropertyType"     
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
             <xsd:element name = "PersonnelClassID"      type = "PersonnelClassIDType"   
@@ -213,6 +217,9 @@ A person may be a member of zero or more personnel classes.
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
 			<xsd:element name = "HierarchyScope"        type = "HierarchyScopeType"    
                                                         minOccurs = "0"/>
+            <xsd:element name = "UsesPropertiesOfPersonnelClassID"
+                                                        type = "IdentifierType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
             <xsd:element name = "PersonnelClassProperty"
                                                         type = "PersonnelClassPropertyType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>

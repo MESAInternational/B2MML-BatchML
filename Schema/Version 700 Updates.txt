@@ -9,6 +9,6 @@ Non backward compatible changes:
 - Location element removed from all schemas, deprecated in Version 5
 - B2MML-Personnel.xsd:	Changed QualificationTestSpecification to the new TestSpecification model
 - B2MML-Common.xsd:		TestResultType changed to match the updated Test Specification model in 2018 ISA 95 Part 2 Clause 5.9.1
-- 
+- Changes to location information in the Physical Asset schemas
 
 
