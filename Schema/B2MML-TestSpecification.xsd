@@ -61,8 +61,26 @@
 
 <!-- Elements -->
   
-  <xsd:element name = "TestSpecificationInformation" type ="TestSpecificationInformationType" />
-  <xsd:element name = "TestSpecification"            type ="TestSpecificationType" />
+  <xsd:element name = "TestSpecificationInformation" type ="TestSpecificationInformationType" >
+		<xsd:annotation> 
+			<xsd:documentation>
+Operations test information is exchanged to communicate criteria that are to be applied to 
+perform tests of personnel, equipment, physical assets and/or materials and to communicate 
+the results of those tests.
+			</xsd:documentation>
+		</xsd:annotation> 
+	</xsd:element>
+ 
+  <xsd:element name = "TestSpecification"            type ="TestSpecificationType" >
+		<xsd:annotation> 
+			<xsd:documentation>
+The test specification details the test specification criteria and the tested evaluated property(s) 
+required for a testable object to match the quality or performance requirements of the business or 
+particular customers. A test specification may contain other test specifications to form a hierarchy 
+of test specifications. 
+			</xsd:documentation>
+		</xsd:annotation> 
+	</xsd:element>
 
 
 <!-- Transaction Elements -->

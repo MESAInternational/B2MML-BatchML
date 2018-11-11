@@ -89,8 +89,26 @@
 <!-- Elements -->
         
   <xsd:element name = "PersonnelInformation"                    type ="PersonnelInformationType" />
-  <xsd:element name = "PersonnelClass"                          type ="PersonnelClassType" />
-  <xsd:element name = "Person"                                  type ="PersonType" />
+  <xsd:element name = "PersonnelClass"                          type ="PersonnelClassType" >
+		<xsd:annotation> 
+			<xsd:documentation>
+A representation of a grouping of persons with similar characteristics for a definite purpose such as 
+manufacturing operations definition, scheduling, capability and performance is a personnel class. 
+Any person may be a member of zero or more personnel classes. A personnel class may be defined as 
+a specialization of zero or more personnel class. A personnel class may be made up of zero or more personnel class(s). 
+			</xsd:documentation>
+		</xsd:annotation> 
+	</xsd:element>
+ 
+  <xsd:element name = "Person"                                  type ="PersonType" >
+		<xsd:annotation> 
+			<xsd:documentation>
+A representation of a specifically identified individual is a person. 
+A person may be a member of zero or more personnel classes.
+			</xsd:documentation>
+		</xsd:annotation> 
+	</xsd:element>
+ 
 
 <!-- Transaction Elements -->
   <xsd:element name = "GetPersonnelInformation"                 type = "GetPersonnelInformationType"/>

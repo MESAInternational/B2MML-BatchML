@@ -110,6 +110,7 @@
                                              - Added a "Choice" option in HierarchyScopeType to allow either "EquipmentLevel" the updated
                                                term in ISA 95, or "EquipmentElementLevel", the older term.
                                              - Added HierarchyScope to TestResultType
+											 - Added documentation of selected elements
             
 
 
@@ -184,7 +185,15 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="AssemblyRelationshipType">
-        <xsd:simpleContent>
+		<xsd:annotation> 
+			<xsd:documentation>
+Defines the type of the relationships. 
+Defined types are
+- Permanent: an assembly that is not intended to be split during the production process; 
+- Transient: a temporary assembly using during production, such as a pallet of different materials or a batch kit. 
+			</xsd:documentation>
+		</xsd:annotation> 
+         <xsd:simpleContent>
             <xsd:extension base="AssemblyRelationship1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
@@ -202,7 +211,15 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="AssemblyTypeType">
-        <xsd:simpleContent>
+		<xsd:annotation> 
+			<xsd:documentation>
+Defines the type of the assembly.
+Defined types are
+- physical: the components of the assembly are physically connected or in the same area. 
+- logical: the components of the assembly are not necessarily physically connected or in the same area. 
+			</xsd:documentation>
+		</xsd:annotation> 
+         <xsd:simpleContent>
             <xsd:extension base="AssemblyType1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
@@ -242,6 +259,18 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="CapabilityTypeType">
+		<xsd:annotation> 
+			<xsd:documentation>
+Defines the type of capability. 
+Defined values are
+- Committed: capacity that is committed for future productive use;
+- Unattainable: capacity that is not attainable for future productive use given the equipment condition, equipment utilization, personnel availability or material availability;
+- Available: capacity that is available for additional future productive use;
+- Used: a historical value that defines the portion of the capacity with acceptable quality;
+- Unused: a historical value that defines the portion of the capacity that was not used or had unacceptable quality; and
+- Total: the sum of used and unused capability or the sum of available, unattainable and committed capability.
+			</xsd:documentation>
+		</xsd:annotation> 
         <xsd:simpleContent>
             <xsd:extension base="CapabilityType1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
@@ -374,6 +403,22 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="DependencyType">
+		<xsd:annotation> 
+			<xsd:documentation>
+Defines an execution dependency constraint of two elements. 
+Defined values are (explained using dependency type between element A and element B)
+-	at start: start B at A start;
+-	after start: start B after A start;
+-	after end: start B after A end;
+-	not follow: B cannot follow A;
+-	possible parallel: B may run in parallel to A;
+-	not in parallel: B may not run in parallel to A;
+-	no later after start: start B no later than dependency factor after A start:
+-	no earlier after start: start B no earlier than dependency factor after A start;
+-	no later after end: start B no later than dependency factor after A end;
+-	no earlier after end: B no earlier than dependency factor after A end.
+			</xsd:documentation>
+		</xsd:annotation> 
         <xsd:simpleContent>
             <xsd:extension base="Dependency1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
@@ -448,6 +493,26 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="EquipmentElementLevelType">
+		<xsd:annotation> 
+			<xsd:documentation>
+Defines the role based equipment hierarchy level as defined in ISA 95. 
+Defined values are:
+- Enterprise
+- Site
+- Area
+- WorkCenter
+- WorkUnit
+- ProcessCell
+- Unit
+- ProductionLine
+- WorkCell
+- ProductionUnit
+- StorageZone
+- StorageUnit
+- EquipmentModule
+- Control Module
+			</xsd:documentation>
+		</xsd:annotation> 
         <xsd:simpleContent>
             <xsd:extension base="EquipmentElementLevel1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
@@ -483,6 +548,13 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="HierarchyScopeType">
+		<xsd:annotation> 
+			<xsd:documentation>
+The hierarchy scope identifies where the exchanged information fits within the role-based equipment hierarchy. 
+It defines the scope of the exchanged information, such as a site or area for which the information is relevant. 
+The hierarchy scope identifies the associated instance in the role-based equipment hierarchy.
+			</xsd:documentation>
+		</xsd:annotation> 
         <xsd:sequence>
             <xsd:element name="EquipmentID" type="EquipmentIDType"/>
             <xsd:choice>
@@ -513,7 +585,21 @@
  
  <!--     -->    
     <xsd:complexType name="JobOrderCommandType">
-        <xsd:simpleContent>
+		<xsd:annotation> 
+			<xsd:documentation>
+Defines the commands to a job order, as defined in ISA 95 and ISA 88.
+Defined values are:
+- Start
+- Stop
+- Hold
+- Restart
+- Abort
+- Reset
+- Pause
+- Resume
+			</xsd:documentation>
+		</xsd:annotation> 
+         <xsd:simpleContent>
             <xsd:extension base="JobOrderCommand1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
@@ -532,14 +618,16 @@
     <xsd:complexType name="JobOrderDispatchStatus1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
+                <xsd:enumeration value="Waiting"/>
                 <xsd:enumeration value="Pending"/>
                 <xsd:enumeration value="Cancelled"/>
+                <xsd:enumeration value="Dispatched"/>
                 <xsd:enumeration value="Ready"/>
                 <xsd:enumeration value="Running"/>
                 <xsd:enumeration value="Completed"/>
                 <xsd:enumeration value="Aborted"/>
                 <xsd:enumeration value="Held"/>
-                <xsd:enumeration value="Paused"/>
+                <xsd:enumeration value="Suspended"/>
                 <xsd:enumeration value="Closed"/>
                 <xsd:enumeration value="Other"/>
             </xsd:restriction>
@@ -548,7 +636,24 @@
 
     <!--     -->    
     <xsd:complexType name="JobOrderDispatchStatusType">
-        <xsd:simpleContent>
+		<xsd:annotation> 
+			<xsd:documentation>
+Defines the states to a job order, as defined in ISA 95 and ISA 88.
+Defined values are
+- Waiting 
+- Pending 
+- Cancelled 
+- Dispatched 
+- Ready 
+- Running 
+- Completed 
+- Aborted 
+- Held 
+- Suspended
+- Closed
+			</xsd:documentation>
+		</xsd:annotation> 
+         <xsd:simpleContent>
             <xsd:extension base="JobOrderDispatchStatus1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
@@ -637,24 +742,38 @@
     <xsd:complexType name="MaterialUse1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
+                <xsd:enumeration value="Consumable"/>
                 <xsd:enumeration value="Consumed"/>
                 <xsd:enumeration value="Produced"/>
-                <xsd:enumeration value="Consumable"/>
                 <xsd:enumeration value="By-product Produced"/>
                 <xsd:enumeration value="Co-product Produced"/>
-                <xsd:enumeration value="Replaced Asset"/>
-                <xsd:enumeration value="Replacement Asset"/>
-                <xsd:enumeration value="Sample"/>
+                <xsd:enumeration value="Yield Produced"/>
+                <xsd:enumeration value="Material Consumed"/>
+                <xsd:enumeration value="Material Produced"/>
+                <xsd:enumeration value="Destructive Sample"/>
                 <xsd:enumeration value="Returned Sample"/>
-                <xsd:enumeration value="Carrier"/>
-                <xsd:enumeration value="Returned Carrier"/>
+                <xsd:enumeration value="Retained Sample"/>
+                <xsd:enumeration value="Inventoried"/>
                 <xsd:enumeration value="Other"/>
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="MaterialUseType">
-        <xsd:simpleContent>
+		<xsd:annotation> 
+			<xsd:documentation>
+Defines the expected use of the material class, material definition, material lot, or material sublot in the context of the operations segment.
+Defined values for production operations are
+- Consumable, Consumed, Produced, By-product Produced, Co-product Produced, and Yield Produced.
+Defined values for maintenance operations are
+- Consumable, Material Consumed, and Material Produced.
+Defined values for quality test operations are 
+- Consumable, Destructive Sample, Returned Sample, and Retained Sample.
+Defined values for inventory operations defined values are
+- Consumable, Material Consumed, Material Produced, and Inventoried.
+			</xsd:documentation>
+		</xsd:annotation> 
+         <xsd:simpleContent>
             <xsd:extension base="MaterialUse1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
@@ -1018,7 +1137,15 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="OperationsTypeType">
-        <xsd:simpleContent>
+		<xsd:annotation> 
+			<xsd:documentation>
+Describes the category of the activity. 
+Defined values are 
+- Production, Maintenance, Quality, Inventory, or Mixed. 
+- Mixed” can be used when the activity covers several categories.
+			</xsd:documentation>
+		</xsd:annotation> 
+         <xsd:simpleContent>
             <xsd:extension base="OperationsType1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
@@ -1176,6 +1303,14 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="ClassPropertyTypeType">
+		<xsd:annotation> 
+			<xsd:documentation>
+Defines the type of the property. Defined types are
+- ClassType: the property value is defined for the class and there is no value associated with an instance;
+- InstanceType: the property value of the class is undefined; and
+- DefaultType: the property value is defined for the class as the default instance value, but individual instances of the class may redefine specific values.
+			</xsd:documentation>
+		</xsd:annotation> 
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
                 <xsd:enumeration value="ClassType"/>
@@ -1289,7 +1424,24 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="RequestStateType">
-        <xsd:simpleContent>
+		<xsd:annotation> 
+			<xsd:documentation>
+Indicates the state of an operations or work request. 
+Defined values are
+- Forecast
+- Released
+- Cancelled
+- Waiting
+- Ready
+- Running
+- Completed
+- Aborted
+- Held
+- Suspended
+- Closed
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
             <xsd:extension base="RequestState1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
@@ -1307,6 +1459,14 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="RequiredByRequestedSegmentResponseType">
+		<xsd:annotation> 
+			<xsd:documentation>
+Indicates if a segment response assicated with a segment request is required. 
+Defined values are
+- Required
+- Optional
+			</xsd:documentation>
+		</xsd:annotation>
         <xsd:simpleContent>
             <xsd:extension base="RequiredByRequestedSegmentResponse1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
@@ -1355,6 +1515,24 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="ResourcesType">
+		<xsd:annotation> 
+			<xsd:documentation>
+Indicates the type of the resource referenced. 
+Defined values are
+- Personnel
+- Personnel Class
+- Equipment
+- Equipment Class
+- Material Class
+- Material Definition
+- Material Lot
+- Material Sublot
+- Physical Asset
+- Physical Ssset Class
+- Work Master
+- Process Segment
+			</xsd:documentation>
+		</xsd:annotation>
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
@@ -1375,7 +1553,20 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="ResponseStateType">
-        <xsd:simpleContent>
+		<xsd:annotation> 
+			<xsd:documentation>
+Defines the states to a operations response.
+Defined values are
+- Ready 
+- Running 
+- Completed 
+- Aborted 
+- Holding 
+- Paused
+- Closed
+			</xsd:documentation>
+		</xsd:annotation> 
+          <xsd:simpleContent>
             <xsd:extension base="ResponseState1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
@@ -1415,6 +1606,14 @@
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="SpatialDefinitionType">
+		<xsd:annotation> 
+			<xsd:documentation>
+The spatial definition provides a means of communicating zero-dimensional point, one-dimensional line, 
+or two-dimensional shape or three-dimensional solid geospatial location data for planning/scheduling, 
+actuals, resources, and analytics. 
+Spatial definition identifies a value and the predefined coordinate reference system. 
+			</xsd:documentation>
+		</xsd:annotation> 
         <xsd:sequence>
             <xsd:element name="Value" type="TextType"/>
             <xsd:element name="Format" type="IdentifierType"/>

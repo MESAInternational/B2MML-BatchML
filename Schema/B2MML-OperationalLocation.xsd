@@ -61,9 +61,36 @@
 
 <!-- Elements -->
   
-  <xsd:element name = "OperationalLocationInformation" type ="OperationalLocationInformationType" />
-  <xsd:element name = "OperationalLocationClass"       type ="OperationalLocationClassType" />
-  <xsd:element name = "OperationalLocation"            type ="OperationalLocationType" />
+  <xsd:element name = "OperationalLocationInformation" type ="OperationalLocationInformationType" >
+		<xsd:annotation> 
+			<xsd:documentation>
+Operational locations define the logical or physical places in which resources are located or are expected to be located within a plant. 
+Operational locations may be made up of smaller operational locations. An operational location may belong to one or more operational location classes. 
+An operational location class may be a specialization of one or more operational location classes.
+			</xsd:documentation>
+		</xsd:annotation>  
+	</xsd:element>
+  
+  <xsd:element name = "OperationalLocationClass"       type ="OperationalLocationClassType" >
+		<xsd:annotation> 
+			<xsd:documentation>
+A representation of a grouping of operational locations with similar characteristics for a definite purpose 
+such as manufacturing operations definition, scheduling, capability and performance shall be presented as an 
+operational location class. Any operational location may be a member of zero or more operational location classes.
+			</xsd:documentation>
+		</xsd:annotation> 
+	</xsd:element>
+	
+  <xsd:element name = "OperationalLocation"            type ="OperationalLocationType" >
+		<xsd:annotation> 
+			<xsd:documentation>
+A logical or physical location where a material lot, material sublot, equipment, physical asset or person 
+is located or expected to be located shall be presented as an operational location. Operational locations 
+may be made up of other operational locations.
+			</xsd:documentation>
+		</xsd:annotation> 
+	</xsd:element>
+ 
 
 
 <!-- Transaction Elements -->
