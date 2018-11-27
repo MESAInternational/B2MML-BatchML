@@ -58,95 +58,98 @@
 
         Ver     Date            Person          Note
         ---     ----            ------          ----
-        v01     7 Apr 2002      D. Emerson      Initial release  
-        v02     23 Sept 2003    D. Emerson      Updated filename for v02
-                                                Added Location information to lot type
-                                                Changed ##any to "Any" element of type "AnyType"
-                                                Move StorageLocation and Quantity from
-                                                MaterialLotPropertyType to MaterialLotType where
-                                                an earlier comment incorrectly placed them.
-                                                Added revision to namespace
-        v0201   17 Nov 2003     D. Emerson      Updated namespace after change to common schema
-        v0300   26 Aug 2005     D. Emerson      Added substitution groups.  One group added just
-                                                before each Any element.
-                                                Added MaterialLotID to MaterialSubLot so a stand
-                                                alone MaterialSubLot element can be identified
-                                                with a Lot ID.
-        v0301   29 Dec 2005     D. Brandl       Added Property to Material Sublot 
-        v04     04 Jun 2007     D. Brandl       Added transaction elements for ISA 95 Part 5 support.
-                                                Added "cc:" namespace for UN/CEFACT core types.
-                                                Added the UN/CEFACT core components with optional attributes
-                                                and made them the base types for the B2MML types. 
-                                                Added warning before each use of the AnyType that the extension 
-                                                schema should be used instead of the Any element and that in a 
-                                                still to be determined future release of B2MML the AnyType and 
-                                                Any element will be removed.
-        V0500   26 Mar 2011     D. Brandl       Revised version for V05
-											    Removed "Any" element type, replaced with extended types for user extensions
-											    Changed "Location" element name to "HierarchyScope"
-        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
-        V0700   09 Nov 2018     D. Brandl       Updated Version
+        V0700   09 Nov 2018     D. Brandl       Initial Version
  
    </xsd:documentation>
 </xsd:annotation>
 
 <!-- Global Elements -->
   
-  <xsd:element name = "MaterialInformation"                     type ="MaterialInformationType" />
-  <xsd:element name = "MaterialClass"                           type ="MaterialClassType" />
-  <xsd:element name = "MaterialDefinition"                      type ="MaterialDefinitionType" />
-  <xsd:element name = "MaterialLot"                             type ="MaterialLotType" />
-  <xsd:element name = "MaterialSubLot"                          type ="MaterialSubLotType" />
+  <xsd:element name = "OperationsEventInformation"                     type ="OperationsEventInformationType" >
+		<xsd:annotation> 
+			<xsd:documentation>
+The operations event model represents a generic representation of event notifications using 
+the operations event object and the constructs required to define, group and structure the 
+operations event occurrences. 
+			</xsd:documentation>
+		</xsd:annotation> 
+	</xsd:element>
+ 
+  <xsd:element name = "OperationsEventClass"                           type ="OperationsEventClassType" >
+		<xsd:annotation> 
+			<xsd:documentation>
+An operations event class is a representation of groupings of operations event definitions. 
+			</xsd:documentation>
+		</xsd:annotation> 
+	</xsd:element>
+ 
+  <xsd:element name = "OperationsEventDefinition"                      type ="OperationsEventDefinitionType" >
+		<xsd:annotation> 
+			<xsd:documentation>
+Definition and structure of operations event occurrences shall be shown as an operations 
+event definition. 
+The operations event definition of an operations event is identified by the definition 
+ID attribute in the operations event occurrence. 
+Those constructing or interpreting an operations event obtain and validate the structure
+and definition from the operations event definition. 
+			</xsd:documentation>
+		</xsd:annotation> 
+	</xsd:element>
+ 
+  <xsd:element name = "OperationsEvent"                               type ="OperationsEventType" >
+		<xsd:annotation> 
+			<xsd:documentation>
+Large numbers of real-world events occur in any given manufacturing system. Only some 
+real-world events are associated with manufacturing operations management activities 
+and functions. The subset of those real-world events that require notification of 
+process context specific information exchanges of this standard shall be defined as 
+operations events. Operations events may be generated by any Level 4 or Level 3 
+function or activity. 
+			</xsd:documentation>
+		</xsd:annotation> 
+	</xsd:element>
+ 
 
 <!-- Transaction Elements -->
-  <xsd:element name = "GetMaterialInformation"                  type = "GetMaterialInformationType"/>
-  <xsd:element name = "ShowMaterialInformation"                 type = "ShowMaterialInformationType"/>
-  <xsd:element name = "ProcessMaterialInformation"              type = "ProcessMaterialInformationType"/>
-  <xsd:element name = "AcknowledgeMaterialInformation"          type = "AcknowledgeMaterialInformationType"/>
-  <xsd:element name = "ChangeMaterialInformation"               type = "ChangeMaterialInformationType"/>
-  <xsd:element name = "RespondMaterialInformation"              type = "RespondMaterialInformationType"/>
-  <xsd:element name = "CancelMaterialInformation"               type = "CancelMaterialInformationType"/>
-  <xsd:element name = "SyncMaterialInformation"                 type = "SyncMaterialInformationType"/>
+  <xsd:element name = "GetOperationsEventInformation"                  type = "GetOperationsEventInformationType"/>
+  <xsd:element name = "ShowOperationsEventInformation"                 type = "ShowOperationsEventInformationType"/>
+  <xsd:element name = "ProcessOperationsEventInformation"              type = "ProcessOperationsEventInformationType"/>
+  <xsd:element name = "AcknowledgeOperationsEventInformation"          type = "AcknowledgeOperationsEventInformationType"/>
+  <xsd:element name = "ChangeOperationsEventInformation"               type = "ChangeOperationsEventInformationType"/>
+  <xsd:element name = "RespondOperationsEventInformation"              type = "RespondOperationsEventInformationType"/>
+  <xsd:element name = "CancelOperationsEventInformation"               type = "CancelOperationsEventInformationType"/>
+  <xsd:element name = "SyncOperationsEventInformation"                 type = "SyncOperationsEventInformationType"/>
 
 
-  <xsd:element name = "GetMaterialClass"                        type = "GetMaterialClassType"/>
-  <xsd:element name = "ShowMaterialClass"                       type = "ShowMaterialClassType"/>
-  <xsd:element name = "ProcessMaterialClass"                    type = "ProcessMaterialClassType"/>
-  <xsd:element name = "AcknowledgeMaterialClass"                type = "AcknowledgeMaterialClassType"/>
-  <xsd:element name = "ChangeMaterialClass"                     type = "ChangeMaterialClassType"/>
-  <xsd:element name = "RespondMaterialClass"                    type = "RespondMaterialClassType"/>
-  <xsd:element name = "CancelMaterialClass"                     type = "CancelMaterialClassType"/>
-  <xsd:element name = "SyncMaterialClass"                       type = "SyncMaterialClassType"/>
-
- 
-  <xsd:element name = "GetMaterialDefinition"                   type = "GetMaterialDefinitionType"/>
-  <xsd:element name = "ShowMaterialDefinition"                  type = "ShowMaterialDefinitionType"/>
-  <xsd:element name = "ProcessMaterialDefinition"               type = "ProcessMaterialDefinitionType"/>
-  <xsd:element name = "AcknowledgeMaterialDefinition"           type = "AcknowledgeMaterialDefinitionType"/>
-  <xsd:element name = "ChangeMaterialDefinition"                type = "ChangeMaterialDefinitionType"/>
-  <xsd:element name = "RespondMaterialDefinition"               type = "RespondMaterialDefinitionType"/>
-  <xsd:element name = "CancelMaterialDefinition"                type = "CancelMaterialDefinitionType"/>
-  <xsd:element name = "SyncMaterialDefinition"                  type = "SyncMaterialDefinitionType"/>
+  <xsd:element name = "GetOperationsEventClass"                        type = "GetOperationsEventClassType"/>
+  <xsd:element name = "ShowOperationsEventClass"                       type = "ShowOperationsEventClassType"/>
+  <xsd:element name = "ProcessOperationsEventClass"                    type = "ProcessOperationsEventClassType"/>
+  <xsd:element name = "AcknowledgeOperationsEventClass"                type = "AcknowledgeOperationsEventClassType"/>
+  <xsd:element name = "ChangeOperationsEventClass"                     type = "ChangeOperationsEventClassType"/>
+  <xsd:element name = "RespondOperationsEventClass"                    type = "RespondOperationsEventClassType"/>
+  <xsd:element name = "CancelOperationsEventClass"                     type = "CancelOperationsEventClassType"/>
+  <xsd:element name = "SyncOperationsEventClass"                       type = "SyncOperationsEventClassType"/>
 
  
-  <xsd:element name = "GetMaterialLot"                          type = "GetMaterialLotType"/>
-  <xsd:element name = "ShowMaterialLot"                         type = "ShowMaterialLotType"/>
-  <xsd:element name = "ProcessMaterialLot"                      type = "ProcessMaterialLotType"/>
-  <xsd:element name = "AcknowledgeMaterialLot"                  type = "AcknowledgeMaterialLotType"/>
-  <xsd:element name = "ChangeMaterialLot"                       type = "ChangeMaterialLotType"/>
-  <xsd:element name = "RespondMaterialLot"                      type = "RespondMaterialLotType"/>
-  <xsd:element name = "CancelMaterialLot"                       type = "CancelMaterialLotType"/>
-  <xsd:element name = "SyncMaterialLot"                         type = "SyncMaterialLotType"/>
+  <xsd:element name = "GetOperationsEventDefinition"                   type = "GetOperationsEventDefinitionType"/>
+  <xsd:element name = "ShowOperationsEventDefinition"                  type = "ShowOperationsEventDefinitionType"/>
+  <xsd:element name = "ProcessOperationsEventDefinition"               type = "ProcessOperationsEventDefinitionType"/>
+  <xsd:element name = "AcknowledgeOperationsEventDefinition"           type = "AcknowledgeOperationsEventDefinitionType"/>
+  <xsd:element name = "ChangeOperationsEventDefinition"                type = "ChangeOperationsEventDefinitionType"/>
+  <xsd:element name = "RespondOperationsEventDefinition"               type = "RespondOperationsEventDefinitionType"/>
+  <xsd:element name = "CancelOperationsEventDefinition"                type = "CancelOperationsEventDefinitionType"/>
+  <xsd:element name = "SyncOperationsEventDefinition"                  type = "SyncOperationsEventDefinitionType"/>
 
  
-  <xsd:element name = "GetMaterialSubLot"                       type = "GetMaterialSubLotType"/>
-  <xsd:element name = "ShowMaterialSubLot"                      type = "ShowMaterialSubLotType"/>
-  <xsd:element name = "ProcessMaterialSubLot"                   type = "ProcessMaterialSubLotType"/>
-  <xsd:element name = "AcknowledgeMaterialSubLot"               type = "AcknowledgeMaterialSubLotType"/>
-  <xsd:element name = "ChangeMaterialSubLot"                    type = "ChangeMaterialSubLotType"/>
-  <xsd:element name = "RespondMaterialSubLot"                   type = "RespondMaterialSubLotType"/>
-  <xsd:element name = "CancelMaterialSubLot"                    type = "CancelMaterialSubLotType"/>
-  <xsd:element name = "SyncMaterialSubLot"                      type = "SyncMaterialSubLotType"/>
+  <xsd:element name = "GetOperationsEvent"                          type = "GetOperationsEventType"/>
+  <xsd:element name = "ShowOperationsEvent"                         type = "ShowOperationsEventType"/>
+  <xsd:element name = "ProcessOperationsEvent"                      type = "ProcessOperationsEventType"/>
+  <xsd:element name = "AcknowledgeOperationsEvent"                  type = "AcknowledgeOperationsEventType"/>
+  <xsd:element name = "ChangeOperationsEvent"                       type = "ChangeOperationsEventType"/>
+  <xsd:element name = "RespondOperationsEvent"                      type = "RespondOperationsEventType"/>
+  <xsd:element name = "CancelOperationsEvent"                       type = "CancelOperationsEventType"/>
+  <xsd:element name = "SyncOperationsEvent"                         type = "SyncOperationsEventType"/>
+
 
  
 <!-- Simple & Complex Types  -->
@@ -315,51 +318,22 @@
     </xsd:sequence>
   </xsd:complexType>
 
-  <xsd:complexType name = "MaterialSubLotType">
-    <xsd:sequence>
-      <xsd:element name = "ID"                          type = "IdentifierType"/>
-      <xsd:element name = "Description"                 type = "DescriptionType" 
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "Status"                      type = "StatusType"     
-                                                        minOccurs = "0"/>
-      <xsd:element name = "MaterialSublotProperty"      type = "MaterialLotPropertyType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "StorageLocation"             type = "StorageHierarchyScopeType"    
-                                                        minOccurs = "0"/>
-      <xsd:element name = "Quantity"                    type = "QuantityValueType" 
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "MaterialSubLot"              type = "MaterialSubLotType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "MaterialLotID"               type = "MaterialLotIDType" 
-                                                        minOccurs="0" maxOccurs="1" />
-      <xsd:element name = "AssemblyLotID"               type = "MaterialLotType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "AssemblySubLotID"            type = "MaterialSubLotType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "AssemblyType"                type = "AssemblyTypeType" 
-	                                                    minOccurs = "0"/>
-      <xsd:element name = "AssemblyRelationship"        type = "AssemblyRelationshipType" 
-	                                                    minOccurs = "0"/>
-      <xsd:group   ref  = "Extended:MaterialSubLot"     minOccurs="0" maxOccurs="1"/>
-    </xsd:sequence>
-  </xsd:complexType>
+
 
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
-<!-- MaterialInformation Transaction Types   -->
+<!-- OperationsEventInformation Transaction Types   -->
 <!-- - - - - - - - - - - - - - - - - - - - - -->
 
-  <xsd:complexType name = "GetMaterialInformationType">
+  <xsd:complexType name = "GetOperationsEventInformationType">
     <xsd:sequence>      
          <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Get"         type = "TransGetType"/>
-              <xsd:element name = "MaterialInformation"
-                                                type = "MaterialInformationType"
+              <xsd:element name = "OperationsEventInformation"
+                                                type = "OperationsEventInformationType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -371,15 +345,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ShowMaterialInformationType">
+  <xsd:complexType name = "ShowOperationsEventInformationType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Show"        type = "TransShowType"/>
-              <xsd:element name = "MaterialInformation"
-                                                type = "MaterialInformationType"
+              <xsd:element name = "OperationsEventInformation"
+                                                type = "OperationsEventInformationType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -391,15 +365,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ProcessMaterialInformationType">
+  <xsd:complexType name = "ProcessOperationsEventInformationType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Process"     type = "TransProcessType"/>
-              <xsd:element name = "MaterialInformation"
-                                                type = "MaterialInformationType"
+              <xsd:element name = "OperationsEventInformation"
+                                                type = "OperationsEventInformationType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -411,15 +385,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "AcknowledgeMaterialInformationType">
+  <xsd:complexType name = "AcknowledgeOperationsEventInformationType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
-              <xsd:element name = "MaterialInformation"
-                                                type = "MaterialInformationType"
+              <xsd:element name = "OperationsEventInformation"
+                                                type = "OperationsEventInformationType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -431,15 +405,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ChangeMaterialInformationType">
+  <xsd:complexType name = "ChangeOperationsEventInformationType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Change"      type = "TransChangeType"/>
-              <xsd:element name = "MaterialInformation"
-                                                type = "MaterialInformationType"
+              <xsd:element name = "OperationsEventInformation"
+                                                type = "OperationsEventInformationType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -452,15 +426,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "RespondMaterialInformationType">
+  <xsd:complexType name = "RespondOperationsEventInformationType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Respond"     type = "TransRespondType"/>
-              <xsd:element name = "MaterialInformation"
-                                                type = "MaterialInformationType"
+              <xsd:element name = "OperationsEventInformation"
+                                                type = "OperationsEventInformationType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -473,15 +447,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "CancelMaterialInformationType">
+  <xsd:complexType name = "CancelOperationsEventInformationType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Cancel"      type = "TransCancelType"/>
-              <xsd:element name = "MaterialInformation"
-                                                type = "MaterialInformationType"
+              <xsd:element name = "OperationsEventInformation"
+                                                type = "OperationsEventInformationType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -494,15 +468,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "SyncMaterialInformationType">
+  <xsd:complexType name = "SyncOperationsEventInformationType">
      <xsd:sequence>
      <xsd:element name = "ApplicationArea"      type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Sync"        type = "TransSyncType"/>
-              <xsd:element name = "MaterialInformation"
-                                                type = "MaterialInformationType"
+              <xsd:element name = "OperationsEventInformation"
+                                                type = "OperationsEventInformationType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -516,18 +490,18 @@
 
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
-<!-- MaterialClass Transaction Types         -->
+<!-- OperationsEventClass Transaction Types         -->
 <!-- - - - - - - - - - - - - - - - - - - - - -->
 
-  <xsd:complexType name = "GetMaterialClassType">
+  <xsd:complexType name = "GetOperationsEventClassType">
     <xsd:sequence>      
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Get"         type = "TransGetType"/>
-              <xsd:element name = "MaterialClass"
-                                                type = "MaterialClassType"
+              <xsd:element name = "OperationsEventClass"
+                                                type = "OperationsEventClassType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -539,15 +513,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ShowMaterialClassType">
+  <xsd:complexType name = "ShowOperationsEventClassType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Show"        type = "TransShowType"/>
-              <xsd:element name = "MaterialClass"
-                                                type = "MaterialClassType"
+              <xsd:element name = "OperationsEventClass"
+                                                type = "OperationsEventClassType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -559,15 +533,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ProcessMaterialClassType">
+  <xsd:complexType name = "ProcessOperationsEventClassType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Process"     type = "TransProcessType"/>
-              <xsd:element name = "MaterialClass"
-                                                type = "MaterialClassType"
+              <xsd:element name = "OperationsEventClass"
+                                                type = "OperationsEventClassType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -579,15 +553,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "AcknowledgeMaterialClassType">
+  <xsd:complexType name = "AcknowledgeOperationsEventClassType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
-              <xsd:element name = "MaterialClass"
-                                                type = "MaterialClassType"
+              <xsd:element name = "OperationsEventClass"
+                                                type = "OperationsEventClassType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -599,15 +573,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ChangeMaterialClassType">
+  <xsd:complexType name = "ChangeOperationsEventClassType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Change"      type = "TransChangeType"/>
-              <xsd:element name = "MaterialClass"
-                                                type = "MaterialClassType"
+              <xsd:element name = "OperationsEventClass"
+                                                type = "OperationsEventClassType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -619,15 +593,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "RespondMaterialClassType">
+  <xsd:complexType name = "RespondOperationsEventClassType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Respond"     type = "TransRespondType"/>
-              <xsd:element name = "MaterialClass"
-                                                type = "MaterialClassType"
+              <xsd:element name = "OperationsEventClass"
+                                                type = "OperationsEventClassType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -639,15 +613,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "CancelMaterialClassType">
+  <xsd:complexType name = "CancelOperationsEventClassType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Cancel"      type = "TransCancelType"/>
-              <xsd:element name = "MaterialClass"
-                                                type = "MaterialClassType"
+              <xsd:element name = "OperationsEventClass"
+                                                type = "OperationsEventClassType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -659,15 +633,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "SyncMaterialClassType">
+  <xsd:complexType name = "SyncOperationsEventClassType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Sync"        type = "TransSyncType"/>
-              <xsd:element name = "MaterialClass"
-                                                type = "MaterialClassType"
+              <xsd:element name = "OperationsEventClass"
+                                                type = "OperationsEventClassType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -680,18 +654,18 @@
 
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
-<!-- MaterialDefinition Transaction Types    -->
+<!-- OperationsEventDefinition Transaction Types    -->
 <!-- - - - - - - - - - - - - - - - - - - - - -->
 
-  <xsd:complexType name = "GetMaterialDefinitionType">
+  <xsd:complexType name = "GetOperationsEventDefinitionType">
     <xsd:sequence>      
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Get"         type = "TransGetType"/>
-              <xsd:element name = "MaterialDefinition"
-                                                type = "MaterialDefinitionType"
+              <xsd:element name = "OperationsEventDefinition"
+                                                type = "OperationsEventDefinitionType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -703,15 +677,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ShowMaterialDefinitionType">
+  <xsd:complexType name = "ShowOperationsEventDefinitionType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Show"        type = "TransShowType"/>
-              <xsd:element name = "MaterialDefinition"
-                                                type = "MaterialDefinitionType"
+              <xsd:element name = "OperationsEventDefinition"
+                                                type = "OperationsEventDefinitionType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -723,15 +697,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ProcessMaterialDefinitionType">
+  <xsd:complexType name = "ProcessOperationsEventDefinitionType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Process"     type = "TransProcessType"/>
-              <xsd:element name = "MaterialDefinition"
-                                                type = "MaterialDefinitionType"
+              <xsd:element name = "OperationsEventDefinition"
+                                                type = "OperationsEventDefinitionType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -743,15 +717,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "AcknowledgeMaterialDefinitionType">
+  <xsd:complexType name = "AcknowledgeOperationsEventDefinitionType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
-              <xsd:element name = "MaterialDefinition"
-                                                type = "MaterialDefinitionType"
+              <xsd:element name = "OperationsEventDefinition"
+                                                type = "OperationsEventDefinitionType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -763,15 +737,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ChangeMaterialDefinitionType">
+  <xsd:complexType name = "ChangeOperationsEventDefinitionType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Change"      type = "TransChangeType"/>
-              <xsd:element name = "MaterialDefinition"
-                                                type = "MaterialDefinitionType"
+              <xsd:element name = "OperationsEventDefinition"
+                                                type = "OperationsEventDefinitionType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -783,15 +757,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "RespondMaterialDefinitionType">
+  <xsd:complexType name = "RespondOperationsEventDefinitionType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Respond"     type = "TransRespondType"/>
-              <xsd:element name = "MaterialDefinition"
-                                                type = "MaterialDefinitionType"
+              <xsd:element name = "OperationsEventDefinition"
+                                                type = "OperationsEventDefinitionType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -803,15 +777,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "CancelMaterialDefinitionType">
+  <xsd:complexType name = "CancelOperationsEventDefinitionType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Cancel"      type = "TransCancelType"/>
-              <xsd:element name = "MaterialDefinition"
-                                                type = "MaterialDefinitionType"
+              <xsd:element name = "OperationsEventDefinition"
+                                                type = "OperationsEventDefinitionType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -823,15 +797,15 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "SyncMaterialDefinitionType">
+  <xsd:complexType name = "SyncOperationsEventDefinitionType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Sync"        type = "TransSyncType"/>
-              <xsd:element name = "MaterialDefinition"
-                                                type = "MaterialDefinitionType"
+              <xsd:element name = "OperationsEventDefinition"
+                                                type = "OperationsEventDefinitionType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -844,17 +818,17 @@
 
 
 <!-- - - - - - - - - - - - - - - - -  -->
-<!-- MaterialLot Transaction Types    -->
+<!-- OperationsEvent Transaction Types    -->
 <!-- - - - - - - - - - - - - - - - -  -->
 
-  <xsd:complexType name = "GetMaterialLotType">
+  <xsd:complexType name = "GetOperationsEventType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Get"         type = "TransGetType"/>
-              <xsd:element name = "MaterialLot" type = "MaterialLotType"
+              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
                                                 minOccurs = "1" maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -865,14 +839,14 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ShowMaterialLotType">
+  <xsd:complexType name = "ShowOperationsEventType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Show"        type = "TransShowType"/>
-              <xsd:element name = "MaterialLot" type = "MaterialLotType"
+              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
                                                 minOccurs = "1" maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -883,14 +857,14 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ProcessMaterialLotType">
+  <xsd:complexType name = "ProcessOperationsEventType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Process"     type = "TransProcessType"/>
-              <xsd:element name = "MaterialLot" type = "MaterialLotType"
+              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
                                                 minOccurs = "1" maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -901,14 +875,14 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "AcknowledgeMaterialLotType">
+  <xsd:complexType name = "AcknowledgeOperationsEventType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
-              <xsd:element name = "MaterialLot" type = "MaterialLotType"
+              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
                                                 minOccurs = "1" maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -919,14 +893,14 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ChangeMaterialLotType">
+  <xsd:complexType name = "ChangeOperationsEventType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Change"      type = "TransChangeType"/>
-              <xsd:element name = "MaterialLot" type = "MaterialLotType"
+              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
                                                 minOccurs = "1" maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -937,14 +911,14 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "RespondMaterialLotType">
+  <xsd:complexType name = "RespondOperationsEventType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Respond"     type = "TransRespondType"/>
-              <xsd:element name = "MaterialLot" type = "MaterialLotType"
+              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
                                                 minOccurs = "1" maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -955,14 +929,14 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "CancelMaterialLotType">
+  <xsd:complexType name = "CancelOperationsEventType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Cancel"      type = "TransCancelType"/>
-              <xsd:element name = "MaterialLot" type = "MaterialLotType"
+              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
                                                 minOccurs = "1" maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -973,14 +947,14 @@
   </xsd:complexType>
 
 
-  <xsd:complexType name = "SyncMaterialLotType">
+  <xsd:complexType name = "SyncOperationsEventType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Sync"        type = "TransSyncType"/>
-              <xsd:element name = "MaterialLot" type = "MaterialLotType"
+              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
                                                 minOccurs = "1" maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -990,169 +964,6 @@
     <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
   </xsd:complexType>
 
-
-<!-- - - - - - - - - - - - - - - - - - - - - -->
-<!-- MaterialSubLot Transaction Types        -->
-<!-- - - - - - - - - - - - - - - - - - - - - -->
-
-  <xsd:complexType name = "GetMaterialSubLotType">
-    <xsd:sequence>      
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Get"         type = "TransGetType"/>
-              <xsd:element name = "MaterialSubLot"
-                                                type = "MaterialSubLotType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "ShowMaterialSubLotType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Show"        type = "TransShowType"/>
-              <xsd:element name = "MaterialSubLot"
-                                                type = "MaterialSubLotType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "ProcessMaterialSubLotType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Process"     type = "TransProcessType"/>
-              <xsd:element name = "MaterialSubLot"
-                                                type = "MaterialSubLotType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "AcknowledgeMaterialSubLotType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
-              <xsd:element name = "MaterialSubLot"
-                                                type = "MaterialSubLotType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "ChangeMaterialSubLotType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Change"      type = "TransChangeType"/>
-              <xsd:element name = "MaterialSubLot"
-                                                type = "MaterialSubLotType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "RespondMaterialSubLotType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Respond"     type = "TransRespondType"/>
-              <xsd:element name = "MaterialSubLot"
-                                                type = "MaterialSubLotType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "CancelMaterialSubLotType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Cancel"      type = "TransCancelType"/>
-              <xsd:element name = "MaterialSubLot"
-                                                type = "MaterialSubLotType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "SyncMaterialSubLotType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Sync"        type = "TransSyncType"/>
-              <xsd:element name = "MaterialSubLot"
-                                                type = "MaterialSubLotType"
-                                                minOccurs = "1" 
-                                                maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
 
 
 
