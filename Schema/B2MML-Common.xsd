@@ -803,10 +803,13 @@ Defined values are
 Defines the expected use of the material class, material definition, material lot, or material sublot in the context of the operations segment.
 Defined values for production operations are
 - Consumable, Consumed, Produced, By-product Produced, Co-product Produced, and Yield Produced.
+
 Defined values for maintenance operations are
 - Consumable, Material Consumed, and Material Produced.
+
 Defined values for quality test operations are 
 - Consumable, Destructive Sample, Returned Sample, and Retained Sample.
+
 Defined values for inventory operations defined values are
 - Consumable, Material Consumed, Material Produced, and Inventoried.
 			</xsd:documentation>
@@ -816,6 +819,43 @@ Defined values for inventory operations defined values are
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
         </xsd:simpleContent>
+    </xsd:complexType>
+    <!--     -->    
+    <xsd:complexType name="OperationsRecordEntryTemplateType">
+        <xsd:sequence>
+            <xsd:element name="ID" 						type="IdentifierType"/>
+            <xsd:element name="Description" 			type="DescriptionType" 	minOccurs="0" maxOccurs="unbounded"/>
+             <xsd:element name="InformationObject" 		type="TextType" 		minOccurs="0"/>
+             <xsd:element name="InformationObjectID" 	type="IdentifierType" 	minOccurs="0"/>
+             <xsd:element name="EffectiveTimestamp" 	type="DateTimeType" 	minOccurs="0"/>
+             <xsd:element name="RecordTimestamp" 		type="DateTimeType" 	minOccurs="0"/>
+             <xsd:element name="InformationObjectType" 	type="IdentifierType" 	minOccurs="0"/>
+          <xsd:group ref="Extended:OperationsRecordEntryTemplate" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--     -->    
+    <xsd:complexType name="OperationsRecordTemplateType">
+        <xsd:sequence>
+            <xsd:element name="ID" 						type="IdentifierType"/>
+            <xsd:element name="Description" 			type="DescriptionType" 	minOccurs="0" maxOccurs="unbounded"/>
+             <xsd:element name="Action" 				type="IdentifierType" 	minOccurs="0" maxOccurs="unbounded"/>
+             <xsd:element name="EffectiveTimestamp" 	type="DateTimeType" 	minOccurs="0"/>
+             <xsd:element name="RecordTimestamp" 		type="DateTimeType" 	minOccurs="0"/>
+           <xsd:group ref="Extended:OperationsRecordTemplate" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--     -->    
+    <xsd:complexType name="OperationsRecordSpecTemplateType">
+        <xsd:sequence>
+            <xsd:element name="ID" 						type="IdentifierType"/>
+            <xsd:element name="Description" 			type="DescriptionType" 	minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="InformationObjectType" 	type="IdentifierType" 	minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="InformationObjectTypeMultiplicity" 
+														type="TextType" 		minOccurs="0" maxOccurs="unbounded"/>
+             <xsd:element name="Action" 				type="IdentifierType" 	minOccurs="0" maxOccurs="unbounded"/>
+             <xsd:element name="ActionMultiplicity" 	type="TextType" 		minOccurs="0" maxOccurs="unbounded"/>
+           <xsd:group ref="Extended:OperationsRecordSpecTemplate" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="OpEquipmentRequirementType">

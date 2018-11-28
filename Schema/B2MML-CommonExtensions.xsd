@@ -148,6 +148,66 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
+        <xsd:group name = "OperationsEventInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationsEventClass">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationsEvenClassProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationsEventDefinition">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationsEventDefinitionProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationsEvent">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationsEventProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationsRecordEntryTemplate">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationsRecordTemplate">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "OperationsRecordSpecTemplate">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
         <xsd:group name = "Result">
                 <xsd:sequence>
                         <!-- add extended elements here -->
