@@ -61,6 +61,7 @@
         V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2
                                                 Added OperationsSegmentID to OperationsRequestType
                                                 Added OperationsSegmentID to OpSegmentRequirementType
+												Added Spatial Definition and locations
 
    </xsd:documentation>
 </xsd:annotation>
@@ -123,6 +124,8 @@
       <xsd:element name = "EndTime"                     type = "EndTimeType" 
                                                         minOccurs = "0"/>
       <xsd:element name = "Priority"                    type = "PriorityType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "RequestState"               type = "RequestStateType"
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsDefinitionID"      type = "OperationsDefinitionIDType"    
                                                         minOccurs = "0"/>

@@ -192,7 +192,7 @@ function or activity.
                                                          minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Has properties of" relationship -->
       <xsd:element name = "OperationsEventDefinitionID"  type = "IdentifierType"
                                                          minOccurs = "0" maxOccurs = "unbounded"/> <!-- Is parent of relationship to event definitions -->
-      <xsd:element name = "RecordSpecification" type = "OperationsRecordSpecTemplateType"      
+      <xsd:element name = "RecordSpecification" 		 type = "OperationsRecordSpecTemplateType"      
                                                          minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Has record specifications of" relationship --> 
       <xsd:group   ref  = "Extended:OperationsEventClass"      minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>

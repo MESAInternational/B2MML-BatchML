@@ -167,6 +167,8 @@ of test specifications.
 														minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 					type="ValueType" 
 														minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="TestSpecificationProperty" type="TestSpecificationPropertyType" 
+														minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:TestSpecificationProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>

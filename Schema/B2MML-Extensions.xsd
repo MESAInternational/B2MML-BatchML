@@ -1129,6 +1129,12 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
+        <xsd:group name = "JobResponseList">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
  <!-- B2MML extension groups for WorkRecord schemas  -->
 
         <xsd:group name = "WorkRecord">

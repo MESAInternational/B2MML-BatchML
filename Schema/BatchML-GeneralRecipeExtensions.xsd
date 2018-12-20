@@ -19,7 +19,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2016 MESA International, Version 0700
+        Copyright 2018 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This World Batch  Work (including specifications, 
@@ -51,7 +51,7 @@
         ---     ----            ------          ----
         V0500   26 Mar 2011     D. Brandl       Initial version
         V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4
-        V0700   08 Aug 2016     D. Brandl       Updated Version
+        V0700   21 Dec 2018     D. Brandl       Updated Version
 
    </xsd:documentation>
 </xsd:annotation>

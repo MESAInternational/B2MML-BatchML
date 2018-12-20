@@ -33,7 +33,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2016 MESA International, Version 0700
+        Copyright 2018 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -55,9 +55,11 @@
         injuries incurred by use of the Work or as a result of this 
         agreement.
           
-        Based upon the ANSI/ISA-95.00.04 Batch Production Records Standard and the
-        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
-        Part 5: Business to Manufacturing Transactions.  
+		Based upon the ANSI/ISA-95.00.04-2018 Enterprise-Control System 
+        Integration Part 4: Objects and Attributes for Manufacturing 
+		Operations Management Integration and the ANSI/ISA-95.00.05-2018 
+		Enterprise-Control System Integration Part 5: Business to 
+		Manufacturing Transactions. 
    </xsd:documentation>
 
    <xsd:documentation> 
@@ -65,7 +67,7 @@
       Revision History
         Ver     Date            Person          Note
         ===     ====            ======          ==========================
-        V0700   08 Aug 2016     D. Brandl       Initial Version
+        V0700   21 Dec 2018     D. Brandl       Initial Version for 2018 update of ISA 95 Part 4
 
    </xsd:documentation>
 </xsd:annotation>
@@ -117,8 +119,14 @@
          <xsd:element name = "Delimiter"           type = "TextType"			minOccurs="0"/>
          <xsd:element name = "Language"            type = "CodeType"			minOccurs="0"/> 
          <xsd:element name = "LastChangedDate"     type = "DateTimeType"		minOccurs="0"/>
+         <xsd:element name = "ExpirationDate"      type = "DateTimeType"		minOccurs="0"/>
          <xsd:element name = "RecordStatus"        type = "CodeType"			minOccurs="0"/>
          <xsd:element name = "Version"             type = "IdentifierType"		minOccurs="0"/>
+         <xsd:element name = "CampaignID"          type = "IdentifierType"		minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name = "LotID" 		       type = "IdentifierType"		minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name = "BatchID"             type = "IdentifierType"		minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name = "MaterialDefinitionID" type = "IdentifierType"		minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name = "EquipmentID"         type = "IdentifierType"		minOccurs="0" maxOccurs="unbounded"/>
 		<!-- Complex types -->
          <xsd:element name = "ChangeHistory"       type = "WorkChangeHistoryType"
                                                    minOccurs="0"/>
