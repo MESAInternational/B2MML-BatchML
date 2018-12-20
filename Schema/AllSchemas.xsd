@@ -13,7 +13,7 @@
 		This file simply includes all of the B2MML schemas into a single 
 		definition. This reduces the length of the generated .cs file name. 
    
-        Copyright 2016 MESA International, Version 0700
+        Copyright 2018 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -35,10 +35,11 @@
         injuries incurred by use of the Work or as a result of this 
         agreement.
       
-        Based upon the ANSI/ISA-95.00.02-2010 Enterprise-Control System 
-        Integration Part 2: Object Model Attributes Standard and the
-        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
-        Part 5: Business to Manufacturing Transactions
+		Based upon the ANSI/ISA-95.00.04-2018 Enterprise-Control System 
+        Integration Part 4: Objects and Attributes for Manufacturing 
+		Operations Management Integration and the ANSI/ISA-95.00.05-2018 
+		Enterprise-Control System Integration Part 5: Business to 
+		Manufacturing Transactions. 
    </xsd:documentation>
 
    <xsd:documentation> 
@@ -48,7 +49,7 @@
         ---     ----            ------          ----
         V0500   26 Mar 2011     D. Brandl       Initial version
         V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
-        V0700   08 Aug 2016     D. Brandl       Updated Version
+        V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 4
 
    </xsd:documentation>
 </xsd:annotation>
@@ -65,10 +66,6 @@
  <xsd:include schemaLocation ="B2MML-OperationsCapability.xsd"/>
  <xsd:include schemaLocation ="B2MML-OperationsPerformance.xsd"/>
  <xsd:include schemaLocation ="B2MML-OperationsSchedule.xsd"/>
- <xsd:include schemaLocation ="B2MML-ProductDefinition.xsd"/>
- <xsd:include schemaLocation ="B2MML-ProductionCapability.xsd"/>
- <xsd:include schemaLocation ="B2MML-ProductionPerformance.xsd"/>
- <xsd:include schemaLocation ="B2MML-ProductionSchedule.xsd"/>
  <xsd:include schemaLocation ="B2MML-ResourceRelationshipNetwork.xsd"/>
  <xsd:include schemaLocation ="B2MML-TransactionProfile.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkAlert.xsd"/>
