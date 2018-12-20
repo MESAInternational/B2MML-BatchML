@@ -869,6 +869,7 @@ Defined values for inventory operations defined values are
             <xsd:element name="EquipmentLevel" type="HierarchyScopeType" minOccurs="0"/>
             <xsd:element name="EquipmentRequirementProperty" type="OpEquipmentRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="RequiredByRequestedSegmentResponse" type="RequiredByRequestedSegmentResponseType" minOccurs="0"/>
+            <xsd:element name="TestSpecificationID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpEquipmentRequirement" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -893,6 +894,7 @@ Defined values for inventory operations defined values are
             <xsd:element name="HierarchyScope" type="HierarchyScopeType" minOccurs="0"/>
             <xsd:element name="PersonnelRequirementProperty" type="OpPersonnelRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="RequiredByRequestedSegmentResponse" type="RequiredByRequestedSegmentResponseType" minOccurs="0"/>
+            <xsd:element name="TestSpecificationID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpPersonnelRequirement" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -918,6 +920,7 @@ Defined values for inventory operations defined values are
             <xsd:element name="EquipmentLevel" type="HierarchyScopeType" minOccurs="0"/>
             <xsd:element name="PhysicalAssetRequirementProperty" type="OpPhysicalAssetRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="RequiredByRequestedSegmentResponse" type="RequiredByRequestedSegmentResponseType" minOccurs="0"/>
+            <xsd:element name="TestSpecificationID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpPhysicalAssetRequirement" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -948,6 +951,7 @@ Defined values for inventory operations defined values are
             <xsd:element name="HierarchyScope" type="HierarchyScopeType" minOccurs="0"/>
             <xsd:element name="MaterialRequirementProperty" type="OpMaterialRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="RequiredByRequestedSegmentResponse" type="RequiredByRequestedSegmentResponseType" minOccurs="0"/>
+            <xsd:element name="TestSpecificationID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpMaterialRequirement" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -972,6 +976,7 @@ Defined values for inventory operations defined values are
             <xsd:element name="HierarchyScope" type="HierarchyScopeType" minOccurs="0"/>
             <xsd:element name="Quantity" type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PersonnelSpecificationProperty" type="OpPersonnelSpecificationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="TestSpecificationID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpPersonnelSpecification" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -995,6 +1000,7 @@ Defined values for inventory operations defined values are
             <xsd:element name="HierarchyScope" type="HierarchyScopeType" minOccurs="0"/>
             <xsd:element name="Quantity" type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentSpecificationProperty" type="OpEquipmentSpecificationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="TestSpecificationID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpEquipmentSpecification" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -1018,6 +1024,7 @@ Defined values for inventory operations defined values are
             <xsd:element name="HierarchyScope" type="HierarchyScopeType" minOccurs="0"/>
             <xsd:element name="Quantity" type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PhysicalAssetSpecificationProperty" type="OpPhysicalAssetSpecificationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="TestSpecificationID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpPhysicalAssetSpecification" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -1045,6 +1052,7 @@ Defined values for inventory operations defined values are
             <xsd:element name="AssemblyType" type="AssemblyTypeType" minOccurs="0"/>
             <xsd:element name="AssemblyRelationship" type="AssemblyRelationshipType" minOccurs="0"/>
             <xsd:element name="MaterialSpecificationProperty" type="OpMaterialSpecificationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="TestSpecificationID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpMaterialSpecification" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>

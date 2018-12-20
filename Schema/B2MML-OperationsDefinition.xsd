@@ -20,7 +20,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2016 MESA International, Version 0700
+        Copyright 2018 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -42,9 +42,9 @@
         injuries incurred by use of the Work or as a result of this 
         agreement.
           
-        Based upon the ANSI/ISA-95.00.02-2010 Enterprise-Control System 
+        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System 
         Integration Part 2: Object Model Attributes Standard and the
-        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration 
         Part 5: Business to Manufacturing Transactions. 
    </xsd:documentation>
 
@@ -60,7 +60,9 @@
 											    Changed "Location" element name to "HierarchyScope"
         V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
                                                 Corrected the  OperationsMaterialBillType wrong definition for the OperationsMaterialBillItem
-        V0700   08 Aug 2016     D. Brandl       Updated Version
+        V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2
+												Added Test Specification ID to resource specifications
+												Added Work Master links
 
    </xsd:documentation>
 </xsd:annotation>
@@ -132,6 +134,9 @@
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "OperationsSegment"           type = "OperationsSegmentType"    
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "UsesPropertiesOfOperationsDefinitionID"
+                                                        type = "IdentifierType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:OperationsDefinition"  minOccurs = "0" maxOccurs = "1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -142,6 +147,8 @@
       <xsd:element name = "Description"                 type = "DescriptionType"        
                                                         minOccurs = "0"/>
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "UseType"                     type = "CodeType" 
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsMaterialBillItem"  type = "OperationsMaterialBillItemType"
                                                         minOccurs = "0" maxOccurs="unbounded"/>
@@ -188,6 +195,15 @@
       <xsd:element name = "Duration"                    type = "DurationType"            
                                                         minOccurs = "0"/>
       <xsd:element name = "ProcessSegmentID"            type = "ProcessSegmentIDType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "BillOfMaterialsID"           type = "BillOfMaterialsIDType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "WorkDefinitionID"            type = "IdentifierType"     
+                                                        minOccurs = "0"/>
+      <xsd:element name = "BillOfResourcesID"           type = "BillOfResourcesIDType" 
+                                                        minOccurs = "0"/>
+      <xsd:element name = "UsesPropertiesOfOperationsSegmentID"
+                                                        type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "Parameter"                   type = "ParameterType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
