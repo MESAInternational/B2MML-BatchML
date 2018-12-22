@@ -20,7 +20,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2016 MESA International, Version 0700
+        Copyright 2018 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -42,9 +42,9 @@
         injuries incurred by use of the Work or as a result of this 
         agreement.
           
-        Based upon the ANSI/ISA-95.00.02-2010 Enterprise-Control System 
+        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System 
         Integration Part 2: Object Model Attributes Standard and the
-        ANSI/ISA-95.00.05-2006 Enterprise-Control System Integration 
+        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration 
         Part 5: Business to Manufacturing Transactions. 
    </xsd:documentation>
 
@@ -61,7 +61,9 @@
 												Added OPERATIONS elements 
         V0600   18  Aug 2012    D. Brandl       Updated MESA Copyright
                                                 Added ISA 95 Part 4 objects to noun types
-        V0700   08 Aug 2016     D. Brandl       Updated Version
+        V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2, 4 and 5
+												Included the B2MML "INFORMATION" container objects 
+												Added new objects from Part 4 and Part 4
 
    </xsd:documentation>
 </xsd:annotation>
@@ -83,9 +85,6 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <!-- Location ELEMENT IS DEPRECATED and may be removed in a future release, use HierarchyScope instead -->
-      <xsd:element name = "Location"                    type="LocationType" 
-	                                                    minOccurs="0"/> 
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
                                                         minOccurs = "0"/>
       <xsd:element name = "PublishedDate"               type = "PublishedDateType"
@@ -121,47 +120,90 @@
         <xsd:complexType name = "TransactionNoun1Type">
           <xsd:simpleContent>
                 <xsd:restriction base="CodeType">
-                        <xsd:enumeration value="PERSONNEL CLASS"/>
+					<!-- Personnel Model -->
                         <xsd:enumeration value="PERSON"/>
-                        <xsd:enumeration value="QUALIFICATION TEST"/>
-                        <xsd:enumeration value="EQUIPMENT CLASS"/>
+                        <xsd:enumeration value="PERSONNEL CLASS"/>
+                        <xsd:enumeration value="PERSONNEL INFORMATION"/>
+					<!-- Equipment Model -->
                         <xsd:enumeration value="EQUIPMENT"/>
                         <xsd:enumeration value="EQUIPMENT CAPABILITY TEST"/>
-                        <xsd:enumeration value="PHYSICAL ASSET CLASS"/>
+                        <xsd:enumeration value="EQUIPMENT CLASS"/>
+                        <xsd:enumeration value="EQUIPMENT INFORMATION"/>
+					<!-- Physical Asset Model -->
                         <xsd:enumeration value="PHYSICAL ASSET"/>
-                        <xsd:enumeration value="PHYSICAL ASSET CAPABILITY TEST"/>
+                        <xsd:enumeration value="PHYSICAL ASSET CLASS"/>
+                        <xsd:enumeration value="PHYSICAL ASSET INFORMATION"/>
+					<!-- Material Model -->
                         <xsd:enumeration value="MATERIAL CLASS"/>
                         <xsd:enumeration value="MATERIAL DEFINITION"/>
                         <xsd:enumeration value="MATERIAL LOT"/>
+                        <xsd:enumeration value="MATERIAL INFORMATION"/>
                         <xsd:enumeration value="MATERIAL SUBLOT"/>
-                        <xsd:enumeration value="MATERIAL TEST"/>
+					<!-- Process Segment Model -->
                         <xsd:enumeration value="PROCESS SEGMENT"/>
+                        <xsd:enumeration value="PROCESS INFORMATION"/>
+					<!-- Opertional Location Model -->
+                        <xsd:enumeration value="OPERATIONAL LOCATION"/>
+                        <xsd:enumeration value="OPERATIONAL LOCATION CLASS"/>
+                        <xsd:enumeration value="OPERATIONAL LOCATION INFORMATION"/>
+					<!-- Operations Definition Model -->
                         <xsd:enumeration value="OPERATIONS DEFINITION"/>
+                        <xsd:enumeration value="OPERATIONS SEGMENT"/>
+                        <xsd:enumeration value="OPERATIONS DEFINITION INFORMATION"/>
+					<!-- Opwerations Event Model -->
+                        <xsd:enumeration value="OPERATIONS EVENT"/>
+                        <xsd:enumeration value="OPERATIONS EVENT CLASS"/>
+                        <xsd:enumeration value="OPERATIONS EVENT DEFINITION"/>
+                        <xsd:enumeration value="OPERATIONS EVENT INFORMATION"/>
+					<!-- Operations Schedule Model -->
                         <xsd:enumeration value="OPERATIONS SCHEDULE"/>
+                        <xsd:enumeration value="OPERATIONS REQUEST"/>
+					<!-- Operations Performance Model -->
                         <xsd:enumeration value="OPERATIONS PERFORMANCE"/>
+                        <xsd:enumeration value="OPERATIONS RESPONSE"/>
+					<!-- Operations Capability Model -->
                         <xsd:enumeration value="OPERATIONS CAPABILITY"/>
-                        <xsd:enumeration value="PRODUCT DEFINITION"/>
-                        <xsd:enumeration value="PRODUCTION SCHEDULE"/>
-                        <xsd:enumeration value="PRODUCTION PERFORMANCE"/>
-                        <xsd:enumeration value="PRODUCTION CAPABILITY"/>
+                        <xsd:enumeration value="OPERATIONS CAPABILITY INFORMATION"/>
+					<!-- Resource Relationship Network Model -->
                         <xsd:enumeration value="RESOURCE RELATIONSHIP NETWORK"/>
                         <xsd:enumeration value="RESOURCE NETWORK CONNECTION INFORMATION"/>
+					<!-- Test Specification Model -->
+                        <xsd:enumeration value="TEST SPECIFICATION"/>
+                        <xsd:enumeration value="TEST SPECIFICATION INFORMATION"/>
+					<!-- Transaction Profile Model -->
+                        <xsd:enumeration value="TRANSACTION PROFILE"/>
+					<!-- Work Alert Model -->
                         <xsd:enumeration value="WORK ALERT"/>
                         <xsd:enumeration value="WORK ALERT DEFINITION"/>
                         <xsd:enumeration value="WORK ALERT INFORMATION"/>
+					<!-- Work Calendar Model -->
+                        <xsd:enumeration value="WORK CALENDAR"/>
+                        <xsd:enumeration value="WORK CALENDAR DEFINITION"/>
+                        <xsd:enumeration value="WORK CALENDAR INFORMATION"/>
+					<!-- Work Capability Model -->
+                        <xsd:enumeration value="WORK CAPABILITY"/>
+                        <xsd:enumeration value="WORK CAPABILITY INFORMATION"/>
+					<!-- Work Definition Model -->
                         <xsd:enumeration value="WORK DEFINITION INFORMATION"/>
                         <xsd:enumeration value="WORK DIRECTIVE"/>
                         <xsd:enumeration value="WORK MASTER"/>
-                        <xsd:enumeration value="WORK FLOW INFORMATION"/>
-                        <xsd:enumeration value="WORK FLOW SPECIFICATION"/>
-                        <xsd:enumeration value="WORK FLOW SPECIFICATION TYPE"/>
-                        <xsd:enumeration value="WORK SCHEDULE"/>
-                        <xsd:enumeration value="JOB LIST"/>
+					<!-- Work Performance Model -->
                         <xsd:enumeration value="WORK PERFORMANCE"/>
+                        <xsd:enumeration value="WORK RESPONSE"/>
                         <xsd:enumeration value="JOB RESPONSE"/>
-                        <xsd:enumeration value="WORK CAPABILITY"/>
-                        <xsd:enumeration value="WORK CAPABILITY INFORMATION"/>
-                        <xsd:enumeration value="TRANSACTION PROFILE"/>
+                        <xsd:enumeration value="JOB RESPONSE LIST"/>
+					<!-- Work Record Model -->
+                        <xsd:enumeration value="WORK RECORD"/>
+					<!-- Work Schedule Model -->
+                        <xsd:enumeration value="WORK SCHEDULE"/>
+                        <xsd:enumeration value="WORK REQUEST"/>
+                        <xsd:enumeration value="JOB LIST"/>
+                        <xsd:enumeration value="JOB ORDER"/>
+					<!-- Workflow Model -->
+                        <xsd:enumeration value="WORKFLOW INFORMATION"/>
+                        <xsd:enumeration value="WORKFLOW SPECIFICATION"/>
+                        <xsd:enumeration value="WORKFLOW SPECIFICATION TYPE"/>
+					<!-- Confirm BOD -->
                         <xsd:enumeration value="CONFIRM BOD"/>
                         <xsd:enumeration value="Other"/>
                 </xsd:restriction>

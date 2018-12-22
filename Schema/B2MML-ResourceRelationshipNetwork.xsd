@@ -130,6 +130,8 @@
                                                                  minOccurs = "0"/>
       <xsd:element name = "PublishedDate"                        type = "PublishedDateType" 
                                                                  minOccurs = "0"/>
+      <xsd:element name = "NetworkProperty"                  	 type = "ResourcePropertyType" 
+                                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "ResourceNetworkConnection"            type = "ResourceNetworkConnectionType" 
                                                                  minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:ResourceRelationshipNetwork" minOccurs = "0" maxOccurs = "1"/>

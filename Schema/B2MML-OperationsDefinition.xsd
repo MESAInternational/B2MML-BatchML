@@ -63,6 +63,7 @@
         V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2
 												Added Test Specification ID to resource specifications
 												Added Work Master links
+												Added transactions for Operations Segment, not in Part 5, but discussed in ISA 95 meetings
 
    </xsd:documentation>
 </xsd:annotation>
@@ -71,6 +72,7 @@
   
   <xsd:element  name = "OperationsDefinitionInformation"   type = "OperationsDefinitionInformationType" />
   <xsd:element  name = "OperationsDefinition"              type = "OperationsDefinitionType" />
+  <xsd:element  name = "OperationsSegment"                 type = "OperationsSegmentType" />
 
 <!-- Transaction Elements -->
   <xsd:element name = "GetOperationsDefinitionInformation"         type = "GetOperationsDefinitionInformationType"/>
@@ -92,6 +94,15 @@
   <xsd:element name = "CancelOperationsDefinition"         type = "CancelOperationsDefinitionType"/>
   <xsd:element name = "SyncOperationsDefinition"           type = "SyncOperationsDefinitionType"/>
 
+  <xsd:element name = "GetOperationsSegment"            type = "GetOperationsSegmentType"/>
+  <xsd:element name = "ShowOperationsSegment"           type = "ShowOperationsSegmentType"/>
+  <xsd:element name = "ProcessOperationsSegment"        type = "ProcessOperationsSegmentType"/>
+  <xsd:element name = "AcknowledgeOperationsSegment"    type = "AcknowledgeOperationsSegmentType"/>
+  <xsd:element name = "ChangeOperationsSegment"         type = "ChangeOperationsSegmentType"/>
+  <xsd:element name = "RespondOperationsSegment"        type = "RespondOperationsSegmentType"/>
+  <xsd:element name = "CancelOperationsSegment"         type = "CancelOperationsSegmentType"/>
+  <xsd:element name = "SyncOperationsSegment"           type = "SyncOperationsSegmentType"/>
+
 
 <!-- Simple & Complex Types  -->
 
@@ -106,6 +117,8 @@
       <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
 														minOccurs = "0"/>
       <xsd:element name = "OperationsDefinition"        type = "OperationsDefinitionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "OperationsSegment"           type = "OperationsSegmentType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:OperationsDefinitionInformation" minOccurs = "0" maxOccurs = "1"/>
     </xsd:sequence>
@@ -542,6 +555,170 @@
               <xsd:element name = "Sync"        type = "TransSyncType"/>
               <xsd:element name = "OperationsDefinition"
                                                 type = "OperationsDefinitionType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+<!-- - - - - - - - - - - - - - - - - - -  -->
+<!-- OperationsSegment Transaction Types  -->
+<!-- - - - - - - - - - - - - - - - - - -  -->
+
+  <xsd:complexType name = "GetOperationsSegmentType">
+    <xsd:sequence>      
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"         type = "TransGetType"/>
+              <xsd:element name = "OperationsSegment"
+                                                type = "OperationsSegmentType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ShowOperationsSegmentType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "OperationsSegment"
+                                                type = "OperationsSegmentType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ProcessOperationsSegmentType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"     type = "TransProcessType"/>
+              <xsd:element name = "OperationsSegment"
+                                                type = "OperationsSegmentType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "AcknowledgeOperationsSegmentType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+              <xsd:element name = "OperationsSegment"
+                                                type = "OperationsSegmentType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "ChangeOperationsSegmentType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"      type = "TransChangeType"/>
+              <xsd:element name = "OperationsSegment"
+                                                type = "OperationsSegmentType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "RespondOperationsSegmentType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"     type = "TransRespondType"/>
+              <xsd:element name = "OperationsSegment"
+                                                type = "OperationsSegmentType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "CancelOperationsSegmentType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"      type = "TransCancelType"/>
+              <xsd:element name = "OperationsSegment"
+                                                type = "OperationsSegmentType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "SyncOperationsSegmentType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "OperationsSegment"
+                                                type = "OperationsSegmentType"
                                                 minOccurs = "1" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
