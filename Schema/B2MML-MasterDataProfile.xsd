@@ -100,11 +100,11 @@
       <xsd:sequence>
          <xsd:element name = "Header"   	       type = "MasterDataProfileHeaderType"/>     
 
-         <xsd:element name = "UnitOfMeasure"       type = "IDandDesciptionType"
+         <xsd:element name = "UnitOfMeasure"       type = "IDandDescriptionType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "DataType"            type = "IDandDesciptionType"
+         <xsd:element name = "DataType"            type = "IDandDescriptionType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "ValueKey"            type = "IDandDesciptionType"
+         <xsd:element name = "ValueKey"            type = "IDandDescriptionType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
          <xsd:element name = "Enumeration"         type = "ProfileEnumerationType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
@@ -219,7 +219,7 @@
   </xsd:complexType>
   
   
-  <xsd:complexType name = "IDandDesciptionType">
+  <xsd:complexType name = "IDandDescriptionType">
       <xsd:sequence>
          <xsd:element name = "ID"   	     		type = "IdentifierType"/>     
          <xsd:element name = "Description"   		type = "TextType"/>     
