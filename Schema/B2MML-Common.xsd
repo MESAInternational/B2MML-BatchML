@@ -111,7 +111,7 @@
                                                term in ISA 95, or "EquipmentElementLevel", the older term.
                                              - Added HierarchyScope to TestResultType
 											 - Added documentation of selected elements
-            
+											 - Removed intermediate types for Identifiers and DateTime
 
 
    </xsd:documentation>
@@ -119,23 +119,10 @@
     <!--  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   -->
     <!--  B2MML Common Component Elements - - - - - - - - - - - - -   -->
     <!--  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   -->
-    <xsd:complexType name="ActualEndTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
+    
+
     <!--     -->    
-    <xsd:complexType name="ActualFinishTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="ActualStartTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
+
     <!--     -->    
     <xsd:complexType name="AnyGenericValueType">
         <xsd:simpleContent>
@@ -473,25 +460,14 @@ Defined values are (explained using dependency type between element A and elemen
     <xsd:simpleType name="DurationType">
         <xsd:restriction base="xsd:duration"/>
     </xsd:simpleType>
-    <xsd:complexType name="EarliestStartTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="EndTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="EquipmentAssetMappingType">
         <xsd:sequence>
             <xsd:element name="EquipmentID" type="EquipmentIDType"/>
             <xsd:element name="PhysicalAssetID" type="PhysicalAssetIDType"/>
 			<xsd:element name="HierarchyScope" type = "HierarchyScopeType" minOccurs = "0"/>
-            <xsd:element name="StartTime" type="StartTimeType" minOccurs="0"/>
-            <xsd:element name="EndTime" type="EndTimeType" minOccurs="0"/>
+            <xsd:element name="StartTime" type="DateTimeType" minOccurs="0"/>
+            <xsd:element name="EndTime" type="DateTimeType" minOccurs="0"/>
             <xsd:group ref="Extended:EquipmentAssetMapping" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -578,12 +554,6 @@ Defined values are:
                                                         minOccurs = "0" maxOccurs = "1"/>
           </xsd:sequence>
         </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="ExpirationTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="HierarchyScopeType">
 		<xsd:annotation> 
@@ -699,12 +669,6 @@ Defined values are
     </xsd:complexType>
 
     
-    <!--     -->    
-    <xsd:complexType name="LatestEndTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
     <!--     -->    
     <!--  LocationType kept in V05 for use with the Production element definitions. Not used in other elements.  -->
     <xsd:complexType name="LocationType">
@@ -1093,8 +1057,8 @@ Defined values for inventory operations defined values are
 			<xsd:element name="SpatialDefinition" type="SpatialDefinitionType" minOccurs = "0" />
 			<xsd:element name="OperationalLocation" type="ResourceLocationType" minOccurs = "0" />
             <xsd:element name="PersonnelUse" type="PersonnelUseType" minOccurs="0"/>
-            <xsd:element name="StartTime" type="StartTimeType" minOccurs="0"/>
-            <xsd:element name="EndTime" type="EndTimeType" minOccurs="0"/>
+            <xsd:element name="StartTime" type="DateTimeType" minOccurs="0"/>
+            <xsd:element name="EndTime" type="DateTimeType" minOccurs="0"/>
             <xsd:element name="Quantity" type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PersonnelCapability" type="OpPersonnelCapabilityType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PersonnelCapabilityProperty" type="OpPersonnelCapabilityPropertyType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1125,8 +1089,8 @@ Defined values for inventory operations defined values are
 			<xsd:element name="SpatialDefinition" type="SpatialDefinitionType" minOccurs = "0" />
 			<xsd:element name="OperationalLocation" type="ResourceLocationType" minOccurs = "0" />
             <xsd:element name="EquipmentUse" type="EquipmentUseType" minOccurs="0"/>
-            <xsd:element name="StartTime" type="StartTimeType" minOccurs="0"/>
-            <xsd:element name="EndTime" type="EndTimeType" minOccurs="0"/>
+            <xsd:element name="StartTime" type="DateTimeType" minOccurs="0"/>
+            <xsd:element name="EndTime" type="DateTimeType" minOccurs="0"/>
             <xsd:element name="Quantity" type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentCapability" type="OpEquipmentCapabilityType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentCapabilityProperty" type="OpEquipmentCapabilityPropertyType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1157,8 +1121,8 @@ Defined values for inventory operations defined values are
 			<xsd:element name="SpatialDefinition" type="SpatialDefinitionType" minOccurs = "0" />
 			<xsd:element name="PhysicalLocation" type="ResourceLocationType" minOccurs = "0" />
             <xsd:element name="PhysicalAssetUse" type="PhysicalAssetUseType" minOccurs="0"/>
-            <xsd:element name="StartTime" type="StartTimeType" minOccurs="0"/>
-            <xsd:element name="EndTime" type="EndTimeType" minOccurs="0"/>
+            <xsd:element name="StartTime" type="DateTimeType" minOccurs="0"/>
+            <xsd:element name="EndTime" type="DateTimeType" minOccurs="0"/>
             <xsd:element name="Quantity" type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PhysicalAssetCapability" type="OpPhysicalAssetCapabilityType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PhysicalAssetCapabilityProperty" type="OpPhysicalAssetCapabilityPropertyType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1191,8 +1155,8 @@ Defined values for inventory operations defined values are
             <xsd:element name="MaterialUse" type="MaterialUseType" minOccurs="0"/>
 			<xsd:element name="SpatialDefinition" type="SpatialDefinitionType" minOccurs = "0" />
 			<xsd:element name="StorageLocation" type="ResourceLocationType" minOccurs = "0" />
-            <xsd:element name="StartTime" type="StartTimeType" minOccurs="0"/>
-            <xsd:element name="EndTime" type="EndTimeType" minOccurs="0"/>
+            <xsd:element name="StartTime" type="DateTimeType" minOccurs="0"/>
+            <xsd:element name="EndTime" type="DateTimeType" minOccurs="0"/>
             <xsd:element name="AssemblyCapability" type="OpMaterialCapabilityType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="AssemblyType" type="AssemblyTypeType" minOccurs="0"/>
             <xsd:element name="AssemblyRelationship" type="AssemblyRelationshipType" minOccurs="0"/>
@@ -1349,18 +1313,6 @@ Defined values are
         </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
-    <xsd:complexType name="PlannedFinishTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="PlannedStartTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
     <xsd:complexType name="PriorityType">
         <xsd:simpleContent>
             <xsd:restriction base="NumericType"/>
@@ -1419,12 +1371,6 @@ Defined values are
     <xsd:complexType name="PropertyIDType">
         <xsd:simpleContent>
             <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="PublishedDateType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
@@ -1489,12 +1435,6 @@ Defined values are
             <xsd:extension base="RelationshipType1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="RequestedCompletionDateType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
@@ -1761,18 +1701,6 @@ Spatial definition identifies a value and the predefined coordinate reference sy
         </xsd:sequence>
     </xsd:complexType>
      <!--     -->    
-    <xsd:complexType name="StartTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="StatusTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
     <xsd:complexType name="StatusType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
@@ -1785,13 +1713,7 @@ Spatial definition identifies a value and the predefined coordinate reference sy
         </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
-    <xsd:complexType name="TestDateTimeType">
-        <xsd:simpleContent>
-            <xsd:restriction base="DateTimeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
- 	
+	
 	<xsd:complexType name = "TestResultType">
 		<xsd:sequence>
 			<xsd:element name = "ID" type = "IdentifierType" minOccurs = "0" nillable="true"/>

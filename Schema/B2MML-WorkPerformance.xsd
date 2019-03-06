@@ -111,13 +111,13 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "WorkScheduleID"              type = "WorkScheduleIDType" 
                                                         minOccurs = "0"/>
-      <xsd:element name = "StartTime"                   type = "StartTimeType"                  
+      <xsd:element name = "StartTime"                   type = "DateTimeType"                  
                                                         minOccurs = "0"/>
-      <xsd:element name = "EndTime"                     type = "EndTimeType"    
+      <xsd:element name = "EndTime"                     type = "DateTimeType"    
                                                         minOccurs = "0"/>
       <xsd:element name = "WorkState"                   type = "ResponseStateType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+      <xsd:element name = "PublishedDate"               type = "DateTimeType" 
                                                         minOccurs = "0"/>
       <xsd:element name = "WorkResponse"                type = "WorkResponseType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
@@ -140,9 +140,9 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "WorkRequestID"              type = "WorkRequestIDType" 
                                                         minOccurs = "0"/>
-      <xsd:element name = "StartTime"                   type = "StartTimeType"          
+      <xsd:element name = "StartTime"                   type = "DateTimeType"          
                                                         minOccurs = "0"/>
-      <xsd:element name = "EndTime"                     type = "EndTimeType"    
+      <xsd:element name = "EndTime"                     type = "DateTimeType"    
                                                         minOccurs = "0"/>
       <xsd:element name = "ResponseState"               type = "ResponseStateType"
                                                         minOccurs = "0"/>
@@ -178,9 +178,9 @@
                                                         minOccurs = "0" />
       <xsd:element name = "WorkflowSpecificationNoewID" type = "IdentifierType"    
                                                         minOccurs = "0" />
-      <xsd:element name = "StartTime"                   type = "ActualStartTimeType"    
+      <xsd:element name = "StartTime"                   type = "DateTimeType"    
                                                         minOccurs = "0"/>
-      <xsd:element name = "EndTime"                     type = "ActualEndTimeType"      
+      <xsd:element name = "EndTime"                     type = "DateTimeType"      
                                                         minOccurs = "0"/>
       <xsd:element name = "JobState"                    type = "ResponseStateType"
                                                         minOccurs = "0"/>
@@ -211,9 +211,9 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "WorkType"                    type = "OperationsTypeType"   
                                                         minOccurs = "0"/>
-      <xsd:element name = "StartTime"                   type = "ActualStartTimeType"    
+      <xsd:element name = "StartTime"                   type = "DateTimeType"    
                                                         minOccurs = "0"/>
-      <xsd:element name = "EndTime"                     type = "ActualEndTimeType"      
+      <xsd:element name = "EndTime"                     type = "DateTimeType"      
                                                         minOccurs = "0"/>
       <xsd:element name = "JobState"                    type = "ResponseStateType"
                                                         minOccurs = "0"/>

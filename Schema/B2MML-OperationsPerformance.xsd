@@ -58,6 +58,7 @@
         V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
         V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2
                                                 Added OperationsSegmentID to OperationsResponseType
+												Changed all intermediate date and time types to DatTimeType
 
    </xsd:documentation>
 </xsd:annotation>
@@ -92,13 +93,13 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsScheduleID"        type = "OperationsScheduleIDType"       
                                                         minOccurs = "0"/>
-      <xsd:element name = "StartTime"                   type = "StartTimeType"                  
+      <xsd:element name = "StartTime"                   type = "DateTimeType"                  
                                                         minOccurs = "0"/>
-      <xsd:element name = "EndTime"                     type = "EndTimeType"    
+      <xsd:element name = "EndTime"                     type = "DateTimeType"    
                                                         minOccurs = "0"/>
       <xsd:element name = "PerformanceState"            type = "ResponseStateType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+      <xsd:element name = "PublishedDate"               type = "DateTimeType" 
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsResponse"          type = "OperationsResponseType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
@@ -121,9 +122,9 @@
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "SegmentRequirementID"        type = "SegmentRequirementIDType"  
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "StartTime"                   type = "StartTimeType"          
+      <xsd:element name = "StartTime"                   type = "DateTimeType"          
                                                         minOccurs = "0"/>
-      <xsd:element name = "EndTime"                     type = "EndTimeType"    
+      <xsd:element name = "EndTime"                     type = "DateTimeType"    
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsDefinitionID"      type = "OperationsDefinitionIDType"    
                                                         minOccurs = "0" maxOccurs = "unbounded"/>

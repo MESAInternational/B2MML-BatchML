@@ -57,6 +57,7 @@
         ---     ----            ------          ----
         V0600   17 Mar 2013     D. Brandl       Initial version                                 
         V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 4
+												Changed all intermediate date and time types to DatTimeType
 
    </xsd:documentation>
 </xsd:annotation>
@@ -96,7 +97,7 @@
                                                         minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
                                                         minOccurs = "0"  nillable="true"/>
-      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+      <xsd:element name = "PublishedDate"               type = "DateTimeType" 
                                                         minOccurs = "0"  nillable="true"/>
       <xsd:element name = "WorkCapability"              type = "WorkCapabilityType"      
                                                         minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
@@ -119,11 +120,11 @@
                                                     minOccurs = "0"/>
       <xsd:element name = "ConfidenceFactor"        type = "ConfidenceFactorType"
                                                     minOccurs = "0"/>
-      <xsd:element name = "StartTime"               type = "StartTimeType"
+      <xsd:element name = "StartTime"               type = "DateTimeType"
                                                     minOccurs = "0"/>
-      <xsd:element name = "EndTime"                 type = "EndTimeType"
+      <xsd:element name = "EndTime"                 type = "DateTimeType"
                                                     minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"           type = "PublishedDateType"
+      <xsd:element name = "PublishedDate"           type = "DateTimeType"
                                                     minOccurs = "0"/>
       <xsd:element name = "PersonnelCapability"     type = "OpPersonnelCapabilityType" 
                                                     minOccurs = "0" maxOccurs = "unbounded"/>
@@ -152,11 +153,11 @@
                                                     minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "HierarchyScope"          type = "HierarchyScopeType"
                                                     minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "StartTime"               type = "StartTimeType"
+      <xsd:element name = "StartTime"               type = "DateTimeType"
                                                     minOccurs = "0"/>
-      <xsd:element name = "EndTime"                 type = "EndTimeType"
+      <xsd:element name = "EndTime"                 type = "DateTimeType"
                                                     minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"           type = "PublishedDateType"
+      <xsd:element name = "PublishedDate"           type = "DateTimeType"
                                                     minOccurs = "0"/>
       <xsd:element name = "PersonnelCapability"     type = "OpPersonnelCapabilityType" 
                                                     minOccurs = "0" maxOccurs = "unbounded"/>

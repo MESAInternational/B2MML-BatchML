@@ -64,6 +64,7 @@
         V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2, 4 and 5
 												Included the B2MML "INFORMATION" container objects 
 												Added new objects from Part 4 and Part 4
+												Changed all intermediate date and time types to DatTimeType
 
    </xsd:documentation>
 </xsd:annotation>
@@ -87,7 +88,7 @@
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"               type = "PublishedDateType"
+      <xsd:element name = "PublishedDate"               type = "DateTimeType"
                                                         minOccurs = "0"/>
       <xsd:element name = "SupportedAction"             type = "SupportedActionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>

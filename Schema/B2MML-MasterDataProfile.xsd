@@ -51,6 +51,7 @@
         Ver     Date            Person          Note
         ---     ----            ------          ----
         7.0		12-Dec-2018		Dennis Brandl	Initial  version for a Base Data Exchange Profile                                
+												Changed all intermediate date and time types to DatTimeType
 
    </xsd:documentation>
 </xsd:annotation>

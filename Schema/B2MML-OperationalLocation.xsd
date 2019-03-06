@@ -54,7 +54,8 @@
 
         Ver     Date            Person          Note
         ---     ----            ------          ----
-       V0700   09 Nov 2018     D. Brandl      Initial Version fro 2018 ISA 95 Part 2 update
+       V0700   09 Nov 2018     D. Brandl        Initial Version fro 2018 ISA 95 Part 2 update
+												Changed all intermediate date and time types to DatTimeType
 
    </xsd:documentation>
 </xsd:annotation>
@@ -131,7 +132,7 @@ may be made up of other operational locations.
                                                         minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
                                                         minOccurs = "0"  nillable="true"/>
-      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+      <xsd:element name = "PublishedDate"               type = "DateTimeType" 
                                                         minOccurs = "0"  nillable="true"/>
       <xsd:element name = "OperationalLocationClass"    type = "OperationalLocationClassType"      
                                                         minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>

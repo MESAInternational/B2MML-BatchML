@@ -75,9 +75,9 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "ProcessSegmentID"            type = "ProcessSegmentIDType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "ActualStartTime"             type = "ActualStartTimeType"    
+      <xsd:element name = "ActualStartTime"             type = "DateTimeType"    
                                                         minOccurs = "0"/>
-      <xsd:element name = "ActualEndTime"               type = "ActualEndTimeType"      
+      <xsd:element name = "ActualEndTime"               type = "DateTimeType"      
                                                         minOccurs = "0"/>
       <xsd:element name = "PostingDate"                 type = "DateTimeType"      
                                                         minOccurs = "0"/>
