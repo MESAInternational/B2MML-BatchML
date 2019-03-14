@@ -176,7 +176,7 @@
                                                         minOccurs = "0" />
       <xsd:element name = "WorkflowSpecificationID"     type = "IdentifierType"    
                                                         minOccurs = "0" />
-      <xsd:element name = "WorkflowSpecificationNoewID" type = "IdentifierType"    
+      <xsd:element name = "WorkflowSpecificationNodeID" type = "IdentifierType"    
                                                         minOccurs = "0" />
       <xsd:element name = "StartTime"                   type = "ActualStartTimeType"    
                                                         minOccurs = "0"/>
