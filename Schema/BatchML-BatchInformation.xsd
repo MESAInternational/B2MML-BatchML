@@ -217,10 +217,10 @@
       <xsd:element name = "ProductID"           type = "ProductIDType"          minOccurs = "0"/>
       <xsd:element name = "OrderID"             type = "OrderIDType"            minOccurs = "0"/>
       <xsd:element name = "StartCondition"      type = "StartConditionType"     minOccurs = "0"/>
-      <xsd:element name = "RequestedStartTime"  type = "RequestedStartTimeType" minOccurs = "0"/>
-      <xsd:element name = "ActualStartTime"     type = "ActualStartTimeType"    minOccurs = "0"/>
-      <xsd:element name = "RequestedEndTime"    type = "RequestedEndTimeType"   minOccurs = "0"/>
-      <xsd:element name = "ActualEndTime"       type = "ActualEndTimeType"      minOccurs = "0"/>
+      <xsd:element name = "RequestedStartTime"  type = "DateTimeType"           minOccurs = "0"/>
+      <xsd:element name = "ActualStartTime"     type = "DateTimeType"           minOccurs = "0"/>
+      <xsd:element name = "RequestedEndTime"    type = "DateTimeType"           minOccurs = "0"/>
+      <xsd:element name = "ActualEndTime"       type = "DateTimeType"           minOccurs = "0"/>
       <xsd:element name = "BatchPriority"       type = "BatchPriorityType"      minOccurs = "0"/>
       <xsd:element name = "RequestedBatchSize"  type = "RequestedBatchSizeType" minOccurs = "0"/>
       <xsd:element name = "ActualBatchSize"     type = "ActualBatchSizeType"    minOccurs = "0"/>
@@ -1332,10 +1332,10 @@
 
         <xsd:element name = "ActualBatchSize"           type = "ActualBatchSizeType"/>
         <xsd:element name = "ActualEquipmentID"         type = "ActualEquipmentIDType"/>
-        <xsd:element name = "ActualEndTime"             type = "ActualEndTimeType"/>
-        <xsd:element name = "ActualStartTime"           type = "ActualStartTimeType"/>
+        <xsd:element name = "ActualEndTime"             type = "DateTimeType"/>
+        <xsd:element name = "ActualStartTime"           type = "DateTimeType"/>
         <xsd:element name = "ApprovedBy"                type = "ApprovedByType"/>
-        <xsd:element name = "ApprovalDate"              type = "ApprovalDateType"/>
+        <xsd:element name = "ApprovalDate"              type = "DateTimeType"/>
         <xsd:element name = "ApprovalHistory"           type = "ApprovalHistoryType"/>
         <xsd:element name = "Author"                    type = "AuthorType"/>
 

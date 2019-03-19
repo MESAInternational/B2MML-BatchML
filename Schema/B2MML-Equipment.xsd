@@ -83,6 +83,7 @@
 											    Added EquipmentCapabilityTestSpecificationID to Equipment and EquipmentClass
         V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
         V0700   21 Dec 2018     D. Brandl       Updated Version to match the 2018 ISA 95 update
+												Changed all intermediate date and time types to DatTimeType
  
 
    </xsd:documentation>
@@ -153,7 +154,7 @@ zero or more equipment classes.
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "HierarchyScope"      type = "HierarchyScopeType"
                                                 minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"       type = "PublishedDateType"
+      <xsd:element name = "PublishedDate"       type = "DateTimeType"
                                                 minOccurs = "0"/>
       <xsd:element name = "Equipment"           type = "EquipmentType"  
                                                 minOccurs = "0" maxOccurs = "unbounded"/>

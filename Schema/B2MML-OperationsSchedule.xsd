@@ -95,13 +95,13 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsType"              type = "OperationsTypeType"   
                                                         minOccurs = "0"/>
-      <xsd:element name = "StartTime"                   type = "StartTimeType"   
+      <xsd:element name = "StartTime"                   type = "DateTimeType"   
                                                         minOccurs = "0"/>
-      <xsd:element name = "EndTime"                     type = "EndTimeType"     
+      <xsd:element name = "EndTime"                     type = "DateTimeType"     
                                                         minOccurs = "0"/>
       <xsd:element name = "ScheduleState"               type = "RequestStateType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+      <xsd:element name = "PublishedDate"               type = "DateTimeType" 
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsRequest"           type = "OperationsRequestType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
@@ -119,9 +119,9 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsType"              type = "OperationsTypeType"   
                                                         minOccurs = "0"/>
-      <xsd:element name = "StartTime"                   type = "StartTimeType" 
+      <xsd:element name = "StartTime"                   type = "DateTimeType" 
                                                         minOccurs = "0"/>
-      <xsd:element name = "EndTime"                     type = "EndTimeType" 
+      <xsd:element name = "EndTime"                     type = "DateTimeType" 
                                                         minOccurs = "0"/>
       <xsd:element name = "Priority"                    type = "PriorityType" 
                                                         minOccurs = "0"/>
@@ -151,9 +151,9 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "ProcessSegmentID"            type = "ProcessSegmentIDType" 
 	                                                    minOccurs = "0"/>
-      <xsd:element name = "EarliestStartTime"           type = "EarliestStartTimeType"  
+      <xsd:element name = "EarliestStartTime"           type = "DateTimeType"  
                                                         minOccurs = "0"/>
-      <xsd:element name = "LatestEndTime"               type = "LatestEndTimeType"      
+      <xsd:element name = "LatestEndTime"               type = "DateTimeType"      
                                                         minOccurs = "0"/>
       <xsd:element name = "Duration"                    type = "DurationType"           
                                                         minOccurs = "0"/>

@@ -64,6 +64,7 @@
 												Added Test Specification ID to resource specifications
 												Added Work Master links
 												Added transactions for Operations Segment, not in Part 5, but discussed in ISA 95 meetings
+												Changed all intermediate date and time types to DatTimeType
 
    </xsd:documentation>
 </xsd:annotation>
@@ -114,7 +115,7 @@
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
 														minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"               type = "PublishedDateType" 
+      <xsd:element name = "PublishedDate"               type = "DateTimeType" 
 														minOccurs = "0"/>
       <xsd:element name = "OperationsDefinition"        type = "OperationsDefinitionType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
@@ -135,7 +136,7 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsType"              type = "OperationsTypeType" 
                                                         minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"               type = "PublishedDateType"     
+      <xsd:element name = "PublishedDate"               type = "DateTimeType"     
                                                         minOccurs = "0"/>
       <xsd:element name = "BillOfMaterialsID"           type = "BillOfMaterialsIDType" 
                                                         minOccurs = "0"/>
