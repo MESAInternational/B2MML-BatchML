@@ -21,7 +21,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2018 MESA International, Version 0700
+        Copyright 2019 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -59,6 +59,7 @@
         V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2
                                                 Added OperationsSegmentID to OperationsResponseType
 												Changed all intermediate date and time types to DatTimeType
+				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
 
    </xsd:documentation>
 </xsd:annotation>
@@ -91,7 +92,7 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsType"              type = "OperationsTypeType"   
                                                         minOccurs = "0"/>
-      <xsd:element name = "OperationsScheduleID"        type = "OperationsScheduleIDType"       
+      <xsd:element name = "OperationsScheduleID"        type = "IdentifierType"       
                                                         minOccurs = "0"/>
       <xsd:element name = "StartTime"                   type = "DateTimeType"                  
                                                         minOccurs = "0"/>
@@ -118,17 +119,17 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsType"              type = "OperationsTypeType"   
                                                         minOccurs = "0"/>
-      <xsd:element name = "OperationsRequestID"         type = "OperationsRequestIDType"  
+      <xsd:element name = "OperationsRequestID"         type = "IdentifierType"  
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "SegmentRequirementID"        type = "SegmentRequirementIDType"  
+      <xsd:element name = "SegmentRequirementID"        type = "IdentifierType"  
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "StartTime"                   type = "DateTimeType"          
                                                         minOccurs = "0"/>
       <xsd:element name = "EndTime"                     type = "DateTimeType"    
                                                         minOccurs = "0"/>
-      <xsd:element name = "OperationsDefinitionID"      type = "OperationsDefinitionIDType"    
+      <xsd:element name = "OperationsDefinitionID"      type = "IdentifierType"    
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OperationsSegmentID"         type = "OperationsSegmentIDType"    
+      <xsd:element name = "OperationsSegmentID"         type = "IdentifierType"    
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "ResponseState"               type = "ResponseStateType"
                                                         minOccurs = "0"/>

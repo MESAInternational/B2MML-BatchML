@@ -7,7 +7,7 @@
     <xsd:annotation>
         <xsd:documentation> 
 
-        Copyright 2018 MESA International, Version 0700
+        Copyright 2019 MESA International, Version 0700
         All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -112,6 +112,7 @@
                                              - Added HierarchyScope to TestResultType
 											 - Added documentation of selected elements
 											 - Removed intermediate types for Identifiers and DateTime
+			29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
 
 
    </xsd:documentation>
@@ -210,24 +211,6 @@ Defined types are
             <xsd:extension base="AssemblyType1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="BillOfMaterialIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="BillOfMaterialsIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="BillOfResourcesIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
         </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
@@ -463,25 +446,13 @@ Defined values are (explained using dependency type between element A and elemen
     <!--     -->    
     <xsd:complexType name="EquipmentAssetMappingType">
         <xsd:sequence>
-            <xsd:element name="EquipmentID" type="EquipmentIDType"/>
-            <xsd:element name="PhysicalAssetID" type="PhysicalAssetIDType"/>
+            <xsd:element name="EquipmentID" type="IdentifierType"/>
+            <xsd:element name="PhysicalAssetID" type="IdentifierType"/>
 			<xsd:element name="HierarchyScope" type = "HierarchyScopeType" minOccurs = "0"/>
             <xsd:element name="StartTime" type="DateTimeType" minOccurs="0"/>
             <xsd:element name="EndTime" type="DateTimeType" minOccurs="0"/>
             <xsd:group ref="Extended:EquipmentAssetMapping" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="EquipmentCapabilityTestSpecificationIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="EquipmentClassIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="EquipmentElementLevel1Type">
@@ -534,12 +505,6 @@ Defined values are:
         </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
-    <xsd:complexType name="EquipmentIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
     <xsd:complexType name="EquipmentUseType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
@@ -564,7 +529,7 @@ The hierarchy scope identifies the associated instance in the role-based equipme
 			</xsd:documentation>
 		</xsd:annotation> 
         <xsd:sequence>
-            <xsd:element name="EquipmentID" type="EquipmentIDType"/>
+            <xsd:element name="EquipmentID" type="IdentifierType"/>
             <xsd:choice>
                 <xsd:element name="EquipmentElementLevel" type="EquipmentElementLevelType"/>
                 <xsd:element name="EquipmentLevel" type="EquipmentElementLevelType"/>
@@ -673,7 +638,7 @@ Defined values are
     <!--  LocationType kept in V05 for use with the Production element definitions. Not used in other elements.  -->
     <xsd:complexType name="LocationType">
         <xsd:sequence>
-            <xsd:element name="EquipmentID" type="EquipmentIDType"/>
+            <xsd:element name="EquipmentID" type="IdentifierType"/>
             <xsd:element name="EquipmentElementLevel" type="EquipmentElementLevelType"/>
             <xsd:element name="Location" type="LocationType" minOccurs="0"/>
             <xsd:group ref="Extended:Location" minOccurs="0" maxOccurs="1"/>
@@ -681,65 +646,6 @@ Defined values are
     </xsd:complexType>
     <!--     -->    
     <!--  LocationType kept in V05 for use with the Production element definitions. Not used in other elements.  -->
-    <xsd:complexType name="ManufacturingBillIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="MaterialActualIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="MaterialCapabilityIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="MaterialClassIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="MaterialDefinitionIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="MaterialLotIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="MaterialRequirementIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="MaterialSpecificationIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="MaterialSubLotIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="MaterialTestSpecificationIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="MaterialUse1Type">
         <xsd:simpleContent>
@@ -824,8 +730,8 @@ Defined values for inventory operations defined values are
     <!--     -->    
     <xsd:complexType name="OpEquipmentRequirementType">
         <xsd:sequence>
-            <xsd:element name="EquipmentClassID" type="EquipmentClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="EquipmentID" type="EquipmentIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="EquipmentClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="EquipmentID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentUse" type="EquipmentUseType" minOccurs="0"/>
             <xsd:element name="Quantity" type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
@@ -853,8 +759,8 @@ Defined values for inventory operations defined values are
     <!--     -->    
     <xsd:complexType name="OpPersonnelRequirementType">
         <xsd:sequence>
-            <xsd:element name="PersonnelClassID" type="PersonnelClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="PersonID" type="PersonIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PersonnelClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PersonID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PersonnelUse" type="PersonnelUseType" minOccurs="0"/>
             <xsd:element name="Quantity" type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
@@ -881,8 +787,8 @@ Defined values for inventory operations defined values are
     <!--     -->    
     <xsd:complexType name="OpPhysicalAssetRequirementType">
         <xsd:sequence>
-            <xsd:element name="PhysicalAssetClassID" type="PhysicalAssetClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="PhysicalAssetID" type="PhysicalAssetIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PhysicalAssetClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PhysicalAssetID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PhysicalAssetUse" type="PhysicalAssetUseType" minOccurs="0"/>
             <xsd:element name="Quantity" type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
@@ -910,10 +816,10 @@ Defined values for inventory operations defined values are
     <!--     -->    
     <xsd:complexType name="OpMaterialRequirementType">
         <xsd:sequence>
-            <xsd:element name="MaterialClassID" type="MaterialClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="MaterialDefinitionID" type="MaterialDefinitionIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="MaterialLotID" type="MaterialLotIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="MaterialSubLotID" type="MaterialSubLotIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MaterialClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MaterialDefinitionID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MaterialLotID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MaterialSubLotID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="MaterialUse" type="MaterialUseType" minOccurs="0"/>
 			<xsd:element name="SpatialDefinition" type="SpatialDefinitionType" minOccurs = "0" />
@@ -943,8 +849,8 @@ Defined values for inventory operations defined values are
     <!--     -->    
     <xsd:complexType name="OpPersonnelSpecificationType">
         <xsd:sequence>
-            <xsd:element name="PersonnelClassID" type="PersonnelClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="PersonID" type="PersonIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PersonnelClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PersonID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PersonnelUse" type="PersonnelUseType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" type="HierarchyScopeType" minOccurs="0"/>
@@ -968,8 +874,8 @@ Defined values for inventory operations defined values are
     <!--     -->    
     <xsd:complexType name="OpEquipmentSpecificationType">
         <xsd:sequence>
-            <xsd:element name="EquipmentClassID" type="EquipmentClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="EquipmentID" type="EquipmentIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="EquipmentClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="EquipmentID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentUse" type="EquipmentUseType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" type="HierarchyScopeType" minOccurs="0"/>
@@ -993,8 +899,8 @@ Defined values for inventory operations defined values are
     <!--     -->    
     <xsd:complexType name="OpPhysicalAssetSpecificationType">
         <xsd:sequence>
-            <xsd:element name="PhysicalAssetClassID" type="PhysicalAssetClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="PhysicalAssetID" type="PhysicalAssetIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PhysicalAssetClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PhysicalAssetID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PhysicalAssetUse" type="PhysicalAssetUseType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" type="HierarchyScopeType" minOccurs="0"/>
@@ -1019,8 +925,8 @@ Defined values for inventory operations defined values are
     <xsd:complexType name="OpMaterialSpecificationType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
-            <xsd:element name="MaterialClassID" type="MaterialClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="MaterialDefinitionID" type="MaterialDefinitionIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MaterialClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MaterialDefinitionID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="MaterialUse" type="MaterialUseType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" type="HierarchyScopeType" minOccurs="0"/>
@@ -1047,8 +953,8 @@ Defined values for inventory operations defined values are
     <!--     -->    
     <xsd:complexType name="OpPersonnelCapabilityType">
         <xsd:sequence>
-            <xsd:element name="PersonnelClassID" type="PersonnelClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="PersonID" type="PersonIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PersonnelClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PersonID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="CapabilityType" type="CapabilityTypeType" minOccurs="0"/>
             <xsd:element name="Reason" type="ReasonType" minOccurs="0"/>
@@ -1079,8 +985,8 @@ Defined values for inventory operations defined values are
     <!--     -->    
     <xsd:complexType name="OpEquipmentCapabilityType">
         <xsd:sequence>
-            <xsd:element name="EquipmentClassID" type="EquipmentClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="EquipmentID" type="EquipmentIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="EquipmentClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="EquipmentID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="CapabilityType" type="CapabilityTypeType" minOccurs="0"/>
             <xsd:element name="Reason" type="ReasonType" minOccurs="0"/>
@@ -1111,8 +1017,8 @@ Defined values for inventory operations defined values are
     <!--     -->    
     <xsd:complexType name="OpPhysicalAssetCapabilityType">
         <xsd:sequence>
-            <xsd:element name="PhysicalAssetClassID" type="PhysicalAssetClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="PhysicalAssetID" type="PhysicalAssetIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PhysicalAssetClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PhysicalAssetID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="CapabilityType" type="CapabilityTypeType" minOccurs="0"/>
             <xsd:element name="Reason" type="ReasonType" minOccurs="0"/>
@@ -1143,10 +1049,10 @@ Defined values for inventory operations defined values are
     <!--     -->    
     <xsd:complexType name="OpMaterialCapabilityType">
         <xsd:sequence>
-            <xsd:element name="MaterialClassID" type="MaterialClassIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="MaterialDefinitionID" type="MaterialDefinitionIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="MaterialLotID" type="MaterialLotIDType" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="MaterialSubLotID" type="MaterialSubLotIDType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MaterialClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MaterialDefinitionID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MaterialLotID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="MaterialSubLotID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="CapabilityType" type="CapabilityTypeType" minOccurs="0"/>
             <xsd:element name="Reason" type="ReasonType" minOccurs="0"/>
@@ -1177,35 +1083,6 @@ Defined values for inventory operations defined values are
         </xsd:sequence>
     </xsd:complexType>
     <!--     -->    
-    <xsd:complexType name="OperationLocationIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="OperationsDefinitionIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="OperationsRequestIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="OperationsScheduleIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="OperationsSegmentIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="OperationsType1Type">
         <xsd:simpleContent>
@@ -1242,12 +1119,6 @@ Defined values are
         </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
-    <xsd:complexType name="ParameterIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
     <xsd:complexType name="ParameterType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -1259,19 +1130,7 @@ Defined values are
         </xsd:sequence>
     </xsd:complexType>
     <!--     -->    
-    <xsd:complexType name="PersonIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
     <xsd:complexType name="PersonNameType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="PersonnelClassIDType">
         <xsd:simpleContent>
             <xsd:restriction base="IdentifierType"/>
         </xsd:simpleContent>
@@ -1280,30 +1139,6 @@ Defined values are
     <xsd:complexType name="PersonnelUseType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="PhysicalAssetActualIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="PhysicalAssetCapabilityTestSpecificationIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="PhysicalAssetClassIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="PhysicalAssetIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
         </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
@@ -1325,31 +1160,7 @@ Defined values are
         </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
-    <xsd:complexType name="ProcessSegmentIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="ProductionScheduleIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="ProductProductionRuleIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
     <xsd:complexType name="ProductProductionRuleType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="ProductionRequestIDType">
         <xsd:simpleContent>
             <xsd:restriction base="IdentifierType"/>
         </xsd:simpleContent>
@@ -1357,28 +1168,10 @@ Defined values are
     <!--     -->    
     <xsd:group name="ProductProductionRuleIDGroup">
         <xsd:sequence>
-            <xsd:element name="ProductProductionRuleID" type="ProductProductionRuleIDType" minOccurs="0"/>
+            <xsd:element name="ProductProductionRuleID" type="IdentifierType" minOccurs="0"/>
             <xsd:element name="Version" type="VersionType" minOccurs="0"/>
         </xsd:sequence>
     </xsd:group>
-    <!--     -->    
-    <xsd:complexType name="ProductSegmentIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="PropertyIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="QualificationTestSpecificationIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="QuantityStringType">
         <xsd:simpleContent>
@@ -1512,19 +1305,6 @@ Defined values are
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="ResourceNetworkConnectionIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="ResourceIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-
     <!--     -->    
     <xsd:complexType name="ResourceLocationType1Type">
         <xsd:simpleContent>
@@ -1669,18 +1449,12 @@ Defined values are
             <xsd:element name="TimingFactor" type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="UnitOfMeasure" type="UnitOfMeasureType" nillable="true" minOccurs="0"/>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element name="ProductSegmentID" type="ProductSegmentIDType"/>
-                <xsd:element name="ProcessSegmentID" type="ProcessSegmentIDType"/>
+                <xsd:element name="ProductSegmentID" type="IdentifierType"/>
+                <xsd:element name="ProcessSegmentID" type="IdentifierType"/>
                 <xsd:element name="SegmentID" type="IdentifierType"/>
             </xsd:choice>
             <xsd:group ref="Extended:SegmentDependency" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="SegmentRequirementIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="SpatialDefinitionType">
@@ -1765,30 +1539,6 @@ Spatial definition identifies a value and the predefined coordinate reference sy
     </xsd:complexType>
     <!--     -->    
     <xsd:complexType name="VersionType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="WorkDirectiveIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="WorkMasterIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="WorkRequestIDType">
-        <xsd:simpleContent>
-            <xsd:restriction base="IdentifierType"/>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <!--     -->    
-    <xsd:complexType name="WorkScheduleIDType">
         <xsd:simpleContent>
             <xsd:restriction base="IdentifierType"/>
         </xsd:simpleContent>

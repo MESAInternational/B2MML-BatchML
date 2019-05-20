@@ -26,7 +26,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2018 MESA International, Version 0700
+        Copyright 2019 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -65,6 +65,7 @@
         V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2
 												Removed PhysicalAsseteCapabilityTestSpecification definitions, replaced by TestSpecification model
 												Changed all intermediate date and time types to DatTimeType
+				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
    </xsd:documentation>
 </xsd:annotation>
 
@@ -178,7 +179,7 @@ A physical asset class may be made up of zero or more physical asset classes.
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "PhysicalAsset"       type = "PhysicalAssetType"  
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAssetClassID" type = "PhysicalAssetClassIDType"   
+      <xsd:element name = "PhysicalAssetClassID" type = "IdentifierType"   
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "PhysicalAssetCapabilityTestSpecificationID"
                                                 type = "IdentifierType"
@@ -224,7 +225,7 @@ A physical asset class may be made up of zero or more physical asset classes.
       <xsd:element name = "PhysicalAssetClassProperty"
                                                 type = "PhysicalAssetClassPropertyType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAssetID"     type = "PhysicalAssetIDType"
+      <xsd:element name = "PhysicalAssetID"     type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "PhysicalAssetCapabilityTestSpecificationID"
                                                 type = "IdentifierType"

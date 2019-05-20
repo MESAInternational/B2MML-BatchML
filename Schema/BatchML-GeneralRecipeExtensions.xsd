@@ -52,6 +52,7 @@
         V0500   26 Mar 2011     D. Brandl       Initial version
         V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4
         V0700   21 Dec 2018     D. Brandl       Updated Version
+				29 Mar 2019		D. Brandl		All future comments to be recorded in GitHub
 
    </xsd:documentation>
 </xsd:annotation>

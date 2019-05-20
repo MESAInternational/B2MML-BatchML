@@ -20,7 +20,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2018 MESA International, Version 0700
+        Copyright 2019 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -54,8 +54,9 @@
 
         Ver     Date            Person          Note
         ---     ----            ------          ----
-       V0700   09 Nov 2018     D. Brandl        Initial Version from 2018 ISA 95 Part 2 update
+       V0700    09 Nov 2018     D. Brandl       Initial Version from 2018 ISA 95 Part 2 update
 												Changed all intermediate date and time types to DatTimeType
+				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
 
    </xsd:documentation>
 </xsd:annotation>

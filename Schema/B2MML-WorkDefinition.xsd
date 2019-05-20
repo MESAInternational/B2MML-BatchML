@@ -21,7 +21,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2018 MESA International, Version 0700
+        Copyright 2019 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -61,6 +61,7 @@
                                                 Added unbounded to OperationsDefinitionID to WorkDefinitionType
                                                 Added OperationsSegmentID to WorkDefinitionType
 												Changed all intermediate date and time types to DatTimeType
+				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
 
    </xsd:documentation>
 </xsd:annotation>
@@ -140,11 +141,11 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "PublishedDate"               type = "DateTimeType"     
                                                         minOccurs = "0"/>
-      <xsd:element name = "OperationsDefinitionID"      type = "OperationsDefinitionIDType"     
+      <xsd:element name = "OperationsDefinitionID"      type = "IdentifierType"     
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OperationsSegmentID"         type = "OperationsSegmentIDType"     
+      <xsd:element name = "OperationsSegmentID"         type = "IdentifierType"     
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "ProcessSegmentID"         	type = "ProcessSegmentIDType"     
+      <xsd:element name = "ProcessSegmentID"         	type = "IdentifierType"     
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "Parameter"                   type = "ParameterType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
@@ -167,7 +168,7 @@
       <xsd:group   ref  = "WorkDefinitionType"/>
       <xsd:element name = "WorkMaster"                  type = "WorkMasterType"       
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "IncludesPropertiesOf"        type = "WorkMasterIDType"       
+      <xsd:element name = "IncludesPropertiesOf"        type = "IdentifierType"       
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:WorkMaster"         minOccurs = "0" maxOccurs = "1"/>
     </xsd:sequence>
@@ -176,7 +177,7 @@
   <xsd:complexType name = "WorkDirectiveType">
     <xsd:sequence>
       <xsd:group   ref  = "WorkDefinitionType"/>
-      <xsd:element name = "WorkMasterID"                type = "WorkMasterIDType"       
+      <xsd:element name = "WorkMasterID"                type = "IdentifierType"       
                                                         minOccurs = "0"/>
       <xsd:element name = "JobOrderID"                  type = "IdentifierType"
                                                         minOccurs = "0"/>

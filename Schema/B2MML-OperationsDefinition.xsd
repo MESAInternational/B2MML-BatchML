@@ -20,7 +20,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2018 MESA International, Version 0700
+        Copyright 2019 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -65,6 +65,7 @@
 												Added Work Master links
 												Added transactions for Operations Segment, not in Part 5, but discussed in ISA 95 meetings
 												Changed all intermediate date and time types to DatTimeType
+				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
 
    </xsd:documentation>
 </xsd:annotation>
@@ -138,11 +139,11 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "PublishedDate"               type = "DateTimeType"     
                                                         minOccurs = "0"/>
-      <xsd:element name = "BillOfMaterialsID"           type = "BillOfMaterialsIDType" 
+      <xsd:element name = "BillOfMaterialsID"           type = "IdentifierType" 
                                                         minOccurs = "0"/>
       <xsd:element name = "WorkDefinitionID"            type = "IdentifierType"     
                                                         minOccurs = "0"/>
-      <xsd:element name = "BillOfResourcesID"           type = "BillOfResourcesIDType" 
+      <xsd:element name = "BillOfResourcesID"           type = "IdentifierType" 
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsMaterialBill"      type = "OperationsMaterialBillType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
@@ -175,9 +176,9 @@
       <xsd:element name = "ID"                          type = "IdentifierType" />
       <xsd:element name = "Description"                 type = "DescriptionType"        
                                                         minOccurs = "0"/>
-      <xsd:element name = "MaterialClassID"             type = "MaterialClassIDType"
+      <xsd:element name = "MaterialClassID"             type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "MaterialDefinitionID"        type = "MaterialDefinitionIDType" 
+      <xsd:element name = "MaterialDefinitionID"        type = "IdentifierType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "UseType"                     type = "CodeType" 
                                                         minOccurs = "0"/>
@@ -208,13 +209,13 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "Duration"                    type = "DurationType"            
                                                         minOccurs = "0"/>
-      <xsd:element name = "ProcessSegmentID"            type = "ProcessSegmentIDType" 
+      <xsd:element name = "ProcessSegmentID"            type = "IdentifierType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "BillOfMaterialsID"           type = "BillOfMaterialsIDType" 
+      <xsd:element name = "BillOfMaterialsID"           type = "IdentifierType" 
                                                         minOccurs = "0"/>
       <xsd:element name = "WorkDefinitionID"            type = "IdentifierType"     
                                                         minOccurs = "0"/>
-      <xsd:element name = "BillOfResourcesID"           type = "BillOfResourcesIDType" 
+      <xsd:element name = "BillOfResourcesID"           type = "IdentifierType" 
                                                         minOccurs = "0"/>
       <xsd:element name = "UsesPropertiesOfOperationsSegmentID"
                                                         type = "IdentifierType"

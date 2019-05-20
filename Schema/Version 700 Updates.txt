@@ -11,4 +11,8 @@ Non backward compatible changes:
 - B2MML-Common.xsd:		TestResultType changed to match the updated Test Specification model in 2018 ISA 95 Part 2 Clause 5.9.1
 - Changes to location information in the Physical Asset schemas
 
+All Copyright changed to 2019
+All intermediate ID types removed
+All intermediate DateTime typesremoved
+All future comments and revisions to be recorded in GitHub
 

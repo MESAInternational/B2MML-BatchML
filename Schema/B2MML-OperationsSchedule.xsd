@@ -21,7 +21,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2018 MESA International, Version 0700
+        Copyright 2019 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -62,6 +62,7 @@
                                                 Added OperationsSegmentID to OperationsRequestType
                                                 Added OperationsSegmentID to OpSegmentRequirementType
 												Added Spatial Definition and locations
+				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
 
    </xsd:documentation>
 </xsd:annotation>
@@ -127,9 +128,9 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "RequestState"               type = "RequestStateType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "OperationsDefinitionID"      type = "OperationsDefinitionIDType"    
+      <xsd:element name = "OperationsDefinitionID"      type = "IdentifierType"    
                                                         minOccurs = "0"/>
-      <xsd:element name = "OperationsSegmentID"         type = "OperationsSegmentIDType"    
+      <xsd:element name = "OperationsSegmentID"         type = "IdentifierType"    
                                                         minOccurs = "0"/>
       <xsd:element name = "SegmentRequirement"          type = "OpSegmentRequirementType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
@@ -149,7 +150,7 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "OperationsType"              type = "OperationsTypeType"   
                                                         minOccurs = "0"/>
-      <xsd:element name = "ProcessSegmentID"            type = "ProcessSegmentIDType" 
+      <xsd:element name = "ProcessSegmentID"            type = "IdentifierType" 
 	                                                    minOccurs = "0"/>
       <xsd:element name = "EarliestStartTime"           type = "DateTimeType"  
                                                         minOccurs = "0"/>
@@ -157,9 +158,9 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "Duration"                    type = "DurationType"           
                                                         minOccurs = "0"/>
-      <xsd:element name = "OperationsDefinitionID"      type = "OperationsDefinitionIDType" 
+      <xsd:element name = "OperationsDefinitionID"      type = "IdentifierType" 
 	                                                    minOccurs = "0"/>
-      <xsd:element name = "OperationsSegmentID"         type = "OperationsSegmentIDType"    
+      <xsd:element name = "OperationsSegmentID"         type = "IdentifierType"    
                                                         minOccurs = "0"/>
       <xsd:element name = "SegmentState"                type = "RequestStateType"
                                                         minOccurs = "0"/>
