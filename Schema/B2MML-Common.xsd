@@ -5,44 +5,44 @@
     <!-- Import the Common Extension Schema                 -->
     <xsd:import namespace="http://www.mesa.org/xml/B2MML-AllExtensions" schemaLocation="B2MML-CommonExtensions.xsd"/>
     <xsd:annotation>
-        <xsd:documentation> 
+        <xsd:documentation>
 
         Copyright 2019 MESA International, Version 0700
         All Rights Reserved. http://www.mesa.org
 
-        This MESA International work (including specifications, documents, 
-        software, and related items) referred to as the Business To 
-        Manufacturing Markup Language (B2MML) is provided by the copyright 
-        holders under the following license. 
+        This MESA International work (including specifications, documents,
+        software, and related items) referred to as the Business To
+        Manufacturing Markup Language (B2MML) is provided by the copyright
+        holders under the following license.
 
-        Permission to use, copy, modify, or redistribute this Work and its 
-        documentation, with or without modification, for any purpose and 
-        without fee or royalty is hereby granted provided MESA International 
-        is acknowledged as the originator of this Work using the 
+        Permission to use, copy, modify, or redistribute this Work and its
+        documentation, with or without modification, for any purpose and
+        without fee or royalty is hereby granted provided MESA International
+        is acknowledged as the originator of this Work using the
         following statement:
 
-        "The Business To Manufacturing Markup Language (B2MML) is used 
+        "The Business To Manufacturing Markup Language (B2MML) is used
         courtesy of MESA International."
 
-        In no event shall MESA International, its members, or any 
-        third party be liable for any costs, expenses, losses, damages or 
-        injuries incurred by use of the Work or as a result of this 
+        In no event shall MESA International, its members, or any
+        third party be liable for any costs, expenses, losses, damages or
+        injuries incurred by use of the Work or as a result of this
         agreement.
-          
-        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System 
+
+        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System
         Integration Part 2: Object Model Attributes Standard and the
-        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration 
-        Part 5: Business to Manufacturing Transactions. 
+        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration
+        Part 5: Business to Manufacturing Transactions.
    </xsd:documentation>
-        <xsd:documentation> 
+        <xsd:documentation>
 
                 Revision History
 
     Ver     Date             Person          Note
     ---     ----             ------          ----
-    V01     7 Apr 2002       D. Emerson      - Initial release  
+    V01     7 Apr 2002       D. Emerson      - Initial release
     V02     23 Sept 2003     D. Emerson      - Updated filename for V02
-                                             - Changed complexTypes that contained 
+                                             - Changed complexTypes that contained
                                                simpleContent to be simpleTypes with
                                                simpleContent by default (removed explicit)
                                                simpleContent tags).  Types changed:
@@ -50,13 +50,13 @@
                                                   DependencyType
                                              - Removed extra space in CapabilityType1Type
                                              - Committed and Available enumerations
-                                             - Changed use of ##any to indirect reference 
-                                               through AnyType, to allow parsing using Microsoft 
+                                             - Changed use of ##any to indirect reference
+                                               through AnyType, to allow parsing using Microsoft
                                                XML toolset
                                              - Added Common schema to B2MML namespace
-                                             - Add choice of ProductSegmentID or ProcessSegmentID 
+                                             - Add choice of ProductSegmentID or ProcessSegmentID
                                                to SegmentDependencyType per comment BillS01.
-                                             - Change maxOccurs from "1" to "unbounded" for 
+                                             - Change maxOccurs from "1" to "unbounded" for
                                                Result in TestResultType.
                                              - Remove UnitOfMeasure from TestResultType since it
                                                is already in ResultType
@@ -65,14 +65,14 @@
                                                is Enumeration.
                                              - Added revision to namespace
                                              - Added new element ValueString to ResultType to
-                                               contain the vaule of the result.  
+                                               contain the vaule of the result.
     V0201   04 Nov 2003      D. Emerson      - Added minOccurs = "0" maxOccurs = "unbounded" to
                                              - Any element in ValueType
     v0300   26 Aug 2005      D. Emerson      - Added substitution groups.    One group added just
                                                before each Any element.
                                              - Add dateTime and SVG to datatype enumeration list.
-                                             - Add new, optional, element, "Key" based on IDType              
-                                               to complexTypes QuantityType, ResultType, ValueType.  
+                                             - Add new, optional, element, "Key" based on IDType
+                                               to complexTypes QuantityType, ResultType, ValueType.
                                              - Added UnitOfMeasure to ResultType as a mandatory element.
                                              - Made mandatory to be consistent with its use in quantity
                                                and value - this will impact upgrades from earlier versions.
@@ -82,13 +82,13 @@
     v04     04 Jun 2007      D. Brandl       - Added transaction elements for ISA 95 Part 5 support.
                                              - Added "cc:" namespace for UN/CEFACT core types.
                                              - Added the UN/CEFACT core components with optional attributes
-                                               and made them the base types for the B2MML types. 
+                                               and made them the base types for the B2MML types.
                                              - Changed SegmentStateType to ResponseStateType for inclusion in all
                                                levels of the ProductionPerformance element
                                              - Enumerated types are now complexTypes declared as simpleContent
-                                             - Added warning before each use of the AnyType that the extension 
-                                               schema should be used instead of the Any element and that in a 
-                                               still to be determined future release of B2MML the AnyType and 
+                                             - Added warning before each use of the AnyType that the extension
+                                               schema should be used instead of the Any element and that in a
+                                               still to be determined future release of B2MML the AnyType and
                                              - Notice that "Any" element will be removed.
      V0500  26 Mar 2011     D. Brandl        Revised version
                                              Added nillable=true to elements in QuantityValueType, ResultType
@@ -98,9 +98,9 @@
                                              Added EquipmentAssetMapping element
                                              Removed AnyType
                                              Made UOM and Datatype optional in QuantityType, ValueType, ResultType
-     V0600  17 Mar 2013     D. Brandl        Changed copyright to MESA International and support for ISA 95 Part 4                                 
-                                             Corrected type group definition ProductProductionRuleIDGroup 
-                                             Added a maxOccurs=unbounded to the TimingFactor element in a SegmentDerpendancy 
+     V0600  17 Mar 2013     D. Brandl        Changed copyright to MESA International and support for ISA 95 Part 4
+                                             Corrected type group definition ProductProductionRuleIDGroup
+                                             Added a maxOccurs=unbounded to the TimingFactor element in a SegmentDerpendancy
                                              Moved the OpXXXXXX elements into the common.xsd for support of Part 4 models
                                              Updated the transaction schemas to match OAGiS 9.6, with addition of Receivers in header
      V0700  09 Nov 2018     D. Brandl        Updated Version for latest 2018 release of ISA 95
@@ -120,11 +120,11 @@
     <!--  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   -->
     <!--  B2MML Common Component Elements - - - - - - - - - - - - -   -->
     <!--  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   -->
-    
 
-    <!--     -->    
 
-    <!--     -->    
+    <!--     -->
+
+    <!--     -->
     <xsd:complexType name="AnyGenericValueType">
         <xsd:simpleContent>
             <xsd:extension base="xsd:string">
@@ -161,7 +161,7 @@
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="AssemblyRelationship1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -171,23 +171,23 @@
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="AssemblyRelationshipType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-Defines the type of the relationships. 
+Defines the type of the relationships.
 Defined types are
-- Permanent: an assembly that is not intended to be split during the production process; 
-- Transient: a temporary assembly using during production, such as a pallet of different materials or a batch kit. 
+- Permanent: an assembly that is not intended to be split during the production process;
+- Transient: a temporary assembly using during production, such as a pallet of different materials or a batch kit.
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
          <xsd:simpleContent>
             <xsd:extension base="AssemblyRelationship1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="AssemblyType1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -197,23 +197,23 @@ Defined types are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="AssemblyTypeType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
 Defines the type of the assembly.
 Defined types are
-- physical: the components of the assembly are physically connected or in the same area. 
-- logical: the components of the assembly are not necessarily physically connected or in the same area. 
+- physical: the components of the assembly are physically connected or in the same area.
+- logical: the components of the assembly are not necessarily physically connected or in the same area.
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
          <xsd:simpleContent>
             <xsd:extension base="AssemblyType1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="CapabilityType1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -227,11 +227,11 @@ Defined types are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="CapabilityTypeType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-Defines the type of capability. 
+Defines the type of capability.
 Defined values are
 - Committed: capacity that is committed for future productive use;
 - Unattainable: capacity that is not attainable for future productive use given the equipment condition, equipment utilization, personnel availability or material availability;
@@ -240,35 +240,35 @@ Defined values are
 - Unused: a historical value that defines the portion of the capacity that was not used or had unacceptable quality; and
 - Total: the sum of used and unused capability or the sum of available, unattainable and committed capability.
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
         <xsd:simpleContent>
             <xsd:extension base="CapabilityType1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="CauseType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="CertificateOfAnalysisReferenceType">
         <xsd:simpleContent>
             <xsd:restriction base="IdentifierType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ClassPropertyTypeType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
 Defines the type of the property. Defined types are
 - ClassType: the property value is defined for the class and there is no value associated with an instance;
 - InstanceType: the property value of the class is undefined; and
 - DefaultType: the property value is defined for the class as the default instance value, but individual instances of the class may redefine specific values.
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
                 <xsd:enumeration value="ClassType"/>
@@ -280,19 +280,19 @@ Defines the type of the property. Defined types are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ConfidenceFactorType">
         <xsd:simpleContent>
             <xsd:restriction base="IdentifierType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="CorrectionType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="DataType1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -366,7 +366,7 @@ Defines the type of the property. Defined types are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="DataTypeType">
         <xsd:simpleContent>
             <xsd:extension base="DataType1Type">
@@ -374,16 +374,16 @@ Defines the type of the property. Defined types are
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="DefinitionTypeType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-Defines the type of the definition of a process segment, operations definition, or operations segment. 
+Defines the type of the definition of a process segment, operations definition, or operations segment.
 Defined types are:
 -	Pattern: a segment or definition used as a template for other segments or definitions;
 -	Instance: a segment or definition that may be directly scheduled and tracked.
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
                 <xsd:enumeration value="Pattern"/>
@@ -391,7 +391,7 @@ Defined types are:
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-     <!--     -->    
+     <!--     -->
     <xsd:complexType name="Dependency1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -409,11 +409,11 @@ Defined types are:
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="DependencyType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-Defines an execution dependency constraint of two elements. 
+Defines an execution dependency constraint of two elements.
 Defined values are (explained using dependency type between element A and element B)
 -	at start: start B at A start;
 -	after start: start B after A start;
@@ -426,24 +426,57 @@ Defined values are (explained using dependency type between element A and elemen
 -	no later after end: start B no later than dependency factor after A end;
 -	no earlier after end: B no earlier than dependency factor after A end.
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
         <xsd:simpleContent>
             <xsd:extension base="Dependency1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+
+    <xsd:complexType name="Disposition1Type">
+        <xsd:simpleContent>
+            <xsd:restriction base="CodeType">
+                <xsd:enumeration value="Planned"/>
+                <xsd:enumeration value="In-Process"/>
+                <xsd:enumeration value="Restricted"/>
+                <xsd:enumeration value="UnRestricted"/>
+                <xsd:enumeration value="Closed"/>
+                <xsd:enumeration value="Other"/>
+            </xsd:restriction>
+        </xsd:simpleContent>
+    </xsd:complexType>
+  <!--     -->
+   <xsd:complexType name="DispositionType">
+    <xsd:annotation>
+     <xsd:documentation>
+Defines Planning and logistics disposition of a material lot or assembly of material lots.
+Defined values for the disposition of a material lot are
+- Planned: a material lot that does not yet physically exist, is assigned to an operations request (segment requirement) or work request (Part 4 object) or job order (Part 4 object);
+- In process: the material lot is in the process of being worked on;
+- Restricted: a material lot is not permitted for normal use due to a restriction condition.
+ EXAMPLE 5 A material lot can be awaiting a quality decision or a material lot can be physically inaccessible.
+- Unrestricted:  material lot is permitted for normal use without restriction; and
+- Closed:   material lot has been reconciled as completely consumed, sold or disposed of.
+     </xsd:documentation>
+    </xsd:annotation>
+          <xsd:simpleContent>
+            <xsd:extension base="DispositionType">
+                <xsd:attribute name="OtherValue" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <!--     -->
     <xsd:complexType name="DescriptionType">
         <xsd:simpleContent>
             <xsd:restriction base="TextType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:simpleType name="DurationType">
         <xsd:restriction base="xsd:duration"/>
     </xsd:simpleType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="EquipmentAssetMappingType">
         <xsd:sequence>
             <xsd:element name="EquipmentID" type="IdentifierType"/>
@@ -454,7 +487,7 @@ Defined values are (explained using dependency type between element A and elemen
             <xsd:group ref="Extended:EquipmentAssetMapping" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="EquipmentElementLevel1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -476,11 +509,11 @@ Defined values are (explained using dependency type between element A and elemen
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="EquipmentElementLevelType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-Defines the role based equipment hierarchy level as defined in ISA 95. 
+Defines the role based equipment hierarchy level as defined in ISA 95.
 Defined values are:
 - Enterprise
 - Site
@@ -497,20 +530,20 @@ Defined values are:
 - EquipmentModule
 - Control Module
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
         <xsd:simpleContent>
             <xsd:extension base="EquipmentElementLevel1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="EquipmentUseType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
         <xsd:complexType name = "EvaluatedPropertyReferenceType">
           <xsd:sequence>
             <xsd:element name = "TestSpecificationID"   type = "IdentifierType"/>
@@ -519,15 +552,15 @@ Defined values are:
                                                         minOccurs = "0" maxOccurs = "1"/>
           </xsd:sequence>
         </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="HierarchyScopeType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-The hierarchy scope identifies where the exchanged information fits within the role-based equipment hierarchy. 
-It defines the scope of the exchanged information, such as a site or area for which the information is relevant. 
+The hierarchy scope identifies where the exchanged information fits within the role-based equipment hierarchy.
+It defines the scope of the exchanged information, such as a site or area for which the information is relevant.
 The hierarchy scope identifies the associated instance in the role-based equipment hierarchy.
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
         <xsd:sequence>
             <xsd:element name="EquipmentID" type="IdentifierType"/>
             <xsd:choice>
@@ -539,7 +572,7 @@ The hierarchy scope identifies the associated instance in the role-based equipme
         </xsd:sequence>
     </xsd:complexType>
 
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="JobOrderCommand1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -555,10 +588,10 @@ The hierarchy scope identifies the associated instance in the role-based equipme
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
- 
- <!--     -->    
+
+ <!--     -->
     <xsd:complexType name="JobOrderCommandType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
 Defines the commands to a job order, as defined in ISA 95 and ISA 88.
 Defined values are:
@@ -571,7 +604,7 @@ Defined values are:
 - Pause
 - Resume
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
          <xsd:simpleContent>
             <xsd:extension base="JobOrderCommand1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
@@ -579,7 +612,7 @@ Defined values are:
         </xsd:simpleContent>
     </xsd:complexType>
 
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="JobOrderCommandRuleType">
         <xsd:simpleContent>
             <xsd:restriction base="TextType"/>
@@ -587,7 +620,7 @@ Defined values are:
     </xsd:complexType>
 
 
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="JobOrderDispatchStatus1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -607,25 +640,25 @@ Defined values are:
         </xsd:simpleContent>
     </xsd:complexType>
 
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="JobOrderDispatchStatusType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
 Defines the states to a job order, as defined in ISA 95 and ISA 88.
 Defined values are
-- Waiting 
-- Pending 
-- Cancelled 
-- Dispatched 
-- Ready 
-- Running 
-- Completed 
-- Aborted 
-- Held 
+- Waiting
+- Pending
+- Cancelled
+- Dispatched
+- Ready
+- Running
+- Completed
+- Aborted
+- Held
 - Suspended
 - Closed
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
          <xsd:simpleContent>
             <xsd:extension base="JobOrderDispatchStatus1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
@@ -633,8 +666,8 @@ Defined values are
         </xsd:simpleContent>
     </xsd:complexType>
 
-    
-    <!--     -->    
+
+    <!--     -->
     <!--  LocationType kept in V05 for use with the Production element definitions. Not used in other elements.  -->
     <xsd:complexType name="LocationType">
         <xsd:sequence>
@@ -644,9 +677,9 @@ Defined values are
             <xsd:group ref="Extended:Location" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <!--  LocationType kept in V05 for use with the Production element definitions. Not used in other elements.  -->
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="MaterialUse1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -666,9 +699,9 @@ Defined values are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="MaterialUseType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
 Defines the expected use of the material class, material definition, material lot, or material sublot in the context of the operations segment.
 Defined values for production operations are
@@ -677,20 +710,20 @@ Defined values for production operations are
 Defined values for maintenance operations are
 - Consumable, Material Consumed, and Material Produced.
 
-Defined values for quality test operations are 
+Defined values for quality test operations are
 - Consumable, Destructive Sample, Returned Sample, and Retained Sample.
 
 Defined values for inventory operations defined values are
 - Consumable, Material Consumed, Material Produced, and Inventoried.
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
          <xsd:simpleContent>
             <xsd:extension base="MaterialUse1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OperationsRecordEntryTemplateType">
         <xsd:sequence>
             <xsd:element name="ID" 						type="IdentifierType"/>
@@ -703,7 +736,7 @@ Defined values for inventory operations defined values are
           <xsd:group ref="Extended:OperationsRecordEntryTemplate" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OperationsRecordTemplateType">
         <xsd:sequence>
             <xsd:element name="ID" 						type="IdentifierType"/>
@@ -714,20 +747,20 @@ Defined values for inventory operations defined values are
            <xsd:group ref="Extended:OperationsRecordTemplate" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OperationsRecordSpecTemplateType">
         <xsd:sequence>
             <xsd:element name="ID" 						type="IdentifierType"/>
             <xsd:element name="Description" 			type="DescriptionType" 	minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="InformationObjectType" 	type="IdentifierType" 	minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="InformationObjectTypeMultiplicity" 
+            <xsd:element name="InformationObjectTypeMultiplicity"
 														type="TextType" 		minOccurs="0" maxOccurs="unbounded"/>
              <xsd:element name="Action" 				type="IdentifierType" 	minOccurs="0" maxOccurs="unbounded"/>
              <xsd:element name="ActionMultiplicity" 	type="TextType" 		minOccurs="0" maxOccurs="unbounded"/>
            <xsd:group ref="Extended:OperationsRecordSpecTemplate" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpEquipmentRequirementType">
         <xsd:sequence>
             <xsd:element name="EquipmentClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -745,7 +778,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpEquipmentRequirement" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpEquipmentRequirementPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -756,7 +789,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpEquipmentRequirementProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPersonnelRequirementType">
         <xsd:sequence>
             <xsd:element name="PersonnelClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -773,7 +806,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPersonnelRequirement" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPersonnelRequirementPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -784,7 +817,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPersonnelRequirementProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPhysicalAssetRequirementType">
         <xsd:sequence>
             <xsd:element name="PhysicalAssetClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -802,7 +835,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPhysicalAssetRequirement" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPhysicalAssetRequirementPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -813,7 +846,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPhysicalAssetRequirementProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpMaterialRequirementType">
         <xsd:sequence>
             <xsd:element name="MaterialClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -835,7 +868,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpMaterialRequirement" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpMaterialRequirementPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType" minOccurs="0"/>
@@ -846,7 +879,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpMaterialRequirementProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPersonnelSpecificationType">
         <xsd:sequence>
             <xsd:element name="PersonnelClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -860,7 +893,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPersonnelSpecification" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPersonnelSpecificationPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -871,7 +904,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPersonnelSpecificationProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpEquipmentSpecificationType">
         <xsd:sequence>
             <xsd:element name="EquipmentClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -885,7 +918,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpEquipmentSpecification" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpEquipmentSpecificationPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -896,7 +929,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpEquipmentSpecificationProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPhysicalAssetSpecificationType">
         <xsd:sequence>
             <xsd:element name="PhysicalAssetClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -910,7 +943,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPhysicalAssetSpecification" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPhysicalAssetSpecificationPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -921,7 +954,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPhysicalAssetSpecificationProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpMaterialSpecificationType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -939,7 +972,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpMaterialSpecification" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpMaterialSpecificationPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -950,7 +983,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpMaterialSpecificationProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPersonnelCapabilityType">
         <xsd:sequence>
             <xsd:element name="PersonnelClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -971,7 +1004,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPersonnelCapability" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPersonnelCapabilityPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -982,7 +1015,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPersonnelCapabilityProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpEquipmentCapabilityType">
         <xsd:sequence>
             <xsd:element name="EquipmentClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1003,7 +1036,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpEquipmentCapability" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpEquipmentCapabilityPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -1014,7 +1047,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpEquipmentCapabilityProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPhysicalAssetCapabilityType">
         <xsd:sequence>
             <xsd:element name="PhysicalAssetClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1035,7 +1068,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPhysicalAssetCapability" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpPhysicalAssetCapabilityPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -1046,7 +1079,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpPhysicalAssetCapabilityProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpMaterialCapabilityType">
         <xsd:sequence>
             <xsd:element name="MaterialClassID" type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1071,7 +1104,7 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpMaterialCapability" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OpMaterialCapabilityPropertyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -1082,8 +1115,8 @@ Defined values for inventory operations defined values are
             <xsd:group ref="Extended:OpMaterialCapabilityProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
-    <!--     -->    
+    <!--     -->
+    <!--     -->
     <xsd:complexType name="OperationsType1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -1096,29 +1129,29 @@ Defined values for inventory operations defined values are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OperationsTypeType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-Describes the category of the activity. 
-Defined values are 
-- Production, Maintenance, Quality, Inventory, or Mixed. 
+Describes the category of the activity.
+Defined values are
+- Production, Maintenance, Quality, Inventory, or Mixed.
 - Mixed” can be used when the activity covers several categories.
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
          <xsd:simpleContent>
             <xsd:extension base="OperationsType1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="OtherDependencyType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ParameterType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -1129,56 +1162,56 @@ Defined values are
             <xsd:group ref="Extended:Parameter" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="PersonNameType">
         <xsd:simpleContent>
             <xsd:restriction base="IdentifierType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="PersonnelUseType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="PhysicalAssetUseType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="PriorityType">
         <xsd:simpleContent>
             <xsd:restriction base="NumericType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ProblemType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ProductProductionRuleType">
         <xsd:simpleContent>
             <xsd:restriction base="IdentifierType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:group name="ProductProductionRuleIDGroup">
         <xsd:sequence>
             <xsd:element name="ProductProductionRuleID" type="IdentifierType" minOccurs="0"/>
             <xsd:element name="Version" type="VersionType" minOccurs="0"/>
         </xsd:sequence>
     </xsd:group>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="QuantityStringType">
         <xsd:simpleContent>
             <xsd:restriction base="AnyGenericValueType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="QuantityValueType">
         <xsd:sequence>
             <xsd:element name="QuantityString" type="QuantityStringType" nillable="true"/>
@@ -1188,13 +1221,13 @@ Defined values are
             <xsd:group ref="Extended:Quantity" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ReasonType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="RelationshipForm1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -1204,7 +1237,7 @@ Defined values are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="RelationshipFormType">
         <xsd:simpleContent>
             <xsd:extension base="RelationshipForm1Type">
@@ -1212,7 +1245,7 @@ Defined values are
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="RelationshipType1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -1222,7 +1255,7 @@ Defined values are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="RelationshipTypeType">
         <xsd:simpleContent>
             <xsd:extension base="RelationshipType1Type">
@@ -1230,13 +1263,13 @@ Defined values are
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="RequestedPriorityType">
         <xsd:simpleContent>
             <xsd:restriction base="NumericType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="RequestState1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -1254,11 +1287,11 @@ Defined values are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="RequestStateType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-Indicates the state of an operations or work request. 
+Indicates the state of an operations or work request.
 Defined values are
 - Forecast
 - Released
@@ -1279,7 +1312,7 @@ Defined values are
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="RequiredByRequestedSegmentResponse1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -1289,11 +1322,11 @@ Defined values are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="RequiredByRequestedSegmentResponseType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-Indicates if a segment response assicated with a segment request is required. 
+Indicates if a segment response assicated with a segment request is required.
 Defined values are
 - Required
 - Optional
@@ -1305,7 +1338,7 @@ Defined values are
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ResourceLocationType1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -1317,11 +1350,11 @@ Defined values are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ResourceLocationTypeType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-Indicates whether the storage location attribute refers to an operational location, equipment 
+Indicates whether the storage location attribute refers to an operational location, equipment
 or physical asset object, or contains a description of the storage location.
 Mandatory where a storage location is specified.
 Defined values are
@@ -1330,21 +1363,21 @@ Defined values are
 -	Physical Asset: 		storage location attribute references a physical asset (PhysicalAssetID); and
 -	Description: 			storage location attribute contains a description of the storage location, such as a street address.
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
           <xsd:simpleContent>
             <xsd:extension base="ResourceLocationType1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ResourceLocationType">
         <xsd:sequence>
 		<xsd:element name = "Location" type = "TextType" />
 		<xsd:element name = "LocationType" type = "ResourceLocationTypeType" />
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ResourceReferenceType1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -1371,11 +1404,11 @@ Defined values are
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ResourcesType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-Indicates the type of the resource referenced. 
+Indicates the type of the resource referenced.
 Defined values are
 - Personnel
 - Personnel Class
@@ -1395,7 +1428,7 @@ Defined values are
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ResponseState1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -1409,28 +1442,28 @@ Defined values are
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ResponseStateType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
 Defines the states to a operations response.
 Defined values are
-- Ready 
-- Running 
-- Completed 
-- Aborted 
-- Holding 
+- Ready
+- Running
+- Completed
+- Aborted
+- Holding
 - Paused
 - Closed
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
           <xsd:simpleContent>
             <xsd:extension base="ResponseState1Type">
                 <xsd:attribute name="OtherValue" type="xsd:string"/>
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ResultType">
         <xsd:sequence>
             <xsd:element name="ValueString" type="ValueStringType" nillable="true"/>
@@ -1440,7 +1473,7 @@ Defined values are
             <xsd:group ref="Extended:Result" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="SegmentDependencyType">
         <xsd:sequence>
             <xsd:element name="ID" type="IdentifierType"/>
@@ -1456,16 +1489,16 @@ Defined values are
             <xsd:group ref="Extended:SegmentDependency" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="SpatialDefinitionType">
-		<xsd:annotation> 
+		<xsd:annotation>
 			<xsd:documentation>
-The spatial definition provides a means of communicating zero-dimensional point, one-dimensional line, 
-or two-dimensional shape or three-dimensional solid geospatial location data for planning/scheduling, 
-actuals, resources, and analytics. 
-Spatial definition identifies a value and the predefined coordinate reference system. 
+The spatial definition provides a means of communicating zero-dimensional point, one-dimensional line,
+or two-dimensional shape or three-dimensional solid geospatial location data for planning/scheduling,
+actuals, resources, and analytics.
+Spatial definition identifies a value and the predefined coordinate reference system.
 			</xsd:documentation>
-		</xsd:annotation> 
+		</xsd:annotation>
         <xsd:sequence>
             <xsd:element name="Value" type="TextType"/>
             <xsd:element name="Format" type="IdentifierType"/>
@@ -1474,20 +1507,20 @@ Spatial definition identifies a value and the predefined coordinate reference sy
             <xsd:group ref="Extended:SpatialDefinition" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-     <!--     -->    
+     <!--     -->
     <xsd:complexType name="StatusType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="StorageHierarchyScopeType">
         <xsd:simpleContent>
             <xsd:restriction base="IdentifierType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
-	
+    <!--     -->
+
 	<xsd:complexType name = "TestResultType">
 		<xsd:sequence>
 			<xsd:element name = "ID" type = "IdentifierType" minOccurs = "0" nillable="true"/>
@@ -1502,7 +1535,7 @@ Spatial definition identifies a value and the predefined coordinate reference sy
 		</xsd:sequence>
 	</xsd:complexType>
 
-    <!--     -->    
+    <!--     -->
 	<xsd:complexType name = "TestPropertyMeasurementType">
 		<xsd:sequence>
 			<xsd:element name = "ID" type = "IdentifierType" minOccurs = "0" nillable="true"/>
@@ -1514,20 +1547,20 @@ Spatial definition identifies a value and the predefined coordinate reference sy
 			<xsd:group   ref  = "Extended:TestPropertyMeasurement" minOccurs="0" maxOccurs="1"/>
 		</xsd:sequence>
 	</xsd:complexType>
-	
-    <!--     -->    
+
+    <!--     -->
     <xsd:complexType name="UnitOfMeasureType">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ValueStringType">
         <xsd:simpleContent>
             <xsd:restriction base="AnyGenericValueType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="ValueType">
         <xsd:sequence>
             <xsd:element name="ValueString" type="ValueStringType" nillable="true"/>
@@ -1537,13 +1570,13 @@ Spatial definition identifies a value and the predefined coordinate reference sy
             <xsd:group ref="Extended:Value" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="VersionType">
         <xsd:simpleContent>
             <xsd:restriction base="IdentifierType"/>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="WorkType1Type">
         <xsd:simpleContent>
             <xsd:restriction base="CodeType">
@@ -1553,7 +1586,7 @@ Spatial definition identifies a value and the predefined coordinate reference sy
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
-    <!--     -->    
+    <!--     -->
     <xsd:complexType name="WorkTypeType">
         <xsd:simpleContent>
             <xsd:extension base="WorkType1Type">
