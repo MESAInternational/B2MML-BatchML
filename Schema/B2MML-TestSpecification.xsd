@@ -126,8 +126,7 @@ of test specifications.
   
   <xsd:complexType name = "TestSpecificationType">
     <xsd:sequence>
-      <xsd:element name = "ID"                          type = "IdentifierType"
-                                                        minOccurs = "0"/>
+      <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
@@ -146,8 +145,12 @@ of test specifications.
                                                         minOccurs = "0"/>
       <xsd:element name = "RecurrenceTimeInterval"		type = "DurationType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "PhysicalSampleRequired"		type = "IndicatorType"
+      <xsd:element name = "PhysicalSample"				type = "IndicatorType"
                                                         minOccurs = "0"/>
+      <xsd:element name = "OperationsTestRequirementID" type = "IdentifierType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "TestableObjectID" 			type = "IdentifierType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "TestSpecification"       	type = "TestSpecificationType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "TestSpecificationProperty"	type = "TestSpecificationPropertyType" 

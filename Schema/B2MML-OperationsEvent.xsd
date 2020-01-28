@@ -183,7 +183,7 @@ function or activity.
                                                          minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "HierarchyScope"               type = "HierarchyScopeType"   
                                                          minOccurs = "0" />
-      <xsd:element name = "Extension"            		 type = "IdentifierType"   
+      <xsd:element name = "Extension"            		 type = "OperationsEventExtensionType"   
                                                          minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "OperationsEventClass"         type = "OperationsEventClassType" 
 	                                                     minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is assembled from" relationship -->
@@ -213,7 +213,7 @@ function or activity.
                                                         minOccurs = "0" maxOccurs = "unbounded"/>  <!-- "Contains" relationship -->
       <xsd:element name = "EvaluatedPropertyReference"  type = "EvaluatedPropertyReferenceType"
 														minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:group   ref  = "Extended:OperationsEvenClassProperty" minOccurs="0" maxOccurs="1"/>
+      <xsd:group   ref  = "Extended:OperationsEventClassProperty" minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
 
@@ -307,7 +307,7 @@ function or activity.
 	                                                    minOccurs = "0" /> 
       <xsd:element name = "OperationsEvent"   			type = "OperationsEventType" 
 	                                                    minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is made up of" relationship -->
-      <xsd:element name = "OperationsEventRecord"   	type = "OperationsRecordEntryTemplateType" 
+      <xsd:element name = "OperationsEventRecord"   	type = "OperationsRecordTemplateType" 
 	                                                    minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is a collection of" relationship -->
       <xsd:group   ref  = "Extended:OperationsEvent"    minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -325,6 +325,38 @@ function or activity.
       <xsd:group   ref  = "Extended:OperationsEventProperty" minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
+
+    <!--     -->    
+
+	<xsd:complexType name="OperationsEventExtension1Type">
+        <xsd:simpleContent>
+            <xsd:restriction base="CodeType">
+                <xsd:enumeration value="Sealed"/>
+                <xsd:enumeration value="NA"/>
+                <xsd:enumeration value="Other"/>
+            </xsd:restriction>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <!--     -->    
+
+    <xsd:complexType name="OperationsEventExtensionType">
+		<xsd:annotation> 
+			<xsd:documentation>
+Defines constraints on the inclusion of the respective operations event class in a hierarchy. 
+Defined value are 
+-sealed: no entry can use this entry as its parent;
+-(No entry): no entry allows any entry to represent this entry as its parent /ancestor.
+Extension can contain a set of entries of other operations event classes who represent this entry in their parent.
+			</xsd:documentation>
+		</xsd:annotation> 
+         <xsd:simpleContent>
+            <xsd:extension base="OperationsEventExtension1Type">
+                <xsd:attribute name="OtherValue" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>	
+
 
 
 

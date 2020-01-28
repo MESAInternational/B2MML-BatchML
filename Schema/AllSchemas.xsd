@@ -50,6 +50,7 @@
         V0500   26 Mar 2011     D. Brandl       Initial version
         V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
         V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 4
+				27 JAN 2020		D. Brandl		Added Master Data Profile, all future changes tracked in Github
 
    </xsd:documentation>
 </xsd:annotation>
@@ -66,15 +67,22 @@
  <xsd:include schemaLocation ="B2MML-OperationsCapability.xsd"/>
  <xsd:include schemaLocation ="B2MML-OperationsPerformance.xsd"/>
  <xsd:include schemaLocation ="B2MML-OperationsSchedule.xsd"/>
+ <xsd:include schemaLocation ="B2MML-OperationalLocation.xsd"/>
+ <xsd:include schemaLocation ="B2MML-OperationsEvent.xsd"/>
+ <xsd:include schemaLocation ="B2MML-OperationsPerformanceTypes.xsd"/>
  <xsd:include schemaLocation ="B2MML-ResourceRelationshipNetwork.xsd"/>
+ <xsd:include schemaLocation ="B2MML-TestSpecification.xsd"/>
  <xsd:include schemaLocation ="B2MML-TransactionProfile.xsd"/>
+ <xsd:include schemaLocation ="B2MML-WorkPerformance.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkAlert.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkCalendar.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkCapability.xsd"/>
- <xsd:include schemaLocation ="B2MML-WorkCapability.xsd"/>
+ <xsd:include schemaLocation ="B2MML-WorkDefinition.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkflowSpecification.xsd"/>
+ <xsd:include schemaLocation ="B2MML-WorkPerformance.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkRecord.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkSchedule.xsd"/>
+ <xsd:include schemaLocation ="B2MML-MasterDataProfile.xsd"/>
  <xsd:include schemaLocation ="BatchML-BatchInformation.xsd"/>
  <xsd:include schemaLocation ="BatchML-GeneralRecipe.xsd"/>
  <xsd:include schemaLocation ="BatchML-BatchProductionRecord.xsd"/>

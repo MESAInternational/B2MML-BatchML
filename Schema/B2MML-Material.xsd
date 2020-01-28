@@ -277,11 +277,13 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "Status"                      type = "StatusType"
                                                         minOccurs = "0"/>
+      <xsd:element name = "Disposition"                 type = "DispositionType"
+                                                        minOccurs = "0"/>
       <xsd:element name = "MaterialLotProperty"         type = "MaterialLotPropertyType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "MaterialSubLot"              type = "MaterialSubLotType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "StorageLocation"             type = "StorageHierarchyScopeType"    
+      <xsd:element name = "StorageLocation"             type = "ResourceLocationType"    
                                                         minOccurs = "0"/>
       <xsd:element name = "Quantity"                    type = "QuantityValueType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
@@ -313,6 +315,8 @@
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "TestResult"                  type = "TestResultType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
+	  <xsd:element name = "MaterialDefinitionPropertyID" type = "IdentifierType"  
+														 minOccurs = "0" maxOccurs = "1"/>
       <xsd:group   ref  = "Extended:MaterialLotProperty" minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -326,9 +330,11 @@
                                                         minOccurs = "0" />
       <xsd:element name = "Status"                      type = "StatusType"     
                                                         minOccurs = "0"/>
+      <xsd:element name = "Disposition"                 type = "DispositionType"
+                                                        minOccurs = "0"/>
       <xsd:element name = "MaterialSublotProperty"      type = "MaterialLotPropertyType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "StorageLocation"             type = "StorageHierarchyScopeType"    
+      <xsd:element name = "StorageLocation"             type = "ResourceLocationType"    
                                                         minOccurs = "0"/>
       <xsd:element name = "Quantity"                    type = "QuantityValueType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>

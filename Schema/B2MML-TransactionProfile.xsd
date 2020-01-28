@@ -63,7 +63,7 @@
                                                 Added ISA 95 Part 4 objects to noun types
         V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2, 4 and 5
 												Included the B2MML "INFORMATION" container objects 
-												Added new objects from Part 4 and Part 4
+												Added new objects from Part 2 and Part 4
 												Changed all intermediate date and time types to DatTimeType
 				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
 
@@ -205,6 +205,8 @@
                         <xsd:enumeration value="WORKFLOW INFORMATION"/>
                         <xsd:enumeration value="WORKFLOW SPECIFICATION"/>
                         <xsd:enumeration value="WORKFLOW SPECIFICATION TYPE"/>
+					<!-- Master Data Profile Model -->
+                        <xsd:enumeration value="MASTER DATA PROFILE"/>
 					<!-- Confirm BOD -->
                         <xsd:enumeration value="CONFIRM BOD"/>
                         <xsd:enumeration value="Other"/>

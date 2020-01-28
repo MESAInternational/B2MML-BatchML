@@ -401,12 +401,6 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "ProductDefinition">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
         <xsd:group name = "OperationsMaterialBill">
                 <xsd:sequence>
                         <!-- add extended elements here -->
