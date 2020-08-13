@@ -210,7 +210,7 @@ function or activity.
       <xsd:element name = "OperationsEventClassPropertyChild" 
 		   					                                        type = "OperationsEventClassPropertyType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>  <!-- "Contains" relationship -->
-      <xsd:group   ref  = "Extended:OperationsEvenClassProperty" minOccurs="0"/>
+      <xsd:group   ref  = "Extended:OperationsEventClassProperty" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
 

@@ -116,6 +116,8 @@
                         <xsd:enumeration value="PHYSICAL ASSET"/>
                         <xsd:enumeration value="PHYSICAL ASSET CLASS"/>
                         <xsd:enumeration value="PHYSICAL ASSET INFORMATION"/>
+          <!-- Master Data Profile Model -->
+                        <xsd:enumeration value="MASTER DATA PROFILE"/>
           <!-- Material Model -->
                         <xsd:enumeration value="MATERIAL CLASS"/>
                         <xsd:enumeration value="MATERIAL DEFINITION"/>

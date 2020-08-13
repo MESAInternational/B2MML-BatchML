@@ -82,14 +82,6 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-<!-- Location kept in V05 for use with the Production element definitions. Not used in other elements.  -->
-        <xsd:group name = "Location">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-<!-- Location kept in V05 for use with the Production element definitions. Not used in other elements.  -->
-
         <xsd:group name = "Parameter">
                 <xsd:sequence>
                         <!-- add extended elements here -->
@@ -144,7 +136,7 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "OperationsEvenClassProperty">
+        <xsd:group name = "OperationsEventClassProperty">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>

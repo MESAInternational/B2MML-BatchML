@@ -899,11 +899,11 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="EquipmentUse" 			type="EquipmentUseType" minOccurs="0"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
-	    <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
-	    <xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
+			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
+			<xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
             <xsd:element name="EquipmentLevel" 			type="HierarchyScopeType" minOccurs="0"/>
             <xsd:element name="EquipmentRequirementChild" 	type="OpEquipmentRequirementType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="EquipmentRequirementProperty" 	type="OpEquipmentRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="EquipmentRequirementProperty" 	type="OpEquipmentRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="RequiredByRequestedSegmentResponse"
 			 					type="RequiredByRequestedSegmentResponseType" minOccurs="0"/>
             <xsd:element name="TestSpecificationID" 		type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -918,12 +918,12 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 		type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 			type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Quantity" 		type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="EquipmentClassPropertyID"
+			<xsd:element name="EquipmentClassPropertyID"
 			 				type="IdentifierType" minOccurs="0"/>
             <xsd:element name="EquipmentPropertyID" 	type="IdentifierType" minOccurs="0"/>
             <xsd:element name="EquipmentRequirementPropertyChild"
 			 				type="OpEquipmentRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="RequiredByRequestedSegmentResponse"
+			<xsd:element name="RequiredByRequestedSegmentResponse"
 			 					type="RequiredByRequestedSegmentResponseType" minOccurs="0"/>
             <xsd:group ref="Extended:OpEquipmentRequirementProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
@@ -939,8 +939,8 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="PersonnelUse" 			type="PersonnelUseType" minOccurs="0"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
-	    <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
-	    <xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
+			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
+			<xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
             <xsd:element name="PersonnelRequirementChild" 	type="OpPersonnelRequirementType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PersonnelRequirementProperty" 	type="OpPersonnelRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="RequiredByRequestedSegmentResponse"
@@ -957,11 +957,11 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 				type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="PersonnelClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="PersonnelClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
             <xsd:element name="PersonPropertyID" 		type="IdentifierType" minOccurs="0"/>
             <xsd:element name="PersonnelRequirementPropertyChild"
 			 					type="OpPersonnelRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
-	     <xsd:element name="RequiredByRequestedSegmentResponse"
+			<xsd:element name="RequiredByRequestedSegmentResponse"
 			 					type="RequiredByRequestedSegmentResponseType" minOccurs="0"/>
             <xsd:group ref="Extended:OpPersonnelRequirementProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
@@ -977,8 +977,8 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="PhysicalAssetUse" 		type="PhysicalAssetUseType" minOccurs="0"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
-	    <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
-	    <xsd:element name="PhysicalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
+			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
+			<xsd:element name="PhysicalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
             <xsd:element name="EquipmentLevel" 			type="HierarchyScopeType" minOccurs="0"/>
             <xsd:element name="PhysicalAssetRequirementChild" 	type="OpPhysicalAssetRequirementType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PhysicalAssetRequirementProperty"
@@ -997,9 +997,9 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 				type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="PhysicalAssetClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="PhysicalAssetClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
             <xsd:element name="PhysicalAssetPropertyID" 	type="IdentifierType" minOccurs="0"/>
-	    <xsd:element name="PhysicalAssetRequirementPropertyChild"
+			<xsd:element name="PhysicalAssetRequirementPropertyChild"
 			 					type="OpPhysicalAssetRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="RequiredByRequestedSegmentResponse"
 			 					type="RequiredByRequestedSegmentResponseType" minOccurs="0"/>
@@ -1017,7 +1017,7 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="MaterialSubLotID" 		type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="MaterialUse" 			type="MaterialUseType" minOccurs="0"/>
-	    <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
+			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
             <xsd:element name="StorageLocation" 		type="ResourceLocationType" minOccurs="0"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="AssemblyRequirement" 		type="OpMaterialRequirementType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1039,12 +1039,12 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 				type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="MaterialClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
-	    <xsd:element name="MaterialDefinitionPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="MaterialClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="MaterialDefinitionPropertyID" 	type="IdentifierType" minOccurs="0"/>
             <xsd:element name="MaterialLotPropertyID" 		type="IdentifierType" minOccurs="0"/>
             <xsd:element name="MaterialRequirementPropertyChild"
 			 					type="OpMaterialRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="RequiredByRequestedSegmentResponse"
+			<xsd:element name="RequiredByRequestedSegmentResponse"
 			 					type="RequiredByRequestedSegmentResponseType" minOccurs="0"/>
             <xsd:group ref="Extended:OpMaterialRequirementProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
@@ -1059,10 +1059,10 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PersonnelUse" 			type="PersonnelUseType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
-	    <xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
-	    <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
-	    <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="PersonnelSpecificationChild" 	type="OpPersonnelSpecificationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
+			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
+			<xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PersonnelSpecificationChild" 	type="OpPersonnelSpecificationType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PersonnelSpecificationProperty" 	type="OpPersonnelSpecificationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="TestSpecificationID" 		type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpPersonnelSpecification" minOccurs="0" maxOccurs="1"/>
@@ -1076,7 +1076,7 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 				type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="PersonnelClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="PersonnelClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
             <xsd:element name="PersonPropertyID" 		type="IdentifierType" minOccurs="0"/>
             <xsd:element name="PersonnelSpecificationPropertyChild"
 			 					type="OpPersonnelSpecificationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1088,14 +1088,14 @@ This attribute must be defined in the corresponding operations event definition.
     <xsd:complexType name="OpEquipmentSpecificationType">
         <xsd:sequence>
             <xsd:element name="ID" 				type="IdentifierType"/>
-	    <xsd:element name="EquipmentClassID" 		type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="EquipmentClassID" 		type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentID" 			type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentUse" 			type="EquipmentUseType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
-	    <xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
-	    <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
-	    <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
+			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
+			<xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentSpecificationChild" 	type="OpEquipmentSpecificationType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentSpecificationProperty" 	type="OpEquipmentSpecificationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="TestSpecificationID" 		type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1110,7 +1110,7 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 				type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="EquipmentClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="EquipmentClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
             <xsd:element name="EquipmentPropertyID" 		type="IdentifierType" minOccurs="0"/>
             <xsd:element name="EquipmentSpecificationPropertyChild"
 			 					type="OpEquipmentSpecificationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1127,8 +1127,8 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PhysicalAssetUse" 		type="PhysicalAssetUseType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
-	    <xsd:element name="PhysicalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
-	    <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
+			<xsd:element name="PhysicalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
+			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PhysicalAssetSpecificationChild"	type="OpPhysicalAssetSpecificationType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PhysicalAssetSpecificationProperty"
@@ -1145,7 +1145,7 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 				type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="PhysicalAssetClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="PhysicalAssetClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
             <xsd:element name="PhysicalAssetPropertyID" 	type="IdentifierType" minOccurs="0"/>
             <xsd:element name="PhysicalAssetSpecificationPropertyChild"
 			 					type="OpPhysicalAssetSpecificationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1164,7 +1164,7 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="MaterialUse" 			type="MaterialUseType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
-	    <xsd:element name="StorageLocation" 		type="ResourceLocationType" minOccurs = "0"/>
+			<xsd:element name="StorageLocation" 		type="ResourceLocationType" minOccurs = "0"/>
             <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="AssemblySpecification" 		type="OpMaterialSpecificationType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1183,8 +1183,8 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 				type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="MaterialClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
-	    <xsd:element name="MaterialDefinitionPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="MaterialClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="MaterialDefinitionPropertyID" 	type="IdentifierType" minOccurs="0"/>
             <xsd:element name="MaterialLotPropertyID"		type="IdentifierType" minOccurs="0"/>
             <xsd:element name="MaterialSpecificationPropertyChild"
 			 					type="OpMaterialSpecificationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1203,8 +1203,8 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Reason" 				type="ReasonType" minOccurs="0"/>
             <xsd:element name="ConfidenceFactor" 		type="ConfidenceFactorType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
-	    <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
-	    <xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
+			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
+			<xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
             <xsd:element name="PersonnelUse" 			type="PersonnelUseType" minOccurs="0"/>
             <xsd:element name="StartTime" 			type="DateTimeType" minOccurs="0"/>
             <xsd:element name="EndTime" 			type="DateTimeType" minOccurs="0"/>
@@ -1222,8 +1222,8 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 				type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="PersonnelClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
-	    <xsd:element name="PersonPropertyID" 		type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="PersonnelClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="PersonPropertyID" 		type="IdentifierType" minOccurs="0"/>
             <xsd:element name="PersonnelCapabilityPropertyChild"
 			 					type="OpPersonnelCapabilityPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpPersonnelCapabilityProperty" minOccurs="0" maxOccurs="1"/>
@@ -1241,8 +1241,8 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Reason" 				type="ReasonType" minOccurs="0"/>
             <xsd:element name="ConfidenceFactor" 		type="ConfidenceFactorType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
-	    <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
-	    <xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
+			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
+			<xsd:element name="OperationalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
             <xsd:element name="EquipmentUse" 			type="EquipmentUseType" minOccurs="0"/>
             <xsd:element name="StartTime" 			type="DateTimeType" minOccurs="0"/>
             <xsd:element name="EndTime" 			type="DateTimeType" minOccurs="0"/>
@@ -1262,8 +1262,8 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentCapabilityPropertyChild"
 			 					type="OpEquipmentCapabilityPropertyType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="EquipmentClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
-	    <xsd:element name="EquipmentPropertyID" 		type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="EquipmentClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="EquipmentPropertyID" 		type="IdentifierType" minOccurs="0"/>
             <xsd:group ref="Extended:OpEquipmentCapabilityProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -1279,8 +1279,8 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Reason" 				type="ReasonType" minOccurs="0"/>
             <xsd:element name="ConfidenceFactor" 		type="ConfidenceFactorType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
-	    <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
-	    <xsd:element name="PhysicalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
+			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
+			<xsd:element name="PhysicalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
             <xsd:element name="PhysicalAssetUse" 		type="PhysicalAssetUseType" minOccurs="0"/>
             <xsd:element name="StartTime" 			type="DateTimeType" minOccurs="0"/>
             <xsd:element name="EndTime" 			type="DateTimeType" minOccurs="0"/>
@@ -1298,8 +1298,8 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 				type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="PhysicalAssetClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
-	    <xsd:element name="PhysicalAssetPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="PhysicalAssetClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="PhysicalAssetPropertyID" 	type="IdentifierType" minOccurs="0"/>
             <xsd:element name="PhysicalAssetCapabilityPropertyChild"
 			 					type="OpPhysicalAssetCapabilityPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpPhysicalAssetCapabilityProperty" minOccurs="0" maxOccurs="1"/>
@@ -1320,8 +1320,8 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="ConfidenceFactor" 		type="ConfidenceFactorType" minOccurs="0"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
             <xsd:element name="MaterialUse" 			type="MaterialUseType" minOccurs="0"/>
-	    <xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
-	    <xsd:element name="StorageLocation" 		type="ResourceLocationType" minOccurs = "0"/>
+			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
+			<xsd:element name="StorageLocation" 		type="ResourceLocationType" minOccurs = "0"/>
             <xsd:element name="StartTime" 			type="DateTimeType" minOccurs="0"/>
             <xsd:element name="EndTime" 			type="DateTimeType" minOccurs="0"/>
             <xsd:element name="AssemblyCapability" 		type="OpMaterialCapabilityType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1340,9 +1340,9 @@ This attribute must be defined in the corresponding operations event definition.
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Value" 				type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Quantity" 			type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name="MaterialClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
-	    <xsd:element name="MaterialDefinitionPropertyID" 	type="IdentifierType" minOccurs="0"/>
-	    <xsd:element name="MaterialLotPropertyID" 		type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="MaterialClassPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="MaterialDefinitionPropertyID" 	type="IdentifierType" minOccurs="0"/>
+			<xsd:element name="MaterialLotPropertyID" 		type="IdentifierType" minOccurs="0"/>
             <xsd:element name="MateralCapabilityPropertyChild" 	type="OpMaterialCapabilityPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:group ref="Extended:OpMaterialCapabilityProperty" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
@@ -1391,9 +1391,9 @@ Defined values are
 			 				minOccurs = "0"/>
             <xsd:element name="ParameterChild" 		type="ParameterType"
 			 				minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:element name = "ParameterSpecificationID"  type = "IdentifierType"
+			<xsd:element name = "ParameterSpecificationID"  type = "IdentifierType"
 			 				minOccurs = "0" maxOccurs = "unbounded"/>
-	    <xsd:element name = "ProcessSegmentParameterID"  type = "IdentifierType"
+			<xsd:element name = "ProcessSegmentParameterID"  type = "IdentifierType"
 			 				minOccurs = "0" maxOccurs = "unbounded"/>
             <xsd:group ref="Extended:Parameter" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
@@ -1701,12 +1701,12 @@ Defined values are
 	    <xsd:restriction base="CodeType">
 		<xsd:enumeration value="WKT"/> <!--Well-Known Text ISO/IEC 13249-3:2011 Standard -->
 	        <xsd:enumeration value="WKB"/> <!--Well-Known Binary ISO/IEC 13249-3:2011 Standard -->
-                <xsd:enumeration value="GML"/> <!--Geographical Markup Language  -->
-                <xsd:enumeration value="KML"/> <!--Keyhole Markup Language  -->
-                <xsd:enumeration value="GPX"/> <!--GPS Exchange Format  -->
-                <xsd:enumeration value="GeoJSON"/> <!--Geographical JSON 1.0 Format  -->
-                <xsd:enumeration value="SVG"/> <!--Scalable Vector Graphics XML 2D or 3D format -->
-		<xsd:enumeration value="Other"/> <!--Other undefined Spatial Unknown format -->
+            <xsd:enumeration value="GML"/> <!--Geographical Markup Language  -->
+            <xsd:enumeration value="KML"/> <!--Keyhole Markup Language  -->
+            <xsd:enumeration value="GPX"/> <!--GPS Exchange Format  -->
+            <xsd:enumeration value="GeoJSON"/> <!--Geographical JSON 1.0 Format  -->
+            <xsd:enumeration value="SVG"/> <!--Scalable Vector Graphics XML 2D or 3D format -->
+		    <xsd:enumeration value="Other"/> <!--Other undefined Spatial Unknown format -->
             </xsd:restriction>
         </xsd:simpleContent>
     </xsd:complexType>
@@ -1852,7 +1852,7 @@ Spatial definition identifies a value and the predefined coordinate reference sy
     <xsd:complexType name="TransChangeStatusType">
         <xsd:sequence>
             <xsd:element name="Code" type="CodeType" minOccurs="0"/>
-            <xsd:element name="Description" type="DescriptionType" minOccurs="0"/>
+            <xsd:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EffectiveDateTime" type="DateTimeType" minOccurs="0"/>
             <xsd:element name="ReasonCode" type="CodeType" minOccurs="0"/>
             <xsd:element name="Reason" type="CodeType" minOccurs="0" maxOccurs="unbounded"/>
