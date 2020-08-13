@@ -3,13 +3,13 @@
 <xsd:schema     xmlns:xsd               = "http://www.w3.org/2001/XMLSchema"
                 targetNamespace         = "http://www.mesa.org/xml/B2MML"
                 xmlns                   = "http://www.mesa.org/xml/B2MML"
-                xmlns:Extended          = "http://www.mesa.org/xml/B2MML-AllExtensions" 
+                xmlns:Extended          = "http://www.mesa.org/xml/B2MML-AllExtensions"
                 elementFormDefault      = "qualified"
                 attributeFormDefault    = "unqualified">
 
 <!-- Import the B2MML Extension Schema and pickup the BatchML Information Extensions -->
 
-<xsd:import     namespace="http://www.mesa.org/xml/B2MML-AllExtensions" 
+<xsd:import     namespace="http://www.mesa.org/xml/B2MML-AllExtensions"
                 schemaLocation="B2MML-AllExtensions.xsd"/>
 
 <!-- Include the Common schema   -->
@@ -17,86 +17,43 @@
 <xsd:include    schemaLocation = "B2MML-Common.xsd"/>
 
 
-<xsd:annotation> 
-   <xsd:documentation> 
-        Copyright 2019 MESA International, Version 0700
+<xsd:annotation>
+   <xsd:documentation>
+
+        Copyright 2020 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
-        This MESA International work (including specifications, 
-        documents, software, and related items) referred to as the 
-        Batch Markup Language (BatchML) is provided by the copyright 
+        This MESA International work (including specifications,
+        documents, software, and related items) referred to as the
+        Batch Markup Language (BatchML) is provided by the copyright
         holders under the following license.
 
-        Permission to use, copy, modify, or redistribute this Work 
-        and its documentation, with or without modification, for any 
-        purpose and without fee or royalty is hereby granted provided 
-        MESA International is acknowledged as the originator of 
+        Permission to use, copy, modify, or redistribute this Work
+        and its documentation, with or without modification, for any
+        purpose and without fee or royalty is hereby granted provided
+        MESA International is acknowledged as the originator of
         this Work using the following statement:
 
-        "The Batch Markup Language (BatchML) is used courtesy of the 
+        "The Batch Markup Language (BatchML) is used courtesy of the
         World Batch Forum."
 
         In no event shall MESA International Forum, its members,
-        or any third party be liable for any costs, expenses, losses, 
-        damages or injuries incurred by use of the Work or as a 
+        or any third party be liable for any costs, expenses, losses,
+        damages or injuries incurred by use of the Work or as a
         result of this agreement.
-        
-        Based upon the ISA-S88.01-1995 Batch Control Part 1: 
-        Models and Terminology Standard and the ANSI/ISA-88.00.02-2001 
-        Batch Control Part 2: Data Structures and Guidelines for 
+
+        Based upon the ISA-S88.01-1995 Batch Control Part 1:
+        Models and Terminology Standard and the ANSI/ISA-88.00.02-2001
+        Batch Control Part 2: Data Structures and Guidelines for
         Languages Standard
    </xsd:documentation>
-   <xsd:documentation> 
-      Revision History
-        Ver     Date            Person          Note
-        ---     ----            ------          ----
-        V01     7 Apr 2002      D. Emerson      Initial release 
-        V02     23 Sept 2003    D. Emerson      Changed namespace and filenames to reflect V02
-                                                Changed complexTypes that contained 
-                                                simpleContent to be simpleTypes with
-                                                simpleContent by default (removed explicit)
-                                                simpleContent tags).  Types changed:
-                                                        BatchListEntryType1Type
-                                                        ConnectionType1Type
-                                                        DataType1Type
-                                                        EquipmentElementType1Type
-                                                        EquipmentProceduralElementType1Type
-                                                        FromType1Type
-                                                        LinkType1Type
-                                                        ParameterType1Type
-                                                        RecipeElementType1Type
-                                                        ToType1Type
-                                                Changed use of ##any to indirect reference 
-                                                through AnyType, to allow parsing using Microsoft 
-                                                XML toolset
-                                                Changed DataInterpretation1Type, this was missed
-                                                in a previous change on 2 Feb 2003.
-                                                Changed complexTypes that contained 
-                                                simpleContent to be simpleTypes with
-                                                simpleContent by default (removed explicit)
-                                                simpleContent tags).  Types changed:
-                                                        Depiction1Type
-                                                        EquipmentElementLevel1Type
-                                                        IDScope1Type
-                                                        Mode1Type
-                                                        ScaledType
-                                                        Status1Type
-                                                Removed no namespace schemas and combined 
-                                                elements and types into one schema.  
-                                                The single schema has a namespace.
-        V03     17 Apr 2006     D. Emerson      Added substitution groups for extensions to
-                                                follow B2MML extension method.
-        V0500   26 Mar 2011     D. Brandl       Converted to B2MML numbering, namespaces,
-                                                extension name spaces, and renamed multiple
-                                                elements with "Batch" prefix to eliminate name conflicts
-        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4  
-                                                Corrected extension element in the FromIDType         
-        V0700   21 Dec 2018     D. Brandl       Updated Version
-				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
 
+   <xsd:documentation>
+      Revision history maintained in GitHub
    </xsd:documentation>
-</xsd:annotation>       
-        
+
+</xsd:annotation>
+
 <!-- Simple and Complex Type Declarations -->
 
   <xsd:complexType name = "ActualBatchSizeType">
@@ -114,13 +71,13 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType  name = "ApprovalHistoryType">
       <xsd:sequence>
-        <xsd:element name = "FinalApprovalDate"  type = "DateTimeType"  
+        <xsd:element name = "FinalApprovalDate"  type = "DateTimeType"
                                                  minOccurs = "0"/>
-        <xsd:element name = "Version"            type = "VersionType"            
+        <xsd:element name = "Version"            type = "IdentifierType"
                                                  minOccurs = "0"/>
-        <xsd:element name = "Description"        type = "DescriptionType"        
+        <xsd:element name = "Description"        type = "DescriptionType"
                                                  minOccurs = "0" maxOccurs = "unbounded"/>
-        <xsd:element name = "IndividualApproval" type = "IndividualApprovalType" 
+        <xsd:element name = "IndividualApproval" type = "IndividualApprovalType"
                                                  minOccurs = "0" maxOccurs = "unbounded"/>
         <xsd:group   ref  = "Extended:ApprovalHistory"  minOccurs="0" maxOccurs="1"/>
       </xsd:sequence>
@@ -141,21 +98,21 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "BatchInformationType">
     <xsd:sequence>
-      <xsd:element name = "ListHeader"          type = "ListHeaderType" 
+      <xsd:element name = "ListHeader"          type = "ListHeaderType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Description"         type = "DescriptionType" 
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "MasterRecipe"        type = "MasterRecipeType" 
+      <xsd:element name = "MasterRecipe"        type = "MasterRecipeType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "ControlRecipe"       type = "ControlRecipeType"      
+      <xsd:element name = "ControlRecipe"       type = "ControlRecipeType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "RecipeBuildingBlock" type = "RecipeBuildingBlockType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EquipmentElement"    type = "EquipmentElementType" 
+      <xsd:element name = "EquipmentElement"    type = "EquipmentElementType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "BatchList"           type = "BatchListType" 
+      <xsd:element name = "BatchList"           type = "BatchListType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EnumerationSet"      type = "EnumerationSetType" 
+      <xsd:element name = "EnumerationSet"      type = "EnumerationSetType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:BatchInformation"   minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -173,7 +130,7 @@
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
-  
+
   <xsd:complexType name = "BatchListEntryTypeType">
     <xsd:simpleContent>
       <xsd:extension base = "BatchListEntryType1Type">
@@ -186,7 +143,7 @@
   <xsd:complexType name = "BatchListEntryType">
     <xsd:sequence>
       <xsd:element name = "ID"                  type = "IdentifierType" />
-      <xsd:element name = "Description"         type = "DescriptionType"        
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "BatchListEntryType"  type = "BatchListEntryTypeType"/>
       <xsd:element name = "Status"              type = "BatchStatusType"        minOccurs = "0"/>
@@ -208,19 +165,19 @@
       <xsd:element name = "RequestedBatchSize"  type = "RequestedBatchSizeType" minOccurs = "0"/>
       <xsd:element name = "ActualBatchSize"     type = "ActualBatchSizeType"    minOccurs = "0"/>
       <xsd:element name = "UnitOfMeasure"       type = "UnitOfMeasureType"      minOccurs = "0"/>
-      <xsd:element name = "Note"                type = "NoteType" 
+      <xsd:element name = "Note"                type = "NoteType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Parameter"           type = "BatchParameterType" 
+      <xsd:element name = "Parameter"           type = "BatchParameterType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:choice minOccurs="0" maxOccurs="unbounded">
-        <xsd:element name = "EquipmentID"       type = "IdentifierType" 
+        <xsd:element name = "EquipmentID"       type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-        <xsd:element name = "EquipmentClassID"  type = "IdentifierType" 
+        <xsd:element name = "EquipmentClassID"  type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       </xsd:choice>
-      <xsd:element name = "ActualEquipmentID"   type = "IdentifierType" 
+      <xsd:element name = "ActualEquipmentID"   type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "BatchListEntry"      type = "BatchListEntryType" 
+      <xsd:element name = "BatchListEntry"      type = "BatchListEntryType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:BatchListEntry"   minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -232,7 +189,7 @@
       <xsd:element name = "ListHeader"          type = "ListHeaderType"     minOccurs = "0"/>
       <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "BatchListEntry"      type = "BatchListEntryType" 
+      <xsd:element name = "BatchListEntry"      type = "BatchListEntryType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:BatchList"   minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -260,11 +217,11 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "ClassInstanceAssociationType" >
     <xsd:sequence>
-      <xsd:element name = "ClassEquipmentID"    type = "IdentifierType" />  
-      <xsd:element name = "MemberEquipmentID"   type = "IdentifierType" />  
-      <xsd:element name = "Description"         type = "DescriptionType" 
+      <xsd:element name = "ClassEquipmentID"    type = "IdentifierType" />
+      <xsd:element name = "MemberEquipmentID"   type = "IdentifierType" />
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:group   ref  = "Extended:ClassInstanceAssociation"   
+      <xsd:group   ref  = "Extended:ClassInstanceAssociation"
                                                 minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -312,25 +269,25 @@
   <xsd:complexType name = "ControlRecipeType">
     <xsd:sequence>
       <xsd:element name = "ID"                    type = "IdentifierType" />
-      <xsd:element name = "Version"               type = "VersionType" 
+      <xsd:element name = "Version"               type = "IdentifierType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "VersionDate"           type = "DateTimeType" 
+      <xsd:element name = "VersionDate"           type = "DateTimeType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "Description"           type = "DescriptionType" 
+      <xsd:element name = "Description"           type = "DescriptionType"
                                                   minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "BatchID"               type = "IdentifierType" 
+      <xsd:element name = "BatchID"               type = "IdentifierType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "Header"                type = "HeaderType" 
+      <xsd:element name = "Header"                type = "HeaderType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "EquipmentRequirement"  type = "BatchEquipmentRequirementType" 
+      <xsd:element name = "EquipmentRequirement"  type = "BatchEquipmentRequirementType"
                                                   minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Formula"               type = "FormulaType" 
+      <xsd:element name = "Formula"               type = "FormulaType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "ProcedureLogic"        type = "ProcedureLogicType" 
+      <xsd:element name = "ProcedureLogic"        type = "ProcedureLogicType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "RecipeElement"         type = "RecipeElementType" 
+      <xsd:element name = "RecipeElement"         type = "RecipeElementType"
                                                   minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OtherInformation"      type = "OtherInformationType" 
+      <xsd:element name = "OtherInformation"      type = "OtherInformationType"
                                                   minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:ControlRecipe"     minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -395,9 +352,9 @@
   <xsd:complexType name = "EnumerationSetType">
     <xsd:sequence>
       <xsd:element name = "ID"                  type = "IdentifierType" />
-        <xsd:element name = "Description"       type = "DescriptionType" 
+        <xsd:element name = "Description"       type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-        <xsd:element name = "Enumeration"       type = "EnumerationType" 
+        <xsd:element name = "Enumeration"       type = "EnumerationType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
         <xsd:group   ref  = "Extended:EnumerationSet"  minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -414,9 +371,9 @@
   <xsd:complexType name = "EnumerationType">
     <xsd:sequence>
       <xsd:element name = "EnumerationNumber"   type = "EnumerationNumberType" />
-      <xsd:element name = "EnumerationString"   type = "EnumerationStringType" 
+      <xsd:element name = "EnumerationString"   type = "EnumerationStringType"
                                                 minOccurs = "0"/>
-      <xsd:element name = "Description"         type = "DescriptionType" 
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:Enumeration"   minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -425,13 +382,13 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "EquipmentConnectionType" >
     <xsd:sequence>
-      <xsd:element name = "ID"                  type = "IdentifierType" />  
-      <xsd:element name = "Description"         type = "DescriptionType" 
+      <xsd:element name = "ID"                  type = "IdentifierType" />
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "ConnectionType"      type = "ConnectionTypeType" />
-      <xsd:element name = "FromEquipmentID"     type = "IdentifierType" 
+      <xsd:element name = "FromEquipmentID"     type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "ToEquipmentID"       type = "IdentifierType" 
+      <xsd:element name = "ToEquipmentID"       type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:EquipmentConnection"   minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -440,24 +397,24 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "EquipmentElementType" >
     <xsd:sequence>
-      <xsd:element name = "ID"                                  type = "IdentifierType" />      
-      <xsd:element name = "Description"                         type = "DescriptionType" 
+      <xsd:element name = "ID"                                  type = "IdentifierType" />
+      <xsd:element name = "Description"                         type = "DescriptionType"
                                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EquipmentElementType"                type = "EquipmentElementTypeType" />  
-      <xsd:element name = "EquipmentElementLevel"               type = "EquipmentElementLevelType" />  
-      <xsd:element name = "ClassInstanceAssociation"            type = "ClassInstanceAssociationType" 
+      <xsd:element name = "EquipmentElementType"                type = "EquipmentElementTypeType" />
+      <xsd:element name = "EquipmentElementLevel"               type = "EquipmentLevelType" />
+      <xsd:element name = "ClassInstanceAssociation"            type = "ClassInstanceAssociationType"
                                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Property"                            type = "EquipmentElementPropertyType" 
+      <xsd:element name = "Property"                            type = "EquipmentElementPropertyType"
                                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EquipmentProceduralElementClass"     type = "EquipmentProceduralElementClassType" 
+      <xsd:element name = "EquipmentProceduralElementClass"     type = "EquipmentProceduralElementClassType"
                                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EquipmentProceduralElement"          type = "EquipmentProceduralElementType" 
+      <xsd:element name = "EquipmentProceduralElement"          type = "EquipmentProceduralElementType"
                                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EquipmentConnection"                 type = "EquipmentConnectionType" 
+      <xsd:element name = "EquipmentConnection"                 type = "EquipmentConnectionType"
                                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:choice                                               minOccurs = "0" maxOccurs = "unbounded">
-        <xsd:element name = "EquipmentElement"                  type = "EquipmentElementType" />  
-        <xsd:element name = "EquipmentElementID"                type = "IdentifierType"  />  
+        <xsd:element name = "EquipmentElement"                  type = "EquipmentElementType" />
+        <xsd:element name = "EquipmentElementID"                type = "IdentifierType"  />
       </xsd:choice>
       <xsd:group   ref  = "Extended:EquipmentElement"           minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -495,14 +452,14 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "EquipmentProceduralElementClassType" >
     <xsd:sequence>
-      <xsd:element name = "ID"                  type = "IdentifierType" />    
-      <xsd:element name = "Description"         type = "DescriptionType" 
+      <xsd:element name = "ID"                  type = "IdentifierType" />
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EquipmentProceduralElementType"      
+      <xsd:element name = "EquipmentProceduralElementType"
                                                 type = "EquipmentProceduralElementTypeType" />
-      <xsd:element name = "Parameter"           type = "BatchParameterType" 
+      <xsd:element name = "Parameter"           type = "BatchParameterType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:group   ref  = "Extended:EquipmentProceduralElementClass"   
+      <xsd:group   ref  = "Extended:EquipmentProceduralElementClass"
                                                 minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -510,19 +467,19 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "EquipmentProceduralElementType" >
     <xsd:sequence>
-      <xsd:element name = "ID"                  type = "IdentifierType" />    
-      <xsd:element name = "Description"         type = "DescriptionType" 
+      <xsd:element name = "ID"                  type = "IdentifierType" />
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EquipmentProceduralElementType"      
+      <xsd:element name = "EquipmentProceduralElementType"
                                                 type = "EquipmentProceduralElementTypeType"/>
-      <xsd:choice>      
-        <xsd:element name = "EquipmentProceduralElementClassID"  
-                                                type = "IdentifierType" 
+      <xsd:choice>
+        <xsd:element name = "EquipmentProceduralElementClassID"
+                                                type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "1"/>
-        <xsd:element name = "Parameter"         type = "BatchParameterType" 
+        <xsd:element name = "Parameter"         type = "BatchParameterType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       </xsd:choice>
-      <xsd:group   ref  = "Extended:EquipmentProceduralElement"   
+      <xsd:group   ref  = "Extended:EquipmentProceduralElement"
                                                 minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -551,11 +508,11 @@
   <xsd:complexType name = "BatchEquipmentRequirementType">
     <xsd:sequence>
       <xsd:element name = "ID"                  type = "IdentifierType" />
-      <xsd:element name = "Constraint"          type = "ConstraintType"  
+      <xsd:element name = "Constraint"          type = "ConstraintType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Description"         type = "DescriptionType" 
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0"/>
-      <xsd:group   ref  = "Extended:BatchEquipmentRequirement"   
+      <xsd:group   ref  = "Extended:BatchEquipmentRequirement"
                                                 minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -570,7 +527,7 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "FormulaType">
     <xsd:sequence>
-      <xsd:element name = "Parameter"           type = "BatchParameterType" 
+      <xsd:element name = "Parameter"           type = "BatchParameterType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:Formula"    minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -583,7 +540,7 @@
       <xsd:element name = "FromIDValue"         type = "xsd:string" />
       <xsd:element name = "FromType"            type = "FromTypeType" />
       <xsd:element name = "IDScope"             type = "IDScopeType" />
-      <xsd:group   ref  = "Extended:FromID"   
+      <xsd:group   ref  = "Extended:FromID"
                                                 minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -610,23 +567,23 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "HeaderType">
     <xsd:sequence>
-      <xsd:element name = "ModificationLog"       type = "ModificationLogType" 
+      <xsd:element name = "ModificationLog"       type = "ModificationLogType"
                                                   minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "ApprovalHistory"       type = "ApprovalHistoryType" 
+      <xsd:element name = "ApprovalHistory"       type = "ApprovalHistoryType"
                                                   minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EffectiveDate"         type = "DateTimeType" 
+      <xsd:element name = "EffectiveDate"         type = "DateTimeType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "ExpirationDate"        type = "DateTimeType" 
+      <xsd:element name = "ExpirationDate"        type = "DateTimeType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "ProductID"             type = "IdentifierType" 
+      <xsd:element name = "ProductID"             type = "IdentifierType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "ProductName"           type = "IdentifierType" 
+      <xsd:element name = "ProductName"           type = "IdentifierType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "BatchSize"             type = "BatchSizeType" 
+      <xsd:element name = "BatchSize"             type = "BatchSizeType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "ActualProductProduced" type = "ActualProductProducedType" 
+      <xsd:element name = "ActualProductProduced" type = "ActualProductProducedType"
                                                   minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Status"                type = "BatchStatusType" 
+      <xsd:element name = "Status"                type = "BatchStatusType"
                                                   minOccurs = "0"/>
       <xsd:group   ref  = "Extended:Header"       minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -641,7 +598,7 @@
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
- 
+
   <xsd:complexType name = "IDScopeType">
     <xsd:simpleContent>
       <xsd:extension base = "IDScope1Type">
@@ -653,13 +610,13 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "IndividualApprovalType">
     <xsd:sequence>
-      <xsd:element name = "ApprovedBy"          type = "ApprovedByType"   
+      <xsd:element name = "ApprovedBy"          type = "ApprovedByType"
                                                 minOccurs = "0"/>
-      <xsd:element name = "ApprovalDate"        type = "DateTimeType" 
+      <xsd:element name = "ApprovalDate"        type = "DateTimeType"
                                                 minOccurs = "0"/>
-      <xsd:element name = "Description"         type = "DescriptionType"  
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:group   ref  = "Extended:IndividualApproval"   
+      <xsd:group   ref  = "Extended:IndividualApproval"
                                                 minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -668,15 +625,15 @@
   <xsd:complexType name = "LinkType">
     <xsd:sequence>
       <xsd:element name = "ID"                  type = "IdentifierType" />
-      <xsd:element name = "FromID"              type = "FromIDType" 
+      <xsd:element name = "FromID"              type = "FromIDType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "ToID"                type = "ToIDType" 
+      <xsd:element name = "ToID"                type = "ToIDType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "LinkType"            type = "LinkTypeType" />
       <xsd:element name = "Depiction"           type = "DepictionType" />
-      <xsd:element name = "EvaluationOrder"     type = "EvaluationOrderType" 
+      <xsd:element name = "EvaluationOrder"     type = "EvaluationOrderType"
                                                 minOccurs = "0"/>
-      <xsd:element name = "Description"         type = "DescriptionType" 
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:Link"       minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -709,12 +666,12 @@
   <xsd:complexType name = "ListHeaderType">
     <xsd:sequence>
       <xsd:element name = "ID"                  type = "IdentifierType"              minOccurs = "0"/>
-      <xsd:element name = "Version"             type = "VersionType"         minOccurs = "0"/>
-      <xsd:element name = "Description"         type = "DescriptionType"     
+      <xsd:element name = "Version"             type = "IdentifierType"         minOccurs = "0"/>
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "Origin"              type = "OriginType"          minOccurs = "0"/>
       <xsd:element name = "CreateDate"          type = "DateTimeType"      minOccurs = "0"/>
-      <xsd:element name = "ModificationLog"     type = "ModificationLogType" 
+      <xsd:element name = "ModificationLog"     type = "ModificationLogType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:ListHeader" minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -725,24 +682,24 @@
   <xsd:complexType name = "MasterRecipeType">
     <xsd:sequence>
       <xsd:element name = "ID"                   type = "IdentifierType" />
-      <xsd:element name = "Version"              type = "VersionType"  
+      <xsd:element name = "Version"              type = "IdentifierType"
                                                  minOccurs = "0"/>
-      <xsd:element name = "VersionDate"          type = "DateTimeType"  
+      <xsd:element name = "VersionDate"          type = "DateTimeType"
                                                  minOccurs = "0"/>
-      <xsd:element name = "Description"          type = "DescriptionType"  
+      <xsd:element name = "Description"          type = "DescriptionType"
                                                  minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "Header"               type = "HeaderType"  minOccurs = "0"/>
-      <xsd:element name = "EquipmentRequirement" type = "BatchEquipmentRequirementType" 
+      <xsd:element name = "EquipmentRequirement" type = "BatchEquipmentRequirementType"
                                                  minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Formula"              type = "FormulaType"  
+      <xsd:element name = "Formula"              type = "FormulaType"
                                                  minOccurs = "0"/>
-      <xsd:element name = "ProcedureLogic"       type = "ProcedureLogicType"  
+      <xsd:element name = "ProcedureLogic"       type = "ProcedureLogicType"
                                                  minOccurs = "0"/>
-      <xsd:element name = "RecipeElement"        type = "RecipeElementType"  
+      <xsd:element name = "RecipeElement"        type = "RecipeElementType"
                                                  minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OtherInformation"     type = "OtherInformationType"  
+      <xsd:element name = "OtherInformation"     type = "OtherInformationType"
                                                  minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:group   ref  = "Extended:MasterRecipe"    
+      <xsd:group   ref  = "Extended:MasterRecipe"
                                                  minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -781,13 +738,13 @@
  <!-- Complex Type with Extension -->
  <xsd:complexType name = "ModificationLogType">
     <xsd:sequence>
-      <xsd:element name = "ModifiedDate"        type = "DateTimeType" 
+      <xsd:element name = "ModifiedDate"        type = "DateTimeType"
                                                 minOccurs = "0"/>
-      <xsd:element name = "Description"         type = "DescriptionType"  
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Author"              type = "AuthorType"         
+      <xsd:element name = "Author"              type = "AuthorType"
                                                 minOccurs = "0"/>
-      <xsd:group   ref  = "Extended:ModificationLog"   
+      <xsd:group   ref  = "Extended:ModificationLog"
                                                 minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -815,11 +772,11 @@
   <xsd:complexType name = "OtherInformationType">
     <xsd:sequence>
       <xsd:element name = "ID"                  type = "IdentifierType"          minOccurs = "0"/>
-      <xsd:element name = "Value"               type = "BatchValueType"       
+      <xsd:element name = "Value"               type = "BatchValueType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Description"         type = "DescriptionType" 
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:group   ref  = "Extended:OtherInformation"   
+      <xsd:group   ref  = "Extended:OtherInformation"
                                                 minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -835,18 +792,18 @@
   <xsd:complexType name = "BatchParameterType">
     <xsd:sequence>
       <xsd:element name = "ID"                  type = "IdentifierType" />
-      <xsd:element name = "Description"         type = "DescriptionType"      
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0"/>
       <xsd:element name = "ParameterType"       type = "ParameterTypeType" />
-      <xsd:element name = "ParameterSubType"    type = "ParameterSubTypeType" 
+      <xsd:element name = "ParameterSubType"    type = "ParameterSubTypeType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Value"               type = "BatchValueType"            
+      <xsd:element name = "Value"               type = "BatchValueType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Scaled"              type = "ScaledType"           
+      <xsd:element name = "Scaled"              type = "ScaledType"
                                                 minOccurs = "0"/>
-      <xsd:element name = "ScaleReference"      type = "ScaleReferenceType"   
+      <xsd:element name = "ScaleReference"      type = "ScaleReferenceType"
                                                 minOccurs = "0"/>
-      <xsd:element name = "Parameter"           type = "BatchParameterType"        
+      <xsd:element name = "Parameter"           type = "BatchParameterType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:BatchParameter"   minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -874,14 +831,14 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "ProcedureLogicType">
     <xsd:sequence>
-      <xsd:element name = "Link"                type = "LinkType" 
-                                                minOccurs = "0" 
+      <xsd:element name = "Link"                type = "LinkType"
+                                                minOccurs = "0"
                                                 maxOccurs = "unbounded"/>
-      <xsd:element name = "Step"                type = "StepType" 
+      <xsd:element name = "Step"                type = "StepType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Transition"          type = "TransitionType" 
+      <xsd:element name = "Transition"          type = "TransitionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:group   ref  = "Extended:ProcedureLogic"   
+      <xsd:group   ref  = "Extended:ProcedureLogic"
                                                 minOccurs="0" maxOccurs="1"/>
      </xsd:sequence>
   </xsd:complexType>
@@ -890,24 +847,24 @@
   <xsd:complexType name = "EquipmentElementPropertyType">
     <xsd:sequence>
       <xsd:element name = "ID"                  type = "IdentifierType" />
-      <xsd:element name = "Description"         type = "DescriptionType" 
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Value"               type = "BatchValueType"       
+      <xsd:element name = "Value"               type = "BatchValueType"
                                                 minOccurs = "0"/>
-      <xsd:element name = "Property"            type = "EquipmentElementPropertyType"    
+      <xsd:element name = "Property"            type = "EquipmentElementPropertyType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:Property"   minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
-  
+
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "RecipeBuildingBlockType">
     <xsd:sequence>
-      <xsd:element name = "Description"         type = "DescriptionType" 
+      <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "RecipeElement"       type = "RecipeElementType" 
+      <xsd:element name = "RecipeElement"       type = "RecipeElementType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:group   ref  = "Extended:RecipeBuildingBlock"   
+      <xsd:group   ref  = "Extended:RecipeBuildingBlock"
                                                 minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -916,30 +873,30 @@
   <xsd:complexType name = "RecipeElementType">
     <xsd:sequence>
       <xsd:element name = "ID"                          type = "IdentifierType" />
-      <xsd:element name = "Version"                     type = "VersionType" 
+      <xsd:element name = "Version"                     type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "VersionDate"                 type = "DateTimeType" 
+      <xsd:element name = "VersionDate"                 type = "DateTimeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Description"                 type = "DescriptionType" 
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "RecipeElementType"           type = "RecipeElementTypeType" />
-      <xsd:element name = "BuildingBlockElementID"      type = "IdentifierType" 
+      <xsd:element name = "BuildingBlockElementID"      type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "BuildingBlockElementVersion" type = "IdentifierType" 
+      <xsd:element name = "BuildingBlockElementVersion" type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "ActualEquipmentID"           type = "IdentifierType" 
+      <xsd:element name = "ActualEquipmentID"           type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Header"                      type = "HeaderType" 
+      <xsd:element name = "Header"                      type = "HeaderType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "EquipmentRequirement"        type = "BatchEquipmentRequirementType" 
+      <xsd:element name = "EquipmentRequirement"        type = "BatchEquipmentRequirementType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Parameter"                   type = "BatchParameterType" 
+      <xsd:element name = "Parameter"                   type = "BatchParameterType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "ProcedureLogic"              type = "ProcedureLogicType" 
+      <xsd:element name = "ProcedureLogic"              type = "ProcedureLogicType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "RecipeElement"               type = "RecipeElementType" 
+      <xsd:element name = "RecipeElement"               type = "RecipeElementType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OtherInformation"            type = "OtherInformationType"  
+      <xsd:element name = "OtherInformation"            type = "OtherInformationType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:RecipeElement"      minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -1029,7 +986,7 @@
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
-  
+
   <xsd:complexType name = "BatchStatusType">
     <xsd:simpleContent>
       <xsd:extension base = "BatchStatus1Type">
@@ -1044,7 +1001,7 @@
       <xsd:element name = "ID"                    type = "IdentifierType" />
       <xsd:element name = "RecipeElementID"       type = "IdentifierType" />
       <xsd:element name = "RecipeElementVersion"  type = "IdentifierType" />
-      <xsd:element name = "Description"           type = "DescriptionType" 
+      <xsd:element name = "Description"           type = "DescriptionType"
                                                   minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:Step"         minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -1070,7 +1027,7 @@
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
- 
+
   <xsd:complexType name = "ToTypeType">
     <xsd:simpleContent>
       <xsd:extension base = "ToType1Type">
@@ -1084,9 +1041,9 @@
     <xsd:sequence>
       <xsd:element name = "ID"                    type = "IdentifierType" />
       <xsd:element name = "Condition"             type = "ConditionType" />
-      <xsd:element name = "ConditionAnnotation"   type = "ConditionAnnotationType" 
+      <xsd:element name = "ConditionAnnotation"   type = "ConditionAnnotationType"
                                                   minOccurs = "0"/>
-      <xsd:element name = "Description"           type = "DescriptionType" 
+      <xsd:element name = "Description"           type = "DescriptionType"
                                                   minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:Transition"   minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -1096,12 +1053,12 @@
 <!-- Complex Type with Extension -->
   <xsd:complexType name = "BatchValueType" mixed = "true">
     <xsd:sequence>
-      <xsd:element name = "ValueString"         type = "ValueStringType"          
+      <xsd:element name = "ValueString"         type = "ValueStringType"
                                                 minOccurs = "1" maxOccurs = "unbounded"/>
       <xsd:element name = "DataInterpretation"  type = "DataInterpretationType"/>
       <xsd:element name = "DataType"            type = "DataTypeType" />
       <xsd:element name = "UnitOfMeasure"       type = "UnitOfMeasureType" />
-      <xsd:element name = "EnumerationSetID"    type = "IdentifierType"     
+      <xsd:element name = "EnumerationSetID"    type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:BatchValue"      minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -1163,7 +1120,7 @@
         <xsd:element name = "EquipmentClassID"          type = "IdentifierType"/>
         <xsd:element name = "EquipmentConnection"       type = "EquipmentConnectionType" />
         <xsd:element name = "EquipmentElementID"        type = "IdentifierType"/>
-        <xsd:element name = "EquipmentElementLevel"     type = "EquipmentElementLevelType"/>
+        <xsd:element name = "EquipmentElementLevel"     type = "EquipmentLevelType"/>
         <xsd:element name = "EquipmentElementType"      type = "EquipmentElementTypeType"/>
         <xsd:element name = "EquipmentID"               type = "BatchEquipmentIDType"/>
         <xsd:element name = "EquipmentProceduralElement"        type ="EquipmentProceduralElementType" />
@@ -1240,7 +1197,7 @@
 
         <xsd:element name = "Value"                     type = "BatchValueType"/>
         <xsd:element name = "ValueString"               type = "ValueStringType"/>
-        <xsd:element name = "Version"                   type = "VersionType"/>
+        <xsd:element name = "Version"                   type = "IdentifierType"/>
         <xsd:element name = "VersionDate"               type = "DateTimeType"/>
 
 </xsd:schema>

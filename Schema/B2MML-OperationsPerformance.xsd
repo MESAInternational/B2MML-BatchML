@@ -3,69 +3,59 @@
 <xsd:schema     xmlns:xsd               = "http://www.w3.org/2001/XMLSchema"
                 targetNamespace         = "http://www.mesa.org/xml/B2MML"
                 xmlns                   = "http://www.mesa.org/xml/B2MML"
-                xmlns:Extended          = "http://www.mesa.org/xml/B2MML-AllExtensions" 
+                xmlns:Extended          = "http://www.mesa.org/xml/B2MML-AllExtensions"
                 elementFormDefault      = "qualified"
                 attributeFormDefault    = "unqualified">
-  
+
 <!-- Import the Extension Schema into the 'Extended' namespace    -->
 
-<xsd:import     namespace="http://www.mesa.org/xml/B2MML-AllExtensions" 
+<xsd:import     namespace="http://www.mesa.org/xml/B2MML-AllExtensions"
                 schemaLocation="B2MML-AllExtensions.xsd"/>
 
 <!-- Include the Common schema and OpSegmentResponseType definition  -->
 
   <xsd:include  schemaLocation = "B2MML-Common.xsd"/>
-  <xsd:include  schemaLocation = "B2MML-OperationsPerformanceTypes.xsd"/> 
+  <xsd:include  schemaLocation = "B2MML-OperationsPerformanceTypes.xsd"/>
 
-
-<xsd:annotation> 
+<xsd:annotation>
    <xsd:documentation>
 
-        Copyright 2019 MESA International, Version 0700
+        Copyright 2020 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
-        This MESA International work (including specifications, documents, 
-        software, and related items) referred to as the Business To 
-        Manufacturing Markup Language (B2MML) is provided by the copyright 
-        holders under the following license. 
+        This MESA International work (including specifications, documents,
+        software, and related items) referred to as the Business To
+        Manufacturing Markup Language (B2MML) is provided by the copyright
+        holders under the following license.
 
-        Permission to use, copy, modify, or redistribute this Work and its 
-        documentation, with or without modification, for any purpose and 
-        without fee or royalty is hereby granted provided MESA International 
-        is acknowledged as the originator of this Work using the 
+        Permission to use, copy, modify, or redistribute this Work and its
+        documentation, with or without modification, for any purpose and
+        without fee or royalty is hereby granted provided MESA International
+        is acknowledged as the originator of this Work using the
         following statement:
 
-        "The Business To Manufacturing Markup Language (B2MML) is used 
+        "The Business To Manufacturing Markup Language (B2MML) is used
         courtesy of MESA International."
 
-        In no event shall MESA International, its members, or any 
-        third party be liable for any costs, expenses, losses, damages or 
-        injuries incurred by use of the Work or as a result of this 
+        In no event shall MESA International, its members, or any
+        third party be liable for any costs, expenses, losses, damages or
+        injuries incurred by use of the Work or as a result of this
         agreement.
-          
-        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System 
+
+        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System
         Integration Part 2: Object Model Attributes Standard and the
-        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration 
-        Part 5: Business to Manufacturing Transactions. 
+        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration
+        Part 5: Business to Manufacturing Transactions.
    </xsd:documentation>
 
-   <xsd:documentation> 
-
-      Revision History
-        Ver     Date            Person          Note
-        ---     ----            ------          ----
-        V0500   26 Mar 2011     D. Brandl       Initial version
-        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
-        V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2
-                                                Added OperationsSegmentID to OperationsResponseType
-												Changed all intermediate date and time types to DatTimeType
-				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
-
+   <xsd:documentation>
+      Revision history maintained in GitHub
    </xsd:documentation>
+
 </xsd:annotation>
 
 <!-- Global Elements -->
-  
+
   <xsd:element name = "OperationsPerformance"           type ="OperationsPerformanceType" />
   <xsd:element name = "OperationsResponse"              type ="OperationsResponseType" />
 
@@ -84,26 +74,27 @@
 
   <xsd:complexType name = "OperationsPerformanceType">
     <xsd:sequence>
-      <xsd:element name = "ID"                          type = "IdentifierType"                  
-                                                        minOccurs = "0"/>
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "ID"                          type = "IdentifierType"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
+      <xsd:element name = "Version"                     type = "IdentifierType"   
+                                                        minOccurs = "0"/>                                                        
+      <xsd:element name = "PublishedDate"               type = "DateTimeType"
+                                                        minOccurs = "0"/>                                                        
+      <xsd:element name = "StartTime"                   type = "DateTimeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "OperationsType"              type = "OperationsTypeType"   
+      <xsd:element name = "Endtime"                     type = "DateTimeType"
+                                                        minOccurs = "0"/>                                           
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "OperationsScheduleID"        type = "IdentifierType"       
+      <xsd:element name = "OperationsType"              type = "OperationsTypeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "StartTime"                   type = "DateTimeType"                  
-                                                        minOccurs = "0"/>
-      <xsd:element name = "EndTime"                     type = "DateTimeType"    
+      <xsd:element name = "OperationsScheduleID"        type = "IdentifierType"
                                                         minOccurs = "0"/>
       <xsd:element name = "PerformanceState"            type = "ResponseStateType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"               type = "DateTimeType" 
-                                                        minOccurs = "0"/>
-      <xsd:element name = "OperationsResponse"          type = "OperationsResponseType" 
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "OperationsResponse"          type = "OperationsResponseType"
+                                                        minOccurs = "1" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:OperationsPerformance"
                                                         minOccurs = "0" maxOccurs = "1"/>
     </xsd:sequence>
@@ -111,30 +102,31 @@
 
   <xsd:complexType name = "OperationsResponseType">
     <xsd:sequence>
-      <xsd:element name = "ID"                          type = "IdentifierType" 
+      <xsd:element name = "ID"                          type = "IdentifierType"/>
+      <xsd:element name = "Description"                 type = "DescriptionType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/> 
+      <xsd:element name = "Version"                     type = "IdentifierType"   
+                                                        minOccurs = "0"/>                                                                                                               
+      <xsd:element name = "StartTime"                   type = "DateTimeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "EndTime"                     type = "DateTimeType"
+                                                        minOccurs = "0"/>                                          
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "OperationsType"              type = "OperationsTypeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "OperationsRequestID"         type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
-                                                        minOccurs = "0"/>
-      <xsd:element name = "OperationsType"              type = "OperationsTypeType"   
-                                                        minOccurs = "0"/>
-      <xsd:element name = "OperationsRequestID"         type = "IdentifierType"  
+      <xsd:element name = "SegmentRequirementID"        type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "SegmentRequirementID"        type = "IdentifierType"  
+      <xsd:element name = "OperationsDefinitionID"      type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "StartTime"                   type = "DateTimeType"          
-                                                        minOccurs = "0"/>
-      <xsd:element name = "EndTime"                     type = "DateTimeType"    
-                                                        minOccurs = "0"/>
-      <xsd:element name = "OperationsDefinitionID"      type = "IdentifierType"    
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OperationsSegmentID"         type = "IdentifierType"    
+      <xsd:element name = "OperationsSegmentID"         type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "ResponseState"               type = "ResponseStateType"
                                                         minOccurs = "0"/>
       <xsd:element name = "SegmentResponse"             type = "OpSegmentResponseType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+                                                        minOccurs = "1" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:OperationsResponse" minOccurs = "0" maxOccurs = "1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -145,7 +137,7 @@
 <!-- - - - - - - - - - - - - - - - - - - - - -->
 
   <xsd:complexType name = "GetOperationsPerformanceType">
-    <xsd:sequence>      
+    <xsd:sequence>
          <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
@@ -153,7 +145,7 @@
               <xsd:element name = "Get"         type = "TransGetType"/>
               <xsd:element name = "OperationsPerformance"
                                                 type = "OperationsPerformanceType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -173,7 +165,7 @@
               <xsd:element name = "Show"        type = "TransShowType"/>
               <xsd:element name = "OperationsPerformance"
                                                 type = "OperationsPerformanceType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -194,7 +186,7 @@
               <xsd:element name = "Process"     type = "TransProcessType"/>
               <xsd:element name = "OperationsPerformance"
                                                 type = "OperationsPerformanceType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -215,7 +207,7 @@
               <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
               <xsd:element name = "OperationsPerformance"
                                                 type = "OperationsPerformanceType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -236,7 +228,7 @@
               <xsd:element name = "Change"      type = "TransChangeType"/>
               <xsd:element name = "OperationsPerformance"
                                                 type = "OperationsPerformanceType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -257,7 +249,7 @@
               <xsd:element name = "Respond"     type = "TransRespondType"/>
               <xsd:element name = "OperationsPerformance"
                                                 type = "OperationsPerformanceType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -278,7 +270,7 @@
               <xsd:element name = "Cancel"      type = "TransCancelType"/>
               <xsd:element name = "OperationsPerformance"
                                                 type = "OperationsPerformanceType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -299,7 +291,7 @@
               <xsd:element name = "Sync"        type = "TransSyncType"/>
               <xsd:element name = "OperationsPerformance"
                                                 type = "OperationsPerformanceType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>

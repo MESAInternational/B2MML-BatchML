@@ -13,20 +13,18 @@
 <xsd:import     namespace="http://www.mesa.org/xml/B2MML-AllExtensions" 
                 schemaLocation="B2MML-AllExtensions.xsd"/>
 
-<!-- Include the Test Specification Schema         -->
+<!-- Include the OperationsTest Schema         -->
 
-<xsd:include     schemaLocation="B2MML-TestSpecification.xsd"/>
+<xsd:include schemaLocation="B2MML-OperationsTest.xsd"/>
 
 <!-- Include the Common schema   -->
 
 <xsd:include schemaLocation = "B2MML-Common.xsd"/>
 
-
-
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2019 MESA International, Version 0700
+        Copyright 2020 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -54,22 +52,13 @@
         Part 5: Business to Manufacturing Transactions.  
    </xsd:documentation>
 
-   <xsd:documentation> 
-
-      Revision History
-
-        Ver     Date            Person          Note
-        ---     ----            ------          ----
-        V0500   26 Mar 2011     D. Brandl       New version
-        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
-        V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2
-												Removed PhysicalAsseteCapabilityTestSpecification definitions, replaced by TestSpecification model
-												Changed all intermediate date and time types to DatTimeType
-				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
+   <xsd:documentation>
+      Revision history maintained in GitHub
    </xsd:documentation>
+
 </xsd:annotation>
 
-<!-- Elements -->
+<!-- Global Elements -->
   
   <xsd:element name = "PhysicalAssetInformation"                    type ="PhysicalAssetInformationType" >
 		<xsd:annotation> 
@@ -103,7 +92,6 @@ A physical asset class may be made up of zero or more physical asset classes.
 		</xsd:annotation> 
 	</xsd:element>
  
-
 
 <!-- Transaction Elements -->
   <xsd:element name = "GetPhysicalAssetInformation"                 type = "GetPhysicalAssetInformationType"/>
@@ -140,8 +128,7 @@ A physical asset class may be made up of zero or more physical asset classes.
 
   <xsd:complexType name = "PhysicalAssetInformationType">
     <xsd:sequence>
-      <xsd:element name = "ID"                  type = "IdentifierType"
-                                                minOccurs = "0"/>
+      <xsd:element name = "ID"                  type = "IdentifierType"/>
       <xsd:element name = "Description"         type = "DescriptionType" 
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "HierarchyScope"      type = "HierarchyScopeType"
@@ -152,11 +139,11 @@ A physical asset class may be made up of zero or more physical asset classes.
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "PhysicalAssetClass"  type = "PhysicalAssetClassType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAssetCapabilityTestSpecification"
+      <xsd:element name = "TestSpecification"
                                                 type = "TestSpecificationType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:PhysicalAssetInformation"       
-                                                minOccurs = "0" maxOccurs = "1"/>
+                                                minOccurs = "0"/>
     </xsd:sequence>
   </xsd:complexType>
 
@@ -165,73 +152,92 @@ A physical asset class may be made up of zero or more physical asset classes.
       <xsd:element name = "ID"                  type = "IdentifierType"/>
       <xsd:element name = "Description"         type = "DescriptionType"        
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Version"             type = "IdentifierType"
+                                                minOccurs = "0"/>
+      <xsd:element name = "PublishedDate"       type = "DateTimeType"
+                                                minOccurs = "0"/>
+      <xsd:element name = "EffectiveStartDate"  type = "DateTimeType" 
+                                                minOccurs = "0"/>	    
+      <xsd:element name = "EffectiveEndDate"    type = "DateTimeType" 
+                                                minOccurs = "0"/>
       <xsd:element name = "HierarchyScope"      type = "HierarchyScopeType"   
-                                                minOccurs = "0" />
-      <xsd:element name = "FixedAssetID"        type = "IdentifierType" minOccurs = "0" />
-      <xsd:element name = "VendorID"            type = "IdentifierType" minOccurs = "0" />
+                                                minOccurs = "0"/>
+      <xsd:element name = "FixedAssetID"        type = "IdentifierType" minOccurs = "0"/>
+      <xsd:element name = "VendorID"            type = "IdentifierType" minOccurs = "0"/>
       <xsd:element name = "SpatialDefinition"   type = "SpatialDefinitionType"     
-                                                minOccurs = "0" />
-      <xsd:element name = "PhysicalLocation"    type = "ResourceLocationType" minOccurs = "0" />
-      <xsd:element name = "EquipmentLevel"      type = "HierarchyScopeType" minOccurs = "0" />
-      <xsd:element name = "EquipmentAssetMapping" type = "EquipmentAssetMappingType"   
+                                                minOccurs = "0"/>
+      <xsd:element name = "PhysicalLocation"    type = "ResourceLocationType" minOccurs = "0"/>
+      <xsd:element name = "EquipmentLevel"      type = "HierarchyScopeType" minOccurs = "0"/>
+      <xsd:element name = "EquipmentAssetMapping"
+                                              	type = "EquipmentAssetMappingType"   
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAssetProperty"   type = "PhysicalAssetPropertyType"  
+      <xsd:element name = "PhysicalAssetProperty"
+		   				                                  type = "PhysicalAssetPropertyType"  
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAsset"       type = "PhysicalAssetType"  
+      <xsd:element name = "PhysicalAssetChild"	type = "PhysicalAssetType"  
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAssetClassID" type = "IdentifierType"   
+      <xsd:element name = "PhysicalAssetClassID"
+                                                type = "IdentifierType"   
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAssetCapabilityTestSpecificationID"
+      <xsd:element name = "TestSpecificationID"
                                                 type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:group   ref  = "Extended:PhysicalAsset"  minOccurs = "0" maxOccurs = "1"/>
+      <xsd:group   ref  = "Extended:PhysicalAsset"  minOccurs = "0"/>
     </xsd:sequence>
   </xsd:complexType>
 
   <xsd:complexType name = "PhysicalAssetPropertyType">
     <xsd:sequence>
-      <xsd:element name = "ID"                  type = "IdentifierType" />
+      <xsd:element name = "ID"                  type = "IdentifierType"/>
       <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "Value"               type = "ValueType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAssetProperty"   type = "PhysicalAssetPropertyType"  
+      <xsd:element name = "PhysicalAssetPropertyChild"
+		   			                                  	type = "PhysicalAssetPropertyType"  
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EvaluatedPropertyReference"
-                                                type = "EvaluatedPropertyReferenceType"
-                                                minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "TestResult"          type = "TestResultType"         
-                                                minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PhysicalAssetClassPropertyID"  
+                                                type = "IdentifierType"  
+                                                minOccurs = "0"/>   
       <xsd:group   ref  = "Extended:PhysicalAssetProperty"
-                                                minOccurs = "0" maxOccurs = "1"/>
+                                                minOccurs = "0"/>
     </xsd:sequence>
   </xsd:complexType>
 
   <xsd:complexType name = "PhysicalAssetClassType">
     <xsd:sequence>
       <xsd:element name = "ID"                  type = "IdentifierType"/>
-      <xsd:element name = "Description"         type = "DescriptionType"
+      <xsd:element name = "Version"             type = "IdentifierType"
+                                                minOccurs = "0"/>
+      <xsd:element name = "Description"         type = "DescriptionType" 
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "PublishedDate"       type = "DateTimeType"
+                                                minOccurs = "0"/>
+      <xsd:element name = "EffectiveStartDate"  type = "DateTimeType" 
+                                                minOccurs = "0"/>	    
+      <xsd:element name = "EffectiveEndDate"    type = "DateTimeType" 
+                                                minOccurs = "0"/>
       <xsd:element name = "HierarchyScope"      type = "HierarchyScopeType"
                                                 minOccurs = "0"/>
       <xsd:element name = "Manufacturer"        type = "NameType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAssetClass"
+      <xsd:element name = "PhysicalAssetClassChild"
                                                 type = "PhysicalAssetClassType"
-                                                minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "UsesPropertiesOfPhysicalAssetClassID"
-                                                type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "PhysicalAssetClassProperty"
                                                 type = "PhysicalAssetClassPropertyType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAssetID"     type = "IdentifierType"
+      <xsd:element name = "PhysicalAssetClassBaseID"  
+		   			                                  	type = "IdentifierType"  
+		   				                                  minOccurs = "0" maxOccurs = "unbounded"/>		
+      <xsd:element name = "PhysicalAssetSourceID"     
+		   				                                  type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAssetCapabilityTestSpecificationID"
+      <xsd:element name = "TestSpecificationID"
                                                 type = "IdentifierType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:PhysicalAssetClass"
-                                                minOccurs = "0" maxOccurs = "1"/>
+                                                minOccurs = "0"/>
     </xsd:sequence>
   </xsd:complexType>
 
@@ -240,18 +246,15 @@ A physical asset class may be made up of zero or more physical asset classes.
       <xsd:element name = "ID"                  type = "IdentifierType"/>
       <xsd:element name = "Description"         type = "DescriptionType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PropertyType" 		type="ClassPropertyTypeType"
-												minOccurs="0"/>
+      <xsd:element name = "PropertyType" 	      type="ClassPropertyTypeType"
+						                                    minOccurs="0"/>
       <xsd:element name = "Value"               type = "ValueType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PhysicalAssetClassProperty"
+      <xsd:element name = "PhysicalAssetClassPropertyChild"
                                                 type = "PhysicalAssetClassPropertyType"
                                                 minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EvaluatedPropertyReference"
-                                                type = "EvaluatedPropertyReferenceType"
-                                                minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:PhysicalAssetClassProperty"
-                                                minOccurs = "0" maxOccurs = "1"/>
+                                                minOccurs = "0"/>
     </xsd:sequence>
   </xsd:complexType>
 
@@ -266,7 +269,7 @@ A physical asset class may be made up of zero or more physical asset classes.
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
-              <xsd:element name = "Get" type = "TransGetType"/>
+              <xsd:element name = "Get"         type = "TransGetType"/>
               <xsd:element name = "PhysicalAssetInformation"
                                                 type = "PhysicalAssetInformationType"
                                                 minOccurs = "1" 

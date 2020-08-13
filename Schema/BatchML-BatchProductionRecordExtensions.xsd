@@ -12,14 +12,17 @@
    Import the Common schema in the 'b2mml' name space.   
    This also brings in the Core Components under the 'b2mml' name space.  
 -->
-   <xsd:import
+  <xsd:import
             namespace              = "http://www.mesa.org/xml/B2MML"
             schemaLocation         = "B2MML-Common.xsd"/> 
+
+  <xsd:include schemaLocation="B2MML-AllExtensions.xsd"/>
+
 
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2019 MESA International, Version 0700
+        Copyright 2020 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This World Batch  Work (including specifications, 
@@ -43,17 +46,10 @@
 
    </xsd:documentation>
 
-   <xsd:documentation> 
-  
-      Revision History
-        Ver        Date         Person          Note
-        ---        ----         ------          ----
-        V0500   June 2010       Dennis Brandl   Initial Version
-        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
-        V0700   21 Dec 2018     D. Brandl       Updated Version
-				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
-
+   <xsd:documentation>
+      Revision history maintained in GitHub
    </xsd:documentation>
+
 </xsd:annotation>
 
 <!-- 

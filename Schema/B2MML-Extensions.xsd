@@ -13,11 +13,12 @@
      <xsd:import namespace         = "http://www.mesa.org/xml/B2MML"
                  schemaLocation    = "B2MML-Common.xsd"/> 
 
+<xsd:include schemaLocation="B2MML-AllExtensions.xsd"/>
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2019 MESA International, Version 0700
-		All Rights Reserved. http://www.mesa.org
+        Copyright 2020 MESA International, Version 0700
+    All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
         software, and related items) referred to as the Business To 
@@ -44,22 +45,8 @@
         Part 5: Business to Manufacturing Transactions
    </xsd:documentation>
 
-   <xsd:documentation> 
-  
-      Revision History
-
-        Ver     Date            Person          Note
-        ---     ----            ------          ----
-        v0300   26 Aug 2005     D. Emerson      This schema is new to B2MML in v0300.
-                                                This schema contains placeholders for
-                                                substitution groups in the other schemas.
-        v0301   29 Dec 2005     D. Brandl       Changed version to v0301
-        v04     04 Jun 2007     D. Brandl       Added transaction elements for ISA 95 Part 5 support.
-        V0500   26 Mar 2011     D. Brandl       Revised version
-        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
-        V0700   08 Aug 2016     D. Brandl       Updated Version
-				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
-
+   <xsd:documentation>
+      Revision history maintained in GitHub
    </xsd:documentation>
 </xsd:annotation>
 
@@ -117,24 +104,6 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "EquipmentCapabilityTestSpecification">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestedEquipmentProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestedEquipmentClassProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
 
 
 <!-- B2MML extension groups for PhysicalAsset schema-->
@@ -169,23 +138,6 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "PhysicalAssetCapabilityTestSpecification">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestedPhysicalAssetProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestedPhysicalAssetClassProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
 
 
 <!-- B2MML extension groups for Material schema-->
@@ -238,31 +190,6 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "MaterialTestSpecification">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestedMaterialClassProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestedMaterialDefinitionProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestedMaterialLotProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-
 
 
 <!-- B2MML extension groups for Personnel schema-->
@@ -292,24 +219,6 @@ of elements when used in an XML document.
         </xsd:group>
 
         <xsd:group name = "PersonnelClassProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "QualificationTestSpecification">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestedPersonProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestedPersonnelClassProperty">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
@@ -380,8 +289,58 @@ of elements when used in an XML document.
         </xsd:group>
 
 
+<!-- B2MML extension groups for OperationsTest schema  -->
 
-<!-- B2MML extension groups for OperationsDefinition and ProductDefinition schema-->
+        <xsd:group name = "OperationsTestInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestSpecificationProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestSpecificationInformation">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestSpecificationCriteria">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "EvaluatedProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "TestResult">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "PropertyMeasurement">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+
+<!-- B2MML extension groups for OperationsDefinition and ProductInformation schema-->
 
         <xsd:group name = "OperationsDefinitionInformation">
                 <xsd:sequence>
@@ -401,31 +360,13 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "ProductDefinition">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
         <xsd:group name = "OperationsMaterialBill">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "OperationsBillOfMaterialItem">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "ManufacturingBill">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "ProductSegment">
+        <xsd:group name = "OperationsMaterialBillItem">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
@@ -487,8 +428,7 @@ of elements when used in an XML document.
 
 
 
-
-<!-- B2MML extension groups for OperationsCapability and ProductionCapability schema-->
+<!-- B2MML extension groups for OperationsCapability schema-->
 
         <xsd:group name = "OperationsCapability">
                 <xsd:sequence>
@@ -501,13 +441,6 @@ of elements when used in an XML document.
                         <!-- add extended elements here -->
                 </xsd:sequence>
         </xsd:group>
-
-        <xsd:group name = "ProductionCapability">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
 
         <xsd:group name = "PersonnelCapability">
                 <xsd:sequence>
@@ -565,8 +498,7 @@ of elements when used in an XML document.
 
 
 
-
-<!-- B2MML extension groups for OperationsPerformance and ProductionPerformance schema  -->
+<!-- B2MML extension groups for OperationsPerformance schema  -->
 
         <xsd:group name = "OperationsPerformance">
                 <xsd:sequence>
@@ -574,19 +506,7 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "ProductionPerformance">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
         <xsd:group name = "OperationsResponse">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "ProductionResponse">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
@@ -663,14 +583,7 @@ of elements when used in an XML document.
                         <!-- add extended elements here -->
                 </xsd:sequence>
         </xsd:group>
-
-<!-- Included for ProductionPerformance schema -->
-        <xsd:group name = "ProductionData">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
+ 
         <xsd:group name = "PersonnelActual">
                 <xsd:sequence>
                         <!-- add extended elements here -->
@@ -719,43 +632,6 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "MaterialProducedActual">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "MaterialProducedActualProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "MaterialConsumedActual">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "MaterialConsumedActualProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "ConsumableActual">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "ConsumableActualProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-
 
 
 <!-- B2MML extension groups for OperationsSchedule schema-->
@@ -766,19 +642,7 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "ProductionSchedule">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
         <xsd:group name = "OperationsRequest">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "ProductionRequest">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
@@ -791,12 +655,6 @@ of elements when used in an XML document.
         </xsd:group>
 
         <xsd:group name = "SegmentRequirement">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "ProductionParameter">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
@@ -850,53 +708,11 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "MaterialProducedRequirement">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "MaterialProducedRequirementProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "MaterialConsumedRequirement">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "MaterialConsumedRequirementProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "ConsumableExpectedRequirement">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "ConsumableExpectedRequirementProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-
+ 
 
 <!-- B2MML extension groups for ResourceRelationshipNetwork schema-->
 
-        <xsd:group name = "ResourceRelationshipNetworkType">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "ResourceNetworkConnectionInformation">
+         <xsd:group name = "ResourceRelationshipNetworkInformation">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
@@ -926,11 +742,30 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "ResourceProperty">
+        <xsd:group name = "ResourceReferenceProperty">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
         </xsd:group>
+
+        <xsd:group name = "RNCTypeProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "RRNProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "RNCProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
 
         
 <!-- B2MML extension groups for TransactionProfile schema  -->
@@ -967,6 +802,12 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
+        <xsd:group name = "WorkAlertDefinitionProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here  -->
+                </xsd:sequence>
+        </xsd:group>
+
         <xsd:group name = "WorkAlertProperty">
                 <xsd:sequence>
                         <!-- add extended elements here -->
@@ -994,6 +835,12 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
+        <xsd:group name = "WorkCalendarDefinitionEntryProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
         <xsd:group name = "WorkCalendarDefinitionProperty">
                 <xsd:sequence>
                         <!-- add extended elements here -->
@@ -1007,6 +854,12 @@ of elements when used in an XML document.
         </xsd:group>
 
         <xsd:group name = "WorkCalendarEntry">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "WorkCalendarEntryProperty">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
@@ -1086,12 +939,6 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "WorkflowSpecificationType">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
         <xsd:group name = "WorkflowSpecificationNodeType">
                 <xsd:sequence>
                         <!-- add extended elements here -->
@@ -1105,6 +952,30 @@ of elements when used in an XML document.
         </xsd:group>
         
         <xsd:group name = "WorkflowSpecificationProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+         
+        <xsd:group name = "WorkflowSpecificationNodeProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "WorkflowSpecificationNodeTypeProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>       
+        
+        <xsd:group name = "WorkflowSpecificationConnectionProperty">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
+        <xsd:group name = "WorkflowSpecificationConnectionTypeProperty">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
@@ -1144,7 +1015,18 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        
+        <xsd:group name = "WorkRecordEntry">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+ 
+        <xsd:group name = "WorkRecordSpecification">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>        
+
 <!-- B2MML extension groups for WorkSchedule and JobList schemas  -->
 
         <xsd:group name = "WorkSchedule">

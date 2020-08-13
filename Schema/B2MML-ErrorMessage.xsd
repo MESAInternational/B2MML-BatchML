@@ -1,0 +1,257 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<xsd:schema     xmlns:xsd               = "http://www.w3.org/2001/XMLSchema"
+                targetNamespace         = "http://www.mesa.org/xml/B2MML"
+                xmlns                   = "http://www.mesa.org/xml/B2MML"
+                xmlns:Extended          = "http://www.mesa.org/xml/B2MML-AllExtensions"
+                elementFormDefault      = "qualified"
+                attributeFormDefault    = "unqualified"> 
+  
+<!-- Import the Extension Schema         -->
+
+<xsd:import     namespace = "http://www.mesa.org/xml/B2MML-AllExtensions" 
+                schemaLocation = "B2MML-AllExtensions.xsd"/>
+
+<!-- Include the Common schema   -->
+
+<xsd:include schemaLocation = "B2MML-Common.xsd"/>
+
+<xsd:annotation> 
+   <xsd:documentation>
+        Copyright 2020 MESA International, Version 0700
+        All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents, 
+        software, and related items) referred to as the Business To 
+        Manufacturing Markup Language (B2MML) is provided by the copyright 
+        holders under the following license. 
+
+        Permission to use, copy, modify, or redistribute this Work and its 
+        documentation, with or without modification, for any purpose and 
+        without fee or royalty is hereby granted provided MESA International 
+        is acknowledged as the originator of this Work using the 
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used 
+        courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any 
+        third party be liable for any costs, expenses, losses, damages or 
+        injuries incurred by use of the Work or as a result of this 
+        agreement.
+          
+        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System 
+        Integration Part 2: Object Model Attributes Standard and the
+        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration 
+        Part 5: Business to Manufacturing Transactions. 
+   </xsd:documentation>
+
+   <xsd:documentation>
+      Revision history maintained in GitHub
+   </xsd:documentation>
+
+</xsd:annotation>
+
+<!-- Global Elements -->
+
+  <xsd:element name = "ErrorMessage"                    type = "ErrorMessageType"/>  
+
+<!-- Transaction Elements -->
+  <xsd:element name = "GetErrorMessage"                 type = "GetErrorMessageType"/>
+  <xsd:element name = "ShowErrorMessage"                type = "ShowErrorMessageType"/>
+  <xsd:element name = "ProcessErrorMessage"             type = "ProcessErrorMessageType"/>
+  <xsd:element name = "AcknowledgeErrorMessage"         type = "AcknowledgeErrorMessageType"/>
+  <xsd:element name = "ChangeErrorMessage"              type = "ChangeErrorMessageType"/>
+  <xsd:element name = "RespondErrorMessage"             type = "RespondErrorMessageType"/>
+  <xsd:element name = "CancelErrorMessage"              type = "CancelErrorMessageType"/>
+  <xsd:element name = "SyncErrorMessage"                type = "SyncErrorMessageType"/>
+
+<!-- Simple & Complex Types  -->
+
+<xsd:complexType name = "ErrorMessageType">
+  <xsd:sequence>
+    <xsd:element name = "ErrorDescription"              type = "xsd:string"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+    <xsd:element name = "ThrownFrom"                    type = "xsd:string"/>
+    <xsd:element name = "TimeStamp"                     type = "DateTimeType"/>
+    <xsd:element name = "ErrorType"                     type = "ErrorTypeType"/>
+    <xsd:element name = "ErrorCode"                     type = "xsd:string" 
+                                                        minOccurs = "0"/>
+    <xsd:element name = "CausedBy"                      type = "ErrorMessageType" 
+                                                        minOccurs = "0"/>
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name = "ErrorTypeType">
+    <xsd:simpleContent>
+      <xsd:extension base = "ErrorType1Type">
+        <xsd:attribute name = "OtherValue"              type = "xsd:string"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+</xsd:complexType>
+      
+<xsd:complexType name = "ErrorType1Type">
+    <xsd:simpleContent>
+          <xsd:restriction base = "CodeType">
+                  <xsd:enumeration value = "BusinessError"/>
+                  <xsd:enumeration value = "SystemError"/>
+                  <xsd:enumeration value = "Other"/>
+          </xsd:restriction>
+    </xsd:simpleContent>
+</xsd:complexType>
+
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- ErrorMessage Transaction Types    -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+
+<xsd:complexType name = "GetErrorMessageType">
+    <xsd:sequence>      
+      <xsd:element name = "ApplicationArea"             type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Get"                 type = "TransGetType"/>
+              <xsd:element name = "ErrorMessage"        type = "ErrorMessageType"
+                                                        minOccurs = "0" 
+                                                        maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"                   type = "xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"                   type = "xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+<xsd:complexType name = "ShowErrorMessageType">
+    <xsd:sequence>      
+      <xsd:element name = "ApplicationArea"             type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Show"                type = "TransShowType"/>
+              <xsd:element name = "ErrorMessage"        type = "ErrorMessageType"
+                                                        minOccurs = "0" 
+                                                        maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"                   type = "xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"                   type = "xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "ProcessErrorMessageType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"             type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Process"             type = "TransProcessType"/>
+              <xsd:element name = "ErrorMessage"        type = "ErrorMessageType"
+                                                        minOccurs = "1"
+                                                        maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"                   type = "xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"                   type = "xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "AcknowledgeErrorMessageType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"             type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Acknowledge"          type = "TransAcknowledgeType"/>
+              <xsd:element name = "ErrorMessage"         type = "ErrorMessageType"
+                                                         minOccurs = "1"
+                                                         maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"                    type = "xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"                    type = "xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "ChangeErrorMessageType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"              type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Change"               type = "TransChangeType"/>
+              <xsd:element name = "ErrorMessage"         type = "ErrorMessageType"
+                                                         minOccurs = "1"
+                                                         maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"                    type = "xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"                    type = "xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "RespondErrorMessageType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"              type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Respond"              type = "TransRespondType"/>
+              <xsd:element name = "ErrorMessage"         type = "ErrorMessageType"
+                                                         minOccurs = "1"
+                                                         maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"                    type = "xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"                    type = "xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "CancelErrorMessageType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"              type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Cancel"               type = "TransCancelType"/>
+              <xsd:element name = "ErrorMessage"         type = "ErrorMessageType"
+                                                         minOccurs = "1"
+                                                         maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"                    type = "xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"                    type = "xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "SyncErrorMessageType">
+     <xsd:sequence>
+     <xsd:element name = "ApplicationArea"               type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"                 type = "TransSyncType"/>
+              <xsd:element name = "ErrorMessage"         type = "ErrorMessageType"
+                                                         minOccurs = "1"
+                                                         maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"                    type = "xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"                    type = "xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+</xsd:schema>

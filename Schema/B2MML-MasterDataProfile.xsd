@@ -1,62 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
- <xsd:schema 
-	xmlns:xsd 		= "http://www.w3.org/2001/XMLSchema"
-	targetNamespace = "http://www.mesa.org/xml/B2MML"
-	xmlns 			= "http://www.mesa.org/xml/B2MML"
-	xmlns:Extended 	= "http://www.mesa.org/xml/B2MML-AllExtensions"
- 
-	elementFormDefault 		= "qualified"
-	attributeFormDefault 	= "unqualified">
-<xsd:annotation> 
+ <xsd:schema
+  xmlns:xsd     = "http://www.w3.org/2001/XMLSchema"
+  targetNamespace = "http://www.mesa.org/xml/B2MML"
+  xmlns       = "http://www.mesa.org/xml/B2MML"
+  xmlns:Extended   = "http://www.mesa.org/xml/B2MML-AllExtensions"
+
+  elementFormDefault     = "qualified"
+  attributeFormDefault   = "unqualified">
+<xsd:annotation>
    <xsd:documentation>
-		This file may be used to assist in code generation using XSD.EXE
-		This file simply includes all of the B2MML schemas into a single 
-		definition. This reduces the length of the generated .cs file name. 
-   
-        Copyright 2019 MESA International 
-		All Rights Reserved. http://www.mesa.org
+    This file may be used to assist in code generation using XSD.EXE
+    This file simply includes all of the B2MML schemas into a single
+    definition. This reduces the length of the generated .cs file name.
 
-        This MESA International work (including specifications, documents, 
-        software, and related items) referred to as the Business To 
-        Manufacturing Markup Language (B2MML) is provided by the copyright 
-        holders under the following license. 
+        Copyright 2020 MESA International
+    All Rights Reserved. http://www.mesa.org
 
-        Permission to use, copy, modify, or redistribute this Work and its 
-        documentation, with or without modification, for any purpose and 
-        without fee or royalty is hereby granted provided the World Batch 
-        Forum is acknowledged as the originator of this Work using the 
+        This MESA International work (including specifications, documents,
+        software, and related items) referred to as the Business To
+        Manufacturing Markup Language (B2MML) is provided by the copyright
+        holders under the following license.
+
+        Permission to use, copy, modify, or redistribute this Work and its
+        documentation, with or without modification, for any purpose and
+        without fee or royalty is hereby granted provided the World Batch
+        Forum is acknowledged as the originator of this Work using the
         following statement:
 
-        "The Business To Manufacturing Markup Language (B2MML) is used 
+        "The Business To Manufacturing Markup Language (B2MML) is used
         courtesy of MESA International."
 
-        In no event shall MESA International, its members, or any 
-        third party be liable for any costs, expenses, losses, damages or 
-        injuries incurred by use of the Work or as a result of this 
+        In no event shall MESA International, its members, or any
+        third party be liable for any costs, expenses, losses, damages or
+        injuries incurred by use of the Work or as a result of this
         agreement.
-      
-        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System 
+
+        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System
         Integration Part 2: Object Model Attributes Standard and the
-        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration 
-        Part 5: Business to Manufacturing Transactions and 
-		ANSI/ISA-95.00.04-2018 Enterprise-Control System Integration 
-		Part 4: Objects and Attributes for Manufacturing Oerations 
-		Management Integration. 
+        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration
+        Part 5: Business to Manufacturing Transactions and
+    ANSI/ISA-95.00.04-2018 Enterprise-Control System Integration
+    Part 4: Objects and Attributes for Manufacturing Oerations
+    Management Integration.
    </xsd:documentation>
 
-   <xsd:documentation> 
-  
-      Revision History
-
-        Ver     Date            Person          Note
-        ---     ----            ------          ----
-        7.0		12-Dec-2018		Dennis Brandl	Initial  version for a Base Data Exchange Profile                                
-												Changed all intermediate date and time types to DatTimeType
-				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
-
+   <xsd:documentation>
+      Revision history maintained in GitHub
    </xsd:documentation>
 </xsd:annotation>
- 
+
  <xsd:include schemaLocation ="B2MML-CoreComponents.xsd"/>
  <xsd:include schemaLocation ="B2MML-Common.xsd"/>
  <xsd:include schemaLocation ="B2MML-ConfirmBOD.xsd"/>
@@ -68,40 +60,40 @@
  <xsd:include schemaLocation ="B2MML-OperationsEvent.xsd"/>
  <xsd:include schemaLocation ="B2MML-OperationsPerformance.xsd"/>
  <xsd:include schemaLocation ="B2MML-OperationsSchedule.xsd"/>
+ <xsd:include schemaLocation ="B2MML-OperationsTest.xsd"/>
  <xsd:include schemaLocation ="B2MML-Personnel.xsd"/>
  <xsd:include schemaLocation ="B2MML-PhysicalAsset.xsd"/>
  <xsd:include schemaLocation ="B2MML-ProcessSegment.xsd"/>
  <xsd:include schemaLocation ="B2MML-ResourceRelationshipNetwork.xsd"/>
- <xsd:include schemaLocation ="B2MML-TestSpecification.xsd"/>
  <xsd:include schemaLocation ="B2MML-TransactionProfile.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkAlert.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkCalendar.xsd"/>
- <xsd:include schemaLocation ="B2MML-WorkDefinition.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkCapability.xsd"/>
+ <xsd:include schemaLocation ="B2MML-WorkDefinition.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkflowSpecification.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkPerformance.xsd"/>
+ <xsd:include schemaLocation ="B2MML-WorkRecord.xsd"/>
  <xsd:include schemaLocation ="B2MML-WorkSchedule.xsd"/>
  <xsd:include schemaLocation ="BatchML-BatchInformation.xsd"/>
- <xsd:include schemaLocation ="BatchML-GeneralRecipe.xsd"/>
  <xsd:include schemaLocation ="BatchML-BatchProductionRecord.xsd"/>
- 
+ <xsd:include schemaLocation ="BatchML-GeneralRecipe.xsd"/>
+
  <xsd:import  namespace="http://www.mesa.org/xml/B2MML-AllExtensions"
-			  schemaLocation="B2MML-AllExtensions.xsd"/>
-				
+        schemaLocation="B2MML-AllExtensions.xsd"/>
+
 <!-- ========================================= -->
 <!-- Global Elements ========================= -->
 <!-- ========================================= -->
-  
-  <xsd:element name = "MasterDataProfile"            type = "MasterDataProfileType"/>
+
+ <xsd:element name = "MasterDataProfile"          type = "MasterDataProfileType"/>
 
 <!-- ========================================= -->
 <!-- Type Definitions ======================== -->
 <!-- ========================================= -->
-  
+
  <xsd:complexType name = "MasterDataProfileType">
       <xsd:sequence>
-         <xsd:element name = "Header"   	       type = "MasterDataProfileHeaderType"/>     
-
+         <xsd:element name = "Header"              type = "MasterDataProfileHeaderType"/>
          <xsd:element name = "UnitOfMeasure"       type = "IDandDescriptionType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
          <xsd:element name = "DataType"            type = "IDandDescriptionType"
@@ -114,15 +106,22 @@
                                                    minOccurs="0" maxOccurs = "unbounded"/>
          <xsd:element name = "OperationalLocation" type = "OperationalLocationType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "OperationalLocationClass" type = "OperationalLocationClassType"
+         <xsd:element name = "OperationalLocationClass" 
+                                                   type = "OperationalLocationClassType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "OperationsDefinition" type = "OperationsDefinitionType" 
+         <xsd:element name = "OperationsCapability" 
+                                                   type = "OperationsCapabilityType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "OperationsSegment"   type = "OperationsSegmentType" 
+         <xsd:element name = "OperationsDefinition" 
+                                                   type = "OperationsDefinitionType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "OperationsEventClass" type = "OperationsEventClassType"
+         <xsd:element name = "OperationsSegment"   type = "OperationsSegmentType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "OperationsEventDefinition" type = "OperationsEventDefinitionType"
+         <xsd:element name = "OperationsEventClass" 
+                                                   type = "OperationsEventClassType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "OperationsEventDefinition" 
+                                                   type = "OperationsEventDefinitionType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
          <xsd:element name = "ProcessSegment"      type = "ProcessSegmentType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
@@ -130,30 +129,59 @@
                                                    minOccurs="0" maxOccurs = "unbounded"/>
          <xsd:element name = "MaterialDefinition"  type = "MaterialDefinitionType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "EquipmentClass"       type = "EquipmentClassType"
+         <xsd:element name = "MaterialLot"         type = "MaterialLotType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "MaterialSublot"      type = "MaterialLotType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "EquipmentClass"      type = "EquipmentClassType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
          <xsd:element name = "Equipment"           type = "EquipmentType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
          <xsd:element name = "PersonnelClass"      type = "PersonnelClassType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "Person"              type = "PersonType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>                                                       
          <xsd:element name = "PhysicalAssetClass"  type = "PhysicalAssetClassType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "ResourceRelationshipNetwork"       type ="ResourceRelationshipNetworkType" 
+         <xsd:element name = "PhysicalAsset"       type = "PhysicalAssetType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>                                                   
+         <xsd:element name = "ResourceRelationshipNetwork"       
+                                                   type ="ResourceRelationshipNetworkType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "ResourceNetworkConnectionType"  
+                                                   type = "ResourceNetworkConnectionTypeType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>                                                                                           
          <xsd:element name = "TestSpecification"   type = "TestSpecificationType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "WorkAlertDefinition"  type ="WorkAlertDefinitionType" 
+         <xsd:element name = "TestResult"          type = "TestResultType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "WorkCalendar"  	   type ="WorkCalendarType" 
+         <xsd:element name = "WorkAlertDefinition"  
+                                                   type ="WorkAlertDefinitionType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "WorkCalendarDefinition"  type ="WorkCalendarDefinitionType" 
+         <xsd:element name = "WorkCalendar"        type ="WorkCalendarType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "WorkflowSpecification" type = "WorkflowSpecificationType" 
+         <xsd:element name = "WorkCalendarDefinition"  
+                                                   type ="WorkCalendarDefinitionType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "WorkflowSpecificationType" type = "WorkflowSpecificationTypeType" 
+         <xsd:element name = "WorkCapability"      type = "WorkCapabilityType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
-         <xsd:element name = "WorkMaster"          type = "WorkMasterType" 
+         <xsd:element name = "WorkMasterCapability"
+                                                   type = "WorkMasterCapabilityType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "WorkflowSpecification" 
+                                                   type = "WorkflowSpecificationType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "WorkflowSpecificationNodeType" 
+                                                   type = "WorkflowSpecificationNodeTypeType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "WorkflowSpecificationConnectionType" 
+                                                   type = "WorkflowSpecificationConnectionTypeType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "WorkMaster"          type = "WorkMasterType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "WorkRecordSpecification"        
+                                                   type = "WorkRecordSpecificationType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>                                        
          <xsd:element name = "TransactionProfile"  type = "MasterDataTransactionProfileType"
                                                    minOccurs="0" maxOccurs = "unbounded"/>
 
@@ -163,72 +191,72 @@
 
   <xsd:complexType name = "MasterDataProfileHeaderType">
       <xsd:sequence>
-         <xsd:element name = "ID"   	        type = "IdentifierType"/>     
-         <xsd:element name = "Version"   	    type = "VersionType"/>     
-         <xsd:element name = "Name"   	       	type = "TextType"/>     
-         <xsd:element name = "Scope"   	       	type = "TextType" minOccurs="0" maxOccurs = "unbounded"/>     
-         <xsd:element name = "Abbreviation"		type = "TextType" minOccurs="0"/>     
-         <xsd:element name = "ReleaseDate"		type = "DateTimeType" minOccurs="0"/>     
-         <xsd:element name = "URILocation"		type = "TextType" minOccurs="0"/>     
-         <xsd:element name = "OwningAuthority"	type = "TextType" minOccurs="0"/>     
-         <xsd:element name = "ContactInformation" type="TextType" minOccurs="0" maxOccurs = "unbounded"/>     
-         <xsd:element name = "Keyword"			type = "TextType" minOccurs="0" maxOccurs = "unbounded"/>     
-         <xsd:element name = "NormativeReference" type="TextType" minOccurs="0" maxOccurs = "unbounded"/>     
-         <xsd:element name = "Terms"			type = "TextType" minOccurs="0" maxOccurs = "unbounded"/>     
+         <xsd:element name = "ID"                  type = "IdentifierType"/>
+         <xsd:element name = "Version"             type = "IdentifierType"/>
+         <xsd:element name = "PublishedDate"       type = "DateTimeType"        minOccurs=" 0"/>
+         <xsd:element name = "EffectiveStartDate"  type = "DateTimeType"        minOccurs= "0"/>      
+         <xsd:element name = "EffectiveEndDate"    type = "DateTimeType"        minOccurs= "0"/> 
+         <xsd:element name = "Name"                type = "TextType"/>
+         <xsd:element name = "Scope"               type = "TextType"            minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "Abbreviation"        type = "TextType"            minOccurs="0"/>
+         <xsd:element name = "URILocation"         type = "TextType"            minOccurs="0"/>
+         <xsd:element name = "OwningAuthority"     type = "TextType"            minOccurs="0"/>
+         <xsd:element name = "ContactInformation"  type = "TextType"            minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "Keyword"             type = "TextType"            minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "NormativeReference"  type = "TextType"            minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "Terms"               type = "TextType"            minOccurs="0" maxOccurs = "unbounded"/>
       </xsd:sequence>
   </xsd:complexType>
 
     <xsd:complexType name = "MasterDataTransactionProfileType">
       <xsd:sequence>
-         <xsd:element name = "ApplicationID"      type = "IdentifierType"/>     
-         <xsd:element name = "ApplicationRole"    type = "IdentifierType"/>     
-         <xsd:element name = "TransactionProfile" type = "TransactionProfileType"/>     
-         <xsd:element name = "ChannelTopic"       type = "ChannelTopicType"
-                                                  minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "ApplicationID"       type = "IdentifierType"/>
+         <xsd:element name = "ApplicationRole"     type = "IdentifierType"/>
+         <xsd:element name = "TransactionProfile"  type = "TransactionProfileType"/>
+         <xsd:element name = "ChannelTopic"        type = "ChannelTopicType"
+                                                   minOccurs="0" maxOccurs = "unbounded"/>
       </xsd:sequence>
   </xsd:complexType>
 
 
- 
   <xsd:complexType name = "ChannelTopicType">
       <xsd:sequence>
-         <xsd:element name = "ChannelURI"   	  type = "xsd:normalizedString"/>     
-         <xsd:element name = "ChannelDescription" type = "TextType" minOccurs="0" maxOccurs = "unbounded"/>     
-         <xsd:element name = "Topic"        	  type = "xsd:normalizedString"/>     
-         <xsd:element name = "TopicDescription"   type = "TextType" minOccurs="0" maxOccurs = "unbounded"/>     
-         <xsd:element name = "MessageSpec"        type = "TextType" minOccurs="0" maxOccurs = "unbounded"/>     
-      </xsd:sequence>
-  </xsd:complexType>
-  
- 
-  <xsd:complexType name = "OtherEnumerationType">
-      <xsd:sequence>
-         <xsd:element name = "ObjectName"		type = "IdentifierType"/>     
-         <xsd:element name = "EnumAttributeName" type = "IdentifierType"/>     
-         <xsd:element name = "OtherEnumValue"	type = "IdentifierType"/>     
-         <xsd:element name = "Description"		type = "TextType"/>     
+         <xsd:element name = "ChannelURI"          type = "xsd:normalizedString"/>
+         <xsd:element name = "ChannelDescription"  type = "TextType"            minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "Topic"               type = "xsd:normalizedString"/>
+         <xsd:element name = "TopicDescription"    type = "TextType"            minOccurs="0" maxOccurs = "unbounded"/>
+         <xsd:element name = "MessageSpec"         type = "TextType"            minOccurs="0" maxOccurs = "unbounded"/>
       </xsd:sequence>
   </xsd:complexType>
 
-  
+
+  <xsd:complexType name = "OtherEnumerationType">
+      <xsd:sequence>
+         <xsd:element name = "InformationObjectName"
+                                                   type = "IdentifierType"/>
+         <xsd:element name = "EnumElementName"     type = "IdentifierType"/>
+         <xsd:element name = "OtherEnumValue"      type = "IdentifierType"/>
+         <xsd:element name = "Description"         type = "TextType"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+
   <xsd:complexType name = "ProfileEnumerationType">
       <xsd:sequence>
-         <xsd:element name = "ObjectName"		type = "IdentifierType"/>     
-         <xsd:element name = "AttributeName"	type = "IdentifierType"/>     
-         <xsd:element name = "DefinedValue"		type = "IdentifierType"/>     
-         <xsd:element name = "Description"		type = "TextType"/>     
+         <xsd:element name = "InformationObjectName"
+                                                   type = "IdentifierType"/>
+         <xsd:element name = "ElementName"         type = "IdentifierType"/>
+         <xsd:element name = "DefinedValue"        type = "IdentifierType"/>
+         <xsd:element name = "Description"         type = "TextType"/>
       </xsd:sequence>
   </xsd:complexType>
-  
-  
+
+
   <xsd:complexType name = "IDandDescriptionType">
       <xsd:sequence>
-         <xsd:element name = "ID"   	     		type = "IdentifierType"/>     
-         <xsd:element name = "Description"   		type = "TextType"/>     
+         <xsd:element name = "ID"                  type = "IdentifierType"/>
+         <xsd:element name = "Description"         type = "TextType"/>
       </xsd:sequence>
   </xsd:complexType>
-  
-  
-  
- 
+
 </xsd:schema>

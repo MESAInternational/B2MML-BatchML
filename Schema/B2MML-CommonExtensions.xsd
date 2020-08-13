@@ -15,7 +15,7 @@
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2019 MESA International, Version 0700
+        Copyright 2020 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -43,19 +43,8 @@
         Part 5: Business to Manufacturing Transactions
    </xsd:documentation>
 
-   <xsd:documentation> 
-  
-      Revision History
-
-        Ver     Date            Person          Note
-        ---     ----            ------          ----
-        v04     04 Jun 2007     D. Brandl       Added transaction elements for ISA 95 Part 5 support.
-        V0500   26 Mar 2011     D. Brandl       Revised version
-        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4
-                                                Moved OpXXXXX elements from Extensions to Common Extensions
-        V0700   09 Nov 2018     D. Brandl       Updated Version for latest 2018 release of ISA 95
-				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
-
+   <xsd:documentation>
+      Revision history maintained in GitHub
    </xsd:documentation>
 </xsd:annotation>
 
@@ -82,12 +71,6 @@ of elements when used in an XML document.
 <!-- B2MML extension groups for Common schema-->
 
         <xsd:group name = "EquipmentAssetMapping">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "EvaluatedPropertyReference">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>
@@ -209,12 +192,6 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
-        <xsd:group name = "Result">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
         <xsd:group name = "SegmentDependency">
                 <xsd:sequence>
                         <!-- add extended elements here -->
@@ -222,48 +199,6 @@ of elements when used in an XML document.
         </xsd:group>
 
          <xsd:group name = "SpatialDefinition">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestResult">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestPropertyMeasurement">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-         <xsd:group name = "TestSpecification">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-        <xsd:group name = "TestSpecificationProperty">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-         <xsd:group name = "TestSpecificationInformation">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-         <xsd:group name = "TestSpecificationCriteria">
-                <xsd:sequence>
-                        <!-- add extended elements here -->
-                </xsd:sequence>
-        </xsd:group>
-
-         <xsd:group name = "TestSpecificationEvaluatedProperty">
                 <xsd:sequence>
                         <!-- add extended elements here -->
                 </xsd:sequence>

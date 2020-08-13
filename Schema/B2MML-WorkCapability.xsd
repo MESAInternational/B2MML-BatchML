@@ -14,13 +14,12 @@
 
 <!-- Include the Common schema   -->
 
-  <xsd:include schemaLocation = "B2MML-Common.xsd"/>
-
+<xsd:include schemaLocation = "B2MML-Common.xsd"/>
 
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2019 MESA International, Version 0700
+        Copyright 2020 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -49,24 +48,17 @@
 		Manufacturing Transactions. 
    </xsd:documentation>
 
-   <xsd:documentation> 
-
-      Revision History
-
-        Ver     Date            Person          Note
-        ---     ----            ------          ----
-        V0600   17 Mar 2013     D. Brandl       Initial version                                 
-        V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 4
-												Changed all intermediate date and time types to DatTimeType
-				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
-
+   <xsd:documentation>
+      Revision history maintained in GitHub
    </xsd:documentation>
+
 </xsd:annotation>
 
-<!-- Elements -->
+<!-- Global Elements -->
   
   <xsd:element name = "WorkCapabilityInformation" type ="WorkCapabilityInformationType" />
   <xsd:element name = "WorkCapability"            type ="WorkCapabilityType" />
+  <xsd:element name = "WorkMasterCapability"      type ="WorkMasterCapabilityType" />
 
 
 <!-- Transaction Elements -->
@@ -78,6 +70,15 @@
   <xsd:element name = "RespondWorkCapability"     type = "RespondWorkCapabilityType"/>
   <xsd:element name = "CancelWorkCapability"      type = "CancelWorkCapabilityType"/>
   <xsd:element name = "SyncWorkCapability"        type = "SyncWorkCapabilityType"/>
+
+  <xsd:element name = "GetWorkMasterCapability"         type = "GetWorkMasterCapabilityType"/>
+  <xsd:element name = "ShowWorkMasterCapability"        type = "ShowWorkMasterCapabilityType"/>
+  <xsd:element name = "ProcessWorkMasterCapability"     type = "ProcessWorkMasterCapabilityType"/>
+  <xsd:element name = "AcknowledgeWorkMasterCapability" type = "AcknowledgeWorkMasterCapabilityType"/>
+  <xsd:element name = "ChangeWorkMasterCapability"      type = "ChangeWorkMasterCapabilityType"/>
+  <xsd:element name = "RespondWorkMasterCapability"     type = "RespondWorkMasterCapabilityType"/>
+  <xsd:element name = "CancelWorkMasterCapability"      type = "CancelWorkMasterCapabilityType"/>
+  <xsd:element name = "SyncWorkMasaterCapability"       type = "SyncWorkMasterCapabilityType"/>
 
   <xsd:element name = "GetWorkCapabilityInformation"         type = "GetWorkCapabilityInformationType"/>
   <xsd:element name = "ShowWorkCapabilityInformation"        type = "ShowWorkCapabilityInformationType"/>
@@ -92,8 +93,7 @@
 <!-- Simple & Complex Types  -->
   <xsd:complexType name = "WorkCapabilityInformationType">
     <xsd:sequence>
-      <xsd:element name = "ID"                          type = "IdentifierType"                  
-                                                        minOccurs = "0" nillable="true"/>
+      <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType"         
                                                         minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
@@ -102,6 +102,8 @@
                                                         minOccurs = "0"  nillable="true"/>
       <xsd:element name = "WorkCapability"              type = "WorkCapabilityType"      
                                                         minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
+      <xsd:element name = "WorkMasterCapability"        type = "WorkMasterCapabilityType"      
+                                                        minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
       <xsd:group   ref  = "Extended:WorkCapabilityInformation" minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -109,23 +111,26 @@
   
   <xsd:complexType name = "WorkCapabilityType">
     <xsd:sequence>
-      <xsd:element name = "ID"                      type = "IdentifierType"
-                                                    minOccurs = "0"/>
+      <xsd:element name = "ID"                      type = "IdentifierType"/>
       <xsd:element name = "Description"             type = "DescriptionType"
                                                     minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Version"                 type = "IdentifierType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "PublishedDate"           type = "DateTimeType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "StartTime"               type = "DateTimeType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "EndTime"                 type = "DateTimeType"
+                                                    minOccurs = "0"/>
       <xsd:element name = "HierarchyScope"          type = "HierarchyScopeType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "OperationsType"          type = "OperationsTypeType" 
                                                     minOccurs = "0"/>
       <xsd:element name = "CapabilityType"          type = "CapabilityTypeType" 
                                                     minOccurs = "0"/>
       <xsd:element name = "Reason"                  type = "ReasonType"
                                                     minOccurs = "0"/>
       <xsd:element name = "ConfidenceFactor"        type = "ConfidenceFactorType"
-                                                    minOccurs = "0"/>
-      <xsd:element name = "StartTime"               type = "DateTimeType"
-                                                    minOccurs = "0"/>
-      <xsd:element name = "EndTime"                 type = "DateTimeType"
-                                                    minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"           type = "DateTimeType"
                                                     minOccurs = "0"/>
       <xsd:element name = "PersonnelCapability"     type = "OpPersonnelCapabilityType" 
                                                     minOccurs = "0" maxOccurs = "unbounded"/>
@@ -144,22 +149,23 @@
 
   <xsd:complexType name = "WorkMasterCapabilityType">
     <xsd:sequence>
-      <xsd:element name = "ID"                      type = "IdentifierType" minOccurs = "0"/>
+      <xsd:element name = "ID"                      type = "IdentifierType"/>
       <xsd:element name = "Description"             type = "DescriptionType" 
                                                     minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "WorkMasterID"            type = "IdentifierType"
-                                                    minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Version"                 type = "IdentifierType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "PublishedDate"           type = "DateTimeType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "StartTime"               type = "DateTimeType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "EndTime"                 type = "DateTimeType"
+                                                    minOccurs = "0"/>
+      <xsd:element name = "WorkMasterID"            type = "IdentifierType"/>
       <xsd:element name = "CapabilityType"          type = "CapabilityTypeType" />
       <xsd:element name = "Reason"                  type = "ReasonType"
                                                     minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "HierarchyScope"          type = "HierarchyScopeType"
                                                     minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "StartTime"               type = "DateTimeType"
-                                                    minOccurs = "0"/>
-      <xsd:element name = "EndTime"                 type = "DateTimeType"
-                                                    minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"           type = "DateTimeType"
-                                                    minOccurs = "0"/>
       <xsd:element name = "PersonnelCapability"     type = "OpPersonnelCapabilityType" 
                                                     minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "EquipmentCapability"     type = "OpEquipmentCapabilityType" 
@@ -516,7 +522,175 @@
     <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
   </xsd:complexType>
 
+<!-- - - - - - - - - - - - - - - - - - - - - -->
+<!-- WorkMasterCapability Transaction Types  -->
+<!-- - - - - - - - - - - - - - - - - - - - - -->
 
+<xsd:complexType name = "GetWorkMasterCapabilityType">
+  <xsd:sequence>      
+       <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
+    <xsd:element name = "DataArea">
+       <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name = "Get"         type = "TransGetType"/>
+            <xsd:element name = "WorkMasterCapability"
+                                              type = "WorkMasterCapabilityType"
+                                              minOccurs = "1" 
+                                              maxOccurs = "unbounded"/>
+          </xsd:sequence>
+       </xsd:complexType>
+    </xsd:element>
+  </xsd:sequence>
+  <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+  <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "ShowWorkMasterCapabilityType">
+  <xsd:sequence>
+    <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+    <xsd:element name = "DataArea">
+       <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name = "Show"        type = "TransShowType"/>
+            <xsd:element name = "WorkMasterCapability"
+                                              type = "WorkMasterCapabilityType"
+                                              minOccurs = "1" 
+                                              maxOccurs = "unbounded"/>
+          </xsd:sequence>
+       </xsd:complexType>
+    </xsd:element>
+
+  </xsd:sequence>
+  <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+  <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "ProcessWorkMasterCapabilityType">
+  <xsd:sequence>
+    <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+    <xsd:element name = "DataArea">
+       <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name = "Process"     type = "TransProcessType"/>
+            <xsd:element name = "WorkMasterCapability"
+                                              type = "WorkMasterCapabilityType"
+                                              minOccurs = "1" 
+                                              maxOccurs = "unbounded"/>
+          </xsd:sequence>
+       </xsd:complexType>
+    </xsd:element>
+
+  </xsd:sequence>
+  <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+  <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "AcknowledgeWorkMasterCapabilityType">
+  <xsd:sequence>
+    <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+    <xsd:element name = "DataArea">
+       <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
+            <xsd:element name = "WorkMasterCapability"
+                                              type = "WorkMasterCapabilityType"
+                                              minOccurs = "1" 
+                                              maxOccurs = "unbounded"/>
+          </xsd:sequence>
+       </xsd:complexType>
+    </xsd:element>
+
+  </xsd:sequence>
+  <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+  <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "ChangeWorkMasterCapabilityType">
+  <xsd:sequence>
+    <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+    <xsd:element name = "DataArea">
+       <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name = "Change"      type = "TransChangeType"/>
+            <xsd:element name = "WorkMasterCapability"
+                                              type = "WorkMasterCapabilityType"
+                                              minOccurs = "1" 
+                                              maxOccurs = "unbounded"/>
+          </xsd:sequence>
+       </xsd:complexType>
+    </xsd:element>
+
+  </xsd:sequence>
+  <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+  <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "RespondWorkMasterCapabilityType">
+  <xsd:sequence>
+    <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+    <xsd:element name = "DataArea">
+       <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name = "Respond"     type = "TransRespondType"/>
+            <xsd:element name = "WorkMasterCapability"
+                                              type = "WorkMasterCapabilityType"
+                                              minOccurs = "1" 
+                                              maxOccurs = "unbounded"/>
+          </xsd:sequence>
+       </xsd:complexType>
+    </xsd:element>
+
+  </xsd:sequence>
+  <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+  <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "CancelWorkMasterCapabilityType">
+  <xsd:sequence>
+    <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+    <xsd:element name = "DataArea">
+       <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name = "Cancel"      type = "TransCancelType"/>
+            <xsd:element name = "WorkMasterCapability"
+                                              type = "WorkMasterCapabilityType"
+                                              minOccurs = "1" 
+                                              maxOccurs = "unbounded"/>
+          </xsd:sequence>
+       </xsd:complexType>
+    </xsd:element>
+
+  </xsd:sequence>
+  <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+  <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
+
+
+<xsd:complexType name = "SyncWorkMasterCapabilityType">
+  <xsd:sequence>
+    <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+    <xsd:element name = "DataArea">
+       <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name = "Sync"        type = "TransSyncType"/>
+            <xsd:element name = "WorkMasterCapability"
+                                              type = "WorkMasterCapabilityType"
+                                              minOccurs = "1" 
+                                              maxOccurs = "unbounded"/>
+          </xsd:sequence>
+       </xsd:complexType>
+    </xsd:element>
+
+  </xsd:sequence>
+  <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+  <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+</xsd:complexType>
 
 
 </xsd:schema>

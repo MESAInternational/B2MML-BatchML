@@ -1,0 +1,219 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<xsd:schema     xmlns:xsd         = "http://www.w3.org/2001/XMLSchema"
+                targetNamespace   = "http://www.mesa.org/xml/B2MML"
+                xmlns             = "http://www.mesa.org/xml/B2MML"
+                xmlns:Extended    = "http://www.mesa.org/xml/B2MML-AllExtensions">
+
+<xsd:annotation>
+   <xsd:documentation>
+    This file simply includes the B2MML types that can be a referenced choice from the 
+    InformationObject element in the complexType name="OperationsRecordEntryTemplateType" in the Common.
+    The The InformationObject element applies the InformationObjectType in this InformaitonObjects.xsd. 
+    The InformationObjectType provides a choice of one of the ISA-95 objects used in an instance
+    the InformationObject element. 
+
+        Copyright 2020 MESA International
+    All Rights Reserved. http://www.mesa.org
+
+        This MESA International work (including specifications, documents,
+        software, and related items) referred to as the Business To
+        Manufacturing Markup Language (B2MML) is provided by the copyright
+        holders under the following license.
+
+        Permission to use, copy, modify, or redistribute this Work and its
+        documentation, with or without modification, for any purpose and
+        without fee or royalty is hereby granted provided the World Batch
+        Forum is acknowledged as the originator of this Work using the
+        following statement:
+
+        "The Business To Manufacturing Markup Language (B2MML) is used
+        courtesy of MESA International."
+
+        In no event shall MESA International, its members, or any
+        third party be liable for any costs, expenses, losses, damages or
+        injuries incurred by use of the Work or as a result of this
+        agreement.
+
+        Based upon the ANSI/ISA-95.00.02-2018 Enterprise-Control System
+        Integration Part 2: Object Model Attributes Standard and the
+        ANSI/ISA-95.00.05-2018 Enterprise-Control System Integration
+        Part 5: Business to Manufacturing Transactions and
+    ANSI/ISA-95.00.04-2018 Enterprise-Control System Integration
+    Part 4: Objects and Attributes for Manufacturing Oerations
+    Management Integration.
+   </xsd:documentation>
+
+   <xsd:documentation>
+      Revision history maintained in GitHub
+   </xsd:documentation>
+</xsd:annotation>
+
+<xsd:include schemaLocation ="B2MML-Equipment.xsd"/>
+<xsd:include schemaLocation ="B2MML-Material.xsd"/>
+<xsd:include schemaLocation ="B2MML-Personnel.xsd"/>
+<xsd:include schemaLocation ="B2MML-PhysicalAsset.xsd"/>
+<xsd:include schemaLocation ="B2MML-ProcessSegment.xsd"/>
+<xsd:include schemaLocation ="B2MML-OperationalLocation.xsd"/>
+<xsd:include schemaLocation ="B2MML-OperationsCapability.xsd"/>
+<xsd:include schemaLocation ="B2MML-OperationsEvent.xsd"/>
+<xsd:include schemaLocation ="B2MML-ResourceRelationshipNetwork.xsd"/>
+<xsd:include schemaLocation ="B2MML-WorkCapability.xsd"/>
+<xsd:include schemaLocation ="B2MML-WorkRecord.xsd"/>
+<xsd:include schemaLocation ="BatchML-GeneralRecipe.xsd"/>
+
+ <xsd:import  namespace="http://www.mesa.org/xml/B2MML-AllExtensions"
+              schemaLocation="B2MML-AllExtensions.xsd"/>
+
+<!-- ========================================= -->
+<!-- Global Elements ========================= -->
+<!-- ========================================= -->
+
+  <xsd:element name = "InformationObject"                        type = "InformationObjectType"/>
+  <xsd:element name = "InformationObjectType"                    type = "InformationObjectTypeType"/>
+<!-- ========================================= -->
+<!-- Type Definitions ======================== -->
+<!-- ========================================= -->
+
+ <xsd:complexType name = "InformationObjectType">
+      <xsd:sequence>
+         <xsd:choice>
+            <xsd:element name = "OperationalLocation"            type = "OperationalLocationType"/>
+            <xsd:element name = "OperationalLocationClass"       type = "OperationalLocationClassType"/>
+            <xsd:element name = "PersonnelClass"                 type = "PersonnelClassType"/>
+            <xsd:element name = "Person"                         type = "PersonType"/>
+            <xsd:element name = "EquipmentClass"                 type = "EquipmentClassType"/>
+            <xsd:element name = "Equipment"                      type = "EquipmentType"/>          
+            <xsd:element name = "PhysicalAssetClass"             type = "PhysicalAssetClassType"/>
+            <xsd:element name = "PhysicalAsset"                  type = "PhysicalAssetType"/>   
+            <xsd:element name = "MaterialClass"                  type = "MaterialClassType"/>
+            <xsd:element name = "MaterialDefinition"             type = "MaterialDefinitionType"/>
+            <xsd:element name = "MaterialLot"                    type = "MaterialLotType"/>
+            <xsd:element name = "MaterialSubLot"                 type = "MaterialSubLotType"/>           
+            <xsd:element name = "ProcessSegment"                 type = "ProcessSegmentType"/>
+            <xsd:element name = "TestSpecification"              type = "TestSpecificationType"/>
+            <xsd:element name = "TestResult"                     type = "TestResultType"/>   
+            <xsd:element name = "OperationsEventClass"           type = "OperationsEventClassType"/>
+            <xsd:element name = "OperationsEventDefinition"      type = "OperationsEventDefinitionType"/>
+            <xsd:element name = "OperationsEvent"                type = "OperationsEventType"/>            
+            <xsd:element name = "OperationsDefinition"           type = "OperationsDefinitionType"/>
+            <xsd:element name = "OperationsSegment"              type = "OperationsSegmentType"/>
+            <xsd:element name = "OperationsSchedule"             type = "OperationsScheduleType"/>
+            <xsd:element name = "OperationsRequest"              type = "OperationsRequestType"/>
+            <xsd:element name = "OperationsPerformance"          type = "OperationsPerformanceType"/>
+            <xsd:element name = "OperationsResponse"             type = "OperationsResponseType"/>
+            <xsd:element name = "OperationsCapability"           type = "OperationsCapabilityType"/>
+            <xsd:element name = "ResourceRelationshipNetwork"    type = "ResourceRelationshipNetworkType"/>
+            <xsd:element name = "ResourceNetworkConnectionType"  type = "ResourceNetworkConnectionTypeType"/>           
+            <xsd:element name = "WorkMaster"                     type = "WorkMasterType"/>
+            <xsd:element name = "WorkDirective"                  type = "WorkDirectiveType"/>       
+            <xsd:element name = "WorkflowSpecification"          type = "WorkflowSpecificationType"/>
+            <xsd:element name = "WorkflowSpecificationNodeType"  type = "WorkflowSpecificationNodeTypeType"/>
+            <xsd:element name = "WorkflowSpecificationConnectionType"  type = "WorkflowSpecificationConnectionTypeType"/>
+            <xsd:element name = "WorkSchedule"                   type = "WorkScheduleType"/>
+            <xsd:element name = "WorkRequest"                    type = "WorkRequestType"/>
+            <xsd:element name = "JobList"                        type = "JobListType"/>
+            <xsd:element name = "JobOrder"                       type = "JobOrderType"/>
+            <xsd:element name = "WorkPerformance"                type = "WorkPerformanceType"/>
+            <xsd:element name = "WorkResponse"                   type = "WorkResponseType"/>
+            <xsd:element name = "JobResponse"                    type = "JobResponseType"/>
+            <xsd:element name = "JobResponseList"                type = "JobResponseListType"/>           
+            <xsd:element name = "WorkCapability"                 type = "WorkCapabilityType"/>
+            <xsd:element name = "WorkMasterCapability"           type = "WorkMasterCapabilityType"/>
+            <xsd:element name = "WorkAlertDefinition"            type = "WorkAlertDefinitionType"/>
+            <xsd:element name = "WorkAlert"                      type = "WorkAlertType"/>  
+            <xsd:element name = "WorkCalendar"                   type = "WorkCalendarType"/>
+            <xsd:element name = "WorkCalendarDefinition"         type = "WorkCalendarDefinitionType"/>
+            <xsd:element name = "WorkRecord"                     type = "WorkRecordType"/>
+            <xsd:element name = "WorkRecordSpecification"        type = "WorkRecordSpecificationType"/> 
+            <xsd:element name = "BatchProductionRecord"          type = "BatchProductionRecordType"/>
+            <xsd:element name = "GRecipe"                        type = "GRecipeType"/>
+            <xsd:element name = "ResourceConstraint"             type = "ResourceConstraintType"/>
+            <xsd:element name = "ProcessElement"                 type = "ProcessElementType"/>          
+
+         </xsd:choice>   
+     </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "InformationObjectType1Type">
+     <xsd:simpleContent>
+        <xsd:restriction base = "CodeType">
+           <xsd:enumeration value = "Change"/>
+           <xsd:enumeration value = "Comment"/>
+           <xsd:enumeration value = "DataSet"/>
+           <xsd:enumeration value = "Event"/>
+           <xsd:enumeration value = "Operational Location"/> 
+           <xsd:enumeration value = "Operational LocationClass"/>
+           <xsd:enumeration value = "Personnel Class"/>
+           <xsd:enumeration value = "Person"/>
+           <xsd:enumeration value = "Equipment Class"/>
+           <xsd:enumeration value = "Equipment"/>          
+           <xsd:enumeration value = "Physical Asset Class"/>
+           <xsd:enumeration value = "Physical Asset"/>   
+           <xsd:enumeration value = "Material Class"/>
+           <xsd:enumeration value = "Material Definition"/>
+           <xsd:enumeration value = "Material Lot"/>
+           <xsd:enumeration value = "Material SubLot"/>           
+           <xsd:enumeration value = "Process Segment"/>
+           <xsd:enumeration value = "Test Specification"/>
+           <xsd:enumeration value = "Test Result"/>
+           <xsd:enumeration value = "Sample"/>
+           <xsd:enumeration value = "Property Measurement"/>  
+           <xsd:enumeration value = "Operations Event Class"/>
+           <xsd:enumeration value = "Operations Event Definition"/>
+           <xsd:enumeration value = "Operations Event"/>            
+           <xsd:enumeration value = "Operations Definition"/>
+           <xsd:enumeration value = "Operations Segment"/>
+           <xsd:enumeration value = "Operations Schedule"/>
+           <xsd:enumeration value = "Operations Request"/>
+           <xsd:enumeration value = "Operations Performance"/>
+           <xsd:enumeration value = "Operations Response"/>
+           <xsd:enumeration value = "Operations Capability"/>
+           <xsd:enumeration value = "Resource Relationship Network"/>
+           <xsd:enumeration value = "Resource Network Connection Type"/>           
+           <xsd:enumeration value = "Work Master"/>
+           <xsd:enumeration value = "Work Directive"/>       
+           <xsd:enumeration value = "Workflow Specification"/>
+           <xsd:enumeration value = "Workflow Specification Node Type"/>
+           <xsd:enumeration value = "Workflow Specification Connection Type"/>
+           <xsd:enumeration value = "Work Schedule"/>
+           <xsd:enumeration value = "Work Request"/>
+           <xsd:enumeration value = "Job List"/>
+           <xsd:enumeration value = "Job Order"/>
+           <xsd:enumeration value = "Work Performance"/>
+           <xsd:enumeration value = "Work Response"/>
+           <xsd:enumeration value = "Job Response"/>
+           <xsd:enumeration value = "Job Response List"/>           
+           <xsd:enumeration value = "Work Capability"/>
+           <xsd:enumeration value = "Work Master Capability"/>
+           <xsd:enumeration value = "Work Alert Definition"/>
+           <xsd:enumeration value = "Work Alert"/>  
+           <xsd:enumeration value = "Work Calendar"/>
+           <xsd:enumeration value = "Work Calendar Definition"/>
+           <xsd:enumeration value = "Work Record"/>
+           <xsd:enumeration value = "Work Record Specification"/> 
+           <xsd:enumeration value = "Batch Production Record"/>
+           <xsd:enumeration value = "Control Recipe"/>
+           <xsd:enumeration value = "Master Recipe"/>
+           <xsd:enumeration value = "GRecipe"/>
+           <xsd:enumeration value = "Recipe Element"/>
+           <xsd:enumeration value = "Resource Constraint"/>
+           <xsd:enumeration value = "Process Element"/> 
+           <xsd:enumeration value = "Personnel Identification Manifest"/>
+           <xsd:enumeration value = "Resource Definition Manifest"/>
+           <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+     </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name = "InformationObjectTypeType">
+     <xsd:simpleContent>
+        <xsd:extension base = "InformationObjectType1Type">
+            <xsd:attribute name = "OtherValue"     type="xsd:string"/>
+        </xsd:extension>
+     </xsd:simpleContent>
+  </xsd:complexType>
+
+
+</xsd:schema>

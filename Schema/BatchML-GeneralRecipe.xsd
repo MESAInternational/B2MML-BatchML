@@ -17,57 +17,49 @@
 <xsd:include    schemaLocation = "B2MML-Common.xsd"/>
 
 
-<xsd:annotation> 
+<xsd:annotation>
    <xsd:documentation>
 
-        Copyright 2019 MESA International, Version 0700
-		All Rights Reserved. http://www.mesa.org
+        Copyright 2020 MESA International, Version 0700
+    All Rights Reserved. http://www.mesa.org
 
-        This World Batch  Work (including specifications, 
-        documents, software, and related items) referred to as the 
-        Batch Markup Language (BatchML) is provided by the copyright 
+        This World Batch  Work (including specifications,
+        documents, software, and related items) referred to as the
+        Batch Markup Language (BatchML) is provided by the copyright
         holders under the following license.
 
-        Permission to use, copy, modify, or redistribute this Work 
-        and its documentation, with or without modification, for any 
-        purpose and without fee or royalty is hereby granted provided 
-        MESA International is acknowledged as the originator of 
+        Permission to use, copy, modify, or redistribute this Work
+        and its documentation, with or without modification, for any
+        purpose and without fee or royalty is hereby granted provided
+        MESA International is acknowledged as the originator of
         this Work using the following statement:
 
         "The Batch Markup Language (BatchML) is used courtesy of MESA International."
 
-        In no event shall MESA International, its members, or any third party be 
-        liable for any costs, expenses, losses, damages or injuries incurred 
+        In no event shall MESA International, its members, or any third party be
+        liable for any costs, expenses, losses, damages or injuries incurred
         by use of the Work or as a result of this agreement.
-        
-        Based upon the ISA-S88.03-2003 Batch Control Part 3: General and 
-        Site Recipe Models and Representation. 
+
+        Based upon the ISA-S88.03-2003 Batch Control Part 3: General and
+        Site Recipe Models and Representation.
 
    </xsd:documentation>
 
-   <xsd:documentation> 
-
-      Revision History
-        Ver        Date         Person          Note
-        ---        ----         ------          ----
-        V0500   26 Mar 2011     D. Brandl       Initial version
-        V0600   17 Mar 2013     D. Brandl       Changed copyright to MESA International and support for ISA 95 Part 4                                 
-        V0700   21 Dec 2018     D. Brandl       Updated Version
-												Changed all intermediate date and time types to DatTimeType
-				29 Mar 2019		D. Brandl		All future comments to be recorded in GitHub
-
+   <xsd:documentation>
+      Revision history maintained in GitHub
    </xsd:documentation>
+
 </xsd:annotation>
 
 <!-- Global Elements with Transactions -->
-  
+
   <xsd:element name = "GRecipeInformation"              type ="GRecipeInformationType" />
   <xsd:element name = "ResourceConstraintLibrary"       type ="ResourceConstraintLibraryType" />
   <xsd:element name = "ProcessElementLibrary"           type ="ProcessElementLibraryType" />
 
 
 <!-- Global Elements without Transactions -->
-  
+
   <xsd:element name = "GRecipe"                         type ="GRecipeType" />
   <xsd:element name = "ResourceConstraint"              type ="ResourceConstraintType" />
   <xsd:element name = "ProcessElement"                  type ="ProcessElementType" />
@@ -115,9 +107,9 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"               type = "DateTimeType" 
+      <xsd:element name = "PublishedDate"               type = "DateTimeType"
                                                         minOccurs = "0"/>
       <xsd:element name = "ResourceConstraintSpec"      type = "ResourceConstraintType"
                                                         minOccurs="0" maxOccurs="unbounded"/>
@@ -136,9 +128,9 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"               type = "DateTimeType" 
+      <xsd:element name = "PublishedDate"               type = "DateTimeType"
                                                         minOccurs = "0"/>
       <xsd:element name = "ProcessElementSpec"          type = "ProcessElementType"
                                                         minOccurs="0" maxOccurs="unbounded"/>
@@ -148,22 +140,22 @@
 
 
 
- 
+
 <!-- - - - - - - - - - - - - - - - - - - - - -->
 <!-- GRecipe Main Types                      -->
 <!-- - - - - - - - - - - - - - - - - - - - - -->
 
   <xsd:complexType name = "GRecipeInformationType">
     <xsd:sequence>
-      <xsd:element name = "ID"                          type = "IdentifierType"                  
+      <xsd:element name = "ID"                          type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
+      <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "PublishedDate"               type = "DateTimeType" 
+      <xsd:element name = "PublishedDate"               type = "DateTimeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Recipe"                      type = "GRecipeType" 
+      <xsd:element name = "Recipe"                      type = "GRecipeType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:GRecipeInformation" minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -173,12 +165,12 @@
 <!-- - - - - - - - - - - - - - - - - - - - - -->
   <xsd:complexType name = "GRecipeType">
     <xsd:sequence>
-      <xsd:element name = "ID"                          type = "IdentifierType"                  
+      <xsd:element name = "ID"                          type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "GRecipeType"                 type = "GRecipeTypeType"
-                                                        minOccurs = "0"/> 
+                                                        minOccurs = "0"/>
       <xsd:element name = "LifeCycleState"              type = "LifeCycleStateType"
                                                         minOccurs = "0"/>
       <xsd:element name = "Header"                      type = "GRecipeHeaderType"
@@ -201,10 +193,10 @@
     <xsd:sequence>
       <xsd:element name = "ID"                          type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "ProcessElementType"          type = "ProcessElementTypeType"
-                                                        minOccurs = "0"/> 
+                                                        minOccurs = "0"/>
       <xsd:element name = "LifeCycleState"              type = "LifeCycleStateType"
                                                         minOccurs = "0"/>
       <xsd:element name = "SequenceOrder"               type = "SequenceOrderType"
@@ -216,9 +208,9 @@
       <xsd:element name = "DirectedLink"                type = "DirectedLinkType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "ProcedureChartElement"       type = "ProcedureChartElementType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/> 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "ProcessElement"              type = "ProcessElementType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/> 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "ProcessElementParameter"     type = "ProcessElementParameterType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "ResourceConstraint"          type = "ResourceConstraintType"
@@ -226,7 +218,7 @@
       <xsd:element name = "OtherInformation"            type = "GROtherInformationType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:ProcessElement"     minOccurs="0" maxOccurs="1"/>
-     </xsd:sequence> 
+     </xsd:sequence>
   </xsd:complexType>
 
 
@@ -236,12 +228,12 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "Label"                       type = "TextType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "ProcedureChartElementType"   type = "ProcedureChartElementTypeType"
-                                                        minOccurs = "0"/> 
+                                                        minOccurs = "0"/>
       <xsd:group   ref  = "Extended:ProcedureChartElement"  minOccurs="0" maxOccurs="1"/>
-     </xsd:sequence> 
+     </xsd:sequence>
   </xsd:complexType>
 
 
@@ -249,7 +241,7 @@
     <xsd:sequence>
       <xsd:element name = "ID"                          type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "FromID"                      type = "IdentifierType"
                                                         minOccurs = "0"/>
@@ -264,13 +256,13 @@
     <xsd:sequence>
       <xsd:element name = "ID"                          type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "MaterialID"                  type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Order"                       type = "NumericType"                  
+      <xsd:element name = "Order"                       type = "NumericType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Amount"                      type = "QuantityValueType"                  
+      <xsd:element name = "Amount"                      type = "QuantityValueType"
                                                         minOccurs = "0"/>
       <xsd:group   ref  = "Extended:GRecipeMaterial"    minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -281,18 +273,18 @@
     <xsd:sequence>
       <xsd:element name = "ID"                          type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "MaterialsType"               type = "MaterialsTypeType"
                                                         minOccurs = "0" />
-      <xsd:element name = "Material"                    type = "GRecipeMaterialType"                  
+      <xsd:element name = "Material"                    type = "GRecipeMaterialType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:GRecipeMaterials"   minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
 
 
-  <xsd:complexType name = "ProcessElementParameterType"> 
+  <xsd:complexType name = "ProcessElementParameterType">
     <xsd:sequence>
       <xsd:element name = "ID"                          type = "IdentifierType"
                                                         minOccurs = "0"/>
@@ -308,14 +300,14 @@
   </xsd:complexType>
 
 
-  <xsd:group name = "ProductInformation"> 
+  <xsd:group name = "ProductInformation">
     <xsd:sequence>
       <xsd:element name = "ProductID"                   type = "IdentifierType" />
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "ProductName"                 type = "NameType" 
+      <xsd:element name = "ProductName"                 type = "NameType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "BatchSize"                   type = "ValueType" 
+      <xsd:element name = "BatchSize"                   type = "ValueType"
                                                         minOccurs = "0"/>
     </xsd:sequence>
   </xsd:group>
@@ -323,16 +315,16 @@
 
   <xsd:complexType name = "GRecipeHeaderType">
     <xsd:sequence>
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "DerivedFromID"               type = "IdentifierType"                  
+      <xsd:element name = "DerivedFromID"               type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:group   ref  = "ProductInformation"          minOccurs = "0" maxOccurs="unbounded"/> 
-      <xsd:element name = "EffectiveDate"      	        type = "DateTimeType" 
+      <xsd:group   ref  = "ProductInformation"          minOccurs = "0" maxOccurs="unbounded"/>
+      <xsd:element name = "EffectiveDate"                type = "DateTimeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "ExpirationDate"              type = "DateTimeType" 
+      <xsd:element name = "ExpirationDate"              type = "DateTimeType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "HeaderProperty"              type = "HeaderPropertyType" 
+      <xsd:element name = "HeaderProperty"              type = "HeaderPropertyType"
                                                         minOccurs = "0"/>
       <xsd:group   ref  = "Extended:GRecipeHeader"      minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -342,9 +334,9 @@
   <xsd:complexType name = "HeaderPropertyType">
     <xsd:sequence>
       <xsd:element name = "ID"                          type = "IdentifierType" />
-      <xsd:element name = "Description"                 type = "DescriptionType" 
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Value"                       type = "ValueType"       
+      <xsd:element name = "Value"                       type = "ValueType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:HeaderProperty"     minOccurs = "0" maxOccurs = "1"/>
     </xsd:sequence>
@@ -354,13 +346,13 @@
 
   <xsd:complexType name = "GRecipeFormulaType">
     <xsd:sequence>
-      <xsd:element name = "Description"                 type = "DescriptionType"         
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "ProcessInputs"               type = "GRecipeMaterialsType" 
+      <xsd:element name = "ProcessInputs"               type = "GRecipeMaterialsType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "ProcessOutputs"              type = "GRecipeMaterialsType" 
+      <xsd:element name = "ProcessOutputs"              type = "GRecipeMaterialsType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "ProcessIntermediates"        type = "GRecipeMaterialsType" 
+      <xsd:element name = "ProcessIntermediates"        type = "GRecipeMaterialsType"
                                                         minOccurs = "0"/>
       <xsd:element name = "ProcessElementParameter"     type = "ProcessElementParameterType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
@@ -391,9 +383,9 @@
   <xsd:complexType name = "ResourceConstraintPropertyType">
     <xsd:sequence>
       <xsd:element name = "ID"                          type = "IdentifierType" />
-      <xsd:element name = "Description"                 type = "DescriptionType" 
+      <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Value"                       type = "ValueType"       
+      <xsd:element name = "Value"                       type = "ValueType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:ResourceConstraintProperty"
                                                         minOccurs = "0" maxOccurs = "1"/>
@@ -422,12 +414,12 @@
      <xsd:simpleContent>
         <xsd:restriction base="CodeType">
               <xsd:enumeration value="Optional"/>     <!-- Optional parameter or report -->
-              <xsd:enumeration value="Required"/>     <!-- Required parameter or report --> 
+              <xsd:enumeration value="Required"/>     <!-- Required parameter or report -->
               <xsd:enumeration value="Other"/>
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
-        
+
   <xsd:complexType name = "ConstraintTypeType">
     <xsd:simpleContent>
          <xsd:extension base="ConstraintType1Type">
@@ -435,7 +427,7 @@
          </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
-                  
+
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
   <xsd:complexType name = "MaterialsType1Type">
@@ -448,7 +440,7 @@
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
-        
+
   <xsd:complexType name = "MaterialsTypeType">
     <xsd:simpleContent>
          <xsd:extension base="MaterialsType1Type">
@@ -456,21 +448,21 @@
          </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
-                  
+
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
   <xsd:complexType name = "ProcessElementParameterType1Type">
      <xsd:simpleContent>
         <xsd:restriction base="CodeType">
               <xsd:enumeration value="Input"/>        <!-- Process Parameter -->
-              <xsd:enumeration value="Output"/>       <!-- Process Report    --> 
+              <xsd:enumeration value="Output"/>       <!-- Process Report    -->
               <xsd:enumeration value="Optional"/>     <!-- Optional parameter or report -->
-              <xsd:enumeration value="Required"/>     <!-- Required parameter or report --> 
+              <xsd:enumeration value="Required"/>     <!-- Required parameter or report -->
               <xsd:enumeration value="Other"/>
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
-        
+
   <xsd:complexType name = "ProcessElementParameterTypeType">
     <xsd:simpleContent>
          <xsd:extension base="ProcessElementParameterType1Type">
@@ -478,7 +470,7 @@
          </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
-                  
+
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
   <xsd:complexType name = "ProcessElementType1Type">
@@ -492,7 +484,7 @@
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
-        
+
   <xsd:complexType name = "ProcessElementTypeType">
     <xsd:simpleContent>
          <xsd:extension base="ProcessElementType1Type">
@@ -500,7 +492,7 @@
          </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
-                  
+
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
   <xsd:complexType name = "ProcedureChartElementType1Type">
@@ -517,7 +509,7 @@
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
-        
+
   <xsd:complexType name = "ProcedureChartElementTypeType">
     <xsd:simpleContent>
          <xsd:extension base="ProcedureChartElementType1Type">
@@ -525,7 +517,7 @@
          </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
-                  
+
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
   <xsd:complexType name = "GRecipeType1Type">
@@ -537,7 +529,7 @@
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
-        
+
   <xsd:complexType name = "GRecipeTypeType">
     <xsd:simpleContent>
          <xsd:extension base="GRecipeType1Type">
@@ -545,22 +537,22 @@
          </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
-                  
+
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
   <xsd:complexType name = "LifeCycleStateType1Type">
      <xsd:simpleContent>
         <xsd:restriction base="CodeType">
-              <xsd:enumeration value="Draft"/>                 <!-- ISA 88.03 Clause 5.8 --> 
-              <xsd:enumeration value="Approved"/>              <!-- ISA 88.03 Clause 5.8 --> 
-              <xsd:enumeration value="Released"/>              <!-- ISA 88.03 Clause 5.8 --> 
-              <xsd:enumeration value="Effective"/>             <!-- ISA 88.03 Clause 5.8 --> 
-              <xsd:enumeration value="Withdrawn"/>             <!-- ISA 88.03 Clause 5.8 --> 
+              <xsd:enumeration value="Draft"/>                 <!-- ISA 88.03 Clause 5.8 -->
+              <xsd:enumeration value="Approved"/>              <!-- ISA 88.03 Clause 5.8 -->
+              <xsd:enumeration value="Released"/>              <!-- ISA 88.03 Clause 5.8 -->
+              <xsd:enumeration value="Effective"/>             <!-- ISA 88.03 Clause 5.8 -->
+              <xsd:enumeration value="Withdrawn"/>             <!-- ISA 88.03 Clause 5.8 -->
               <xsd:enumeration value="Other"/>
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
-        
+
   <xsd:complexType name = "LifeCycleStateType">
     <xsd:simpleContent>
          <xsd:extension base="LifeCycleStateType1Type">
@@ -568,19 +560,19 @@
          </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
-                  
+
 
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
   <xsd:complexType name = "SequenceOrderType1Type">
      <xsd:simpleContent>
         <xsd:restriction base="CodeType">
-              <xsd:enumeration value="First Parallel"/>     
-              <xsd:enumeration value="Middle Parallel"/> 
-              <xsd:enumeration value="End Parallel"/> 
-              <xsd:enumeration value="First In Path"/> 
-              <xsd:enumeration value="Last In Path"/> 
-              <xsd:enumeration value="Not In Parallel"/> 
+              <xsd:enumeration value="First Parallel"/>
+              <xsd:enumeration value="Middle Parallel"/>
+              <xsd:enumeration value="End Parallel"/>
+              <xsd:enumeration value="First In Path"/>
+              <xsd:enumeration value="Last In Path"/>
+              <xsd:enumeration value="Not In Parallel"/>
               <xsd:enumeration value="Single First Parallel"/>
               <xsd:enumeration value="Single Middle Parallel"/>
               <xsd:enumeration value="Single End Parallel"/>
@@ -588,7 +580,7 @@
         </xsd:restriction>
     </xsd:simpleContent>
   </xsd:complexType>
-        
+
   <xsd:complexType name = "SequenceOrderType">
     <xsd:simpleContent>
          <xsd:extension base="SequenceOrderType1Type">
@@ -596,7 +588,7 @@
          </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
-                  
+
 
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
@@ -604,7 +596,7 @@
 <!-- - - - - - - - - - - - - - - - - - - - - -->
 
   <xsd:complexType name = "GetGRecipeInformationType">
-    <xsd:sequence>      
+    <xsd:sequence>
          <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
@@ -612,7 +604,7 @@
               <xsd:element name = "Get"         type = "TransGetType"/>
               <xsd:element name = "GRecipeInformation"
                                                 type = "GRecipeInformationType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -632,7 +624,7 @@
               <xsd:element name = "Show"        type = "TransShowType"/>
               <xsd:element name = "GRecipeInformation"
                                                 type = "GRecipeInformationType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -652,7 +644,7 @@
               <xsd:element name = "Process"     type = "TransProcessType"/>
               <xsd:element name = "GRecipeInformation"
                                                 type = "GRecipeInformationType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -672,7 +664,7 @@
               <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
               <xsd:element name = "GRecipeInformation"
                                                 type = "GRecipeInformationType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -692,7 +684,7 @@
               <xsd:element name = "Change"      type = "TransChangeType"/>
               <xsd:element name = "GRecipeInformation"
                                                 type = "GRecipeInformationType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -713,7 +705,7 @@
               <xsd:element name = "Respond"     type = "TransRespondType"/>
               <xsd:element name = "GRecipeInformation"
                                                 type = "GRecipeInformationType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -734,7 +726,7 @@
               <xsd:element name = "Cancel"      type = "TransCancelType"/>
               <xsd:element name = "GRecipeInformation"
                                                 type = "GRecipeInformationType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -755,7 +747,7 @@
               <xsd:element name = "Sync"        type = "TransSyncType"/>
               <xsd:element name = "GRecipeInformation"
                                                 type = "GRecipeInformationType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -772,7 +764,7 @@
 <!-- - - - - - - - - - - - - - - - - - - - - - -->
 
   <xsd:complexType name = "GetResourceConstraintLibraryType">
-    <xsd:sequence>      
+    <xsd:sequence>
          <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
@@ -780,7 +772,7 @@
               <xsd:element name = "Get"         type = "TransGetType"/>
               <xsd:element name = "ResourceConstraintLibrary"
                                                 type = "ResourceConstraintLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -800,7 +792,7 @@
               <xsd:element name = "Show"        type = "TransShowType"/>
               <xsd:element name = "ResourceConstraintLibrary"
                                                 type = "ResourceConstraintLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -820,7 +812,7 @@
               <xsd:element name = "Process"     type = "TransProcessType"/>
               <xsd:element name = "ResourceConstraintLibrary"
                                                 type = "ResourceConstraintLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -840,7 +832,7 @@
               <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
               <xsd:element name = "ResourceConstraintLibrary"
                                                 type = "ResourceConstraintLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -860,7 +852,7 @@
               <xsd:element name = "Change"      type = "TransChangeType"/>
               <xsd:element name = "ResourceConstraintLibrary"
                                                 type = "ResourceConstraintLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -881,7 +873,7 @@
               <xsd:element name = "Respond"     type = "TransRespondType"/>
               <xsd:element name = "ResourceConstraintLibrary"
                                                 type = "ResourceConstraintLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -902,7 +894,7 @@
               <xsd:element name = "Cancel"      type = "TransCancelType"/>
               <xsd:element name = "ResourceConstraintLibrary"
                                                 type = "ResourceConstraintLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -923,7 +915,7 @@
               <xsd:element name = "Sync"        type = "TransSyncType"/>
               <xsd:element name = "ResourceConstraintLibrary"
                                                 type = "ResourceConstraintLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -940,7 +932,7 @@
 <!-- - - - - - - - - - - - - - - - - - - - - - - -->
 
   <xsd:complexType name = "GetProcessElementLibraryType">
-    <xsd:sequence>      
+    <xsd:sequence>
          <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
@@ -948,7 +940,7 @@
               <xsd:element name = "Get"         type = "TransGetType"/>
               <xsd:element name = "ProcessElementLibrary"
                                                 type = "ProcessElementLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -968,7 +960,7 @@
               <xsd:element name = "Show"        type = "TransShowType"/>
               <xsd:element name = "ProcessElementLibrary"
                                                 type = "ProcessElementLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -988,7 +980,7 @@
               <xsd:element name = "Process"     type = "TransProcessType"/>
               <xsd:element name = "ProcessElementLibrary"
                                                 type = "ProcessElementLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -1008,7 +1000,7 @@
               <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
               <xsd:element name = "ProcessElementLibrary"
                                                 type = "ProcessElementLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -1028,7 +1020,7 @@
               <xsd:element name = "Change"      type = "TransChangeType"/>
               <xsd:element name = "ProcessElementLibrary"
                                                 type = "ProcessElementLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -1049,7 +1041,7 @@
               <xsd:element name = "Respond"     type = "TransRespondType"/>
               <xsd:element name = "ProcessElementLibrary"
                                                 type = "ProcessElementLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -1070,7 +1062,7 @@
               <xsd:element name = "Cancel"      type = "TransCancelType"/>
               <xsd:element name = "ProcessElementLibrary"
                                                 type = "ProcessElementLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
@@ -1091,7 +1083,7 @@
               <xsd:element name = "Sync"        type = "TransSyncType"/>
               <xsd:element name = "ProcessElementLibrary"
                                                 type = "ProcessElementLibraryType"
-                                                minOccurs = "1" 
+                                                minOccurs = "1"
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>

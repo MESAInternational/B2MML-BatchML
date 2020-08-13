@@ -14,14 +14,13 @@
 
 <!-- Include the Common schema   -->
 
-  <xsd:include schemaLocation = "B2MML-Common.xsd"/>
-
+<xsd:include schemaLocation = "B2MML-Common.xsd"/>
 
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2019 MESA International, Version 0700
-		All Rights Reserved. http://www.mesa.org
+        Copyright 2020 MESA International, Version 0700
+    All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
         software, and related items) referred to as the Business To 
@@ -48,31 +47,15 @@
         Part 5: Business to Manufacturing Transactions. 
    </xsd:documentation>
 
-   <xsd:documentation> 
-
-      Revision History
-
-        Ver     Date            Person          Note
-        ---     ----            ------          ----
-        v04     04 Jun 2007     D. Brandl       Added transaction elements for ISA 95 Part 5 support.
-        V0500   26 Mar 2011     D. Brandl       Revised version
-												Changed QA TEST to MATERIAL TEST
-												Changed CAPABILITY TEST to EQUIPMENT CAPABILITY TEST
-												Added OPERATIONS elements 
-        V0600   18  Aug 2012    D. Brandl       Updated MESA Copyright
-                                                Added ISA 95 Part 4 objects to noun types
-        V0700   21 Dec 2018     D. Brandl       Updated Version for 2018 update of ISA 95 Part 2, 4 and 5
-												Included the B2MML "INFORMATION" container objects 
-												Added new objects from Part 4 and Part 4
-												Changed all intermediate date and time types to DatTimeType
-				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
-
+   <xsd:documentation>
+      Revision history maintained in GitHub
    </xsd:documentation>
+
 </xsd:annotation>
 
 <!-- Global Elements -->
   
-  <xsd:element  name = "TransactionProfile"             type = "TransactionProfileType" />
+  <xsd:element name = "TransactionProfile"              type = "TransactionProfileType" />
 
 <!-- Transaction Elements -->
   <xsd:element name = "GetTransactionProfile"           type = "GetTransactionProfileType"/>
@@ -83,8 +66,7 @@
 
   <xsd:complexType name = "TransactionProfileType">
     <xsd:sequence>
-      <xsd:element name = "ID"                          type = "IdentifierType"
-                                                        minOccurs = "0"/>
+      <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"
@@ -101,8 +83,7 @@
 
   <xsd:complexType name = "SupportedActionType">
     <xsd:sequence>
-      <xsd:element name = "ID"                          type = "IdentifierType"
-                                                        minOccurs = "0" />
+      <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "TransactionVerb"             type = "TransactionVerbType"/>
@@ -122,90 +103,110 @@
         <xsd:complexType name = "TransactionNoun1Type">
           <xsd:simpleContent>
                 <xsd:restriction base="CodeType">
-					<!-- Personnel Model -->
+          <!-- Personnel Model -->
                         <xsd:enumeration value="PERSON"/>
                         <xsd:enumeration value="PERSONNEL CLASS"/>
                         <xsd:enumeration value="PERSONNEL INFORMATION"/>
-					<!-- Equipment Model -->
+          <!-- Equipment Model -->
                         <xsd:enumeration value="EQUIPMENT"/>
                         <xsd:enumeration value="EQUIPMENT CAPABILITY TEST"/>
                         <xsd:enumeration value="EQUIPMENT CLASS"/>
                         <xsd:enumeration value="EQUIPMENT INFORMATION"/>
-					<!-- Physical Asset Model -->
+          <!-- Physical Asset Model -->
                         <xsd:enumeration value="PHYSICAL ASSET"/>
                         <xsd:enumeration value="PHYSICAL ASSET CLASS"/>
                         <xsd:enumeration value="PHYSICAL ASSET INFORMATION"/>
-					<!-- Material Model -->
+          <!-- Material Model -->
                         <xsd:enumeration value="MATERIAL CLASS"/>
                         <xsd:enumeration value="MATERIAL DEFINITION"/>
                         <xsd:enumeration value="MATERIAL LOT"/>
                         <xsd:enumeration value="MATERIAL INFORMATION"/>
                         <xsd:enumeration value="MATERIAL SUBLOT"/>
-					<!-- Process Segment Model -->
+          <!-- Process Segment Model -->
                         <xsd:enumeration value="PROCESS SEGMENT"/>
                         <xsd:enumeration value="PROCESS INFORMATION"/>
-					<!-- Opertional Location Model -->
+          <!-- Opertional Location Model -->
                         <xsd:enumeration value="OPERATIONAL LOCATION"/>
                         <xsd:enumeration value="OPERATIONAL LOCATION CLASS"/>
                         <xsd:enumeration value="OPERATIONAL LOCATION INFORMATION"/>
-					<!-- Operations Definition Model -->
+          <!-- Operations Definition Model -->
                         <xsd:enumeration value="OPERATIONS DEFINITION"/>
                         <xsd:enumeration value="OPERATIONS SEGMENT"/>
                         <xsd:enumeration value="OPERATIONS DEFINITION INFORMATION"/>
-					<!-- Opwerations Event Model -->
+          <!-- Opwerations Event Model -->
                         <xsd:enumeration value="OPERATIONS EVENT"/>
                         <xsd:enumeration value="OPERATIONS EVENT CLASS"/>
                         <xsd:enumeration value="OPERATIONS EVENT DEFINITION"/>
                         <xsd:enumeration value="OPERATIONS EVENT INFORMATION"/>
-					<!-- Operations Schedule Model -->
+          <!-- Operations Schedule Model -->
                         <xsd:enumeration value="OPERATIONS SCHEDULE"/>
                         <xsd:enumeration value="OPERATIONS REQUEST"/>
-					<!-- Operations Performance Model -->
+                        <xsd:enumeration value="SEGMENT REQUIREMENT"/>
+          <!-- Operations Performance Model -->
                         <xsd:enumeration value="OPERATIONS PERFORMANCE"/>
                         <xsd:enumeration value="OPERATIONS RESPONSE"/>
-					<!-- Operations Capability Model -->
+          <!-- Operations Capability Model -->
                         <xsd:enumeration value="OPERATIONS CAPABILITY"/>
                         <xsd:enumeration value="OPERATIONS CAPABILITY INFORMATION"/>
-					<!-- Resource Relationship Network Model -->
+          <!-- Resource Relationship Network Model -->
                         <xsd:enumeration value="RESOURCE RELATIONSHIP NETWORK"/>
+                        <xsd:enumeration value="RESOURCE NETWORK CONNECTION TYPE"/>
                         <xsd:enumeration value="RESOURCE NETWORK CONNECTION INFORMATION"/>
-					<!-- Test Specification Model -->
+          <!-- Test Specification Model -->
                         <xsd:enumeration value="TEST SPECIFICATION"/>
                         <xsd:enumeration value="TEST SPECIFICATION INFORMATION"/>
-					<!-- Transaction Profile Model -->
+          <!-- Transaction Profile Model -->
                         <xsd:enumeration value="TRANSACTION PROFILE"/>
-					<!-- Work Alert Model -->
+          <!-- Work Alert Model -->
                         <xsd:enumeration value="WORK ALERT"/>
                         <xsd:enumeration value="WORK ALERT DEFINITION"/>
                         <xsd:enumeration value="WORK ALERT INFORMATION"/>
-					<!-- Work Calendar Model -->
+          <!-- Work Calendar Model -->
                         <xsd:enumeration value="WORK CALENDAR"/>
                         <xsd:enumeration value="WORK CALENDAR DEFINITION"/>
                         <xsd:enumeration value="WORK CALENDAR INFORMATION"/>
-					<!-- Work Capability Model -->
+          <!-- Work Capability Model -->
                         <xsd:enumeration value="WORK CAPABILITY"/>
+                        <xsd:enumeration value="WORK MASTER CAPABILITY"/>
                         <xsd:enumeration value="WORK CAPABILITY INFORMATION"/>
-					<!-- Work Definition Model -->
+          <!-- Work Definition Model -->
                         <xsd:enumeration value="WORK DEFINITION INFORMATION"/>
                         <xsd:enumeration value="WORK DIRECTIVE"/>
                         <xsd:enumeration value="WORK MASTER"/>
-					<!-- Work Performance Model -->
+          <!-- Work Performance Model -->
                         <xsd:enumeration value="WORK PERFORMANCE"/>
                         <xsd:enumeration value="WORK RESPONSE"/>
                         <xsd:enumeration value="JOB RESPONSE"/>
                         <xsd:enumeration value="JOB RESPONSE LIST"/>
-					<!-- Work Record Model -->
+          <!-- Work Record Model -->
                         <xsd:enumeration value="WORK RECORD"/>
-					<!-- Work Schedule Model -->
+                        <xsd:enumeration value="WORK RECORD SPECIFICATION"/>
+          <!-- Work Schedule Model -->
                         <xsd:enumeration value="WORK SCHEDULE"/>
                         <xsd:enumeration value="WORK REQUEST"/>
                         <xsd:enumeration value="JOB LIST"/>
                         <xsd:enumeration value="JOB ORDER"/>
-					<!-- Workflow Model -->
+          <!-- Workflow Model -->
                         <xsd:enumeration value="WORKFLOW INFORMATION"/>
                         <xsd:enumeration value="WORKFLOW SPECIFICATION"/>
-                        <xsd:enumeration value="WORKFLOW SPECIFICATION TYPE"/>
-					<!-- Confirm BOD -->
+                        <xsd:enumeration value="WORKFLOW SPECIFICATION NODE"/>
+                        <xsd:enumeration value="WORKFLOW SPECIFICATION CONNECTION TYPE"/>
+          <!-- BatchInformation -->
+                        <xsd:enumeration value="BATCHINFORMATION"/>
+                        <xsd:enumeration value="MASTERRECIPE"/>
+                        <xsd:enumeration value="CONTROLRECIPE"/>
+                        <xsd:enumeration value="RECIPEBUILDINGBLOCK"/>
+                        <xsd:enumeration value="BATCHLIST"/>
+          <!-- BatchInformation -->
+                        <xsd:enumeration value="BATCHPRODUCTIONRECORD"/> 
+          <!-- GeneralRecipe -->                       
+                        <xsd:enumeration value="GRECIPEINFORMATION"/>
+                        <xsd:enumeration value="RESOURCECONSTAINTLIBRARY"/>
+                        <xsd:enumeration value="PROCESSELEMENTLIBRARY"/>
+                        <xsd:enumeration value="GRECIPE"/>
+                        <xsd:enumeration value="RESOURCECONSTRAINT"/>
+                        <xsd:enumeration value="PROCESSELEMENT"/> 
+          <!-- Confirm BOD -->
                         <xsd:enumeration value="CONFIRM BOD"/>
                         <xsd:enumeration value="Other"/>
                 </xsd:restriction>
@@ -223,6 +224,7 @@
         <xsd:complexType name = "TransactionVerb1Type">
           <xsd:simpleContent>
                 <xsd:restriction base="CodeType">
+                        <xsd:enumeration value="NOTIFY"/>
                         <xsd:enumeration value="GET"/>
                         <xsd:enumeration value="PROCESS"/>
                         <xsd:enumeration value="CHANGE"/>
@@ -251,14 +253,13 @@
 
   <xsd:complexType name = "GetTransactionProfileType">
     <xsd:sequence>      
-         <xsd:element name = "ApplicationArea"
-                                type = "TransApplicationAreaType"/>
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
-              <xsd:element name = "Get"         type =  "TransGetType"/>
+              <xsd:element name = "Get"         type = "TransGetType"/>
               <xsd:element name =  "TransactionProfile"
-                                                type =  "TransactionProfileType"
+                                                type = "TransactionProfileType"
                                                 minOccurs = "0" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>
@@ -271,14 +272,13 @@
 
   <xsd:complexType name = "ShowTransactionProfileType">
     <xsd:sequence>      
-         <xsd:element name = "ApplicationArea"
-                                type = "TransApplicationAreaType"/>
+         <xsd:element name = "ApplicationArea"  type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
-              <xsd:element name = "Show"        type =  "TransShowType"/>
-              <xsd:element name =  "TransactionProfile"
-                                                type =  "TransactionProfileType"
+              <xsd:element name = "Show"        type = "TransShowType"/>
+              <xsd:element name = "TransactionProfile"
+                                                type = "TransactionProfileType"
                                                 minOccurs = "0" 
                                                 maxOccurs = "unbounded"/>
             </xsd:sequence>

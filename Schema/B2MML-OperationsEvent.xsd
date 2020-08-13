@@ -12,19 +12,19 @@
 <xsd:import     namespace="http://www.mesa.org/xml/B2MML-AllExtensions" 
                 schemaLocation="B2MML-AllExtensions.xsd"/>
 
-<!-- Include the Test Specification Schema         -->
+<!-- Include the OperationsTest Schema         -->
 
-<xsd:include     schemaLocation="B2MML-TestSpecification.xsd"/>
+<xsd:include schemaLocation="B2MML-OperationsTest.xsd"/>
 
 <!-- Include the Common schema   -->
 
-  <xsd:include schemaLocation = "B2MML-Common.xsd"/>
+<xsd:include schemaLocation = "B2MML-Common.xsd"/>
 
 
 <xsd:annotation> 
    <xsd:documentation>
 
-        Copyright 2019 MESA International, Version 0700
+        Copyright 2020 MESA International, Version 0700
 		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
@@ -52,17 +52,10 @@
         Part 5: Business to Manufacturing Transactions. 
    </xsd:documentation>
 
-   <xsd:documentation> 
-
-      Revision History
-
-        Ver     Date            Person          Note
-        ---     ----            ------          ----
-        V0700   09 Nov 2018     D. Brandl       Initial Version
-												Changed all intermediate date and time types to DatTimeType
-				29 Mar 2019		D. Brandl		All future comments and revisions to be recorded in GitHub
- 
+   <xsd:documentation>
+      Revision history maintained in GitHub
    </xsd:documentation>
+
 </xsd:annotation>
 
 <!-- Global Elements -->
@@ -121,6 +114,7 @@ function or activity.
   <xsd:element name = "RespondOperationsEventInformation"              type = "RespondOperationsEventInformationType"/>
   <xsd:element name = "CancelOperationsEventInformation"               type = "CancelOperationsEventInformationType"/>
   <xsd:element name = "SyncOperationsEventInformation"                 type = "SyncOperationsEventInformationType"/>
+  <xsd:element name = "NotifyOperationsEventInformation"               type = "NotifyOperationsEventInformationType"/>
 
 
   <xsd:element name = "GetOperationsEventClass"                        type = "GetOperationsEventClassType"/>
@@ -131,6 +125,7 @@ function or activity.
   <xsd:element name = "RespondOperationsEventClass"                    type = "RespondOperationsEventClassType"/>
   <xsd:element name = "CancelOperationsEventClass"                     type = "CancelOperationsEventClassType"/>
   <xsd:element name = "SyncOperationsEventClass"                       type = "SyncOperationsEventClassType"/>
+  <xsd:element name = "NotifyOperationsEventClass"                     type = "NotifyOperationsEventClassType"/>
 
  
   <xsd:element name = "GetOperationsEventDefinition"                   type = "GetOperationsEventDefinitionType"/>
@@ -141,25 +136,17 @@ function or activity.
   <xsd:element name = "RespondOperationsEventDefinition"               type = "RespondOperationsEventDefinitionType"/>
   <xsd:element name = "CancelOperationsEventDefinition"                type = "CancelOperationsEventDefinitionType"/>
   <xsd:element name = "SyncOperationsEventDefinition"                  type = "SyncOperationsEventDefinitionType"/>
-
+  <xsd:element name = "NotifyOperationsEventDefinition"                type = "NotifyOperationsEventDefinitionType"/>
  
-  <xsd:element name = "GetOperationsEvent"                          type = "GetOperationsEventType"/>
-  <xsd:element name = "ShowOperationsEvent"                         type = "ShowOperationsEventType"/>
-  <xsd:element name = "ProcessOperationsEvent"                      type = "ProcessOperationsEventType"/>
-  <xsd:element name = "AcknowledgeOperationsEvent"                  type = "AcknowledgeOperationsEventType"/>
-  <xsd:element name = "ChangeOperationsEvent"                       type = "ChangeOperationsEventType"/>
-  <xsd:element name = "RespondOperationsEvent"                      type = "RespondOperationsEventType"/>
-  <xsd:element name = "CancelOperationsEvent"                       type = "CancelOperationsEventType"/>
-  <xsd:element name = "SyncOperationsEvent"                         type = "SyncOperationsEventType"/>
 
+  <xsd:element name = "NotifyOperationsEvent"                          type = "NotifyOperationsEventType"/>
 
  
 <!-- Simple & Complex Types  -->
 
   <xsd:complexType name = "OperationsEventInformationType">
     <xsd:sequence>
-      <xsd:element name = "ID"                          type = "IdentifierType"                  
-                                                        minOccurs = "0" nillable="true"/>
+      <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType"         
                                                         minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"    
@@ -172,31 +159,42 @@ function or activity.
                                                         minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
       <xsd:element name = "OperationsEvent"             type = "OperationsEventType"        
                                                         minOccurs = "0" maxOccurs = "unbounded" nillable="true"/>
-      <xsd:group   ref  = "Extended:OperationsEventInformation" minOccurs="0" maxOccurs="1"/>
+      <xsd:group   ref  = "Extended:OperationsEventInformation" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
 
   <xsd:complexType name = "OperationsEventClassType">
     <xsd:sequence>
-      <xsd:element name = "ID"                           type = "IdentifierType"/>
-      <xsd:element name = "Description"                  type = "DescriptionType" 
-                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "HierarchyScope"               type = "HierarchyScopeType"   
-                                                         minOccurs = "0" />
-      <xsd:element name = "Extension"            		 type = "IdentifierType"   
-                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OperationsEventClass"         type = "OperationsEventClassType" 
-	                                                     minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is assembled from" relationship -->
-      <xsd:element name = "UsesPropertiesOfOperationsEventClassID"
-                                                         type = "IdentifierType"
-                                                         minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Includes properties of" relationship -->
-      <xsd:element name = "OperationsEventClassProperty" type = "OperationsEventClassPropertyType"
-                                                         minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Has properties of" relationship -->
-      <xsd:element name = "OperationsEventDefinitionID"  type = "IdentifierType"
-                                                         minOccurs = "0" maxOccurs = "unbounded"/> <!-- Is parent of relationship to event definitions -->
-      <xsd:element name = "RecordSpecification" 		 type = "OperationsRecordSpecTemplateType"      
-                                                         minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Has record specifications of" relationship --> 
-      <xsd:group   ref  = "Extended:OperationsEventClass"      minOccurs="0" maxOccurs="1"/>
+      <xsd:element name = "ID"                          type = "IdentifierType"/>
+      <xsd:element name = "Description"                 type = "DescriptionType" 
+                                                        minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Version"                     type = "IdentifierType"
+                                                        minOccurs = "0"/>                                                       
+      <xsd:element name = "PublishedDate"         	    type = "DateTimeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "EffectiveStartDate"          type = "DateTimeType"
+                                                	      minOccurs = "0"/>
+      <xsd:element name = "EffectiveEndDate"     	      type = "DateTimeType"
+                                                	      minOccurs = "0"/>
+      <xsd:element name = "HierarchyScope"         	    type = "HierarchyScopeType"   
+                                                 	      minOccurs = "0"/>
+      <xsd:element name = "Extension"            	      type = "ExtensionType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "OperationsEventClassChild"   type = "OperationsEventClassType" 
+	                                                      minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is assembled from" relationship -->
+      <xsd:element name = "OperationsEventClassBaseID"
+                                                        type = "IdentifierType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Includes properties of" relationship -->
+      <xsd:element name = "OperationsEventClassProperty"
+		   					                                        type = "OperationsEventClassPropertyType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Has properties of" relationship -->
+      <xsd:element name = "OperationsEventDefinitionSourceID" 
+		   					                                        type = "IdentifierType"
+                                                        minOccurs = "0" maxOccurs = "unbounded"/> <!-- Is parent of relationship to event definitions -->
+      <xsd:element name = "OpsEventClassRecordSpecification"
+		   					                                        type = "OperationsRecordSpecTemplateType"      
+                                                        minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Has record specifications of" relationship --> 
+      <xsd:group   ref  = "Extended:OperationsEventClass" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
 
@@ -205,15 +203,14 @@ function or activity.
       <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PropertyType" 				type="ClassPropertyTypeType"
-														minOccurs="0"/>
+      <xsd:element name = "PropertyType" 		            type="ClassPropertyTypeType"
+							                                          minOccurs="0"/>
       <xsd:element name = "Value"                       type = "ValueType"      
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OperationsEventClassProperty" type = "OperationsEventClassPropertyType"
+      <xsd:element name = "OperationsEventClassPropertyChild" 
+		   					                                        type = "OperationsEventClassPropertyType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>  <!-- "Contains" relationship -->
-      <xsd:element name = "EvaluatedPropertyReference"  type = "EvaluatedPropertyReferenceType"
-														minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:group   ref  = "Extended:OperationsEvenClassProperty" minOccurs="0" maxOccurs="1"/>
+      <xsd:group   ref  = "Extended:OperationsEvenClassProperty" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
 
@@ -222,39 +219,46 @@ function or activity.
       <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType"                
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Version"                     type = "IdentifierType"
+                                                        minOccurs = "0"/>                                                        
+      <xsd:element name = "PublishedDate"         	    type = "DateTimeType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "EffectiveStartDate"          type = "DateTimeType"
+                                                	      minOccurs = "0"/>
+      <xsd:element name = "EffectiveEndDate"     	      type = "DateTimeType"
+                                                	      minOccurs = "0"/>
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "Priority"              		type = "NumericType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "OperationsEventType"         type = "OperationsTypeType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "OperationsEventLevel"        type = "NumericType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "OperationsType"        		type = "OperationsTypeType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "MOMFunction"        			type = "IdentifierType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Priority"              	    type = "NumericType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "OperationsEventType"         type = "OperationsEventTypeType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "OperationsEventLevel"        type = "OperationsEventLevelType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "OperationsType"        	    type = "OperationsTypeType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "MOMFunction"        		      type = "MOMFunctionType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "EnterpriseFunction"  	      type = "EnterpriseFunctionType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Category"  			            type = "IdentifierType"   
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EnterpriseFunction"  		type = "IdentifierType"   
+      <xsd:element name = "Acknowledgement"  		        type = "IdentifierType"   
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Category"  					type = "IdentifierType"   
+      <xsd:element name = "Source"  			              type = "IdentifierType"   
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Acknowledgement"  			type = "IdentifierType"   
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Source"  					type = "IdentifierType"   
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OperationsEventDefinition"   type = "OperationsEventDefinitionType" 
-	                                                    minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is assembled from" relationship -->
-      <xsd:element name = "UsesPropertiesOfOperationsEventDefinitionID"
-                                                        type = "IdentifierType"
-                                                        minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Includes properties of" relationship -->
+      <xsd:element name = "OperationsEventDefinitionChild"   
+		   					                                        type = "OperationsEventDefinitionType" 
+	                                                      minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is assembled from" relationship -->
       <xsd:element name = "OperationsEventDefinitionProperty"
-														type = "OperationsEventClassPropertyType"
+							                                          type = "OperationsEventClassPropertyType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Has properties of" relationship -->
-      <xsd:element name = "OperationsEventClassID"  	type = "IdentifierType"
+      <xsd:element name = "OperationsEventClassID"  	  type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is member of relationship" relationship -->
-      <xsd:element name = "RecordSpecification" 		type = "OperationsRecordSpecTemplateType"      
+      <xsd:element name = "OpsEventDefinitionRecordSpecification"
+		   					                                        type = "OperationsRecordSpecTemplateType"      
                                                         minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Has record specifications of" relationship --> 
-      <xsd:group   ref  = "Extended:OperationsEventDefinition" minOccurs="0" maxOccurs="1"/>
+      <xsd:group   ref  = "Extended:OperationsEventDefinition" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
 
@@ -263,14 +267,17 @@ function or activity.
       <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "PropertyType" 				type="ClassPropertyTypeType"
-														minOccurs="0"/>
+      <xsd:element name = "PropertyType" 		            type="ClassPropertyTypeType"
+							                                          minOccurs="0"/>
       <xsd:element name = "Value"                       type = "ValueType"      
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OperationsEventDefinitionProperty"  
-														type = "OperationsEventDefinitionPropertyType" 
+      <xsd:element name = "OperationsEventClassPropertyID"  
+		   					                                        type = "IdentifierType"  
+		   					                                        minOccurs = "0"/>  
+      <xsd:element name = "OperationsEventDefinitionPropertyChild"
+		   					                                        type = "OperationsEventDefinitionPropertyType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>  <!-- "Contains" relationship -->
-      <xsd:group   ref  = "Extended:OperationsEventDefinitionProperty" minOccurs="0" maxOccurs="1"/>
+      <xsd:group   ref  = "Extended:OperationsEventDefinitionProperty" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
 
@@ -279,37 +286,39 @@ function or activity.
       <xsd:element name = "ID"                          type = "IdentifierType"/>
       <xsd:element name = "Description"                 type = "DescriptionType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "Version"                     type = "IdentifierType"
+                                                        minOccurs = "0"/>                                                        
       <xsd:element name = "HierarchyScope"              type = "HierarchyScopeType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "EffectiveTimeStamp"     		type = "DateTimeType"     
-                                                        minOccurs = "0" />
-      <xsd:element name = "RecordTimeStamp"     		type = "DateTimeType"     
-                                                        minOccurs = "0" />
-      <xsd:element name = "Priority"              		type = "NumericType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "OperationsEventType"         type = "OperationsTypeType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "OperationsEventLevel"        type = "NumericType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "OperationsType"        		type = "OperationsTypeType"   
-                                                        minOccurs = "0" />
-      <xsd:element name = "MOMFunction"        			type = "IdentifierType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "EffectiveTimeStamp"   	      type = "DateTimeType"     
+                                                        minOccurs = "0"/>
+      <xsd:element name = "RecordTimeStamp"     	      type = "DateTimeType"     
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Priority"              	    type = "NumericType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "OperationsEventType"         type = "OperationsEventTypeType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "OperationsEventLevel"        type = "OperationsEventLevelType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "OperationsType"        	    type = "OperationsTypeType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "MOMFunction"        		      type = "MOMFunctionType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "EnterpriseFunction"  	      type = "EnterpriseFunctionType"   
+                                                        minOccurs = "0"/>
+      <xsd:element name = "Category"  			            type = "IdentifierType"   
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EnterpriseFunction"  		type = "IdentifierType"   
+      <xsd:element name = "Acknowledgement"  		        type = "IdentifierType"   
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Category"  					type = "IdentifierType"   
+      <xsd:element name = "Source"  			              type = "IdentifierType"   
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Acknowledgement"  			type = "IdentifierType"   
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "Source"  					type = "IdentifierType"   
-                                                        minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OperationsDefinitionID"   	type = "IdentifierType" 
-	                                                    minOccurs = "0" /> 
-      <xsd:element name = "OperationsEvent"   			type = "OperationsEventType" 
-	                                                    minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is made up of" relationship -->
-      <xsd:element name = "OperationsEventRecord"   	type = "OperationsRecordEntryTemplateType" 
-	                                                    minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is a collection of" relationship -->
-      <xsd:group   ref  = "Extended:OperationsEvent"    minOccurs="0" maxOccurs="1"/>
+      <xsd:element name = "OperationsDefinitionID"   	  type = "IdentifierType" 
+	                                                      minOccurs = "0"/> 
+      <xsd:element name = "OperationsEventChild"   	    type = "OperationsEventType" 
+	                                                      minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is made up of" relationship -->
+      <xsd:element name = "OperationsEventRecord"   	  type = "OperationsRecordTemplateType" 
+	                                                      minOccurs = "0" maxOccurs = "unbounded"/> <!-- "Is a collection of" relationship -->
+      <xsd:group   ref  = "Extended:OperationsEvent"    minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
 
@@ -320,14 +329,14 @@ function or activity.
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "Value"                       type = "ValueType"      
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "OperationsEventProperty"     type = "OperationsEventPropertyType"
+      <xsd:element name = "OperationsEventDefinitionPropertyID" 
+		   					                                        type = "IdentifierType"/> 
+      <xsd:element name = "OperationsEventPropertyChild"     
+		   					                                        type = "OperationsEventPropertyType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:group   ref  = "Extended:OperationsEventProperty" minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
-
-
-
 
 <!-- - - - - - - - - - - - - - - - - - - - - -->
 <!-- OperationsEventInformation Transaction Types   -->
@@ -415,7 +424,7 @@ function or activity.
 
   <xsd:complexType name = "ChangeOperationsEventInformationType">
     <xsd:sequence>
-      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
@@ -436,7 +445,7 @@ function or activity.
 
   <xsd:complexType name = "RespondOperationsEventInformationType">
     <xsd:sequence>
-      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
@@ -457,7 +466,7 @@ function or activity.
 
   <xsd:complexType name = "CancelOperationsEventInformationType">
     <xsd:sequence>
-      <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
@@ -477,6 +486,27 @@ function or activity.
 
 
   <xsd:complexType name = "SyncOperationsEventInformationType">
+     <xsd:sequence>
+     <xsd:element name = "ApplicationArea"      type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "OperationsEventInformation"
+                                                type = "OperationsEventInformationType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>
+
+
+  <xsd:complexType name = "NotifyOperationsEventInformationType">
      <xsd:sequence>
      <xsd:element name = "ApplicationArea"      type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
@@ -661,6 +691,27 @@ function or activity.
   </xsd:complexType>
 
 
+  <xsd:complexType name = "NotifyOperationsEventClassType">
+    <xsd:sequence>
+    <xsd:element name = "ApplicationArea"       type = "TransApplicationAreaType"/>
+     <xsd:element name = "DataArea">
+        <xsd:complexType>
+           <xsd:sequence>
+             <xsd:element name = "Sync"         type = "TransSyncType"/>
+             <xsd:element name = "OperationsEventClass"
+                                                type = "OperationsEventClassType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+           </xsd:sequence>
+        </xsd:complexType>
+     </xsd:element>
+
+   </xsd:sequence>
+   <xsd:attribute name = "releaseID"            type="xsd:normalizedString"     use="required"/>
+   <xsd:attribute name = "versionID"            type="xsd:normalizedString"     use="optional"/>
+ </xsd:complexType>
+
+
 <!-- - - - - - - - - - - - - - - - - - - - - -->
 <!-- OperationsEventDefinition Transaction Types    -->
 <!-- - - - - - - - - - - - - - - - - - - - - -->
@@ -681,7 +732,7 @@ function or activity.
       </xsd:element>
     </xsd:sequence>
     <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+    <xsd:attribute name = "versionID"            type="xsd:normalizedString"     use="optional"/>
   </xsd:complexType>
 
 
@@ -825,145 +876,42 @@ function or activity.
   </xsd:complexType>
 
 
-<!-- - - - - - - - - - - - - - - - -  -->
-<!-- OperationsEvent Transaction Types    -->
-<!-- - - - - - - - - - - - - - - - -  -->
-
-  <xsd:complexType name = "GetOperationsEventType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Get"         type = "TransGetType"/>
-              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
-                                                minOccurs = "1" maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "ShowOperationsEventType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Show"        type = "TransShowType"/>
-              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
-                                                minOccurs = "1" maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "ProcessOperationsEventType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Process"     type = "TransProcessType"/>
-              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
-                                                minOccurs = "1" maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "AcknowledgeOperationsEventType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Acknowledge" type = "TransAcknowledgeType"/>
-              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
-                                                minOccurs = "1" maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "ChangeOperationsEventType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Change"      type = "TransChangeType"/>
-              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
-                                                minOccurs = "1" maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "RespondOperationsEventType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Respond"     type = "TransRespondType"/>
-              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
-                                                minOccurs = "1" maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "CancelOperationsEventType">
-    <xsd:sequence>
-      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
-      <xsd:element name = "DataArea">
-         <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name = "Cancel"      type = "TransCancelType"/>
-              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
-                                                minOccurs = "1" maxOccurs = "unbounded"/>
-            </xsd:sequence>
-         </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
-    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
-  </xsd:complexType>
-
-
-  <xsd:complexType name = "SyncOperationsEventType">
+  <xsd:complexType name = "NotifyOperationsEventDefinitionType">
     <xsd:sequence>
       <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
       <xsd:element name = "DataArea">
          <xsd:complexType>
             <xsd:sequence>
               <xsd:element name = "Sync"        type = "TransSyncType"/>
-              <xsd:element name = "OperationsEvent" type = "OperationsEventType"
-                                                minOccurs = "1" maxOccurs = "unbounded"/>
+              <xsd:element name = "OperationsEventDefinition"
+                                                type = "OperationsEventDefinitionType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
+    <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
+  </xsd:complexType>  
+
+
+<!-- - - - - - - - - - - - - - - - -  -->
+<!-- OperationsEvent Transaction Types    -->
+<!-- - - - - - - - - - - - - - - - -  -->
+
+  <xsd:complexType name = "NotifyOperationsEventType">
+    <xsd:sequence>
+      <xsd:element name = "ApplicationArea"     type = "TransApplicationAreaType"/>
+      <xsd:element name = "DataArea">
+         <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name = "Sync"        type = "TransSyncType"/>
+              <xsd:element name = "OperationsEvent"
+                                                type = "OperationsEventType"
+                                                minOccurs = "1" 
+                                                maxOccurs = "unbounded"/>
             </xsd:sequence>
          </xsd:complexType>
       </xsd:element>
@@ -971,8 +919,6 @@ function or activity.
     <xsd:attribute name = "releaseID"           type="xsd:normalizedString"     use="required"/>
     <xsd:attribute name = "versionID"           type="xsd:normalizedString"     use="optional"/>
   </xsd:complexType>
-
-
 
 
 </xsd:schema>
