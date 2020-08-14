@@ -5,7 +5,7 @@ B2MML is an XML implementation of the ANSI/ISA-95, Enterprise-Control System Int
 BatchML is an XML implementation of the ANSI/ISA-88, Batch Control, family of standards (ISA-88), known internationally as IEC 61512. BatchML consists of a set of XML schemas written using the World Wide Web Consortium's XML Schema language (XSD) that implements the models and terminology in the ISA-88 standard.
 
 ---------------------------------------------------------------------------------------------------------------------------------------
-Learn more about B2MML and integration fundamentals at MESA’s Certificate of Competency Program on Friday, June 12th from 8:00am – 5:00 pm in Weert, Netherlands. This course details the elements involved in business-to-manufacturing integration using the MESA B2MML (Business To Manufacturing Markup Language) and ISA-95 standards. 
+Learn more about B2MML and integration fundamentals at MESA’s Certificate of Competency Program. This course details the elements involved in business-to-manufacturing integration using the MESA B2MML (Business To Manufacturing Markup Language) and ISA-95 standards. 
 Upon completion of this course, attendees will be able to:
 1. Discuss what business processes are involved in manufacturing system integration
 2. Describe the mappings that must occur from business system interfaces into a standard operations interface
@@ -13,5 +13,6 @@ Upon completion of this course, attendees will be able to:
 4. Identify B2MML elements used to represent business objects
 5. Describe the methods for extending B2MML
 This is a comprehensive program for MES/MOM consultants, system analysts, industrial IT architects, programmers, and project managers.
-A competency test will be administered for the program, requiring a 85% score or higher in order to receive the program’s Certificate of Competency. For more information and to register, visit http://marketing.mesa.org/acton/attachment/35628/u-c0f4c760-827e-4da5-abf2-961ed89a52bf/0/-/-/-/-/June%20B2MML%20CoC 
-Unable to attend? This program is also available for purchase as an in-house program through MESA’s Authorized Training Provider, MOMi. Contact Sarah Knight at Sarah.Knight@mom-institute.org for more information. 
+A competency test will be administered for the program, requiring a 85% score or higher in order to receive the program’s Certificate of Competency. For more information and to register, visit
+http://www.mesa.org/en/globaleducationprogram/educationprogram.asp
+Unable to attend? This program is also available for purchase as an in-house program. 
