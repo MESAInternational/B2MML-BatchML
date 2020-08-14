@@ -127,7 +127,7 @@
          <xsd:element name = "EffectiveTimestamp"     type = "DateTimeType"             minOccurs="0"/>
          <xsd:element name = "EffectiveEndDate"       type = "DateTimeType"             minOccurs="0"/>
          <xsd:element name = "HierarchyScope"         type = "HierarchyScopeType"       minOccurs="0"/>
-         <xsd:element name = "Action" 			         type = "ActionType"               minOccurs="0"/>
+         <xsd:element name = "Action" 			      type = "OperationsRecordActionType" minOccurs="0"/>
          <xsd:element name = "WorkRecordEntry"        type = "WorkRecordEntryType"   
                                                       minOccurs="1" maxOccurs="unbounded"/>
          <xsd:element name = "WorkRecordSpecificationID"	
@@ -165,7 +165,7 @@
                                                       minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element name = "InformationObjectTypeMultiplicity"
                                                       type = "TextType"                 minOccurs="0" maxOccurs="unbounded"/>
-         <xsd:element name = "Action"                 type = "ActionType"               minOccurs="0"/>
+         <xsd:element name = "Action"                 type = "OperationsRecordActionType"               minOccurs="0"/>
          <xsd:element name = "ActionMultiplicity"     type = "TextType"                 minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element name = "WorkRecordEntryTemplate"
                                                       type = "WorkRecordEntryType"

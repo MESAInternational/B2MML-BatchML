@@ -301,7 +301,7 @@
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "MaterialDefinitionPropertyID"
                                                         type = "IdentifierType"
-                                                        minOccurs = "0"/>
+                                                        minOccurs = "0" maxOccurs = "1"/>
       <xsd:group   ref  = "Extended:MaterialLotProperty" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>

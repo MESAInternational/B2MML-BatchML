@@ -143,11 +143,11 @@ form a hierarchy of test specifications.
                                                         minOccurs = "0"/>
       <xsd:element name = "TestSpecificationChild"    	type = "TestSpecificationType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "TestSpecificationProperty"	  type = "TestSpecificationPropertyType" 
+      <xsd:element name = "TestSpecificationProperty"	type = "TestSpecificationPropertyType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "TestSpecificationCriteria"	  type = "TestSpecificationCriteriaType" 
+      <xsd:element name = "TestSpecificationCriteria"	type = "TestSpecificationCriteriaType" 
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "EvaluatedProperty"		        type = "EvaluatedPropertyType" 
+      <xsd:element name = "EvaluatedProperty"		    type = "TestSpecificationEvaluatedPropertyType" 
                                                         minOccurs = "1" maxOccurs = "unbounded"/>
       <xsd:element name = "OperationsTestRequirementID"	type = "IdentifierType"
                                                         minOccurs = "0"/>
@@ -159,14 +159,14 @@ form a hierarchy of test specifications.
 
   <xsd:complexType name="TestSpecificationPropertyType">
     <xsd:sequence>
-      <xsd:element name="ID" 				                    type="IdentifierType"/>
-      <xsd:element name="Description" 			            type="DescriptionType" 
-                            					                  minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name="Value" 				                type="ValueType" 
-                            					                  minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="ID" 				            type="IdentifierType"/>
+      <xsd:element name="Description" 			        type="DescriptionType" 
+                            					        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="Value" 				        type="ValueType" 
+                            					        minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="TestSpecificationPropertyChild" 	
                                                         type="TestSpecificationPropertyType" 
-                            					                  minOccurs="0" maxOccurs="unbounded"/>
+                            					        minOccurs="0" maxOccurs="unbounded"/>
       <xsd:group ref="Extended:TestSpecificationProperty" 
                                                         minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
@@ -174,59 +174,59 @@ form a hierarchy of test specifications.
   
   <xsd:complexType name="TestSpecificationCriteriaType">
     <xsd:sequence>
-      <xsd:element name="ID" 				                    type="IdentifierType"/>
-	    <xsd:element name="Description" 			            type="DescriptionType" 
-			 					                                        minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name="Sequence" 			                type="NumericType"
-			 					                                        minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name="Expression" 			              type="TextType" 
+      <xsd:element name="ID" 				            type="IdentifierType"/>
+	  <xsd:element name="Description" 			        type="DescriptionType" 
+			 					                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="Sequence" 			            type="NumericType"
+			 					                        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="Expression" 			        type="TextType" 
                                                         minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="Result"                        type="TextType" 
-                 						                            minOccurs="0" maxOccurs="unbounded"/>
+                 						                minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="EvaluatedPropertyID" 	        type="IdentifierType" 
-								                                        minOccurs="0" maxOccurs="unbounded"/>
+								                        minOccurs="0" maxOccurs="unbounded"/>
       <xsd:group ref="Extended:TestSpecificationCriteria" 
                                                         minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
 
-  <xsd:complexType name="EvaluatedPropertyType">
+  <xsd:complexType name="TestSpecificationEvaluatedPropertyType">
     <xsd:sequence>
-      <xsd:element name="ID" 				                    type="IdentifierType"/>
+      <xsd:element name="ID" 				            type="IdentifierType"/>
       <xsd:element name="Description"                   type="DescriptionType" 
-						                                            minOccurs="0" maxOccurs="unbounded"/>
+						                                minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="TestSpecificationCriteriaID"   type="IdentifierType" 
-   								                                      minOccurs="0" maxOccurs="unbounded"/>
+   								                        minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="TestableObjectPropertyID" 	    type="IdentifierType" 
-                            					                  minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name="WorkDefinitionID" 		          type="IdentifierType" 
-                            					                  minOccurs="0" maxOccurs="unbounded"/>
-	    <xsd:group ref="Extended:EvaluatedProperty"       minOccurs="0" maxOccurs="1"/>
+                            					        minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="WorkDefinitionID" 		        type="IdentifierType" 
+                            					        minOccurs="0" maxOccurs="unbounded"/>
+	  <xsd:group ref="Extended:EvaluatedProperty"       minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
 
   <xsd:complexType name = "TestResultType">
 	  <xsd:sequence>
-	    <xsd:element name = "ID" 				                  type = "IdentifierType"/>
-	    <xsd:element name = "Description" 			          type = "DescriptionType"  
-			 				                                          minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
-      <xsd:element name = "EvaluationDate" 		          type = "DateTimeType" 
-			 				                                          minOccurs = "0"  nillable="true"/>
-      <xsd:element name = "Expiration" 			            type = "DateTimeType" 
-                                                         minOccurs = "0"  nillable="true"/>
-      <xsd:element name = "HierarchyScope" 		          type = "HierarchyScopeType" 
-			                                                  minOccurs = "0"  nillable="true"/>
-      <xsd:element name = "TestableObjectID"		        type = "IdentifierType"
+		<xsd:element name = "ID" 				        type = "IdentifierType"/>
+	    <xsd:element name = "Description" 			    type = "DescriptionType"  
+			 				                            minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
+		<xsd:element name = "EvaluationDate" 		    type = "DateTimeType" 
+			 				                            minOccurs = "0"  nillable="true"/>
+		<xsd:element name = "Expiration" 			    type = "DateTimeType" 
+                                                        minOccurs = "0"  nillable="true"/>
+		<xsd:element name = "HierarchyScope" 		    type = "HierarchyScopeType" 
+			                                            minOccurs = "0"  nillable="true"/>
+		<xsd:element name = "TestableObjectID"		    type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "OperationsTestRequirementID"	type = "IdentifierType"
+		<xsd:element name = "OperationsTestRequirementID"	type = "IdentifierType"
                                                         minOccurs = "0"/>
-	    <xsd:element name = "EvaluatedCriterionResult"    type = "TextType" 
-			 					                                        minOccurs = "0"  nillable="true"/>
-	    <xsd:element name = "TestResultChild"             type = "TestResultType" 
-			 				                                          minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
-	    <xsd:element name = "PropertyMeasurement" 		    type = "PropertyMeasurementType" 
-			 					                                        minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
-	    <xsd:group   ref  = "Extended:TestResult"         minOccurs="0" maxOccurs="1"/>
+	    <xsd:element name = "EvaluatedCriterionResult"  type = "TextType" 
+			 					                        minOccurs = "0"  nillable="true"/>
+	    <xsd:element name = "TestResultChild"           type = "TestResultType" 
+			 				                            minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
+	    <xsd:element name = "PropertyMeasurement" 		type = "PropertyMeasurementType" 
+			 					                        minOccurs = "0" maxOccurs = "unbounded"  nillable="true"/>
+	    <xsd:group   ref  = "Extended:TestResult"       minOccurs="0" maxOccurs="1"/>
 	  </xsd:sequence>
   </xsd:complexType>
 

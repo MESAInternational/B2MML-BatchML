@@ -109,19 +109,19 @@
 
   <xsd:complexType name = "OpSegmentDataType">
      <xsd:sequence>
-       <xsd:element name = "ID" 			                  type="IdentifierType"/>
-       <xsd:element name = "Description" 		            type="DescriptionType"
-							                                          minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element name = "ID" 			            type="IdentifierType"/>
+       <xsd:element name = "Description" 		        type="DescriptionType"
+							                            minOccurs="0" maxOccurs="unbounded"/>
        <xsd:element name = "HierarchyScope"             type = "HierarchyScopeType"
                                                         minOccurs = "0"/>
-       <xsd:element name = "Value" 			                type="ValueType"
-							                                          minOccurs="0" maxOccurs="unbounded"/>
-       <xsd:element name = "SegmentDataChild" 		      type="OpSegmentDataType"
-							                                          minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element name = "Value" 			            type="ValueType"
+							                            minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element name = "SegmentDataChild" 		    type="OpSegmentDataType"
+							                            minOccurs="0" maxOccurs="unbounded"/>
        <xsd:element name = "RequiredByRequestedSegmentResponse"
                                                         type = "RequiredByRequestedSegmentResponseType"
                                                         minOccurs = "0"/>
-       <xsd:group   ref  = "Extended:OpSegmentData" 	  minOccurs="0" maxOccurs="1"/>
+       <xsd:group   ref  = "Extended:OpSegmentData" 	minOccurs="0" maxOccurs="1"/>
      </xsd:sequence>
   </xsd:complexType>
 
