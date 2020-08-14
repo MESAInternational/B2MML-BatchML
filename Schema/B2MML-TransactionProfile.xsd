@@ -20,7 +20,7 @@
    <xsd:documentation>
 
         Copyright 2020 MESA International, Version 0700
-    All Rights Reserved. http://www.mesa.org
+		All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents, 
         software, and related items) referred to as the Business To 
@@ -135,7 +135,7 @@
                         <xsd:enumeration value="OPERATIONS DEFINITION"/>
                         <xsd:enumeration value="OPERATIONS SEGMENT"/>
                         <xsd:enumeration value="OPERATIONS DEFINITION INFORMATION"/>
-          <!-- Opwerations Event Model -->
+          <!-- Operations Event Model -->
                         <xsd:enumeration value="OPERATIONS EVENT"/>
                         <xsd:enumeration value="OPERATIONS EVENT CLASS"/>
                         <xsd:enumeration value="OPERATIONS EVENT DEFINITION"/>
@@ -194,22 +194,25 @@
                         <xsd:enumeration value="WORKFLOW SPECIFICATION NODE"/>
                         <xsd:enumeration value="WORKFLOW SPECIFICATION CONNECTION TYPE"/>
           <!-- BatchInformation -->
-                        <xsd:enumeration value="BATCHINFORMATION"/>
-                        <xsd:enumeration value="MASTERRECIPE"/>
-                        <xsd:enumeration value="CONTROLRECIPE"/>
-                        <xsd:enumeration value="RECIPEBUILDINGBLOCK"/>
-                        <xsd:enumeration value="BATCHLIST"/>
+                        <xsd:enumeration value="BATCH INFORMATION"/>
+                        <xsd:enumeration value="MASTER RECIPE"/>
+                        <xsd:enumeration value="CONTROL RECIPE"/>
+                        <xsd:enumeration value="RECIPE BUILDING BLOCK"/>
+                        <xsd:enumeration value="BATCH LIST"/>
           <!-- BatchInformation -->
-                        <xsd:enumeration value="BATCHPRODUCTIONRECORD"/> 
+                        <xsd:enumeration value="BATCH PRODUCTION RECORD"/> 
           <!-- GeneralRecipe -->                       
-                        <xsd:enumeration value="GRECIPEINFORMATION"/>
-                        <xsd:enumeration value="RESOURCECONSTAINTLIBRARY"/>
-                        <xsd:enumeration value="PROCESSELEMENTLIBRARY"/>
+                        <xsd:enumeration value="GRECIPE INFORMATION"/>
+                        <xsd:enumeration value="RESOURCE CONSTAINT LIBRARY"/>
+                        <xsd:enumeration value="PROCESS ELEMENT LIBRARY"/>
                         <xsd:enumeration value="GRECIPE"/>
-                        <xsd:enumeration value="RESOURCECONSTRAINT"/>
-                        <xsd:enumeration value="PROCESSELEMENT"/> 
+                        <xsd:enumeration value="RESOURCE CONSTRAINT"/>
+                        <xsd:enumeration value="PROCESS ELEMENT"/> 
           <!-- Confirm BOD -->
                         <xsd:enumeration value="CONFIRM BOD"/>
+          <!-- Error Message -->
+                        <xsd:enumeration value="ERROR MESSAGE"/>
+          <!-- User Extension -->
                         <xsd:enumeration value="Other"/>
                 </xsd:restriction>
           </xsd:simpleContent>
