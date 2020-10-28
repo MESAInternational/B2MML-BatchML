@@ -143,6 +143,10 @@
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "MaterialSpecification"       type = "OpMaterialSpecificationType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "JobOrderSourceID"            type = "IdentifierType"
+                                                        minOccurs = "0"/>
+      <xsd:element name = "WorkflowSpecification"       type = "WorkflowSpecificationType"
+                                                        minOccurs = "0"/>
     </xsd:sequence>
   </xsd:group>
 
@@ -150,11 +154,8 @@
   <xsd:complexType name = "WorkMasterType">
     <xsd:sequence>
       <xsd:group   ref  = "WorkDefinitionType"/>
-      <xsd:element name = "JobOrderSourceID"            type = "IdentifierType"/>
       <xsd:element name = "WorkMasterChild"             type = "WorkMasterType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "WorkflowSpecification"       type = "WorkflowSpecificationType"
-                                                        minOccurs = "0"/>
       <xsd:element name = "OperationsDefinitionID"      type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "OperationsSegmentID"         type = "IdentifierType"
@@ -173,8 +174,6 @@
     <xsd:sequence>
       <xsd:group   ref  = "WorkDefinitionType"/>
       <xsd:element name = "WorkMasterID"                type = "IdentifierType"/>
-      <xsd:element name = "JobOrderSourceID"            type = "IdentifierType"
-                                                        minOccurs = "0"/>
       <xsd:element name = "WorkDirectiveChild"          type = "WorkDirectiveType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "WorkDirectiveState"          type = "ResponseStateType"

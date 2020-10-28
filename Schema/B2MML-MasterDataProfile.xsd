@@ -193,7 +193,7 @@
       <xsd:sequence>
          <xsd:element name = "ID"                  type = "IdentifierType"/>
          <xsd:element name = "Version"             type = "IdentifierType"/>
-         <xsd:element name = "PublishedDate"       type = "DateTimeType"        minOccurs=" 0"/>
+         <xsd:element name = "PublishedDate"       type = "DateTimeType"        minOccurs= "0"/>
          <xsd:element name = "EffectiveStartDate"  type = "DateTimeType"        minOccurs= "0"/>      
          <xsd:element name = "EffectiveEndDate"    type = "DateTimeType"        minOccurs= "0"/> 
          <xsd:element name = "Name"                type = "TextType"/>
