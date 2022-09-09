@@ -1652,6 +1652,7 @@ Defined values are
                 <xsd:enumeration value="Waiting"/>
                 <xsd:enumeration value="Ready"/>
                 <xsd:enumeration value="Running"/>
+                <xsd:enumeration value="Paused"/>
                 <xsd:enumeration value="Completed"/>
                 <xsd:enumeration value="Aborted"/>
                 <xsd:enumeration value="Held"/>
