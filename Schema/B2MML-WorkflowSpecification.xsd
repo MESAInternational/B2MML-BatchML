@@ -188,9 +188,9 @@
       <xsd:element name = "WorkflowSpecificationConnectionTypeID"
                                                         type = "IdentifierType"
                                                         minOccurs = "0"/>
-      <xsd:element name = "FromWSNodeID"                type = "DescriptionType"
+      <xsd:element name = "FromWSNodeID"                type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
-      <xsd:element name = "ToWSNodeID"                  type = "DescriptionType"
+      <xsd:element name = "ToWSNodeID"                  type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "Dependency"                  type = "DependencyType"/>
       <xsd:element name = "DependencyFactor"            type = "ValueType"
