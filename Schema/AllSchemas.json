@@ -42360,6 +42360,7 @@
 						"Waiting",
 						"Ready",
 						"Running",
+						"Paused",
 						"Completed",
 						"Aborted",
 						"Held",
@@ -54704,7 +54705,7 @@
 				"b2mml:WorkflowSpecificationNodeTypeID": {
 					"$ref": "#/definitions/b2mml:IdentifierType"
 				},
-				"b2mml:WorkflowSpecifictionNodeProperty": {
+				"b2mml:WorkflowSpecificationNodeProperty": {
 					"anyOf": [
 						{
 							"$ref": "#/definitions/b2mml:WorkflowSpecificationNodePropertyType"
