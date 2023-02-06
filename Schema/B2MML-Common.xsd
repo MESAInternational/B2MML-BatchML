@@ -10,7 +10,7 @@
     <xsd:annotation>
         <xsd:documentation>
 
-        Copyright 2020 MESA International, Version 0700
+        Copyright 2023 MESA International, Version 0701
         All Rights Reserved. http://www.mesa.org
 
         This MESA International work (including specifications, documents,
@@ -895,13 +895,13 @@ If no action is specified, this is equivalent to all actions being allowed.
             <xsd:element name="ID" 						type="IdentifierType"/>
 	        <xsd:element name="EquipmentClassID" 		type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentID" 			type="IdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="EquipmentLevel" 			type="EquipmentLevelType" minOccurs="0"/>
             <xsd:element name="Description" 			type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="EquipmentUse" 			type="EquipmentUseType" minOccurs="0"/>
             <xsd:element name="Quantity" 				type="QuantityValueType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
 			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
 			<xsd:element name="OperationalLocation" 	type="ResourceLocationType" minOccurs = "0"/>
-            <xsd:element name="EquipmentLevel" 			type="HierarchyScopeType" minOccurs="0"/>
             <xsd:element name="EquipmentRequirementChild" 	type="OpEquipmentRequirementType" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element name="EquipmentRequirementProperty" 	type="OpEquipmentRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="RequiredByRequestedSegmentResponse"
@@ -1571,7 +1571,6 @@ Defined values are
                 <xsd:enumeration value="Operational Location"/>
                 <xsd:enumeration value="Equipment"/>
                 <xsd:enumeration value="Person"/>
-                <xsd:enumeration value="Equipment"/>
                 <xsd:enumeration value="Physical Asset"/>
                 <xsd:enumeration value="Description"/>
                 <xsd:enumeration value="Other"/>
@@ -1655,6 +1654,7 @@ Defined values are
                 <xsd:enumeration value="Completed"/>
                 <xsd:enumeration value="Aborted"/>
                 <xsd:enumeration value="Held"/>
+                <xsd:enumeration value="Paused"/>
                 <xsd:enumeration value="Suspended"/>               
                 <xsd:enumeration value="Closed"/>
                 <xsd:enumeration value="Other"/>
