@@ -901,6 +901,12 @@ of elements when used in an XML document.
                 </xsd:sequence>
         </xsd:group>
 
+        <xsd:group name = "WorkDefinition">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
         <xsd:group name = "WorkMaster">
                 <xsd:sequence>
                         <!-- add extended elements here -->
