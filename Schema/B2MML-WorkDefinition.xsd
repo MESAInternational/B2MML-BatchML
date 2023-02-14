@@ -147,6 +147,7 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "WorkflowSpecification"       type = "WorkflowSpecificationType"
                                                         minOccurs = "0"/>
+      <xsd:group   ref  = "Extended:WorkDefinition" 	minOccurs = "0" maxOccurs = "1"/>
     </xsd:sequence>
   </xsd:group>
 

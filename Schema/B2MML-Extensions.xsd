@@ -895,6 +895,12 @@ of elements when used in an XML document.
 
 <!-- B2MML extension groups for WorkDefinition schema  -->
 
+        <xsd:group name = "WorkDefinition">
+                <xsd:sequence>
+                        <!-- add extended elements here -->
+                </xsd:sequence>
+        </xsd:group>
+
         <xsd:group name = "WorkDefinitionInformation">
                 <xsd:sequence>
                         <!-- add extended elements here -->
