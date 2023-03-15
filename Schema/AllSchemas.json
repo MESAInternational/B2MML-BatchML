@@ -2162,7 +2162,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"Extended:BinaryObjectType": {
 			"additionalProperties": false,
@@ -2189,7 +2194,12 @@
 					"$ref": "#/$defs/xsd:anyURI"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"Extended:CodeType": {
 			"additionalProperties": false,
@@ -2225,7 +2235,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"Extended:DateTimeType": {
 			"additionalProperties": false,
@@ -2237,7 +2252,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"Extended:IdentifierType": {
 			"additionalProperties": false,
@@ -2267,7 +2287,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"Extended:IndicatorType": {
 			"type": "boolean"
@@ -2285,7 +2310,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"Extended:NameType": {
 			"additionalProperties": false,
@@ -2297,7 +2327,12 @@
 					"$ref": "#/$defs/xsd:language"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"Extended:NumericType": {
 			"additionalProperties": false,
@@ -2309,7 +2344,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"Extended:QuantityType": {
 			"additionalProperties": false,
@@ -2330,7 +2370,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"Extended:TextType": {
 			"additionalProperties": false,
@@ -2342,7 +2387,12 @@
 					"$ref": "#/$defs/xsd:language"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"AcknowledgeBatchProductionRecordType": {
 			"additionalProperties": false,
@@ -4914,7 +4964,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ActualProductProducedType": {
 			"additionalProperties": false,
@@ -4944,7 +4999,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"AlarmDataType": {
 			"additionalProperties": false,
@@ -4987,7 +5047,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"AnyGenericValueType": {
 			"additionalProperties": false,
@@ -5086,7 +5151,12 @@
 					"$ref": "#/$defs/xsd:anyURI"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ApprovalHistoryType": {
 			"additionalProperties": false,
@@ -5122,7 +5192,12 @@
 					"$ref": "#/$defs/xsd:language"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"AssemblyRelationship1Type": {
 			"additionalProperties": false,
@@ -5163,7 +5238,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"AssemblyRelationshipType": {
 			"additionalProperties": false,
@@ -5208,7 +5288,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"AssemblyType1Type": {
 			"additionalProperties": false,
@@ -5249,7 +5334,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"AssemblyTypeType": {
 			"additionalProperties": false,
@@ -5294,7 +5384,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"AuthorType": {
 			"additionalProperties": false,
@@ -5324,7 +5419,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"BODType": {
 			"additionalProperties": false,
@@ -5597,7 +5697,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"BatchListEntryTypeType": {
 			"additionalProperties": false,
@@ -5644,7 +5749,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"BatchListType": {
 			"additionalProperties": false,
@@ -5720,7 +5830,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"BatchProductionRecordType": {
 			"additionalProperties": false,
@@ -5932,7 +6047,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"BatchStatusType": {
 			"additionalProperties": false,
@@ -5986,7 +6106,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"BatchValueType": {
 			"additionalProperties": false,
@@ -6027,7 +6152,12 @@
 				"UnitOfMeasure",
 				"ValueString"
 			],
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"BinaryObjectType": {
 			"additionalProperties": false,
@@ -6054,7 +6184,12 @@
 					"$ref": "#/$defs/xsd:anyURI"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"CancelBatchProductionRecordType": {
 			"additionalProperties": false,
@@ -8652,7 +8787,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"CapabilityTypeType": {
 			"additionalProperties": false,
@@ -8701,7 +8841,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"CauseType": {
 			"additionalProperties": false,
@@ -8737,7 +8882,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ChangeBatchProductionRecordType": {
 			"additionalProperties": false,
@@ -11461,7 +11611,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"CodeType": {
 			"additionalProperties": false,
@@ -11497,7 +11652,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"CommentType": {
 			"additionalProperties": false,
@@ -11582,7 +11742,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ConditionType": {
 			"additionalProperties": false,
@@ -11612,7 +11777,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ConfidenceFactorType": {
 			"additionalProperties": false,
@@ -11642,7 +11812,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ConfirmBODType": {
 			"additionalProperties": false,
@@ -11715,7 +11890,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ConnectionTypeType": {
 			"additionalProperties": false,
@@ -11758,7 +11938,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ConstraintType": {
 			"additionalProperties": false,
@@ -11811,7 +11996,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ConstraintTypeType": {
 			"additionalProperties": false,
@@ -11855,7 +12045,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ControlRecipeRecordType": {
 			"additionalProperties": false,
@@ -11996,7 +12191,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DataInterpretationType": {
 			"additionalProperties": false,
@@ -12042,7 +12242,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DataSetType": {
 			"additionalProperties": false,
@@ -12206,7 +12411,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DataTypeType": {
 			"additionalProperties": false,
@@ -12304,7 +12514,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DataValueType": {
 			"additionalProperties": false,
@@ -12338,7 +12553,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DefaultValueType": {
 			"additionalProperties": false,
@@ -12350,7 +12570,12 @@
 					"$ref": "#/$defs/xsd:language"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DefinitionTypeType": {
 			"additionalProperties": false,
@@ -12391,7 +12616,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DelimitedDataBlockType": {
 			"additionalProperties": false,
@@ -12460,7 +12690,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DependencyType": {
 			"additionalProperties": false,
@@ -12513,7 +12748,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"Depiction1Type": {
 			"additionalProperties": false,
@@ -12558,7 +12798,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DepictionType": {
 			"additionalProperties": false,
@@ -12606,7 +12851,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DescriptionType": {
 			"additionalProperties": false,
@@ -12618,7 +12868,12 @@
 					"$ref": "#/$defs/xsd:language"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DirectedLinkType": {
 			"additionalProperties": false,
@@ -12683,7 +12938,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DispositionType": {
 			"additionalProperties": false,
@@ -12731,7 +12991,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"DurationType": {
 			"type": "string"
@@ -12786,7 +13051,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EnterpriseFunctionType": {
 			"additionalProperties": false,
@@ -12842,7 +13112,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EnumerationNumberType": {
 			"additionalProperties": false,
@@ -12854,7 +13129,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EnumerationSetType": {
 			"additionalProperties": false,
@@ -12890,7 +13170,12 @@
 					"$ref": "#/$defs/xsd:language"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EnumerationType": {
 			"additionalProperties": false,
@@ -13205,7 +13490,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EquipmentElementTypeType": {
 			"additionalProperties": false,
@@ -13249,7 +13539,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EquipmentInformationType": {
 			"additionalProperties": false,
@@ -13344,7 +13639,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EquipmentLevelType": {
 			"additionalProperties": false,
@@ -13401,7 +13701,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EquipmentProceduralElementClassType": {
 			"additionalProperties": false,
@@ -13503,7 +13808,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EquipmentProceduralElementTypeType": {
 			"additionalProperties": false,
@@ -13549,7 +13859,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EquipmentPropertyType": {
 			"additionalProperties": false,
@@ -13801,7 +14116,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ErrorMessageType": {
 			"additionalProperties": false,
@@ -13874,7 +14194,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ErrorTypeType": {
 			"additionalProperties": false,
@@ -13918,7 +14243,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EvaluationOrderType": {
 			"additionalProperties": false,
@@ -13930,7 +14260,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EventSubType1Type": {
 			"additionalProperties": false,
@@ -13994,7 +14329,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EventSubTypeType": {
 			"additionalProperties": false,
@@ -14061,7 +14401,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EventType1Type": {
 			"additionalProperties": false,
@@ -14108,7 +14453,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EventTypeType": {
 			"additionalProperties": false,
@@ -14158,7 +14508,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"EventsType": {
 			"additionalProperties": false,
@@ -14244,7 +14599,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"FromTypeType": {
 			"additionalProperties": false,
@@ -14289,7 +14649,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"GROtherInformationType": {
 			"additionalProperties": false,
@@ -14537,7 +14902,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"GRecipeTypeType": {
 			"additionalProperties": false,
@@ -14581,7 +14951,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"GetBatchProductionRecordType": {
 			"additionalProperties": false,
@@ -17306,7 +17681,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"IDScopeType": {
 			"additionalProperties": false,
@@ -17350,7 +17730,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"IDandDescriptionType": {
 			"additionalProperties": false,
@@ -17396,7 +17781,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"IndicatorType": {
 			"type": "boolean"
@@ -17681,7 +18071,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"InformationObjectTypeType": {
 			"additionalProperties": false,
@@ -17786,7 +18181,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"JobListType": {
 			"additionalProperties": false,
@@ -17875,7 +18275,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"JobOrderCommandRuleType": {
 			"additionalProperties": false,
@@ -17887,7 +18292,12 @@
 					"$ref": "#/$defs/xsd:language"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"JobOrderCommandType": {
 			"additionalProperties": false,
@@ -17938,7 +18348,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"JobOrderDispatchStatus1Type": {
 			"additionalProperties": false,
@@ -17988,7 +18403,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"JobOrderDispatchStatusType": {
 			"additionalProperties": false,
@@ -18042,7 +18462,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"JobOrderType": {
 			"additionalProperties": false,
@@ -18319,7 +18744,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"LifeCycleStateType1Type": {
 			"additionalProperties": false,
@@ -18363,7 +18793,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"LinkType": {
 			"additionalProperties": false,
@@ -18450,7 +18885,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"LinkTypeType": {
 			"additionalProperties": false,
@@ -18499,7 +18939,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ListHeaderType": {
 			"additionalProperties": false,
@@ -18576,7 +19021,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"MOMFunctionType": {
 			"additionalProperties": false,
@@ -18627,7 +19077,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"MasterDataProfileHeaderType": {
 			"additionalProperties": false,
@@ -19810,7 +20265,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"MaterialUseType": {
 			"additionalProperties": false,
@@ -19865,7 +20325,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"MaterialsType1Type": {
 			"additionalProperties": false,
@@ -19907,7 +20372,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"MaterialsTypeType": {
 			"additionalProperties": false,
@@ -19952,7 +20422,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"MaxType": {
 			"additionalProperties": false,
@@ -19967,7 +20442,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"MeasureType": {
 			"additionalProperties": false,
@@ -19982,7 +20462,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"MinType": {
 			"additionalProperties": false,
@@ -19997,7 +20482,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"Mode1Type": {
 			"additionalProperties": false,
@@ -20039,7 +20529,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ModeType": {
 			"additionalProperties": false,
@@ -20084,7 +20579,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ModificationLogType": {
 			"additionalProperties": false,
@@ -20114,7 +20614,12 @@
 					"$ref": "#/$defs/xsd:language"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"NominalType": {
 			"additionalProperties": false,
@@ -20129,7 +20634,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"NoteType": {
 			"additionalProperties": false,
@@ -20141,7 +20651,12 @@
 					"$ref": "#/$defs/xsd:language"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"NotifyOperationsEventClassType": {
 			"additionalProperties": false,
@@ -20313,7 +20828,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OpEquipmentActualPropertyType": {
 			"additionalProperties": false,
@@ -23443,7 +23963,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OperationsEventExtensionType": {
 			"additionalProperties": false,
@@ -23488,7 +24013,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OperationsEventInformationType": {
 			"additionalProperties": false,
@@ -23614,7 +24144,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OperationsEventLevelType": {
 			"additionalProperties": false,
@@ -23660,7 +24195,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OperationsEventPropertyType": {
 			"additionalProperties": false,
@@ -23817,7 +24357,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OperationsEventTypeType": {
 			"additionalProperties": false,
@@ -23863,7 +24408,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OperationsMaterialBillItemType": {
 			"additionalProperties": false,
@@ -24108,7 +24658,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OperationsRecordActionType": {
 			"additionalProperties": false,
@@ -24155,7 +24710,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OperationsRecordEntryTemplateType": {
 			"additionalProperties": false,
@@ -24786,7 +25346,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OperationsTypeType": {
 			"additionalProperties": false,
@@ -24834,7 +25399,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OrderedDataType": {
 			"additionalProperties": false,
@@ -24886,7 +25456,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"OtherEnumerationType": {
 			"additionalProperties": false,
@@ -24961,7 +25536,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ParameterType": {
 			"additionalProperties": false,
@@ -25048,7 +25628,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ParameterTypeType": {
 			"additionalProperties": false,
@@ -25093,7 +25678,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"PersonNameType": {
 			"additionalProperties": false,
@@ -25123,7 +25713,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"PersonPropertyType": {
 			"additionalProperties": false,
@@ -25551,7 +26146,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"PhysicalAssetClassPropertyType": {
 			"additionalProperties": false,
@@ -25950,7 +26550,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"PriorityType": {
 			"additionalProperties": false,
@@ -25962,7 +26567,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ProcedureChartElementType": {
 			"additionalProperties": false,
@@ -26029,7 +26639,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ProcedureChartElementTypeType": {
 			"additionalProperties": false,
@@ -26078,7 +26693,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ProcedureLogicType": {
 			"additionalProperties": false,
@@ -26248,7 +26868,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ProcessElementParameterTypeType": {
 			"additionalProperties": false,
@@ -26297,7 +26922,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ProcessElementType": {
 			"additionalProperties": false,
@@ -26409,7 +27039,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ProcessElementTypeType": {
 			"additionalProperties": false,
@@ -26455,7 +27090,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ProcessEquipmentClassType": {
 			"additionalProperties": false,
@@ -29307,7 +29947,12 @@
 					"$ref": "#/$defs/xsd:anyURI"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"QuantityType": {
 			"additionalProperties": false,
@@ -29328,7 +29973,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"QuantityValueType": {
 			"additionalProperties": false,
@@ -29499,7 +30149,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RecipeBuildingBlockType": {
 			"additionalProperties": false,
@@ -29667,7 +30322,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RecipeElementTypeType": {
 			"additionalProperties": false,
@@ -29718,7 +30378,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RecipeElementVersionType": {
 			"additionalProperties": false,
@@ -29748,7 +30413,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RecipeElementsType": {
 			"additionalProperties": false,
@@ -29816,7 +30486,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RecordObjectTypeType": {
 			"additionalProperties": false,
@@ -29875,7 +30550,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RelationshipForm1Type": {
 			"additionalProperties": false,
@@ -29916,7 +30596,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RelationshipFormType": {
 			"additionalProperties": false,
@@ -29960,7 +30645,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RelationshipType1Type": {
 			"additionalProperties": false,
@@ -30001,7 +30691,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RelationshipTypeType": {
 			"additionalProperties": false,
@@ -30045,7 +30740,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RequestState1Type": {
 			"additionalProperties": false,
@@ -30095,7 +30795,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RequestStateType": {
 			"additionalProperties": false,
@@ -30149,7 +30854,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RequestedBatchSizeType": {
 			"additionalProperties": false,
@@ -30164,7 +30874,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RequiredByRequestedSegmentResponse1Type": {
 			"additionalProperties": false,
@@ -30205,7 +30920,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"RequiredByRequestedSegmentResponseType": {
 			"additionalProperties": false,
@@ -30250,7 +30970,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ResourceConstraintLibraryType": {
 			"additionalProperties": false,
@@ -30345,6 +31070,12 @@
 				"Location": {
 					"$ref": "#/$defs/TextType"
 				},
+				"LocationChild": {
+					"items": {
+						"$ref": "#/$defs/ResourceLocationType"
+					},
+					"type": "array"
+				},
 				"LocationType": {
 					"$ref": "#/$defs/ResourceLocationTypeType"
 				}
@@ -30398,7 +31129,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ResourceLocationTypeType": {
 			"additionalProperties": false,
@@ -30447,7 +31183,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ResourceNetworkConnectionType": {
 			"additionalProperties": false,
@@ -30714,7 +31455,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ResourceReferenceTypeType": {
 			"additionalProperties": false,
@@ -30773,7 +31519,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ResourceRelationshipNetworkInformationType": {
 			"additionalProperties": false,
@@ -33471,7 +34222,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ResponseStateType": {
 			"additionalProperties": false,
@@ -33523,7 +34279,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"SampleTestResultType": {
 			"additionalProperties": false,
@@ -33736,7 +34497,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ScaledSizeType": {
 			"additionalProperties": false,
@@ -33751,7 +34517,12 @@
 					"$ref": "#/$defs/xsd:normalizedString"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ScaledType": {
 			"additionalProperties": false,
@@ -33791,7 +34562,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ScheduleEntryNoteType": {
 			"additionalProperties": false,
@@ -33803,7 +34579,12 @@
 					"$ref": "#/$defs/xsd:language"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"SegmentDependencyType": {
 			"additionalProperties": false,
@@ -33897,7 +34678,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"SequenceOrderType1Type": {
 			"additionalProperties": false,
@@ -33945,7 +34731,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ShowBatchProductionRecordType": {
 			"additionalProperties": false,
@@ -36702,7 +37493,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"SpatialDefinitionFormatType": {
 			"additionalProperties": false,
@@ -36752,7 +37548,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"SpatialDefinitionType": {
 			"additionalProperties": false,
@@ -36811,7 +37612,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"StepType": {
 			"additionalProperties": false,
@@ -39835,7 +40641,12 @@
 					"$ref": "#/$defs/xsd:language"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"TimeSpecificationType": {
 			"additionalProperties": false,
@@ -39909,7 +40720,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ToTypeType": {
 			"additionalProperties": false,
@@ -39954,7 +40770,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"TransAcknowledgeType": {
 			"additionalProperties": false,
@@ -40164,7 +40985,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"TransExpression1Type": {
 			"additionalProperties": false,
@@ -40173,7 +40999,12 @@
 					"$ref": "#/$defs/xsd:token"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"TransExpressionType": {
 			"additionalProperties": false,
@@ -40191,7 +41022,12 @@
 			"required": [
 				"@actionCode"
 			],
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"TransGetType": {
 			"additionalProperties": false,
@@ -40492,7 +41328,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"TransactionNounType": {
 			"additionalProperties": false,
@@ -40615,7 +41456,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"TransactionProfileType": {
 			"additionalProperties": false,
@@ -40700,7 +41546,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"TransactionVerbType": {
 			"additionalProperties": false,
@@ -40751,7 +41602,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"TransitionType": {
 			"additionalProperties": false,
@@ -40812,7 +41668,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"UserAttributeType": {
 			"additionalProperties": false,
@@ -40935,7 +41796,12 @@
 					"$ref": "#/$defs/xsd:anyURI"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"ValueType": {
 			"additionalProperties": false,
@@ -42768,7 +43634,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"WorkTypeType": {
 			"additionalProperties": false,
@@ -42812,7 +43683,12 @@
 					"$ref": "#/$defs/xsd:string"
 				}
 			},
-			"type": "object"
+			"type": [
+				"object",
+				"string",
+				"number",
+				"boolean"
+			]
 		},
 		"WorkflowSpecificationConnectionPropertyType": {
 			"additionalProperties": false,
@@ -42864,7 +43740,7 @@
 				},
 				"FromWSNodeID": {
 					"items": {
-						"$ref": "#/$defs/DescriptionType"
+						"$ref": "#/$defs/IdentifierType"
 					},
 					"type": "array"
 				},
@@ -42873,7 +43749,7 @@
 				},
 				"ToWSNodeID": {
 					"items": {
-						"$ref": "#/$defs/DescriptionType"
+						"$ref": "#/$defs/IdentifierType"
 					},
 					"type": "array"
 				},
