@@ -170,6 +170,8 @@
                                                         minOccurs = "0"/>
       <xsd:element name = "WorkMasterID"                type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
+      <xsd:element name = "WorkMasterVersion"           type = "IdentifierType"
+                                                        minOccurs = "0"/>
       <xsd:element name = "WorkDirectiveID"             type = "IdentifierType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "WorkflowSpecifictionNodeProperty"
