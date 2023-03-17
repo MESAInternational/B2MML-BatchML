@@ -1606,6 +1606,7 @@ Defined values are
         <xsd:sequence>
 		<xsd:element name = "Location" type = "TextType"/>
 		<xsd:element name = "LocationType" type = "ResourceLocationTypeType"/>
+		<xsd:element name = "LocationChild" type = "ResourceLocationType" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 
