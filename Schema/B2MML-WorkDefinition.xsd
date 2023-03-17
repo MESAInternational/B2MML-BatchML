@@ -175,6 +175,8 @@
     <xsd:sequence>
       <xsd:group   ref  = "WorkDefinitionType"/>
       <xsd:element name = "WorkMasterID"                type = "IdentifierType"/>
+      <xsd:element name = "WorkMasterVersion"           type = "IdentifierType"
+                                                        minOccurs = "0"/>
       <xsd:element name = "WorkDirectiveChild"          type = "WorkDirectiveType"
                                                         minOccurs = "0" maxOccurs = "unbounded"/>
       <xsd:element name = "WorkDirectiveState"          type = "ResponseStateType"
