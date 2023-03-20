@@ -42764,6 +42764,9 @@
 				"WorkMasterID": {
 					"$ref": "#/$defs/IdentifierType"
 				},
+				"WorkMasterVersion": {
+					"$ref": "#/$defs/IdentifierType"
+				},
 				"WorkType": {
 					"$ref": "#/$defs/OperationsTypeType"
 				},
@@ -43953,7 +43956,19 @@
 					},
 					"type": "array"
 				},
+				"WorkDirectiveVersion": {
+					"items": {
+						"$ref": "#/$defs/IdentifierType"
+					},
+					"type": "array"
+				},
 				"WorkMasterID": {
+					"items": {
+						"$ref": "#/$defs/IdentifierType"
+					},
+					"type": "array"
+				},
+				"WorkMasterVersion": {
 					"items": {
 						"$ref": "#/$defs/IdentifierType"
 					},
