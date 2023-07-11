@@ -978,7 +978,7 @@ If no action is specified, this is equivalent to all actions being allowed.
             <xsd:element name="HierarchyScope" 			type="HierarchyScopeType" minOccurs="0"/>
 			<xsd:element name="SpatialDefinition" 		type="SpatialDefinitionType" minOccurs = "0"/>
 			<xsd:element name="PhysicalLocation" 		type="ResourceLocationType" minOccurs = "0"/>
-            <xsd:element name="EquipmentLevel" 			type="HierarchyScopeType" minOccurs="0"/>
+            <xsd:element name="EquipmentLevel" 			type="EquipmentLevelType" minOccurs="0"/>
             <xsd:element name="PhysicalAssetRequirementChild" 	type="OpPhysicalAssetRequirementType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="PhysicalAssetRequirementProperty"
 			 					type="OpPhysicalAssetRequirementPropertyType" minOccurs="0" maxOccurs="unbounded"/>
